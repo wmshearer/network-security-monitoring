@@ -7,6 +7,7 @@ a property that would produce a believable-but-false number if it broke.
 
 from __future__ import annotations
 
+import json
 import sys
 from pathlib import Path
 
@@ -14,7 +15,12 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from src.score import RuleResult, _attack_techniques, score  # noqa: E402
+from src.score import (  # noqa: E402
+    RuleResult,
+    _attack_techniques,
+    authors_from_ruleset,
+    score,
+)
 
 
 def zrec(rid, title, count, level="high", tags=None, author="A. Author"):
@@ -119,6 +125,32 @@ def test_summary_separates_clean_rules_from_noisy_ones():
     assert s["rules_silent"] == 7
     assert s["rules_malicious_only"] == 1     # only "clean"
     assert s["rules_touching_benign"] == 2    # "both" and "fp"
+
+
+def test_author_is_backfilled_from_the_ruleset(tmp_path):
+    """DRL 1.1 attribution must survive Zircolite dropping the author field.
+
+    Zircolite's match records carry no `author`, so without this backfill every
+    published table would violate the rule license's attribution requirement.
+    """
+    ruleset = tmp_path / "rules.json"
+    ruleset.write_text(json.dumps([
+        {"id": "r1", "author": "Florian Roth"},
+        {"id": "r2", "author": ["A. One", "B. Two"]},
+    ]))
+    authors = authors_from_ruleset(ruleset)
+    assert authors["r1"] == "Florian Roth"
+    assert authors["r2"] == "A. One, B. Two"
+
+    rec = zrec("r1", "Rule One", 3)
+    rec["author"] = ""          # as Zircolite actually emits it
+    run = score([rec], [], rules_loaded=1, malicious_events=9, benign_events=9,
+                authors=authors)
+    assert run.results[0].author == "Florian Roth"
+
+
+def test_authors_from_missing_ruleset_is_empty_not_an_error():
+    assert authors_from_ruleset(Path("/nonexistent/rules.json")) == {}
 
 
 def test_count_falls_back_to_match_length_when_count_absent():

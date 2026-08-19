@@ -42,9 +42,41 @@ def _load(name: str, path: Path):
 
 _export = _load("drl_export", ROOT / "src" / "export.py")
 _score = _load("drl_score", ROOT / "src" / "score.py")
+_report = _load("drl_report", ROOT / "src" / "report.py")
 write_jsonl = _export.write_jsonl
 run_zircolite = _score.run_zircolite
 score = _score.score
+write_reports = _report.write_reports
+
+
+def rule_eventid_coverage(ruleset: Path, events_paths: list[Path]) -> float:
+    """Share of the ruleset whose target EventIDs appear in the corpus.
+
+    This is the control for the headline: if most rules stayed silent simply
+    because the corpus never contained the event types they key on, the result
+    would say more about the data than about the rules. Computing it makes the
+    difference checkable instead of asserted.
+    """
+    present: set[str] = set()
+    for p in events_paths:
+        with p.open() as fh:
+            for line in fh:
+                try:
+                    present.add(str(json.loads(line).get("EventID")))
+                except json.JSONDecodeError:
+                    continue
+
+    rules = json.loads(ruleset.read_text())
+    eligible = 0
+    for r in rules:
+        eids = r.get("eventid")
+        if eids is None:
+            continue
+        if not isinstance(eids, list):
+            eids = [eids]
+        if {str(e) for e in eids} & present:
+            eligible += 1
+    return 100.0 * eligible / len(rules) if rules else 0.0
 
 ZIRCOLITE = ROOT / "vendor" / "Zircolite"
 EVENTS = ROOT / "data" / "events"
@@ -53,15 +85,39 @@ REPORTS = ROOT / "reports"
 
 
 def load_malicious():
-    """Every OTRF capture that has both metadata and a local zip."""
+    """Every OTRF capture that has both metadata and a local zip, plus APT29.
+
+    The APT29 ATT&CK Evals captures live in `compound_captures/` and have NO
+    per-capture metadata YAML, because each spans 15+ techniques rather than the
+    single technique an "atomic" capture demonstrates. They load through a
+    separate normalizer that takes a capture id directly.
+
+    They are included because the atomic captures alone are thin on EventID 1
+    (process creation), which is the event type the majority of Sigma rules key
+    on. Scoring a ruleset against a corpus that barely contains its primary
+    event type would understate coverage for a reason that has nothing to do
+    with rule quality.
+    """
     import yaml
     from src.ingest.normalize import normalize_capture
+    from src.ingest.normalize_compound import normalize_compound_capture
 
     meta_dir = TRIAGE / "data/raw/otrf/metadata"
     cap_dir = TRIAGE / "data/raw/otrf/captures"
+    compound_dir = TRIAGE / "data/raw/otrf/compound_captures"
 
     records = []
     used = []
+
+    for zip_path in sorted(compound_dir.glob("*.zip")):
+        capture_id = zip_path.stem
+        try:
+            recs = normalize_compound_capture(capture_id, [zip_path])
+        except Exception as e:  # noqa: BLE001
+            print("  skip %s: %s" % (zip_path.name, str(e)[:70]))
+            continue
+        records.extend(recs)
+        used.append(zip_path.name)
     for meta in sorted(meta_dir.glob("*.yaml")):
         try:
             doc = yaml.safe_load(meta.read_text()) or {}
@@ -158,8 +214,17 @@ def main() -> int:
     ben_out = run_zircolite(ben_x.path, OUT / "benign.json", ZIRCOLITE, ruleset)
     print("      benign:    %d rules fired" % len(ben_out))
 
-    run = score(mal_out, ben_out, rules_loaded, mal_x.written, ben_x.written)
+    authors = _score.authors_from_ruleset(ruleset)
+    run = score(mal_out, ben_out, rules_loaded, mal_x.written, ben_x.written,
+                authors=authors)
+    attributed = sum(1 for r in run.results if r.author)
+    print("      DRL attribution: %d/%d fired rules carry an author"
+          % (attributed, len(run.results)))
     s = run.summary()
+
+    coverage = rule_eventid_coverage(ruleset, [mal_x.path, ben_x.path])
+    print("      rule/EventID coverage: %.1f%% of rules target EventIDs present in corpus"
+          % coverage)
 
     REPORTS.mkdir(parents=True, exist_ok=True)
     payload = {
@@ -168,9 +233,13 @@ def main() -> int:
         "ruleset": ruleset.name,
         "malicious_captures": mal_caps,
         "benign_files": len(ben_files),
+        "rule_eventid_coverage_pct": round(coverage, 1),
         "results": [r.as_row() for r in run.results],
     }
     (REPORTS / "scoring-run.json").write_text(json.dumps(payload, indent=2))
+    written = write_reports(payload, REPORTS)
+    for k, v in written.items():
+        print("      wrote %s: %s" % (k, v.name))
 
     print("\n" + "=" * 68)
     for k, v in s.items():
