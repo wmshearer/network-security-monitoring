@@ -8,7 +8,7 @@
     "rules_malicious_only": 131,
     "rules_touching_benign": 4
   },
-  "elapsed_seconds": 168.9,
+  "elapsed_seconds": 173.2,
   "ruleset": "rules_windows_sysmon.json",
   "malicious_captures": [
     "APT29-EVALS-DAY1.zip",
