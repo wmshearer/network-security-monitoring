@@ -1,0 +1,433 @@
+{
+  "summary": {
+    "malicious_events": 50859,
+    "benign_events": 110095,
+    "rules_loaded": 2691,
+    "rules_fired": 31,
+    "rules_silent": 2660,
+    "rules_malicious_only": 27,
+    "rules_touching_benign": 4
+  },
+  "elapsed_seconds": 25.8,
+  "ruleset": "rules_windows_sysmon.json",
+  "malicious_captures": [
+    "empire_shell_net_localgroup_administrators.zip",
+    "empire_shell_net_local_users.zip",
+    "empire_persistence_registry_modification_run_keys_standard_user.zip",
+    "empire_schtasks_creation_standard_user.zip",
+    "msf_record_mic.zip"
+  ],
+  "benign_files": 3,
+  "results": [
+    {
+      "rule_id": "d88d0ab2-e696-4d40-a2ed-9790064e66b3",
+      "title": "Modification of IE Registry Settings",
+      "level": "low",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1112"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 56,
+      "precision": 0.0
+    },
+    {
+      "rule_id": "0eb46774-f1ab-4a74-8238-1155855f2263",
+      "title": "Disable Windows Defender Functionalities Via Registry Keys",
+      "level": "high",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1685"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 2,
+      "precision": 0.0
+    },
+    {
+      "rule_id": "3a9b8c1e-5b2e-4f7a-9d1c-2a7f3b6e1c55",
+      "title": "RunMRU Registry Key Deletion - Registry",
+      "level": "high",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1070.003"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 2,
+      "precision": 0.0
+    },
+    {
+      "rule_id": "3037d961-21e9-4732-b27a-637bcc7bf539",
+      "title": "Suspicious High IntegrityLevel Conhost Legacy Option",
+      "level": "informational",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1202"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 2,
+      "precision": 0.0
+    },
+    {
+      "rule_id": "64e8e417-c19a-475a-8d19-98ea705394cc",
+      "title": "Alternate PowerShell Hosts - PowerShell Module",
+      "level": "medium",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 170,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "0badd08f-c6a3-4630-90d3-6875cca440be",
+      "title": "User Logoff Event",
+      "level": "informational",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1531"
+      ],
+      "malicious_hits": 80,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "12ba6a38-adb3-4d6b-91ba-a7fb248e3199",
+      "title": "Password Policy Enumerated",
+      "level": "medium",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1201"
+      ],
+      "malicious_hits": 11,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "8cd538a4-62d5-4e83-810b-12d41e428d6e",
+      "title": "Processes Accessing the Microphone and Webcam",
+      "level": "medium",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1123"
+      ],
+      "malicious_hits": 6,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "4a1b6da0-d94f-4fc3-98fc-2d9cb9e5ee76",
+      "title": "Potentially Suspicious AccessMask Requested From LSASS",
+      "level": "medium",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1003.001"
+      ],
+      "malicious_hits": 4,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "db809f10-56ce-4420-8c86-d6a7d793c79c",
+      "title": "Potential Defense Evasion Via Raw Disk Access By Uncommon Tools",
+      "level": "low",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1006"
+      ],
+      "malicious_hits": 3,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "259a9cdf-c4dd-4fa2-b243-2269e5ab18a2",
+      "title": "External Remote RDP Logon from Public IP",
+      "level": "medium",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1078",
+        "T1110",
+        "T1133"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "78d5cab4-557e-454f-9fb9-a222bd0d5edc",
+      "title": "External Remote SMB Logon from Public IP",
+      "level": "high",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1078",
+        "T1110",
+        "T1133"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "502b42de-4306-40b4-9596-6f590c81f073",
+      "title": "Local Accounts Discovery",
+      "level": "low",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1033",
+        "T1087.001"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "1027d292-dd87-4a1a-8701-2abe04d7783c",
+      "title": "PSScriptPolicyTest Creation By Uncommon Process",
+      "level": "medium",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "d95de845-b83c-4a9a-8a6a-4fc802ebf6c0",
+      "title": "Suspicious Group And Account Reconnaissance Activity Using Net.EXE",
+      "level": "medium",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1087.001",
+        "T1087.002"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "e0d6c087-2d1c-47fd-8799-3904103c5a98",
+      "title": "AMSI Bypass Pattern Assembly GetType",
+      "level": "high",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1685"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "e32d4572-9826-4738-b651-95fa63747e8a",
+      "title": "Base64 Encoded PowerShell Command Detected",
+      "level": "high",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1027",
+        "T1059.001",
+        "T1140"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "20f0ee37-5942-4e45-b7d5-c5b5db9df5cd",
+      "title": "CurrentVersion Autorun Keys Modification",
+      "level": "medium",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1547.001"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "178e615d-e666-498b-9630-9ed363038101",
+      "title": "Elevated System Shell Spawned From Uncommon Parent Location",
+      "level": "medium",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "411742ad-89b0-49cb-a7b0-3971b5c1e0a4",
+      "title": "Locked Workstation",
+      "level": "informational",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "d3c3861d-c504-4c77-ba55-224ba82d0118",
+      "title": "New Network Trace Capture Started Via Netsh.EXE",
+      "level": "medium",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1040"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "ac7102b4-9e1e-4802-9b4f-17c5524c015c",
+      "title": "New PowerShell Instance Created",
+      "level": "informational",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "bbb9495b-58fc-4016-b9df-9a3a1b67ca82",
+      "title": "Password Policy Discovery With Get-AdDefaultDomainPasswordPolicy",
+      "level": "low",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1201"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "96cd126d-f970-49c4-848a-da3a09f55c55",
+      "title": "Potential PowerShell Obfuscation Using Alias Cmdlets",
+      "level": "low",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1027",
+        "T1059.001"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "092bc4b9-3d1d-43b4-a6b4-8c8acd83522f",
+      "title": "PowerShell Core DLL Loaded By Non PowerShell Process",
+      "level": "medium",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "92626ddd-662c-49e3-ac59-f6535f12d189",
+      "title": "Scheduled Task Creation Via Schtasks.EXE",
+      "level": "low",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1053.005"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "f2c64357-b1d2-41b7-849f-34d2682c0fad",
+      "title": "Suspicious Command Patterns In Scheduled Task Creation",
+      "level": "high",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1053.005"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "8d85cf08-bf97-4260-ba49-986a2a65129c",
+      "title": "Suspicious PowerShell In Registry Run Keys",
+      "level": "medium",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1547.001"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "ae7fbf8e-f3cb-49fd-8db4-5f3bed522c71",
+      "title": "Suspicious PowerShell Invocations - Specific",
+      "level": "high",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "00bb5bd5-1379-4fcf-a965-a5b6f7478064",
+      "title": "Windows Firewall Settings Have Been Changed",
+      "level": "low",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1686.003"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "3a6586ad-127a-4d3b-a677-1e6eacdf8fde",
+      "title": "Windows Shell/Scripting Processes Spawning Suspicious Programs",
+      "level": "high",
+      "author": "",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001",
+        "T1059.005",
+        "T1218"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    }
+  ]
+}
