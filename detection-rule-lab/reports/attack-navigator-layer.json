@@ -1,0 +1,514 @@
+{
+  "name": "Sigma rule coverage (measured)",
+  "versions": {
+    "layer": "4.5",
+    "navigator": "5.1.0"
+  },
+  "domain": "enterprise-attack",
+  "description": "Techniques for which at least one Sigma rule fired against a labeled corpus. Score = number of distinct rules that fired, NOT event count. Absence of a technique means no rule fired on THIS corpus; it does not mean the technique is undetectable.",
+  "techniques": [
+    {
+      "techniqueID": "T1003",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1003.001",
+      "score": 6,
+      "comment": "6 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1003.002",
+      "score": 2,
+      "comment": "2 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1003.003",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1003.004",
+      "score": 2,
+      "comment": "2 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1003.005",
+      "score": 2,
+      "comment": "2 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1003.006",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1006",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1021",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1021.002",
+      "score": 6,
+      "comment": "6 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1021.006",
+      "score": 4,
+      "comment": "4 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1027",
+      "score": 3,
+      "comment": "3 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1027.004",
+      "score": 2,
+      "comment": "2 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1033",
+      "score": 2,
+      "comment": "2 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1036",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1036.005",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1040",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1047",
+      "score": 3,
+      "comment": "3 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1048.003",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1049",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1053.005",
+      "score": 2,
+      "comment": "2 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1055.011",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1056.001",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1057",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1059",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1059.001",
+      "score": 30,
+      "comment": "30 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1059.005",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1069",
+      "score": 2,
+      "comment": "2 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1069.001",
+      "score": 2,
+      "comment": "2 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1069.002",
+      "score": 2,
+      "comment": "2 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1070.003",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1070.004",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1070.006",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1078",
+      "score": 4,
+      "comment": "4 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1087",
+      "score": 2,
+      "comment": "2 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1087.001",
+      "score": 4,
+      "comment": "4 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1087.002",
+      "score": 3,
+      "comment": "3 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1098",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1105",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1110",
+      "score": 2,
+      "comment": "2 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1112",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1113",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1114.001",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1115",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1120",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1123",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1132.001",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1133",
+      "score": 2,
+      "comment": "2 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1136.001",
+      "score": 2,
+      "comment": "2 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1140",
+      "score": 3,
+      "comment": "3 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1201",
+      "score": 2,
+      "comment": "2 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1202",
+      "score": 2,
+      "comment": "2 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1203",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1204.002",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1218",
+      "score": 3,
+      "comment": "3 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1218.010",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1218.011",
+      "score": 3,
+      "comment": "3 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1482",
+      "score": 2,
+      "comment": "2 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1485",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1490",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1497.001",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1531",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1543.003",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1546.003",
+      "score": 3,
+      "comment": "3 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1547.001",
+      "score": 6,
+      "comment": "6 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1548",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1548.002",
+      "score": 3,
+      "comment": "3 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1552.004",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1556.002",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1560.001",
+      "score": 2,
+      "comment": "2 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1564.003",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1564.004",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1569",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1569.002",
+      "score": 3,
+      "comment": "3 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1570",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1574.001",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1587.001",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1588.002",
+      "score": 4,
+      "comment": "4 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1620",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1685",
+      "score": 3,
+      "comment": "3 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1685.001",
+      "score": 2,
+      "comment": "2 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1686.003",
+      "score": 1,
+      "comment": "1 Sigma rule(s) fired on this technique in the measured corpus",
+      "enabled": true
+    }
+  ],
+  "gradient": {
+    "colors": [
+      "#deebf7",
+      "#08306b"
+    ],
+    "minValue": 0,
+    "maxValue": 30
+  },
+  "legendItems": [],
+  "showTacticRowBackground": true,
+  "sorting": 3
+}

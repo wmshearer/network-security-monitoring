@@ -147,12 +147,38 @@ def run_zircolite(
         return json.load(fh)
 
 
+def authors_from_ruleset(ruleset_path: Path) -> dict[str, str]:
+    """Map Sigma rule id -> author, read from the ruleset itself.
+
+    Zircolite's match output does NOT carry the author field (verified: its rule
+    records expose title/id/description/sigma/sigmafile/rule_level/tags/count/
+    matches and nothing else). SigmaHQ rules are licensed under DRL 1.1, which
+    requires per-rule author attribution wherever matches are displayed, so the
+    attribution has to come from the ruleset rather than from the results.
+    """
+    try:
+        rules = json.loads(Path(ruleset_path).read_text())
+    except (OSError, json.JSONDecodeError):
+        return {}
+    out = {}
+    for r in rules:
+        rid = r.get("id")
+        if not rid:
+            continue
+        author = r.get("author")
+        if isinstance(author, list):
+            author = ", ".join(str(a) for a in author)
+        out[rid] = str(author or "")
+    return out
+
+
 def score(
     malicious_records: list[dict],
     benign_records: list[dict],
     rules_loaded: int,
     malicious_events: int,
     benign_events: int,
+    authors: dict[str, str] | None = None,
 ) -> ScoreRun:
     """Join two Zircolite outputs into per-rule malicious/benign counts.
 
@@ -183,12 +209,13 @@ def score(
     absorb(malicious_records, "malicious")
     absorb(benign_records, "benign")
 
+    authors = authors or {}
     results = [
         RuleResult(
             rule_id=rid,
             title=v["title"],
             level=v["level"],
-            author=v["author"],
+            author=v["author"] or authors.get(rid, ""),
             sigmafile=v["sigmafile"],
             attack_techniques=_attack_techniques(v["tags"]),
             malicious_hits=v["malicious"],
