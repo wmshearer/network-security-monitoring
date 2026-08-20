@@ -113,3 +113,55 @@ and unlike jitter it points the right way: the malicious host scores higher.
 
 Silence ratio is a better beaconing companion than regularity, which is the practical lesson
 from putting the two queries side by side.
+
+---
+
+# A third finding: the novelty detector fires only on the benign host
+
+## What happened
+
+The first-contact query builds a baseline from the first half of each capture, then flags
+destinations that appear only in the second half. It is modelled on Panther's baseline-anomaly
+search.
+
+On this corpus it returns three results. All three are the benign Philips Hue bridge. It finds
+nothing at all in the Torii botnet capture.
+
+## Why
+
+Counting distinct destinations either side of the midpoint explains it:
+
+| capture | destinations, 1st half | destinations, 2nd half |
+|---|---|---|
+| Torii (malicious) | 37 | 32 |
+| Philips Hue (benign) | 13 | 16 |
+
+Torii's destination set **shrinks**. The infection established its channels before the capture
+started and then kept using them. There is no first contact to catch, because first contact
+happened before anyone was watching.
+
+The Hue's set grows, because a consumer device on a live network keeps meeting new CDN
+endpoints, NTP servers and API hosts over a day.
+
+## The lesson
+
+Novelty detection depends entirely on the baseline containing a genuinely clean period. Here
+the "baseline" is just the first half of a capture that was already compromised throughout, so
+the malicious channels are inside the baseline and are therefore invisible by construction.
+
+This is not a bug in the query. It is a bug in what the query can be asked on this data. The
+detection is sound and the corpus cannot support it.
+
+Stated plainly: **the first-contact query is unscored on this corpus.** Reporting it as a
+detection with a precision figure would be dishonest, because the only number available is
+"three false positives and no true positives", and that number measures the capture rather than
+the query.
+
+## What it would need
+
+A baseline drawn from a period known to be clean, which in practice means either a capture
+recorded before infection or an environment with an established asset inventory. Neither exists
+in a public IoT-23 capture that starts mid-infection.
+
+Kept in the project because knowing when a detection cannot be evaluated is part of detection
+engineering, and quietly dropping it would leave the set looking tidier than the work actually was.
