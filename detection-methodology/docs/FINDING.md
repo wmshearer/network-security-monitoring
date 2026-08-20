@@ -165,3 +165,66 @@ in a public IoT-23 capture that starts mid-infection.
 
 Kept in the project because knowing when a detection cannot be evaluated is part of detection
 engineering, and quietly dropping it would leave the set looking tidier than the work actually was.
+
+---
+
+# A fourth finding: REGEXP availability is a property of the program, not the version
+
+## What happened
+
+I wrote `sql/05_regex_limit.sql` to demonstrate a documented SQLite limitation. sqlite.org
+states plainly:
+
+> "No regexp() user function is defined by default and so use of the REGEXP operator will
+> normally result in an error message."
+
+The file was written expecting an error. Running it in the sqlite3 shell returned results.
+
+## The actual situation
+
+Both interpreters on this machine report the same SQLite version:
+
+```
+$ sqlite3 --version
+3.46.1
+>>> sqlite3.sqlite_version
+'3.46.1'
+```
+
+Same version, different behaviour:
+
+```
+$ sqlite3 :memory: "SELECT 'abc' REGEXP 'b';"
+1
+
+>>> sqlite3.connect(':memory:').execute("SELECT 'abc' REGEXP 'b'")
+OperationalError: no such function: REGEXP
+```
+
+The Kali sqlite3 shell binary registers a regexp function at startup. The shared library that
+Python links against does not. REGEXP availability therefore follows the **host application**,
+not the SQLite version, and checking `sqlite3 --version` tells you nothing about whether your
+code will work.
+
+## Why this is the better finding
+
+The original point was a piece of documentation trivia. This one has a failure mode attached,
+and it fails in the worst possible order:
+
+1. An analyst writes a Sigma rule using the `re` modifier.
+2. They test it with the sqlite3 shell. It works.
+3. It goes into a Python detection pipeline.
+4. pySigma's SQLite backend compiles `re` straight to REGEXP.
+5. It throws `no such function: REGEXP` at runtime, on live data.
+
+Testing in the shell actively creates false confidence here. The environment that validates
+the rule is not the environment that runs it.
+
+## How it was caught
+
+By running the query in both places instead of trusting either. The research brief had already
+flagged the exact SQLite version numbers as uncertain and worth verifying before relying on
+them, which is the only reason the discrepancy got checked at all.
+
+The original claim would have been published as fact, and it would have been wrong on any
+machine whose shell ships the extension.
