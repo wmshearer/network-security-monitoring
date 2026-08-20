@@ -1,0 +1,3 @@
+data/events.db
+__pycache__/
+*.pyc
