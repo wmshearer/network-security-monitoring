@@ -1,0 +1,5 @@
+data/raw/
+data/accounts.csv
+data/pairs.csv
+__pycache__/
+*.pyc
