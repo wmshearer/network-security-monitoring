@@ -249,3 +249,55 @@ be redistributed."
 
 A file being reachable is not permission to use it. Caverlee 2011 was used instead, and it is
 the weaker dataset for this purpose because it lacks the client field.
+
+---
+
+## Finding 5: three of Armenia's top hashtags are not hashtags
+
+Listing the most-used tags per operation turned up something that does not look like language:
+
+```
+#46eJLsV6+iDw1rVv36i9NONigsfqfTfQ9EBzXr901c=   x17,449
+#FqVhnX8XDzPsUa4tn29gHXs+N6ikWJoKmYhuo5pG1cE= x15,821
+#Rgex8nPtn9Y4bvWf9RMb8yI2GGWP65yTXb+9ZygHU=   x13,967
+```
+
+Three distinct strings, 47,237 uses between them. Base64 alphabet, trailing padding, and they
+decode to 32 bytes of random binary rather than to text. Thirty-two bytes is a SHA-256 digest.
+
+Each one travels with a different news source:
+
+```
+... В Баку покончила с собой 15-летний подросток haqqin.az ... #haqqin #46eJLsV6+iDw...
+... newsazerbaijan.ru У берегов Испании спасены около 150 иммигрантов ... #FqVhnX8XDz...
+... Today.Az - Explosions hit headquarters of opposition party in Turkey ... #Rgex8nPt...
+```
+
+So these are tracking tokens, one per syndicated feed, appended by whatever tool was pushing the
+content. They are machine plumbing that happens to start with a hash character. The syndication
+finding in Finding 2 predicted something like this: an operation running on `twitterfeed` and
+`dlvr.it` is going to carry the artifacts of those tools.
+
+### Whether the headline result depends on them
+
+This was worth checking rather than assuming, because these tokens are 40 percent of Armenia's
+hashtag volume and would be perfectly shared between any accounts on the same feed. If the
+0.888 rested on them, it would be measuring one broken publishing tool rather than coordination.
+
+Filtering out anything matching a base64-token shape and rescoring:
+
+| | AUC against benign |
+|---|---|
+| tokens kept | 0.888 |
+| tokens removed | **0.888** |
+
+Unchanged. Only 3 of the 31 Armenian accounts use them, out of 262 accounts across the corpus,
+so they contribute almost nothing to pairwise overlap. The signal rests on ordinary tags like
+`#syria`, `#idlib`, `#ukraine` and `#palestine`, which is what it should rest on.
+
+### Why it is written down anyway
+
+Two reasons. The check could have gone the other way, and a result that survives an attempt to
+break it is worth more than one that was never tested. And the tokens themselves are a usable
+artifact: three fixed strings appearing 47,000 times across accounts claiming to be unrelated
+people is its own coordination evidence, independent of any similarity score.
