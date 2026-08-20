@@ -150,3 +150,102 @@ AUC 0.592. Better than chance and not by much. Accounts in one operation do post
 hours, which is what a shared working day looks like, but ordinary accounts in one time zone
 also share posting hours. Without a benign control group there is no way to know how much of
 that 0.592 is coordination and how much is simply geography.
+
+---
+
+## Finding 4: with a benign control, one signal survives and one collapses
+
+Findings 1 to 3 were all measured inside the influence-operation corpus, comparing
+same-operation pairs against cross-operation pairs. That is the weaker test, because every
+account in it was removed by Twitter as state-linked. Nothing there is benign.
+
+Adding a control group changes two of the answers.
+
+Control: the Caverlee 2011 social honeypot dataset, 19,276 accounts the authors verified as
+legitimate human users, 3,259,693 tweets. 300 accounts sampled with a fixed seed, giving 44,850
+benign pairs against 17,556 same-operation pairs.
+
+| signal | operation median | control median | operation p95 | control p95 | AUC |
+|---|---|---|---|---|---|
+| shared hashtags | 0.014 | 0.000 | 0.100 | **0.000** | **0.888** |
+| co-timing | 0.537 | 0.515 | 0.847 | 0.802 | **0.534** |
+
+### Co-timing was never a coordination signal
+
+Against other operations it scored AUC 0.592. Against benign accounts it scores **0.534**, which
+is close enough to chance to call it nothing.
+
+The medians explain it: 0.537 for operation pairs, 0.515 for benign pairs. Ordinary accounts
+overlap in posting hours almost exactly as much as coordinated ones do. That is what a shared
+time zone looks like, and it has nothing to do with whether anyone is running the accounts
+together.
+
+The earlier 0.592 was measuring the difference between operations, not the presence of
+coordination. Four operations in four different regions post in four different sets of hours,
+so accounts inside one match each other better than accounts across two. Real, and useless for
+detection.
+
+**Without a benign control this would have shipped as a working signal.** It is the same failure
+as the beaconing detector ranking a smart bulb above a botnet, caught the same way.
+
+### Shared hashtags got stronger, and the control shows why
+
+AUC rises from 0.797 against other operations to **0.888** against benign accounts.
+
+The control p95 is 0.000. Ninety-five percent of benign pairs share no hashtags at all.
+
+That is not because ordinary people avoid hashtags. 214 of the 300 control accounts, 71 percent,
+use them. But only 3.54 percent of benign pairs share any, and the highest benign overlap
+anywhere in 44,850 pairs is 0.600.
+
+Ordinary accounts use hashtags about different things. Two people tagging their own interests
+produce almost no overlap. A campaign produces a lot, because pushing the same tags is the
+point.
+
+That is a genuine discriminator, and it survives the control.
+
+### One signal cannot be evaluated at all
+
+The control's tweet records have four columns: user id, tweet id, text, timestamp. There is no
+posting-client field.
+
+So shared tooling, which scored AUC 0.644 inside the CIB corpus, has **no benign baseline**.
+It is not weak against ordinary accounts. It is unmeasurable against them with this control, and
+any number reported would be invented.
+
+This matters because tooling was the signal with the widest median gap, 0.873 against 0.028, and
+would have been the most tempting to headline. Finding 2 already showed it measures provisioning
+rather than coordination. The missing control confirms there is no way to check that from here.
+
+### The era gap, stated plainly
+
+The control accounts were created between 2006 and 2009 and their tweets are almost entirely
+from 2009. The influence operations run 2014 to 2020.
+
+Twitter changed a great deal in between: the client mix, follower norms, retweet mechanics,
+hashtag culture. So some part of any measured difference is a difference between 2009 and 2018
+rather than between benign and coordinated.
+
+This weakens both results, and it weakens the hashtag finding more than it looks, since hashtag
+usage grew substantially over that period. The honest version of the claim is that shared
+hashtags separates these operations from these benign accounts by AUC 0.888, and that a control
+from the same era would be needed to rule out the period as the cause.
+
+No such control was found. The search covered Kaggle, Sentiment140, the Cresci datasets, the
+Botometer bot repository, Zenodo, Harvard Dataverse, and the Internet Archive Twitter stream
+grab. Nothing public carries ordinary accounts from 2014 to 2020 with usable metadata. Twitter's
+API stopped being freely available at the scale needed, so most modern corpora are tweet-id-only
+and cannot be rehydrated.
+
+### A licence decision worth recording
+
+The Cresci datasets, cresci-2015 and cresci-2017, are the standard academic baseline and both
+carry an explicit genuine-human class. Both are mechanically downloadable from a mirror with no
+authentication.
+
+They were not used. The originating project at CNR states: "we are not openly posting the
+datasets, instead, they are available for researchers who will ask for" and "the datasets cannot
+be redistributed."
+
+A file being reachable is not permission to use it. Caverlee 2011 was used instead, and it is
+the weaker dataset for this purpose because it lacks the client field.
