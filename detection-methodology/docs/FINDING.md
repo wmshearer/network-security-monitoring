@@ -72,3 +72,44 @@ seen from the other side: a benign device that is unusually regular outranks mal
 deliberately irregular.
 
 Source: splunk.com/en_us/blog/security/peak-baseline-hunting.html
+
+---
+
+# A second finding: reused private addresses merged three hosts into one
+
+## What happened
+
+The scanning query grouped by `source_ip` and reported a scan window of 98,949,825 seconds for
+192.168.1.46. That is three years and two months, which is not a scan.
+
+The cause: 192.168.1.46 appears in three separate captures, recorded in March 2017, May 2017
+and April 2020. RFC 1918 space gets reused on every network on earth, so the same private
+address in two captures is almost never the same machine. Grouping on the address alone welded
+three unrelated hosts into a single identity and then measured the time between them.
+
+## The fix
+
+Key every aggregate on `(capture, ip)` rather than `ip`. In a production data lake the
+equivalent key is `(tenant, sensor, ip, time_window)`, since an address only identifies a host
+within a scope and a period.
+
+After the fix the AD host correctly disappears from the results. It never reached three
+distinct targets inside any single capture. The earlier appearance was an artefact of the merge.
+
+## Why it is worth writing down
+
+The number was absurd enough to notice. A subtler version of the same bug is not. If two
+captures had been a week apart rather than three years, the window would have looked plausible
+and the merged host would have shipped as a finding.
+
+Any corpus assembled from more than one capture, or any SIEM ingesting more than one network,
+has this problem waiting in it. The fix costs one column in a GROUP BY.
+
+## What survived the fix
+
+The discriminator itself held up. Torii leaves 63.4 percent of the hosts it contacts silent.
+The benign Philips Hue leaves 6.3 percent. That is a ten-to-one separation on real traffic,
+and unlike jitter it points the right way: the malicious host scores higher.
+
+Silence ratio is a better beaconing companion than regularity, which is the practical lesson
+from putting the two queries side by side.
