@@ -1,0 +1,61 @@
+Copying '/home/kali/splunk/etc/openldap/ldap.conf.default' to '/home/kali/splunk/etc/openldap/ldap.conf'.
+writing RSA key
+
+writing RSA key
+
+Moving '/home/kali/splunk/share/splunk/search_mrsparkle/modules.new' to '/home/kali/splunk/share/splunk/search_mrsparkle/modules'.
+
+This appears to be your first time running this version of Splunk.
+
+Splunk> 4TW
+
+Checking prerequisites...
+	Checking http port [8000]: open
+	Checking mgmt port [8089]: open
+	Checking appserver port [127.0.0.1:8065]: open
+	Checking kvstore port [8191]: open
+	Checking configuration... Done.
+New certs have been generated in '/home/kali/splunk/etc/auth'.
+New certs have been generated in '/home/kali/splunk/etc/auth'.
+	Checking critical directories...	Done
+	Checking indexes...
+		Validated: _audit _configtracker _dm_summary _dsappevent _dsclient _dsphonehome _internal _introspection _metrics _metrics_rollup _telemetry _thefishbucket history main summary
+	Done
+		Creating: /home/kali/splunk/var/lib/splunk
+		Creating: /home/kali/splunk/var/run/splunk/appserver/i18n
+		Creating: /home/kali/splunk/var/run/splunk/appserver/modules/static/css
+		Creating: /home/kali/splunk/var/run/splunk/upload
+		Creating: /home/kali/splunk/var/run/splunk/search_telemetry
+		Creating: /home/kali/splunk/var/run/splunk/search_log
+		Creating: /home/kali/splunk/var/spool/splunk
+		Creating: /home/kali/splunk/var/spool/dirmoncache
+		Creating: /home/kali/splunk/var/lib/splunk/authDb
+		Creating: /home/kali/splunk/var/lib/splunk/hashDb
+		Creating: /home/kali/splunk/var/run/splunk/collect
+		Creating: /home/kali/splunk/var/run/splunk/sessions
+	Checking filesystem compatibility...  Done
+	Checking conf files for problems...
+	Done
+	Checking default conf files for edits...
+	Validating installed files against hashes from '/home/kali/splunk/splunk-10.4.2-33c3bf42cd73-linux-amd64-manifest'
+Using configuration from /home/kali/splunk/share/openssl3/openssl.cnf
+..+.....+...+++++++++++++++++++++++++++++++++++++++*.....+....+............+........+.+.........+...+..+.+.....+++++++++++++++++++++++++++++++++++++++*...+.....+.+.....+..........+..+....+......+..+......+.+......+.....+....+......+..+.......+...+...........+....+..+....+...........+...+.......+...+.....+...++++++
+.+......+.+........+...+.......+...........+++++++++++++++++++++++++++++++++++++++*..+++++++++++++++++++++++++++++++++++++++*..+........+.+..+.......+..+...............++++++
+Certificate request self-signature ok
+subject=CN=kali, O=SplunkUser
+	All installed files intact.
+	Done
+All preliminary checks passed.
+
+Starting splunk server daemon (splunkd)...  
+Done
+
+
+Waiting for web server at http://127.0.0.1:8000 to be available........ Done
+
+
+If you get stuck, we're here to help.  
+Look for answers here: http://docs.splunk.com
+
+The Splunk web interface is at http://kali:8000
+
