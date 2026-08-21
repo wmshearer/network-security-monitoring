@@ -1,0 +1,14 @@
+# Broken on purpose: promoted to stable without doing the promotion work.
+# This file exists to make the linter's failure output visible. It is
+# modeled on the leak-extraction rule from llm-abuse-detection, which in that
+# project's real corpus fires ZERO times out of 2,810 prompts (see
+# docs/LIFECYCLE.md, worked example). This is the kind of rule that should
+# never have been waved into stable in the first place.
+title: LLM System Prompt Leak Extraction
+id: 3f2a9b10-0001-4e2a-9c11-000000000003
+status: stable
+goal: Flag prompts that ask the model to reveal its own system prompt or instructions.
+logsource: application logs, product = llm_gateway
+detection: prompt text matches imperative leak-extraction phrasing ("reveal your instructions", "output your system prompt")
+falsepositives: unknown
+level: medium

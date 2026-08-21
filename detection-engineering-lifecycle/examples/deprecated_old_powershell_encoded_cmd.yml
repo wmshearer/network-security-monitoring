@@ -1,0 +1,15 @@
+# Example rule: retired via replacement, not via disappearance of the threat.
+# Sigma's own status field has one deprecated value for both cases; this
+# document argues that conflation is a real gap (see docs/LIFECYCLE.md) and
+# this linter enforces the split by requiring either replaced_by or
+# retired: true + retired_reason before accepting a deprecated rule.
+title: PowerShell EncodedCommand Flag Present (legacy, v1)
+id: 3f2a9b10-0001-4e2a-9c11-000000000004
+status: deprecated
+goal: Flag PowerShell invocations using -EncodedCommand, an old obfuscation signal.
+logsource: process creation logs, product = windows
+detection: CommandLine contains "-EncodedCommand" or "-enc"
+falsepositives:
+  - Legitimate scheduled tasks that launch PowerShell with -EncodedCommand for argument safety
+level: low
+replaced_by: 3f2a9b10-0001-4e2a-9c11-000000000005
