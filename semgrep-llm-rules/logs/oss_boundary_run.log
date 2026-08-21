@@ -1,0 +1,18 @@
+=== OSS/Pro taint boundary experiment ===
+semgrep version: 1.174.0
+
+Rule file: tests/oss_boundary/boundary_rule.yml (two identical taint rules, source()/sink())
+
+--- Run 1: tests/oss_boundary/intraprocedural.py (source and sink in ONE function) ---
+findings: 2
+ - tests.oss_boundary.boundary-test-interprocedural 12
+ - tests.oss_boundary.boundary-test-intraprocedural 12
+
+--- Run 2: tests/oss_boundary/interprocedural.py (source in function_a, sink in function_b) ---
+findings: 0
+
+CONCLUSION: intraprocedural flow produced 2 findings (both rules fire).
+            interprocedural flow produced 0 findings (neither rule fires), despite
+            being the exact same source/sink pattern with only the call graph shape changed.
+            This empirically confirms the documented claim: OSS Semgrep taint mode
+            does not track dataflow across a function call boundary.

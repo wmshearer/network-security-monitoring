@@ -1,0 +1,57 @@
+rules:
+  - id: tool-result-into-conversation-untiered
+    mode: taint
+    languages: [python]
+    severity: WARNING
+    message: >
+      The return value of a tool call is serialized and appended back into
+      the conversation the model reads, with no trust tiering, size limit, or
+      content check applied first. Tool results are a second indirect
+      injection surface distinct from RAG retrieval: any tool that reaches
+      external or attacker-influenced data (a file, an API response, another
+      user's input) can hand the model text that looks like an instruction,
+      and that text goes straight back into the same message stream the
+      model treats as authoritative on the next hop. Treat tool output as
+      untrusted the same way retrieved documents are treated; apply a
+      trust tier, size cap, or content filter before appending it to the
+      conversation.
+    metadata:
+      cwe:
+        - "CWE-1426: Improper Validation of Generative AI Output"
+      owasp:
+        - "LLM01:2026 Prompt Injection"
+      references:
+        - https://genai.owasp.org/llmrisk/llm01-prompt-injection/
+        - https://github.com/GenAI-Security-Project/GenAI-LLM-Top10/tree/main/2026/final
+      category: security
+      confidence: LOW
+      subcategory:
+        - vuln
+      likelihood: MEDIUM
+      impact: MEDIUM
+      technology:
+        - python
+        - llm
+        - agent
+      note: >
+        Intraprocedural only (Semgrep OSS limit). Confidence is LOW rather
+        than MEDIUM because "tool result appended as a message" is also the
+        normal, correct shape of a tool-calling agent loop; this rule cannot
+        tell whether the tool's own source data is trusted (e.g. a read-only
+        lookup of non-sensitive local config vs. a fetch of arbitrary
+        external/user-controlled content), which is exactly the kind of
+        judgment call OSS taint analysis, which sees code shape and not data
+        provenance, cannot make on its own.
+    pattern-sources:
+      - pattern: $IMPL(**$FNARGS)
+    pattern-sinks:
+      - patterns:
+          - pattern-either:
+              - pattern: '{"role": "tool", "tool_call_id": $ID, "content": $SINK}'
+              - pattern: '{"role": "tool", "content": $SINK, ...}'
+          - focus-metavariable: $SINK
+    pattern-sanitizers:
+      - pattern: $X = sanitize_tool_result(...)
+      - pattern: $X = redact(...)
+      - pattern: json.dumps(sanitize_tool_result(...))
+      - pattern: json.dumps(redact(...))
