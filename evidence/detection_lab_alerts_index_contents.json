@@ -1,0 +1,372 @@
+{
+  "preview": false,
+  "init_offset": 0,
+  "messages": [],
+  "fields": [
+    {
+      "name": "_time"
+    },
+    {
+      "name": "_raw"
+    }
+  ],
+  "results": [
+    {
+      "_time": "2026-08-23T08:45:00.000-07:00",
+      "_raw": "detection=D3_net_localgroup_administrators technique=T1069.001 search_name=\"D3 - Local Administrators Group Enumeration (T1069.001)\" result_count=2 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD5a5b3d923fe66fb2c_at_1787499900_4\""
+    },
+    {
+      "_time": "2026-08-23T08:45:00.000-07:00",
+      "_raw": "detection=D6_powershell_spawns_recon_tool technique=T1059.001 search_name=\"D6 - PowerShell Spawning Discovery or Scheduling Tool (T1059.001)\" result_count=3 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD52e80f1459ff02a23_at_1787499900_2\""
+    },
+    {
+      "_time": "2026-08-23T08:45:00.000-07:00",
+      "_raw": "detection=D1_registry_run_key_setvalue technique=T1547.001 search_name=\"D1 - Registry Run Key Persistence (T1547.001)\" result_count=2 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD52b703c2c609322b4_at_1787499900_3\""
+    },
+    {
+      "_time": "2026-08-23T08:45:00.000-07:00",
+      "_raw": "detection=D1_registry_run_key_setvalue technique=T1547.001 search_name=\"D1 - Registry Run Key Persistence (T1547.001)\" result_count=2 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD52b703c2c609322b4_at_1787499900_3\""
+    },
+    {
+      "_time": "2026-08-23T08:45:01.000-07:00",
+      "_raw": "detection=D6_powershell_spawns_recon_tool technique=T1059.001 search_name=\"D6 - PowerShell Spawning Discovery or Scheduling Tool (T1059.001)\" result_count=3 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD52e80f1459ff02a23_at_1787499900_2\""
+    },
+    {
+      "_time": "2026-08-23T08:45:01.000-07:00",
+      "_raw": "detection=D3_net_localgroup_administrators technique=T1069.001 search_name=\"D3 - Local Administrators Group Enumeration (T1069.001)\" result_count=2 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD5a5b3d923fe66fb2c_at_1787499900_4\""
+    },
+    {
+      "_time": "2026-08-23T08:45:01.000-07:00",
+      "_raw": "detection=D2_schtasks_encoded_powershell technique=T1053.005 search_name=\"D2 - Scheduled Task with Encoded PowerShell Payload (T1053.005)\" result_count=1 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD58766a84e9598d0fd_at_1787499900_5\""
+    },
+    {
+      "_time": "2026-08-23T08:45:01.000-07:00",
+      "_raw": "detection=D6_powershell_spawns_recon_tool technique=T1059.001 search_name=\"D6 - PowerShell Spawning Discovery or Scheduling Tool (T1059.001)\" result_count=3 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD52e80f1459ff02a23_at_1787499900_2\""
+    },
+    {
+      "_time": "2026-08-23T08:50:00.000-07:00",
+      "_raw": "detection=D3_net_localgroup_administrators technique=T1069.001 search_name=\"D3 - Local Administrators Group Enumeration (T1069.001)\" result_count=2 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD5a5b3d923fe66fb2c_at_1787500200_8\""
+    },
+    {
+      "_time": "2026-08-23T08:50:00.000-07:00",
+      "_raw": "detection=D4_net_user_enumeration technique=T1087.001 search_name=\"D4 - Local User Account Enumeration (T1087.001)\" result_count=2 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD5c908339cf286c8f8_at_1787500200_7\""
+    },
+    {
+      "_time": "2026-08-23T08:50:00.000-07:00",
+      "_raw": "detection=D1_registry_run_key_setvalue technique=T1547.001 search_name=\"D1 - Registry Run Key Persistence (T1547.001)\" result_count=2 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD52b703c2c609322b4_at_1787500200_6\""
+    },
+    {
+      "_time": "2026-08-23T08:50:00.000-07:00",
+      "_raw": "detection=D1_registry_run_key_setvalue technique=T1547.001 search_name=\"D1 - Registry Run Key Persistence (T1547.001)\" result_count=2 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD52b703c2c609322b4_at_1787500200_6\""
+    },
+    {
+      "_time": "2026-08-23T08:50:01.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:01.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:01.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:01.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:01.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:01.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:01.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:01.000-07:00",
+      "_raw": "detection=D3_net_localgroup_administrators technique=T1069.001 search_name=\"D3 - Local Administrators Group Enumeration (T1069.001)\" result_count=2 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD5a5b3d923fe66fb2c_at_1787500200_8\""
+    },
+    {
+      "_time": "2026-08-23T08:50:01.000-07:00",
+      "_raw": "detection=D2_schtasks_encoded_powershell technique=T1053.005 search_name=\"D2 - Scheduled Task with Encoded PowerShell Payload (T1053.005)\" result_count=1 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD58766a84e9598d0fd_at_1787500200_9\""
+    },
+    {
+      "_time": "2026-08-23T08:50:01.000-07:00",
+      "_raw": "detection=D4_net_user_enumeration technique=T1087.001 search_name=\"D4 - Local User Account Enumeration (T1087.001)\" result_count=2 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD5c908339cf286c8f8_at_1787500200_7\""
+    },
+    {
+      "_time": "2026-08-23T08:50:01.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:01.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:01.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:01.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:01.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:01.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:01.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:01.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:01.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:02.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:02.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:02.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:02.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:02.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:02.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:02.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:02.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:02.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:02.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:02.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:02.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:02.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:02.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:02.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:02.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:03.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:03.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:03.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:03.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:03.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:03.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:03.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:03.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:03.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:03.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:03.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:03.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:03.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:03.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:03.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:03.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:04.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:04.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:04.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:04.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:04.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:04.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:04.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:04.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:04.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:04.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:04.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:04.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:04.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:04.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:04.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:04.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:05.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:05.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:05.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:05.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:05.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:05.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:05.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:05.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:05.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    },
+    {
+      "_time": "2026-08-23T08:50:05.000-07:00",
+      "_raw": "detection=D5_process_access_audiodg technique=T1123 search_name=\"D5 - Process Access to Audio Device Graph Isolation (T1123)\" result_count=74 sid=\"scheduler__nobody_c3BsdW5rX2RldGVjdGlvbl9sYWI__RMD56874529250ef2ea0_at_1787500200_10\""
+    }
+  ],
+  "highlighted": {}
+}
