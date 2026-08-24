@@ -139,10 +139,20 @@ after the fact.
    erroring. Splunk's search-time layer treats `eventtype` as reserved.
    Every detection SPL in this project therefore avoids relying on
    `EventType` (uses `TargetObject`/`EventID` instead, which is sufficient);
-   `conf/transforms.conf` additionally renames it to `sysmon_event_type` at
-   index time (applies to newly-ingested data going forward, not
-   retroactively to what predates that props.conf change — normal Splunk
-   index-time-transform behavior, not a partial fix).
+   `conf/transforms.conf` was written to rename it to `sysmon_event_type` at
+   index time.
+
+   **That rename does not work, and this correction is worth more than the
+   original claim.** Verified 2026-08-23:
+   `index=detection_lab | stats count(sysmon_event_type), count` returns 0
+   populated out of 292,992 events. `INDEXED_EXTRACTIONS = json` parses in the
+   structured-data phase, which runs before and instead of the TRANSFORMS
+   phase, so the stanza's regex never sees the event. The two settings conflict
+   and Splunk gives no warning about it.
+
+   Nothing in the project depended on the rename: every detection uses
+   `EventID` and `TargetObject`. That is exactly why it went unnoticed, and it
+   is the same class of silent failure as the three bugs above.
 4. **A metadata/manifest JSON file got accidentally oneshot-ingested as an
    event file** on the first ingest pass (`_conversion_manifest.json` sat
    alongside the real per-capture JSON files and matched the bulk-ingest
