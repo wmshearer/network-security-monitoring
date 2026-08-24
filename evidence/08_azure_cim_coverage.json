@@ -1,0 +1,2 @@
+
+{"preview":false,"init_offset":0,"messages":[],"fields":[{"name":"total"},{"name":"user_populated"},{"name":"dvc_populated"},{"name":"command_populated"},{"name":"object_category_populated"},{"name":"status_populated"},{"name":"vendor_account_populated"}],"results":[{"total":"724","user_populated":"446","dvc_populated":"712","command_populated":"724","object_category_populated":"724","status_populated":"155","vendor_account_populated":"724"}], "highlighted":{}}

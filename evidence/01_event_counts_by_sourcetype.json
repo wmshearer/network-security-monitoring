@@ -1,0 +1,2 @@
+
+{"preview":false,"init_offset":0,"messages":[],"fields":[{"name":"sourcetype","groupby_rank":"0"},{"name":"count"}],"results":[{"sourcetype":"aws:cloudtrail","count":"34429"},{"sourcetype":"azure:monitor:aad","count":"724"},{"sourcetype":"o365:management:activity","count":"9169"}], "highlighted":{}}

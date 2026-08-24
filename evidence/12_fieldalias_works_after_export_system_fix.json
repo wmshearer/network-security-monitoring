@@ -1,0 +1,2 @@
+
+{"preview":false,"init_offset":0,"messages":[],"fields":[{"name":"src"},{"name":"sourceIPAddress"},{"name":"user"}],"results":[{"src":"23.93.242.200","sourceIPAddress":"23.93.242.200","user":"arn:aws:sts::111111111111111:assumed-role/redacted/daftpunk@splunk.com"}], "highlighted":{}}

@@ -1,0 +1,2 @@
+
+{"preview":false,"init_offset":0,"messages":[],"fields":[{"name":"has_eventtype_in_raw","type":"str","groupby_rank":"0"},{"name":"count"}],"results":[{"has_eventtype_in_raw":"yes","count":"34429"}], "highlighted":{}}

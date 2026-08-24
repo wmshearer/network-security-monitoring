@@ -1,0 +1,18 @@
+# The attack_data corpus itself lives outside this repo
+# (../_corpora/attack_data/), never copied in, so there is no corpus data
+# directory here to exclude. data/manifest.csv is this project's OWN
+# generated output (a small CSV of paths/platform labels/byte counts, not a
+# copy of the corpus), so it stays tracked as real evidence of the
+# file-selection step.
+
+# Python bytecode/cache -- never real evidence.
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Deliberately narrow: do NOT add a broad "*.json" or "*.log" or "evidence/"
+# glob here. Real evidence artifacts (screenshots, saved search-result JSON
+# in evidence/) must stay tracked. If a large raw corpus copy or Splunk
+# index snapshot is ever added under this repo (it should not be), exclude
+# it by its specific real path when that happens, not by a wildcard that
+# would also silently drop evidence/*.json or evidence/*.png.

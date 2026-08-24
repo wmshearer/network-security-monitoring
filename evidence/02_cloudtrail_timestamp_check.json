@@ -1,0 +1,2 @@
+
+{"preview":false,"init_offset":0,"messages":[],"fields":[{"name":"diff_seconds","type":"num","groupby_rank":"0"},{"name":"count"}],"results":[{"diff_seconds":"0.000000","count":"34429"}], "highlighted":{}}
