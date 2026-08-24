@@ -1,0 +1,39 @@
+title: LockBit 3.0 Builder Toolkit Execution (keygen.exe / builder.exe)
+id: c3e6b1f4-5a8c-4dae-b17e-5daC1f4a3e56
+status: experimental
+description: |
+  keygen.exe and builder.exe are the two binaries in the leaked LockBit 3.0
+  builder toolkit. keygen.exe generates a pub.key/priv.key pair; builder.exe
+  compiles ransomware payload variants (EXE, DLL, ReflectiveDLL, password-
+  gated variants, and a matching decryptor) from a config.json. Seeing both
+  run on a production host, from a non-standard directory (C:\Intel\ in this
+  intrusion), is a near-unambiguous sign the ransomware payload is about to
+  be built locally rather than dropped pre-built. This rule matches on
+  process name plus the -pubkey/-privkey arguments the real toolkit always
+  uses, since "builder.exe" alone is too generic a filename to key on safely.
+references:
+  - https://thedfirreport.com/2026/02/23/apache-activemq-exploit-leads-to-lockbit-ransomware/
+author: IR portfolio
+date: 2026-08-24
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_keygen:
+    Image|endswith: '\keygen.exe'
+    CommandLine|contains|all:
+      - '-pubkey'
+      - '-privkey'
+  selection_builder:
+    Image|endswith: '\builder.exe'
+    CommandLine|contains: '-pubkey'
+  condition: selection_keygen or selection_builder
+falsepositives:
+  - Filenames keygen.exe / builder.exe are common in unrelated software
+    (license keygens, unrelated compilers). The -pubkey/-privkey/-config
+    argument pattern narrows this substantially but cannot fully rule out
+    an unrelated tool that happens to share flag names.
+level: critical
+tags:
+  - attack.impact
+  - attack.t1486

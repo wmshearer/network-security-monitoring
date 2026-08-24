@@ -1,0 +1,33 @@
+title: CertUtil Download Cache Used to Fetch a File
+id: 9b3d2e8b-2d5f-4a9c-ae4b-2a7f8c1d0b23
+status: experimental
+description: |
+  certutil.exe with -urlcache is a documented LOLBin technique to download a
+  file without a browser. In this intrusion it is used twice: once to fetch
+  the Meterpreter stager (qSwUwejx.exe) from the attacker's own C2 host, and
+  again later to fetch AnyDesk from AnyDesk's real CDN. Only the first is
+  malicious; the second is a legitimate-binary-abused-for-delivery case this
+  rule also correctly flags, which is a genuine detection engineering
+  tradeoff noted under "what this cannot claim."
+references:
+  - https://thedfirreport.com/2026/02/23/apache-activemq-exploit-leads-to-lockbit-ransomware/
+  - https://lolbas-project.github.io/lolbas/Binaries/Certutil/
+author: IR portfolio
+date: 2026-08-24
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection:
+    Image|endswith: '\certutil.exe'
+    CommandLine|contains: 'urlcache'
+  condition: selection
+falsepositives:
+  - Legitimate certutil cache operations unrelated to download (rare in
+    practice; -urlcache is almost always download-related).
+level: medium
+tags:
+  - attack.command_and_control
+  - attack.t1105
+  - attack.defense_evasion
+  - attack.t1218.011

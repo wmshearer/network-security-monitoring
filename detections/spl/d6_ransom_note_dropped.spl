@@ -1,0 +1,1 @@
+index=ir_activemq_lockbit source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventID=11 TargetFilename="*.README.txt*"

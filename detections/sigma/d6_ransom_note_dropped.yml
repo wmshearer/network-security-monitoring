@@ -1,0 +1,34 @@
+title: Ransom Note File Created Across Multiple Directories
+id: d4f7c2a5-6b9d-4ebf-c28f-6ebd2a5b4f67
+status: experimental
+description: |
+  A single process rapidly creating many files matching a ransom-note naming
+  pattern (a per-victim random ID plus .README.txt, LockBit's format) across
+  many different directories is the impact-stage signature. In this dataset
+  LB3.exe dropped 7duXYi3SC.README.txt into at least 6 directories under the
+  ActiveMQ install path within 90 milliseconds (09:32:15.025-09:32:15.115
+  UTC). This rule targets the naming pattern; a real deployment should tune
+  the ID-length regex per observed LockBit builds rather than hardcode one
+  victim ID.
+references:
+  - https://thedfirreport.com/2026/02/23/apache-activemq-exploit-leads-to-lockbit-ransomware/
+  - https://attack.mitre.org/techniques/T1486/
+author: IR portfolio
+date: 2026-08-24
+logsource:
+  category: file_event
+  product: windows
+detection:
+  selection:
+    TargetFilename|contains: '.README.txt'
+  condition: selection
+falsepositives:
+  - Legitimate README.txt files created by installers or build tooling.
+    This rule is intentionally broad (any *.README.txt creation) to catch
+    unknown ransom-note ID patterns; in production, pair with a frequency/
+    burst threshold (many creates from one process in a short window) rather
+    than single-event alerting.
+level: critical
+tags:
+  - attack.impact
+  - attack.t1486

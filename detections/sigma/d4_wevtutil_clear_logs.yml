@@ -1,0 +1,31 @@
+title: Windows Event Log Cleared via wevtutil
+id: b2d5a0e3-4f7b-4c9e-a06d-4c9b0e3f2d45
+status: experimental
+description: |
+  wevtutil cl <log> clears an entire Windows Event Log channel. In this
+  intrusion, System, Application, and Security were all cleared within 47
+  milliseconds of each other (09:56:51.028 to 09:56:51.075 UTC), immediately
+  after a batch script (rdp.bat) stopped and restarted Terminal Services.
+  This is textbook anti-forensic defense evasion timed around enabling RDP
+  access. A single wevtutil cl on a workstation is unusual; three in under
+  50ms from the same parent process is a very strong signal.
+references:
+  - https://thedfirreport.com/2026/02/23/apache-activemq-exploit-leads-to-lockbit-ransomware/
+  - https://attack.mitre.org/techniques/T1070/001/
+author: IR portfolio
+date: 2026-08-24
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection:
+    Image|endswith: '\wevtutil.exe'
+    CommandLine|contains: ' cl '
+  condition: selection
+falsepositives:
+  - Log retention/rotation automation. Rare outside scheduled maintenance
+    windows; correlate with the parent process and time of day.
+level: high
+tags:
+  - attack.defense_evasion
+  - attack.t1070.001

@@ -1,0 +1,35 @@
+title: Java Process Spawns Command Shell (ActiveMQ RCE Pattern)
+id: 8e2c1a7a-1c4e-4f8b-9d3a-1f6e7b0c9a12
+status: experimental
+description: |
+  Detects a java.exe process spawning cmd.exe. In this intrusion this is the
+  exact process lineage produced by CVE-2023-46604 (Apache ActiveMQ OpenWire
+  protocol deserialization RCE): java.exe running activemq.jar spawns cmd.exe
+  directly, with no browser, script host, or Office parent in between. Sigma
+  field names here are the pySigma sysmon field names (parent_image, image,
+  command_line), NOT the raw Sysmon XML tag names, since sigma-cli's Splunk
+  backend maps them via its Sysmon pipeline.
+references:
+  - https://thedfirreport.com/2026/02/23/apache-activemq-exploit-leads-to-lockbit-ransomware/
+  - https://nvd.nist.gov/vuln/detail/CVE-2023-46604
+author: IR portfolio
+date: 2026-08-24
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection:
+    ParentImage|endswith: '\java.exe'
+    Image|endswith:
+      - '\cmd.exe'
+      - '\powershell.exe'
+  condition: selection
+falsepositives:
+  - Java applications that legitimately shell out (build tools, some admin
+    scripts). Rare on a production message-broker host, which is why this
+    fires cleanly against this dataset with no observed false positives in
+    the ingested telemetry (see evidence/05_detection_scoring.txt).
+level: high
+tags:
+  - attack.initial_access
+  - attack.t1190
