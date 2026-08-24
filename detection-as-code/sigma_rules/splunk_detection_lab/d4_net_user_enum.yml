@@ -1,0 +1,36 @@
+title: Net.exe User Enumeration
+id: 8f1a2b3c-0004-4d1e-9a11-1a2b3c4d5e04
+status: experimental
+description: |
+    Sigma equivalent of splunk-detection-lab's D4 detection
+    (evidence/detection_dev/d4_net_user_enum.spl), translated field for
+    field. Original SPL:
+    `index=detection_lab EventID=1 (Image="*\net.exe" OR Image="*\net1.exe") CommandLine="*user*" NOT CommandLine="*localgroup*"`
+    splunk-detection-lab's own STP robustness score for this detection is 1,
+    the same class of weakness as D3: literal argument text keyed to one
+    specific binary name.
+references:
+    - https://attack.mitre.org/techniques/T1087/001/
+author: detection-as-code (translation of splunk-detection-lab D4, not an original rule)
+date: 2026-08-24
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_image:
+        EventID: 1
+        Image|endswith:
+            - '\net.exe'
+            - '\net1.exe'
+    selection_cmd:
+        CommandLine|contains: user
+    filter_localgroup:
+        CommandLine|contains: localgroup
+    condition: selection_image and selection_cmd and not filter_localgroup
+falsepositives:
+    - Administrators or scripted health checks that legitimately enumerate
+      local user accounts with net.exe.
+level: low
+tags:
+    - attack.discovery
+    - attack.t1087.001

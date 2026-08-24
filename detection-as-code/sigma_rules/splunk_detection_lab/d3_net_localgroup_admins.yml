@@ -1,0 +1,36 @@
+title: Net.exe Localgroup Administrators Enumeration
+id: 8f1a2b3c-0003-4d1e-9a11-1a2b3c4d5e03
+status: experimental
+description: |
+    Sigma equivalent of splunk-detection-lab's D3 detection
+    (evidence/detection_dev/d3_net_localgroup_admins.spl), translated field
+    for field. Original SPL:
+    `index=detection_lab EventID=1 (Image="*\net.exe" OR Image="*\net1.exe") CommandLine="*localgroup*administ*"`
+    splunk-detection-lab's own STP robustness score for this detection is 1
+    (matches literal argument text keyed to one specific binary name; a
+    renamed binary or a native API call for the same enumeration evades it).
+references:
+    - https://attack.mitre.org/techniques/T1069/001/
+author: detection-as-code (translation of splunk-detection-lab D3, not an original rule)
+date: 2026-08-24
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_image:
+        EventID: 1
+        Image|endswith:
+            - '\net.exe'
+            - '\net1.exe'
+    selection_cmd:
+        CommandLine|contains: localgroup
+    selection_cmd2:
+        CommandLine|contains: administ
+    condition: selection_image and selection_cmd and selection_cmd2
+falsepositives:
+    - Administrators or scripted health checks that legitimately enumerate
+      local group membership with net.exe.
+level: low
+tags:
+    - attack.discovery
+    - attack.t1069.001

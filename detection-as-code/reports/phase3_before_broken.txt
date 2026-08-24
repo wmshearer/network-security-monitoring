@@ -1,0 +1,41 @@
+=== BEFORE: pipeline against the correct 6-rule copy (phase3_broken_rule_demo/) ===
+Command: python3 vendor/Zircolite/zircolite.py --ruleset phase3_broken_rule_demo --test-rules tests/rule_tests.json
+
+
+███████╗██╗██████╗  ██████╗ ██████╗ ██╗     ██╗████████╗███████╗
+╚══███╔╝██║██╔══██╗██╔════╝██╔═══██╗██║     ██║╚══██╔══╝██╔════╝
+  ███╔╝ ██║██████╔╝██║     ██║   ██║██║     ██║   ██║   █████╗
+ ███╔╝  ██║██╔══██╗██║     ██║   ██║██║     ██║   ██║   ██╔══╝
+███████╗██║██║  ██║╚██████╗╚██████╔╝███████╗██║   ██║   ███████╗
+╚══════╝╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝   ╚═╝   ╚══════╝
+-= Standalone Sigma Detection tool for EVTX/Auditd/Sysmon Linux =-
+                              v3.8.1
+
+[+] Loading ruleset(s)                                                          
+    [>] Converting Native Sigma to Zircolite ruleset : phase3_broken_rule_demo  
+
+[✓] Converted 6 rules                                                           
+[+] 6 rules loaded                                                              
+[+] Event filter enabled: 3 eventIDs                                            
+[+] Running rule tests from: tests/rule_tests.json                              
+───────────────────────────────── Rule Testing ─────────────────────────────────
+
+                               Rule Test Results                                
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Rule                      ┃   TP   ┃   TN   ┃ Notes                          ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ PowerShell Spawns Recon   │   ✓    │   ✓    │                                │
+│ Tool                      │        │        │                                │
+│ Process Access to         │   ✓    │   ✓    │                                │
+│ AUDIODG.EXE               │        │        │                                │
+│ Registry Run Key Value    │   ✓    │   ✓    │                                │
+│ Set                       │        │        │                                │
+│ Schtasks Creates Task     │   ✓    │   ✓    │                                │
+│ Running Hidden PowerShell │        │        │                                │
+│ Net.exe Localgroup        │   ✓    │   ✓    │                                │
+│ Administrators            │        │        │                                │
+│ Enumeration               │        │        │                                │
+│ Net.exe User Enumeration  │   ✓    │   ✓    │                                │
+└───────────────────────────┴────────┴────────┴────────────────────────────────┘
+    Passed: 6  Failed: 0  No test case: 0
+EXIT CODE: 0

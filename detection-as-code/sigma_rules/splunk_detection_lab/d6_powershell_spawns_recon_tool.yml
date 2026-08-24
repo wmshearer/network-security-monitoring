@@ -1,0 +1,37 @@
+title: PowerShell Spawns Recon Tool
+id: 8f1a2b3c-0006-4d1e-9a11-1a2b3c4d5e06
+status: experimental
+description: |
+    Sigma equivalent of splunk-detection-lab's D6 detection
+    (evidence/detection_dev/d6_powershell_spawns_recon_tool.spl), translated
+    field for field. Original SPL:
+    `index=detection_lab EventID=1 ParentImage="*powershell.exe" (Image="*\net.exe" OR Image="*\net1.exe" OR Image="*\schtasks.exe")`
+    splunk-detection-lab's own STP robustness score for this detection is 2:
+    matches a process-relationship fact rather than command-line text, so it
+    survives the command-line edits that defeat D2-D4 in that project's own
+    evasion test (evidence/robustness/evasion_results.json), but still
+    depends on PowerShell specifically being the visible parent and on the
+    child being one of exactly three named binaries.
+references:
+    - https://attack.mitre.org/techniques/T1059/001/
+author: detection-as-code (translation of splunk-detection-lab D6, not an original rule)
+date: 2026-08-24
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection:
+        EventID: 1
+        ParentImage|endswith: powershell.exe
+        Image|endswith:
+            - '\net.exe'
+            - '\net1.exe'
+            - '\schtasks.exe'
+    condition: selection
+falsepositives:
+    - Legitimate administrative PowerShell scripts that shell out to net.exe
+      or schtasks.exe.
+level: medium
+tags:
+    - attack.execution
+    - attack.t1059.001

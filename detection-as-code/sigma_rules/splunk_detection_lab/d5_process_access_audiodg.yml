@@ -1,0 +1,30 @@
+title: Process Access to AUDIODG.EXE
+id: 8f1a2b3c-0005-4d1e-9a11-1a2b3c4d5e05
+status: experimental
+description: |
+    Sigma equivalent of splunk-detection-lab's D5 detection
+    (evidence/detection_dev/d5_process_access_audiodg.spl), translated field
+    for field. Original SPL:
+    `index=detection_lab EventID=10 TargetImage="*AUDIODG.EXE"`
+    splunk-detection-lab's own STP robustness score for this detection is 2
+    (targets a real OS mechanism this specific tool's implementation happens
+    to use, not the technique in general).
+references:
+    - https://attack.mitre.org/techniques/T1123/
+author: detection-as-code (translation of splunk-detection-lab D5, not an original rule)
+date: 2026-08-24
+logsource:
+    category: process_access
+    product: windows
+detection:
+    selection:
+        EventID: 10
+        TargetImage|endswith: AUDIODG.EXE
+    condition: selection
+falsepositives:
+    - Legitimate audio applications or drivers that open a handle to
+      AUDIODG.EXE for normal Windows audio device operations.
+level: medium
+tags:
+    - attack.collection
+    - attack.t1123
