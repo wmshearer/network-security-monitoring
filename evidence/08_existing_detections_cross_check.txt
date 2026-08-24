@@ -2,8 +2,7 @@ Cross-check: does each of the 6 splunk-detection-lab detections (evidence/detect
 in that project) fire against this dataset, run EXACTLY as stored (only index= changed from
 detection_lab to ir_activemq_lockbit; no other syntax touched)?
 
-Splunk auth: admin:[REDACTED] (lab credential, not a real secret; matches the
-password already used throughout this and sibling projects' evidence).
+Splunk auth: admin:[REDACTED] (local lab credential).
 
 === d1_registry_run_key ===
 Original: index=detection_lab EventID=13 TargetObject="*\\Run\\*"
