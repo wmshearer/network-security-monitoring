@@ -1,0 +1,83 @@
+# This workflow has NEVER been run on GitHub. This project has not been
+# pushed to a remote; there is no Actions run history and no badge to show.
+# It is written to the same shape SigmaHQ's own real, currently-active
+# sigma-test.yml workflow uses (fetched and confirmed real during this
+# project's research, see README.md), so it should run as written once a
+# remote exists, but that is a claim to verify, not a claim already proven.
+#
+# Phase 2 (the full behavioural cross-check against splunk-detection-lab's
+# real attack/benign JSON) is NOT wired into this workflow. That corpus is
+# 50,859 + 242,133 events (see reports/phase2_zircolite_stp_crosscheck.json),
+# too large and slow for a per-push CI gate. The fast regression layer that
+# IS wired here (test_zircolite_rule_tests.py, using Zircolite's own
+# --test-rules mode against tests/rule_tests.json) is the CI-sized version
+# of the same check: real true_positive/true_negative events, no full
+# corpus replay.
+name: Detection CI
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+    branches: ["main", "master"]
+
+jobs:
+  # Checks the Sigma rules that actually live IN this repo
+  # (sigma_rules/splunk_detection_lab/, the 6 rules written here as
+  # field-for-field translations of splunk-detection-lab's SPL). These ALSO
+  # fail with zero exclusions (0/6 pass; same validator classes as cloud-
+  # detection-lab's rules: missing MITRE tactic tags, filename convention,
+  # a redundant EventID field given the logsource category). This step is
+  # expected to be RED, same as the headline finding below, not because the
+  # workflow is broken but because the strict SigmaHQ profile is strict.
+  #
+  # This is NOT the Phase 1 headline finding, which is about
+  # cloud-detection-lab's 12 Sigma rules. That repo has no GitHub remote at
+  # all (checked: `git remote -v` there returns nothing), so CI cannot check
+  # it out. Reproducing the headline finding requires either pushing
+  # cloud-detection-lab to GitHub first and adding a checkout step for it
+  # here, or running scripts/phase1_sigma_check.py locally (see README.md
+  # "Phase 1 result" for the real recorded output: 0/12 pass).
+  sigma-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - name: Install dependencies
+        run: |
+          pip install sigma-cli pySigma-validators-sigmahq
+      - name: sigma check --fail-on-error --fail-on-issues (zero exclusions)
+        run: |
+          sigma check --fail-on-error --fail-on-issues sigma_rules/splunk_detection_lab/
+
+  # Phase 3's regression layer: Zircolite's own --test-rules CI mode against
+  # a real, versioned fixture (tests/rule_tests.json), plus the pytest suite
+  # that proves the pipeline actually catches a broken rule
+  # (tests/test_phase3_pipeline_catches_break.py).
+  zircolite-rule-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - name: Vendor Zircolite (not pip-installable, no PyPI package, flat layout rejected by setuptools when installed from a clone)
+        run: |
+          git clone --depth 1 https://github.com/wagga40/Zircolite.git vendor/Zircolite
+          pip install -r vendor/Zircolite/requirements.txt
+      - name: Install test dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Run Zircolite --test-rules against the real fixture
+        run: |
+          python3 vendor/Zircolite/zircolite.py \
+            --ruleset sigma_rules/splunk_detection_lab \
+            --test-rules tests/rule_tests.json
+      - name: Run the pytest suite (includes the break/restore proof)
+        run: |
+          python3 -m pytest tests/test_zircolite_rule_tests.py \
+                             tests/test_phase3_pipeline_catches_break.py -v

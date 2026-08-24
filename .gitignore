@@ -1,0 +1,19 @@
+# Zircolite is vendored by cloning it fresh (git clone
+# https://github.com/wagga40/Zircolite.git vendor/Zircolite), not pip-installed:
+# it is not on PyPI and installing from a clone fails because setuptools
+# rejects its flat layout. It is a large third-party tool with its own
+# license and its own git history, so it is not committed here.
+vendor/Zircolite/
+
+# Bulky intermediate Zircolite output (full matched-event dumps). The
+# summary reports that are the actual deliverable live in reports/*.json
+# and reports/*.md and ARE committed.
+data/out/
+
+# Zircolite writes this log file into the working directory on every run.
+zircolite.log
+
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/

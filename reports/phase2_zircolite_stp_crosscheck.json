@@ -1,0 +1,79 @@
+{
+  "attack_data_dir": "/home/kali/director/projects/splunk-detection-lab/data/converted/attack",
+  "attack_files": 5,
+  "benign_data_dir": "/home/kali/director/projects/splunk-detection-lab/data/converted/benign",
+  "benign_files": 94,
+  "rules": [
+    {
+      "rule_id": "8f1a2b3c-0003-4d1e-9a11-1a2b3c4d5e03",
+      "title": "Net.exe Localgroup Administrators Enumeration",
+      "level": "low",
+      "stp_name": "D3_net_localgroup_administrators",
+      "stp_analytic_robustness_score": "1",
+      "zircolite_attack_hits": 2,
+      "zircolite_benign_hits": 0,
+      "fired_on_attack": true,
+      "fired_on_benign": false
+    },
+    {
+      "rule_id": "8f1a2b3c-0004-4d1e-9a11-1a2b3c4d5e04",
+      "title": "Net.exe User Enumeration",
+      "level": "low",
+      "stp_name": "D4_net_user_enumeration",
+      "stp_analytic_robustness_score": "1",
+      "zircolite_attack_hits": 2,
+      "zircolite_benign_hits": 0,
+      "fired_on_attack": true,
+      "fired_on_benign": false
+    },
+    {
+      "rule_id": "8f1a2b3c-0002-4d1e-9a11-1a2b3c4d5e02",
+      "title": "Schtasks Creates Task Running Hidden PowerShell",
+      "level": "low",
+      "stp_name": "D2_schtasks_encoded_powershell",
+      "stp_analytic_robustness_score": "1",
+      "zircolite_attack_hits": 1,
+      "zircolite_benign_hits": 0,
+      "fired_on_attack": true,
+      "fired_on_benign": false
+    },
+    {
+      "rule_id": "8f1a2b3c-0006-4d1e-9a11-1a2b3c4d5e06",
+      "title": "PowerShell Spawns Recon Tool",
+      "level": "medium",
+      "stp_name": "D6_powershell_spawns_recon_tool",
+      "stp_analytic_robustness_score": "2",
+      "zircolite_attack_hits": 3,
+      "zircolite_benign_hits": 0,
+      "fired_on_attack": true,
+      "fired_on_benign": false
+    },
+    {
+      "rule_id": "8f1a2b3c-0005-4d1e-9a11-1a2b3c4d5e05",
+      "title": "Process Access to AUDIODG.EXE",
+      "level": "medium",
+      "stp_name": "D5_process_access_audiodg",
+      "stp_analytic_robustness_score": "2",
+      "zircolite_attack_hits": 74,
+      "zircolite_benign_hits": 0,
+      "fired_on_attack": true,
+      "fired_on_benign": false
+    },
+    {
+      "rule_id": "8f1a2b3c-0001-4d1e-9a11-1a2b3c4d5e01",
+      "title": "Registry Run Key Value Set",
+      "level": "medium",
+      "stp_name": "D1_registry_run_key_setvalue",
+      "stp_analytic_robustness_score": "4",
+      "zircolite_attack_hits": 2,
+      "zircolite_benign_hits": 0,
+      "fired_on_attack": true,
+      "fired_on_benign": false
+    }
+  ],
+  "summary": {
+    "rules_total": 6,
+    "rules_fired_on_attack": 6,
+    "rules_fired_on_benign": 0
+  }
+}

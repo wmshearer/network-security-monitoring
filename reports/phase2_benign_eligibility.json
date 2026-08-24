@@ -1,0 +1,10 @@
+{
+  "eventid_1": 2030,
+  "eventid_10": 6194,
+  "eventid_13": 66675,
+  "eventid_1_net_or_schtasks_image": 0,
+  "eventid_1_powershell_parent_and_recon_child": 0,
+  "eventid_10_audiodg_target": 0,
+  "eventid_13_run_key_target": 0,
+  "total_events_scanned": 242133
+}

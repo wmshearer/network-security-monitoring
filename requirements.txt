@@ -1,0 +1,4 @@
+sigma-cli
+pySigma-validators-sigmahq
+pyyaml
+pytest
