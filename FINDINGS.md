@@ -48,9 +48,38 @@ first detection pass against known telemetry, but also exactly the setup
 where overfitting to the sample is easiest to miss:
 
 - D2 keys on the literal words `powershell` and `hidden` appearing together
-  in a `schtasks.exe` command line. A payload using `-windowstyle hidden`
-  instead of `-W hidden`/`hidden`, or omitting the word "powershell" from a
-  fully-pathed non-obvious binary, would not match.
+  in a `schtasks.exe` command line, so both substrings have to survive for it
+  to fire.
+
+  **Correction, 2026-08-24.** An earlier version of this file gave two
+  evasions here that do not work, and testing them against the real captured
+  command line is what showed it:
+
+  - `-windowstyle hidden` instead of `-W hidden` was listed as an evasion. It
+    is not. The detection matches the substring `hidden`, which is still
+    present in `-windowstyle hidden`, so it still fires.
+  - "omitting the word powershell" by renaming the binary was listed as an
+    evasion. It is not, for a reason that is only visible in the data: the
+    string `powershell` appears **twice** in the real command line. Once in
+    the interpreter name, and once in the directory path
+    `C:\Windows\System32\WindowsPowerShell\v1.0\`. Renaming the executable
+    leaves the path behind, and the detection still fires.
+
+  What does defeat it, tested against the real event:
+
+  | change | D2 fires |
+  |---|---|
+  | original | yes |
+  | `-W hidden` to `-WindowStyle 1` | no |
+  | interpreter copied to `C:\Users\Public\svc.exe` | no |
+
+  `-WindowStyle 1` is the numeric form of the same PowerShell option, so the
+  behaviour is unchanged while the word `hidden` disappears. Copying the
+  interpreter elsewhere removes both occurrences of `powershell` at once.
+
+  D6 reads only `Image` and `ParentImage` and never looks at `CommandLine`,
+  so none of these edits affect it. That contrast between a detection keyed to
+  command-line text and one keyed to a process relationship is the point.
 - D3/D4 key on the literal `net.exe`/`net1.exe` binary path plus a
   `localgroup`/`user` keyword. A renamed binary, a non-standard invocation
   path, or native PowerShell cmdlets doing the same enumeration
@@ -157,3 +186,174 @@ NOT invoke alert actions -- only the actual scheduler does):
   `detection=<name> technique=<id> result_count=<N>` for each fire, with
   `result_count` matching this document's TP counts exactly (D1=2, D2=1,
   D3=2, D6=3).
+
+## Robustness scoring against MITRE CTID's Summiting the Pyramid
+
+Everything above shows these detections fire on the captures they target
+and stay quiet on the benign baseline. It says nothing about how hard an
+attacker has to work to make one of them stop firing. That is a different
+question, and this section answers it with a published rubric instead of a
+qualitative "durable vs brittle" label.
+
+**What Summiting the Pyramid (STP) is.** A methodology from the MITRE
+Center for Threat-Informed Defense, published under Apache 2.0, that scores
+a detection analytic on how much an adversary has to change to evade it.
+It builds on David Bianco's 2013 Pyramid of Pain, but they are not the same
+thing. Pyramid of Pain is a threat-intel triage model: given an indicator
+you already have (a hash, an IP, a TTP), it ranks how much it costs an
+adversary to change that kind of indicator in general, so a defender knows
+what is worth collecting. It produces no score for a specific rule. STP
+takes that same insight and turns it into a scoring method applied to one
+already-written detection: given the actual field(s) a specific SPL or
+Sigma rule matches on, at what level does that match sit, and how robust is
+this exact rule. Levels index:
+https://center-for-threat-informed-defense.github.io/summiting-the-pyramid/levels/
+
+STP's 5 Analytic Robustness levels:
+
+| Level | Name | Meaning |
+|---|---|---|
+| 1 | Ephemeral Values | A literal, attacker-chosen value (a string, a file name). Trivial to change. |
+| 2 | Core to Adversary-Brought Tool | Tied to a specific tool the adversary chose. Swap the tool, evade the rule. |
+| 3 | Core to Pre-Existing Tools | Tied to a tool already present in the environment (living-off-the-land), not to the literal arguments passed to it. |
+| 4 | Core to Some Implementations of the (Sub-)Technique | An unavoidable fact of some, not all, ways of carrying out the (sub-)technique. |
+| 5 | Core to the Sub-Technique or Technique | Invariant. Evading it means abandoning the technique, not just changing tooling. |
+
+STP also scores a second axis, Event Robustness (where in the OS the
+telemetry comes from: K for kernel-mode, U for user-mode, A for
+application, in ascending order of how easy the layer is to tamper with),
+plus a Filter Score for rules whose match logic includes a false-positive
+exclusion filter. The published worked examples live in a real CSV MITRE
+ships with the project,
+`docs/analytics/ScoredAnalytics_12062024.csv`, header row
+`Name,Analytic Robustness Score,Event Robustness Score,Filter Score,Final Score,Notes,Permalink`.
+This project's own scores, in that exact column structure, are at
+`evidence/robustness/stp_scores.csv` (generated by
+`src/score_robustness.py`).
+
+Neither Splunk's own `security_content` detection schema nor its
+`savedsearches.conf` format has a robustness field. This corpus is scoring
+itself against an external rubric, not filling in a field the tooling
+already expects.
+
+### The 6 scores
+
+| Detection | Analytic Robustness | Event Robustness | Why |
+|---|---|---|---|
+| D1 registry_run_key_setvalue | 4 | U | Keys on a Sysmon EventID 13 SetValue under a `...\Run\...` path. A named value has to be written under that key for Run-key persistence to work at all, regardless of the value name or payload. Not a 5: this covers only the Run-key variant of T1547.001, not every T1547 subtechnique (Startup folder, Winlogon Helper DLL persistence never touch this TargetObject path). |
+| D2 schtasks_encoded_powershell | 1 | U | Two literal substrings, `powershell` and `hidden`, in a command line. Demonstrated evadable below. |
+| D3 net_localgroup_administrators | 1 | U | `net.exe`/`net1.exe` is a pre-existing Windows tool, but the match itself keys on literal argument text (`localgroup`, `administ`). A renamed binary, a different invocation path, or `Get-LocalGroupMember`/`[ADSI]` instead of shelling out all evade it. |
+| D4 net_user_enumeration | 1 | U | Same class of match as D3, same evasion path. |
+| D5 process_access_audiodg | 2 | U | Tied to how this specific Metasploit module reaches the microphone (through AUDIODG.EXE), not to Audio Capture (T1123) in general. A different mic-access tool would not necessarily touch AUDIODG.EXE. |
+| D6 powershell_spawns_recon_tool | 2 | U | A process-relationship match (`ParentImage`/`Image`), not command-line text, so it survives the command-line edits that defeat D2-D4 (see the demonstration below). Still Level 2, not higher: it depends on PowerShell specifically being the parent and the child being one of exactly three named binaries. |
+
+All 6 are scored U (user-mode) on Event Robustness, because all 6 read
+Sysmon, which is a user-mode ETW consumer, not a kernel driver. This
+project does not exercise the K or A columns of STP's Event Robustness
+axis at all -- stated as a real limitation, not left implicit.
+
+**What the spread shows, plainly.** Four of six detections score at Level
+1, the lowest tier STP defines: they key on literal command-line text an
+attacker can reword without changing what they are doing. D1 is the
+outlier at Level 4, because it keys on a Windows registry API-level fact
+rather than a tool's command-line syntax. D5 and D6 sit at Level 2, tied to
+a specific tool's implementation choice or a specific set of named
+binaries rather than to the technique itself. The earlier framing in this
+document ("D1 is the most durable... D6 is the closest to durable") was a
+qualitative judgment stated in prose. STP turns that into a graded 1-5
+score per detection, and confirms the ranking was right (D1 highest, D2-D4
+lowest) without changing what "durable" meant.
+
+### The evasion demonstration
+
+A score is an analytic judgment. This is the evidence for one of them.
+
+**Method: offline, in Python, against a copy of the real captured event.**
+`src/evasion_demo.py` loads the real EventID 1 `schtasks.exe` event from
+`data/converted/attack/empire_schtasks_creation_standard_user.json` (the
+same file `score_detections.py` already scores against), copies it in
+memory, and applies each transformation below to the `CommandLine` field of
+the copy only. D2's and D6's real SPL match logic (the exact text in
+`evidence/detection_dev/d2_schtasks_encoded_powershell.spl` and
+`d6_powershell_spawns_recon_tool.spl`) is reimplemented as a Python
+predicate and evaluated against the edited copy. The original captured
+file is never opened for writing; `tests/test_evasion_demo.py` asserts its
+bytes are unchanged before and after a full run.
+
+This was done offline rather than by ingesting the edited copies into a new
+`robustness_lab` index and re-running the real SPL through Splunk, because
+D2's and D6's match logic here is a plain field/substring predicate, not
+statistics or a time-window join -- a direct Python reimplementation of
+that exact predicate text is exact, not an approximation. Re-ingesting
+would add Splunk's own ingest pipeline (timestamp parsing, sourcetype
+extraction) as a second thing that could silently fail, for a
+demonstration whose claim is about the match logic itself, not about
+ingest. See `src/evasion_demo.py`'s module docstring for the same
+reasoning in full.
+
+The real captured `CommandLine` for this event:
+
+```
+"C:\windows\system32\schtasks.exe" /Create /F /SC DAILY /ST 09:00 /TN MordorSchtask /TR "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NonI -W hidden -c \"IEX (...)\""
+```
+
+Real result, from `python3 src/evasion_demo.py`
+(`evidence/robustness/evasion_results.json`,
+`evidence/robustness/screenshots/evasion_demo_run.png`):
+
+| Transformation | D2 fires | D6 fires |
+|---|---|---|
+| original (unedited) | yes | yes |
+| `-W hidden` to `-windowstyle hidden` | yes | yes |
+| interpreter renamed, same directory | yes | yes |
+| `-W hidden` to `-WindowStyle 1` | no | yes |
+| interpreter copied to `C:\Users\Public\svc.exe` | no | yes |
+
+The first two edits are the ones this document's 2026-08-24 correction
+(above) already established do NOT work, re-tested here programmatically
+rather than just re-stated: `hidden` survives `-windowstyle hidden` as a
+substring, and `powershell` survives a renamed executable because the
+directory path `WindowsPowerShell\v1.0\` still contains it. The last two
+are the edits that do work, also re-tested here: `-WindowStyle 1` is the
+numeric form of the same option (same behavior, no `hidden` substring), and
+copying the interpreter to a neutral path removes both occurrences of
+`powershell` at once.
+
+D6 fires on every row, including the two edits that defeat D2. D6's SPL
+never reads `CommandLine` at all (`ParentImage="*powershell.exe"` plus
+`Image` ending in `net.exe`/`net1.exe`/`schtasks.exe`), so a `CommandLine`-
+only edit cannot touch it. That contrast, one detection field-content
+brittle and one field-relationship durable, on the exact same underlying
+event, is the demonstration: not two different attacks, the same captured
+attack, described two different ways to two different rules, one of which
+stops seeing it and one of which does not.
+
+### What this cannot claim
+
+- A robustness score is an analytic judgment applied against a published
+  rubric, not a measurement in the sense the TP/FN/FP numbers above are
+  measurements. Two people reading the same SPL and the same rubric could
+  reasonably land on adjacent scores (a 1 vs a 2, a 3 vs a 4) for the same
+  rule; STP itself is written as a reasoning aid, not a formula that
+  produces one unambiguous number.
+- These 6 detections were scored by the same project that wrote them. This
+  is not an independent audit. A second, disinterested reviewer scoring the
+  same 6 SPL fragments against the same rubric was not done here.
+- The evasion demonstration proves the specific SPL pattern, as written,
+  does not match the specific edited string. It does not prove the same
+  evasion would work against a live, deployed version of this detection
+  outside this lab, and it is not a red-team engagement result.
+- Only the K/U/A (host) axis of STP's Event Robustness score applies here,
+  and only the U value was ever produced, because all 6 detections read
+  Sysmon. STP's network-based axis (payload/header visibility) was never
+  exercised.
+- The demonstration covers one pair (D2 vs D6) on one event. D3, D4, and D5
+  were scored by the same analytic reasoning as D2 (a in the STP CSV's own
+  sense: argued from the field being matched) but were not separately
+  evasion-tested against a captured event the way D2 was.
+- Filter Score / Final Score are both blank/N-a for all 6 rows in
+  `evidence/robustness/stp_scores.csv` because none of these 6 detections'
+  raw SPL has a false-positive exclusion filter distinct from its primary
+  match logic (D4's `NOT CommandLine=*localgroup*` is part of what
+  distinguishes D4 from D3, not a bolted-on FP suppressor). This project
+  therefore does not exercise that part of the published rubric either.
