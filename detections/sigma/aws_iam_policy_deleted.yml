@@ -1,0 +1,28 @@
+title: AWS IAM Policy Deleted
+id: 8c3f5a12-2d7e-4b6a-9c1f-3e5a7d9b4c22
+status: experimental
+description: |
+    Detects a successful IAM DeletePolicy call. Removing a managed IAM
+    policy is a way to strip permissions from every principal it was
+    attached to, or to remove evidence of a policy an attacker created
+    earlier in the same session.
+references:
+    - https://attack.mitre.org/techniques/T1098/
+author: cloud-detection-lab
+date: 2026-08-24
+logsource:
+    product: aws
+    service: cloudtrail
+detection:
+    selection:
+        eventSource: iam.amazonaws.com
+        eventName: DeletePolicy
+    condition: selection
+falsepositives:
+    - Routine IAM cleanup by a platform/security team, common in accounts
+      that run scheduled unused-policy pruning.
+level: medium
+tags:
+    - attack.persistence
+    - attack.privilege-escalation
+    - attack.t1098

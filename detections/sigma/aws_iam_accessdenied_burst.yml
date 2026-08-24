@@ -1,0 +1,51 @@
+title: AWS IAM AccessDenied Event
+name: aws_iam_accessdenied_event
+id: 5e2a8c14-9f3b-4d6e-a217-8b4c1f9e6a55
+status: experimental
+description: |
+    Base event rule: one AWS API call that returned errorCode=AccessDenied.
+    Paired with the value_count correlation rule below
+    (id 6f3b9d25-0a4c-5e7f-b328-9c5d2f0a7d66), which raises this to a
+    detection only when the same principal (userIdentity.arn) racks up
+    more than 20 DISTINCT denied eventName values in 15 minutes, consistent
+    with an attacker enumerating what permissions a compromised credential
+    does or does not have (cloud infrastructure discovery via trial and
+    error, a documented technique of tools like CloudMapper and Pacu).
+    Counting distinct eventName (value_count), not raw event count
+    (event_count), is deliberate: a single misconfigured caller retrying
+    the SAME denied call in a loop should not fire this, only genuine
+    enumeration across many different API calls should.
+references:
+    - https://attack.mitre.org/techniques/T1580/
+author: cloud-detection-lab
+date: 2026-08-24
+logsource:
+    product: aws
+    service: cloudtrail
+detection:
+    selection:
+        errorCode: AccessDenied
+    condition: selection
+falsepositives:
+    - A genuinely misconfigured application or CI/CD role that retries
+      several different denied calls while probing for a working
+      permission set during initial setup.
+level: low
+tags:
+    - attack.discovery
+    - attack.t1580
+---
+title: AWS IAM AccessDenied Burst From One Principal
+id: 6f3b9d25-0a4c-5e7f-b328-9c5d2f0a7d66
+status: experimental
+correlation:
+    type: value_count
+    rules:
+        - aws_iam_accessdenied_event
+    group-by:
+        - userIdentity.arn
+    timespan: 15m
+    condition:
+        gt: 20
+        field: eventName
+level: medium

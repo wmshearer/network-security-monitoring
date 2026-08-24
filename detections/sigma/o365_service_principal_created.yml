@@ -1,0 +1,29 @@
+title: O365 Service Principal or Credential Added
+id: 4d1a8c26-7b5e-4f3d-9a17-6e3c8f1b4d22
+status: experimental
+description: |
+    Detects Azure AD / O365 audit events where the Operation is
+    "Add service principal." or "Add service principal credentials.",
+    covering both a brand-new application identity being created in the
+    tenant and a new credential (client secret or certificate) being added
+    to an existing one. Both give an attacker a durable, non-interactive
+    identity that survives a user password reset.
+references:
+    - https://attack.mitre.org/techniques/T1136/003/
+author: cloud-detection-lab
+date: 2026-08-24
+logsource:
+    product: o365
+    service: azuread
+detection:
+    selection:
+        Operation|startswith: 'Add service principal'
+    condition: selection
+falsepositives:
+    - Legitimate application registration by a developer or a CI/CD
+      pipeline that provisions its own service principal as part of a
+      normal deployment.
+level: medium
+tags:
+    - attack.persistence
+    - attack.t1136.003

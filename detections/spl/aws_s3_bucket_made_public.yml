@@ -1,0 +1,58 @@
+name: AWS S3 Bucket ACL Granted to AuthenticatedUsers or AllUsers
+id: 9a4e7c21-3b6d-4f8a-9c15-7e2b4d9a6c33
+version: 1
+sigma_source: detections/sigma/aws_s3_bucket_made_public.yml
+status: experimental
+description: >
+    Detects a PutBucketAcl call whose grant target is one of S3's two
+    "global" special-purpose groups: AuthenticatedUsers (any AWS account
+    holder, not just the bucket owner's account) or AllUsers (fully public,
+    unauthenticated). Either grant on a bucket that was not previously
+    public is a well-documented pre-exfiltration or impact step. Uses a
+    raw keyword search rather than one fixed field name because the grant
+    target legitimately lives under a different JSON key per event (see
+    sigma_field_note below and README.md).
+search: |-
+    index=cloud_lab sourcetype="aws:cloudtrail"
+      "groups/global/AuthenticatedUsers" OR "groups/global/AllUsers"
+      eventSource="s3.amazonaws.com" eventName="PutBucketAcl"
+      | rename userIdentity.arn as user, requestParameters.bucketName as object
+      | fillnull value="-" object
+      | stats count min(_time) as firstTime max(_time) as lastTime
+        by user object sourceIPAddress
+      | `aws_s3_bucket_made_public_filter`
+sigma_field_note: >
+    An earlier draft of this search matched a single fixed field
+    (requestParameters.accessControlList) and MISSED every labelled event:
+    live testing against the real T1530 capture (evidence/detection_scoring.json)
+    showed the grant target is not under that name at all. It is under one
+    of five different possible header-derived keys
+    (requestParameters.accessControlList.x-amz-grant-read /
+    -read-acp / -write / -write-acp / -full-control, only one populated
+    per event) for 7 of 8 labelled events, and under a completely different
+    XML-body shape (requestParameters.AccessControlPolicy.AccessControlList.Grant{})
+    for the 8th. Splunk's own security_content detection for this exact
+    scenario (detect_new_open_s3_buckets_over_aws_cli.yml) enumerates the
+    five header-key names explicitly rather than free-text searching;
+    tested here against the same capture, that enumerated-field approach
+    catches 7 of 8 (misses the XML-body event, the same blind spot its own
+    known_false_positives text does not mention). This detection instead
+    uses a raw keyword search across the whole event, which catches all 8
+    but is coarser: it would also match a GetBucketAcl READ event that
+    merely reports an existing public grant rather than one that sets it,
+    a real, stated precision tradeoff, not a hidden one.
+target_technique_id: T1530
+target_dataset: T1530/aws_s3_public_bucket/aws_cloudtrail_events.json
+mitre_attack_id:
+    - T1530
+known_false_positives: >
+    A deliberately public static-website or public-download bucket, where
+    this ACL is the intended, documented configuration. Common in accounts
+    that legitimately host static content directly from S3.
+specificity_note: >
+    Keys on the literal S3 global-group URI strings, which are AWS-fixed
+    values (not something an attacker can vary) rather than anything
+    specific to the labelled capture (no bucket name, account, or IP
+    hardcoded). This sits fairly high on the Pyramid of Pain: an attacker
+    cannot avoid these exact URI strings and still grant public/
+    authenticated-users access via ACL.

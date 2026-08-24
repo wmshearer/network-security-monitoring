@@ -1,0 +1,38 @@
+name: AWS IAM AccessDenied Burst From One Principal
+id: 6f3b9d25-0a4c-5e7f-b328-9c5d2f0a7d66
+version: 1
+sigma_source: detections/sigma/aws_iam_accessdenied_burst.yml
+status: experimental
+description: >
+    Detects more than 20 DISTINCT denied AWS API calls (errorCode=AccessDenied)
+    from the same principal (userIdentity.arn) in a 15-minute window,
+    consistent with an attacker enumerating what permissions a compromised
+    credential does or does not have (cloud infrastructure discovery via
+    trial and error, a documented technique of tools like CloudMapper and
+    Pacu). Counting DISTINCT eventName (dc), not raw event count, is
+    deliberate: a caller retrying the SAME denied call in a loop should not
+    fire this.
+search: |-
+    index=cloud_lab sourcetype="aws:cloudtrail"
+      errorCode="AccessDenied"
+      | bin _time span=15m
+      | stats dc(eventName) as value_count by _time userIdentity.arn
+      | where value_count > 20
+      | `aws_iam_accessdenied_burst_filter`
+target_technique_id: T1580
+target_dataset: T1580/aws_iam_accessdenied_discovery_events/aws_iam_accessdenied_discovery_events.json
+mitre_attack_id:
+    - T1580
+known_false_positives: >
+    A genuinely misconfigured application or CI/CD role that probes many
+    different API calls while its deployment is broken, which looks
+    identical to enumeration from this search's point of view.
+specificity_note: >
+    Behavioral: a distinct-call-diversity threshold, not a fixed API-call
+    name, so it does not key on any one enumeration tool's specific call
+    sequence. This is close to the "previously unseen" baselining pattern
+    the research recommends (31+ of security_content's cloud detections use
+    it) but is a fixed threshold, not a learned per-user baseline; a
+    principal that normally makes many distinct calls (e.g. a legitimate
+    inventory/audit tool) would need to be allowlisted through the filter
+    macro rather than being distinguished automatically.

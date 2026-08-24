@@ -1,0 +1,16 @@
+AWS CloudTrail Logging Stopped or Deleted: RECALL HIT, off-target hosts=0, off-target events=0
+AWS Console Multiple Failed Logins for One User: RECALL HIT, off-target hosts=0, off-target events=0
+AWS IAM AccessDenied Burst From One Principal: RECALL HIT, off-target hosts=1, off-target events=26
+AWS IAM Policy Deleted: RECALL HIT, off-target hosts=0, off-target events=0
+AWS New Virtual MFA Device Registered: RECALL HIT, off-target hosts=0, off-target events=0
+AWS S3 Bucket ACL Granted to AuthenticatedUsers or AllUsers: RECALL HIT, off-target hosts=0, off-target events=0
+Azure AD Multiple Denied MFA Requests for One User: RECALL HIT, off-target hosts=0, off-target events=0
+Azure AD Distributed Password Spray: RECALL HIT, off-target hosts=0, off-target events=0
+Azure AD Privileged Directory Role Assigned: RECALL HIT, off-target hosts=0, off-target events=0
+O365 Exchange Management Role Assigned: RECALL HIT, off-target hosts=0, off-target events=0
+O365 Mailbox Forwarding Rule or Forwarding Address Set: RECALL HIT, off-target hosts=3, off-target events=279
+O365 Service Principal or Credential Added: RECALL HIT, off-target hosts=4, off-target events=13
+
+wrote /home/kali/director/projects/cloud-detection-lab/evidence/detection_scoring.json
+
+recall: 12/12
