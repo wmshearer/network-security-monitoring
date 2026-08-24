@@ -64,11 +64,47 @@ def name_match_against_lockbit(software_names: list[str], log_text: str) -> list
     """Case-insensitive substring search: which ATT&CK software names appear
     literally in the raw LockBit Sysmon log text. This is a name-matching
     check, not an IOC-overlap measurement.
+
+    Known problem with this check, found while running it: many ATT&CK
+    software names are short strings that double as ordinary Windows
+    command names (e.g. "at", "Net", "Ping", "cmd", "ftp", "Reg",
+    "attrib", "certutil", "ipconfig", "netsh", "netstat", "route",
+    "Expand", "Wevtutil"). These will match any Windows Sysmon log almost
+    by construction and are not evidence that the specific named ATT&CK
+    software was present. A short-name match here should not be read as
+    a real technique-level finding without further checking; see
+    matches_excluding_short_generic_names below for a coarse filter on
+    that noise.
     """
     lower_text = log_text.lower()
     return sorted(
         name for name in software_names if name.lower() in lower_text
     )
+
+
+# Windows built-in commands/utilities that also happen to be catalogued as
+# ATT&CK software names, seen as false-positive matches during development.
+# Excluding these by exact name (not by length) keeps this list auditable.
+KNOWN_LOLBIN_FALSE_POSITIVES = {
+    "at", "Net", "Ping", "cmd", "ftp", "Reg", "attrib", "certutil",
+    "ipconfig", "netsh", "netstat", "route", "Expand", "Wevtutil", "PS1",
+    "Arp",
+}
+
+# Additional false positives found by manually checking surrounding text
+# for the remaining short/common matches: "Tor" matched inside ordinary
+# words ("monitor", "Directory"), "Epic" matched inside an unrelated
+# Windows service GUID substring, and "ABK" matched inside base64-encoded
+# PowerShell content that has nothing to do with the ABK malware family.
+# This is the reason a short substring match is not treated as a finding
+# anywhere in this project without manually checking the surrounding text
+# the way this comment documents having done for these three.
+KNOWN_COINCIDENTAL_SUBSTRING_FALSE_POSITIVES = {"Tor", "Epic", "ABK"}
+
+
+def matches_excluding_known_false_positives(matches: list[str]) -> list[str]:
+    excluded = KNOWN_LOLBIN_FALSE_POSITIVES | KNOWN_COINCIDENTAL_SUBSTRING_FALSE_POSITIVES
+    return sorted(m for m in matches if m not in excluded)
 
 
 if __name__ == "__main__":
@@ -97,4 +133,11 @@ if __name__ == "__main__":
     )
     text = default_log.read_text(encoding="utf-8", errors="replace")
     matches = name_match_against_lockbit(result["software_names"], text)
-    print(json.dumps({"attack_software_names_found_in_log_text": matches}, indent=2))
+    filtered_matches = matches_excluding_known_false_positives(matches)
+    print(json.dumps(
+        {
+            "attack_software_names_found_in_log_text": matches,
+            "after_excluding_known_lolbin_false_positives": filtered_matches,
+        },
+        indent=2,
+    ))

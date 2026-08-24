@@ -45,7 +45,7 @@ here even though a human analyst would also call most of it background
 browsing noise, not LockBit infrastructure. The task's filtering rules
 are host/lab-background rules, not a full "is this newsworthy" judgment
 call, and drawing that second, softer line would be a subjective editorial
-decision this module deliberately does not make. That means the "surviving
+decision this module does not make. That means the "surviving
 after filtering" count in this module is a floor on the noise, not a
 claim that everything left over is confirmed malicious. The measurement
 step (compare_to_feeds.py) is what actually tells us which of the survivors

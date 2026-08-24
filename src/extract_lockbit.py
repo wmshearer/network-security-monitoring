@@ -11,8 +11,8 @@ to LockBit 3.0 ransomware chain, documented in the sibling project
 Extraction method (regex over the raw XML text, not an XML parser, because
 the file is one well-formed <Event> per line and the fields needed sit in
 predictable attribute/tag shapes):
-  - IPv4: dotted-quad pattern anywhere in the line. This deliberately over-
-    matches (e.g. it will also match version-number-shaped strings that
+  - IPv4: dotted-quad pattern anywhere in the line. This regex over-
+    matches on purpose (e.g. it will also match version-number-shaped strings that
     happen to look like an IP, and it does not validate octet range
     0-255), so results are a raw candidate set, not a validated IP list,
     until they pass through octet-range validation and noise filtering.

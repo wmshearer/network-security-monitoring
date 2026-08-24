@@ -1,11 +1,17 @@
 """
-Download the CIRCL OSINT feed (MISP JSON format, TLP:CLEAR, no API key).
+Download the CIRCL OSINT feed (MISP JSON format, no API key).
 
 Source: https://www.circl.lu/doc/misp/feed-osint/
 This is the one feed identified in prior research
 (projects/wshearer-site/research/misp-stix-taxii.md) that is reachable with
 no signup and no API key. Live-checked 2026-08-24: manifest.json returns
 HTTP 200.
+
+Note on TLP marking: the feed is mostly TLP:WHITE/TLP:CLEAR (the open,
+redistributable marking) but is NOT uniformly so; a minority of events
+are tagged TLP:GREEN or TLP:AMBER, which carry real redistribution
+restrictions. See normalize_circl.py and the project README for how this
+affects what gets reported downstream.
 
 Constraints enforced here, not assumed:
 - No API key is ever sent (none exists for this feed).

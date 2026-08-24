@@ -49,24 +49,24 @@ a real public feed) that no other project in the portfolio has run.
 
 ## What was built
 
-1. `src/extract_lockbit.py` — pulls IPv4 addresses, SHA256 hashes, and DNS
+1. `src/extract_lockbit.py`: pulls IPv4 addresses, SHA256 hashes, and DNS
    query names out of a real captured intrusion's Sysmon log by regex.
-2. `src/filter_lockbit_iocs.py` — separates lab background noise (private
+2. `src/filter_lockbit_iocs.py`: separates lab background noise (private
    IPs, the lab's own Active Directory domain, AWS management endpoints,
    background web browsing) from indicators that could plausibly be
    attacker-related, and reports the split honestly.
-3. `src/emit_stix.py` — turns the surviving indicators into real STIX 2.1
+3. `src/emit_stix.py`: turns the surviving indicators into real STIX 2.1
    `indicator` objects using the `stix2` Python library, and re-parses the
    output to independently confirm it is valid STIX 2.1.
-4. `src/fetch_circl.py` — downloads the CIRCL OSINT feed (MISP JSON
+4. `src/fetch_circl.py`: downloads the CIRCL OSINT feed (MISP JSON
    format, no signup, no API key), capped at 4 GB, with every request
    logged.
-5. `src/normalize_circl.py` — pulls the same three indicator types
+5. `src/normalize_circl.py`: pulls the same three indicator types
    (IP/SHA256/DNS) out of the CIRCL feed's MISP JSON.
-6. `src/compare_to_feeds.py` — THE MEASUREMENT: exact-match comparison
+6. `src/compare_to_feeds.py`: THE MEASUREMENT: exact-match comparison
    between the intrusion's surviving indicators and the CIRCL feed's
    indicators, reported as a count and a percentage per indicator type.
-7. `src/compare_to_attack.py` — a separate, explicitly weaker fallback
+7. `src/compare_to_attack.py`: a separate, explicitly weaker fallback
    comparison against the on-disk MITRE ATT&CK STIX 2.1 bundle, included
    because the task required a fallback path be ready if no keyless feed
    were reachable. CIRCL was reachable, so this is reported for context
@@ -174,7 +174,7 @@ named ATT&CK software actually being present).
 ## Tests
 
 26+ tests across 6 files in `tests/`, run with `.venv/bin/python -m
-pytest tests/`. Every test file was deliberately broken (a wrong regex
+pytest tests/`. Every test file was broken on purpose (a wrong regex
 length, a removed filter rule, a swapped STIX property name, an
 intersection changed to a union, a `.upper()` call removed, a hardcoded
 count) and confirmed to fail before being restored and confirmed to pass
@@ -188,7 +188,7 @@ commands run.
   never installed, by design, per the duplication-gate research.
 - Cannot claim TAXII protocol interoperability: no live public TAXII 2.1
   server was reachable this session.
-- Cannot claim comprehensive feed coverage: only one feed (CIRCL) was
+- Cannot claim broad feed coverage: only one feed (CIRCL) was
   usable without a signup or key. abuse.ch's three feeds and AlienVault
   OTX all require registration now and were skipped, not queried.
 - Cannot claim the ATT&CK fallback comparison is an IOC-level check: the
@@ -206,11 +206,20 @@ commands run.
 
 ## Licensing note on the CIRCL data
 
-CIRCL's OSINT feed is marked TLP:CLEAR by CIRCL itself (per
-`https://www.circl.lu/doc/misp/feed-osint/`), meaning it is intended for
-open redistribution. This project reports counts, overlap statistics, and
-the specific matched values only where a match against this portfolio's
-own captured intrusion occurred (which is itself LockBit intrusion data,
-not CIRCL's content, being disclosed). No bulk republication of CIRCL's
-raw event data is included in this repository; the downloaded cache lives
-in `data/circl_cache/`, which is gitignored.
+The CIRCL feed is NOT uniformly TLP:CLEAR. Direct inspection of the
+manifest's 1680 events shows most carry `tlp:white` (1295) or `tlp:clear`
+(414), the open/unrestricted marking (TLP:WHITE was the pre-2.0 name for
+what is now called TLP:CLEAR), but 76 events are tagged `tlp:green`
+(intended for community sharing, not open publication) and 1 is
+`tlp:amber` (further restricted, need-to-know only). This corrects an
+earlier characterization in the prior research brief
+(`../wshearer-site/research/misp-stix-taxii.md`) that described the whole
+feed as TLP:CLEAR without checking per-event tags.
+
+Because of this mix, this project reports only counts and overlap
+statistics, not raw indicator values from CIRCL events, except for the
+handful of values that also independently appear in the portfolio's own
+LockBit intrusion data (which is being disclosed as this portfolio's own
+captured data, not as a republication of CIRCL's content). No bulk
+republication of CIRCL's raw event data is included in this repository;
+the downloaded cache lives in `data/circl_cache/`, which is gitignored.

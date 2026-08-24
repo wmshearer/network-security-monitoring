@@ -51,11 +51,10 @@ def test_matching_is_case_and_type_exact_not_fuzzy():
     """
     lb = _lockbit_filtered([], ["evil.example.net"], ["A" * 64])
     feed = {"ips": [], "dns": ["sub.evil.example.net"], "sha256": ["a" * 64]}
-    # sha256 in lb is uppercased 'A'*64, feed has lowercase 'a'*64 -- these
-    # must be normalized identically upstream or they will not match here;
-    # this test uses the SAME case on both sides deliberately below to
-    # prove real matches work, then a mismatched case above to prove it
-    # does NOT silently match cross-case if normalization is skipped.
+    # sha256 in lb is uppercased 'A'*64, feed has lowercase 'a'*64: these
+    # values must already be normalized identically upstream (see
+    # extract_lockbit.py and normalize_circl.py) or compare() will not
+    # match them, since compare() itself does no case normalization.
     result = compare(lb, feed)
     assert result["match_counts"]["dns"] == 0  # substring, not exact match
     assert result["match_counts"]["sha256"] == 0  # case differs, no normalization applied here
