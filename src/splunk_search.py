@@ -25,7 +25,14 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 SPLUNK_URL = os.environ.get("SPLUNK_URL", "https://localhost:8089")
 SPLUNK_USER = os.environ.get("SPLUNK_USER", "admin")
-SPLUNK_PASS = os.environ.get("SPLUNK_PASS", "[REDACTED]")
+# No default. Set SPLUNK_PASS in the environment before running:
+#   export SPLUNK_PASS='your-splunk-admin-password'
+SPLUNK_PASS = os.environ.get("SPLUNK_PASS")
+if not SPLUNK_PASS:
+    raise SystemExit(
+        "SPLUNK_PASS is not set. Export it before running:\n"
+        "  export SPLUNK_PASS='your-splunk-admin-password'"
+    )
 
 
 def run_search(search: str, earliest: str = "0", latest: str = "now") -> dict:
