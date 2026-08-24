@@ -1,0 +1,30 @@
+Forwarder connection proof, splunk-ingest-pipeline
+====================================================
+
+Search (run on the indexer, https://localhost:8089):
+  index=_internal sourcetype=splunkd source=*metrics.log group=tcpin_connections
+  | stats count values(fwdType) values(connectionType) values(destPort) values(guid) by hostname
+
+Result (see forwarder_connection_proof.json for raw output):
+  hostname=kali  count=24  fwdType=uf  connectionType=cooked  destPort=9997
+  guid=980FCE87-A95B-45BE-976F-A07F972447FA
+
+This is the indexer's OWN record of an inbound TCP connection on its
+receiving port 9997, explicitly tagged fwdType=uf (Universal Forwarder,
+distinct from an indexer-to-indexer or HF connection) and
+connectionType=cooked (the s2s forwarder protocol, not a local file input or
+raw syslog).
+
+Cross-check: the UF's own instance.cfg
+(/home/kali/splunkforwarder/etc/instance.cfg) reports:
+  guid = 980FCE87-A95B-45BE-976F-A07F972447FA
+(copied to uf_instance_cfg.txt in this evidence/ directory)
+
+The GUID recorded by the indexer as the source of the inbound cooked
+connection is IDENTICAL to the UF's own instance GUID. This is the
+distinguishing proof asked for in the task brief: both instances run on the
+same physical host (host field is "kali" on both sides, since there's no
+separate hostname to distinguish them), so host/splunk_server alone would
+not prove forwarding took place. The GUID match does: it identifies the
+specific Splunk instance (the UF) that opened the connection, independent of
+hostname collision.

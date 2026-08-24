@@ -1,0 +1,7 @@
+source lines:              22085
+good sourcetype events:    22085 (matches source lines: True)
+naive sourcetype events:   345
+newlines merged in:        21740
+naive lines accounted for: 22085
+unaccounted (should be 0): 0
+naive reconciles exactly:  True

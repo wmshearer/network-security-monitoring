@@ -1,0 +1,2 @@
+
+{"preview":false,"init_offset":0,"messages":[],"fields":[{"name":"hostname","groupby_rank":"0"},{"name":"count"},{"name":"values(fwdType)"},{"name":"values(connectionType)"},{"name":"values(destPort)"},{"name":"values(guid)"}],"results":[{"hostname":"kali","count":"24","values(fwdType)":"uf","values(connectionType)":"cooked","values(destPort)":"9997","values(guid)":"980FCE87-A95B-45BE-976F-A07F972447FA"}], "highlighted":{}}

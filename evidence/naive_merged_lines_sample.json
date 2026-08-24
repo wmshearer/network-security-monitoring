@@ -1,0 +1,2 @@
+
+{"preview":false,"init_offset":0,"messages":[],"fields":[{"name":"avg_lines_per_event"},{"name":"max_lines_per_event"},{"name":"total_source_lines_accounted_via_newlines"}],"results":[{"avg_lines_per_event":"63.01449275362319","max_lines_per_event":"84","total_source_lines_accounted_via_newlines":"21740"}], "highlighted":{}}

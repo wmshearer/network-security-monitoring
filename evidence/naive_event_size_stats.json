@@ -1,0 +1,2 @@
+
+{"preview":false,"init_offset":0,"messages":[],"fields":[{"name":"count"},{"name":"max_event_bytes"},{"name":"avg_event_bytes"}],"results":[{"count":"345","max_event_bytes":"67321","avg_event_bytes":"64518.240579710146"}], "highlighted":{}}

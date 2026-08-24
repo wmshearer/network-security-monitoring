@@ -1,0 +1,2 @@
+  
+{"preview":false,"init_offset":0,"messages":[],"fields":[{"name":"index","groupby_rank":"0"},{"name":"count"}],"results":[{"index":"_audit","count":"93"},{"index":"_configtracker","count":"110"},{"index":"_internal","count":"29897"},{"index":"_introspection","count":"112995"},{"index":"detection_lab","count":"10199"},{"index":"detection_lab_alerts","count":"666"}], "highlighted":{}}
