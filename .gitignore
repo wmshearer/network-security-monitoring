@@ -4,4 +4,4 @@ splunkforwarder/
 *.pyc
 __pycache__/
 .pytest_cache/
-data/*.json
+data/**/*.json
