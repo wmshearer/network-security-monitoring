@@ -147,10 +147,17 @@ live-checked again at the start of this build:
 
 | Feed | Reachable without a key? | Action taken |
 |---|---|---|
-| CIRCL OSINT feed (MISP JSON, TLP:CLEAR) | Yes, HTTP 200 confirmed live | Used as the primary public feed |
+| CIRCL OSINT feed (MISP JSON) | Yes, HTTP 200 confirmed live | Used as the primary public feed |
 | abuse.ch URLhaus / ThreatFox / MalwareBazaar | No, HTTP 401, Auth-Key mandatory as of 2025 | Skipped: no key obtained, per task constraint |
 | AlienVault OTX | No, HTTP 403, signup required | Skipped: no signup performed, per task constraint |
 | cti-taxii.mitre.org, freetaxii.com:8080 | No, connection failed on both | No live public TAXII 2.1 server found; not used |
+
+The CIRCL feed's manifest lists 1680 events. This project downloaded 845
+of them (50.3%) before stopping intentionally; see "How much of the feed
+was actually pulled" below for why. Total downloaded: approximately 327
+MB (`data/download_log.json` records every request, its HTTP status, and
+its byte count), well under the 4 GB cap. No API key was sent on any
+request, because none exists for this feed.
 
 Because CIRCL was reachable, the fallback comparison against the on-disk
 MITRE ATT&CK STIX bundle (`compare_to_attack.py`) was run for context but
@@ -158,28 +165,122 @@ is not the headline measurement. That bundle contains zero STIX
 `indicator` objects (confirmed by direct inspection, 26,086 objects total,
 0 of type `indicator`), so no IOC-level comparison is even possible
 against it; only a technique/software-name text search, which is a
-different and much weaker kind of check (most name matches turned out to
-be short, generic strings like `at`, `cmd`, `ftp`, `Ping` that trivially
-appear in any Windows log for unrelated reasons, not evidence of the
-named ATT&CK software actually being present).
+different and much weaker kind of check. Running it turned up 35 raw
+substring matches, most of which are short, generic strings (`at`, `cmd`,
+`ftp`, `Ping`, `certutil`, `netsh`) that trivially appear in any Windows
+Sysmon log for unrelated reasons. Excluding those known false positives
+and three more confirmed by manually checking the surrounding text
+(`Tor` matched inside "monitor", `Epic` matched inside an unrelated
+service GUID, `ABK` matched inside base64-encoded PowerShell), 16
+distinctive-looking names remain: `AdFind`, `Conti`, `Disco`, `Emotet`,
+`GRIFFON`, `Hikit`, `Ninja`, `Proton`, `Proxysvc`, `QakBot`, `RDAT`,
+`RTM`, `SYSCON`, `Spica`, `ZLib`, `httpclient`. Of these, only `AdFind`
+was checked further and confirmed genuine: the log shows an actual
+`AdFind.exe` file-creation event, consistent with AdFind being a real,
+commonly-documented LockBit-affiliate reconnaissance tool. The other 15
+were not individually re-verified and should be read as unconfirmed
+name collisions, not as a finding that those specific ATT&CK-catalogued
+tools were present.
+
+### How much of the feed was actually pulled
+
+CIRCL's server answered slowly during this run: a single event file
+took roughly 8 to 10 seconds round trip (measured directly with `curl
+-w '%{time_total}'`, not a guess), which is a property of their server
+at the time this project ran, not a bug in `fetch_circl.py`. At that
+rate, pulling all 1680 events sequentially would have taken multiple
+hours. The overlap measurement was re-checked at three points during the
+download (31% of the feed, 40%, and 50%) and returned zero matches every
+time, so the download was stopped at 845 of 1680 events (50.3%) rather
+than run to completion for a result that had already stabilized. This is
+reported plainly as a partial sample: the true full-feed number could in
+principle differ from what is reported below, though nothing in three
+successive checks suggested it would.
 
 ## THE MEASUREMENT
 
-<!-- FILLED IN AFTER THE CIRCL DOWNLOAD COMPLETES: see data/overlap_measurement.json -->
+Comparing the LockBit intrusion's 1,071 surviving indicators (301 IPv4 +
+168 DNS names + 602 SHA256 hashes, after noise filtering) against the
+87,424 indicators pulled from 845 CIRCL OSINT feed events (18,577 IPv4 +
+49,995 DNS names + 18,852 SHA256 hashes):
+
+| Indicator type | LockBit surviving indicators | Matches found in CIRCL | Overlap |
+|---|---|---|---|
+| IPv4 | 301 | 0 | 0.0% |
+| DNS | 168 | 0 | 0.0% |
+| SHA256 | 602 | 0 | 0.0% |
+| **Total** | **1,071** | **0** | **0.0%** |
+
+Zero. Not one of the 1,071 surviving indicators from this portfolio's own
+captured LockBit intrusion appears anywhere in the 87,424 indicators
+pulled from the CIRCL OSINT feed. The exact match logic is exact-string
+equality, case-normalized upstream (IPs as-is, DNS lowercased, SHA256
+uppercased on both sides), no fuzzy or substring matching. The full
+result, including the (empty) match lists, is in
+`data/overlap_measurement.json`.
+
+This matches the direction of the published research cited in the prior
+research brief: Suarez-Roman et al. ("The CTI Echo Chamber," arXiv
+2602.17458, May 2026, read directly) report IOC-level overlap below 0.1%
+across the vendors they studied. A separate, older figure of 2.5-4.0%
+feed overlap is attributed to Li et al. ("Reading the Tea Leaves," USENIX
+Security 2019) in secondary sources; that paper's primary PDF returned
+HTTP 403 when checked and was not read directly, so that specific number
+is cited here only as a secondary-sourced figure, not verified against
+the original text. This project's own result (0.0%) is at or below both
+cited ranges, not a contradiction of either.
 
 ## What this number does and does not mean
 
-<!-- FILLED IN ALONGSIDE THE MEASUREMENT ABOVE -->
+Zero overlap does not mean public threat-intel feeds are useless, and
+this project does not claim that. There is a specific, more likely
+explanation for a zero here that has nothing to do with feed quality:
+**the LockBit intrusion measured in this project is a lab reproduction,
+not an in-the-wild campaign.** It was captured in Splunk's
+`attack_range` lab environment (hostnames like `EC2AMAZ-*`, domain
+`attackrange.local`), running a simulated ActiveMQ exploit chain to
+LockBit 3.0 ransomware. The specific IPs, domains, and file hashes that
+happened to appear during that one lab run were never part of a real
+attacker's real infrastructure or a real malware build; there is no
+reason any public feed, which exists to catalog observations from real
+in-the-wild intrusions, would ever have recorded them. A zero here is
+close to guaranteed by the nature of the data, independent of whatever
+the true overlap rate between independent real-world feeds is.
+
+That means this measurement's honest contribution is narrower than "this
+portfolio proves feeds have near-zero overlap": it demonstrates the
+STIX 2.1 normalization and comparison pipeline works correctly end to
+end (proven by the tests and by re-parsing the emitted STIX through an
+independent library call), and it produces a result that is directionally
+consistent with, but not independent statistical confirmation of, the
+published research on feed overlap. A stronger version of this project
+would run the same pipeline against a real in-the-wild intrusion's
+indicators (for example a public incident-response writeup with
+published IOCs) rather than a lab reproduction, where a nonzero overlap
+would actually be possible and a zero would be a more meaningful result.
+That was out of scope here because the task specified this portfolio's
+own captured intrusion data as the source.
 
 ## Tests
 
-26+ tests across 6 files in `tests/`, run with `.venv/bin/python -m
-pytest tests/`. Every test file was broken on purpose (a wrong regex
-length, a removed filter rule, a swapped STIX property name, an
-intersection changed to a union, a `.upper()` call removed, a hardcoded
-count) and confirmed to fail before being restored and confirmed to pass
-again. See the implementer's verification log for the exact break/restore
-commands run.
+34 tests across 6 files in `tests/`, run with `.venv/bin/python -m pytest
+tests/`. Every one of the 6 test files was broken on purpose and confirmed
+to fail before being restored and confirmed to pass again:
+
+| Test file | What was broken | Failure observed |
+|---|---|---|
+| `test_extract_lockbit.py` | SHA256 regex changed from `{64}` to `{63}` hex chars | `test_all_sha256_are_64_hex_chars` failed: `assert 63 == 64` |
+| `test_filter_lockbit_iocs.py` | Removed the `www.google.com` filter rule | `test_www_google_com_is_dropped_by_name` failed: it stayed in the kept list |
+| `test_emit_stix.py` | Changed `SHA-256` to an invalid STIX property name | `test_indicator_pattern_syntax_sha256` failed: 0 matching indicators instead of 1 |
+| `test_compare_to_feeds.py` | Changed set intersection (`&`) to union (`\|`) for all three indicator types | 3 of 4 tests failed, e.g. `test_no_overlap_when_disjoint`: `assert 6 == 0` |
+| `test_compare_to_attack.py` | Hardcoded the indicator-object count to 999 | `test_attack_bundle_has_zero_indicator_objects` failed: `assert 999 == 0` |
+| `test_normalize_circl.py` | Removed the `.upper()` call on extracted SHA256 values | 2 tests failed on case mismatch |
+
+Each break was reverted and the full suite re-run to confirm a clean pass
+before moving on. `__pycache__` directories were cleared between runs
+after one break/restore cycle produced a stale cached result that looked
+like the fix hadn't taken effect; clearing the cache and re-running showed
+the fix had, in fact, worked.
 
 ## What this cannot claim
 
@@ -198,11 +299,56 @@ commands run.
 
 ## Screenshot check
 
-<!-- FILLED IN AFTER EVIDENCE IS CAPTURED -->
+Five screenshots in `evidence/`, all rendered from real command output via
+`termshot.py` (not a screen capture), each viewed directly with an image
+read after being written, confirming no credential, token, or unrelated
+environment detail is visible in any of them:
+
+1. `01_tests_passing.png`: `pytest tests/ -v`, 34 passed. Viewed: clean,
+   only test names and pass/fail status visible.
+2. `02_extract_and_filter.png`: extraction and filtering counts. Viewed:
+   clean, only JSON count output visible.
+3. `03_stix_emit_and_validate.png`: STIX bundle build and re-parse
+   validation. Viewed: clean, shows a local file path
+   (`/home/kali/director/projects/...`) which is this machine's own
+   working directory, not a credential or secret.
+4. `04_the_measurement.png`: the final overlap comparison output. Viewed:
+   clean, only the measurement JSON visible.
+5. `05_download_cap_respected.png`: the download log's cap-compliance
+   summary. Viewed: clean, only counts and booleans visible, no URL
+   content or feed data shown.
 
 ## Anything that contradicted the research
 
-<!-- FILLED IN AFTER THE FINAL RUN -->
+- **The CIRCL feed is not uniformly TLP:CLEAR.** The prior research brief
+  (`../wshearer-site/research/misp-stix-taxii.md`) described the feed as
+  TLP:CLEAR overall, citing CIRCL's own feed-page description. Direct
+  inspection of the feed's own manifest.json (not the description page)
+  during this build showed a mix: 1295 events tagged `tlp:white`, 414
+  `tlp:clear`, 76 `tlp:green`, 1 `tlp:amber`, and 21 with no TLP tag at
+  all, out of 1680 total. TLP:GREEN and TLP:AMBER both carry real
+  redistribution restrictions the earlier brief's characterization did
+  not account for. This project's reporting was adjusted to report only
+  counts and statistics, not raw feed values, because of this.
+- **A full CIRCL feed pull was not practical in the time available.** The
+  research brief did not measure or predict per-request latency for this
+  feed. In practice, single-event requests took roughly 8-10 seconds each
+  this session, an order of magnitude slower than expected for a small
+  JSON file, and a full 1680-event sequential pull was not completed;
+  845 events (50.3%) were pulled instead. The measurement result (zero
+  overlap) was stable across three checks at increasing sample sizes, so
+  this is reported as a defensible partial sample rather than treated as
+  a blocker, but it is a real gap from "pulled the whole feed" to "pulled
+  half the feed."
+- **Everything else in the prior research held up under direct
+  verification**: CIRCL reachable with no key (confirmed, HTTP 200),
+  abuse.ch's three APIs requiring a key (not re-tested this session,
+  taken as given per the brief's own live 401), no live public TAXII 2.1
+  server (not re-tested, taken as given), the ATT&CK bundle already on
+  disk with 26,086 objects (confirmed, and additionally confirmed to
+  contain zero `indicator`-type objects, which the brief did not check),
+  and the LockBit log's raw indicator counts (316 IP regex matches, 602
+  SHA256, 238 DNS, all confirmed exactly).
 
 ## Licensing note on the CIRCL data
 

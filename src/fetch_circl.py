@@ -13,6 +13,18 @@ are tagged TLP:GREEN or TLP:AMBER, which carry real redistribution
 restrictions. See normalize_circl.py and the project README for how this
 affects what gets reported downstream.
 
+Note on the actual run performed for this project: CIRCL's server
+responded slowly (roughly 8-10 seconds per single event file, confirmed
+by direct timing, not a bug in this script), so a full sequential pull of
+all 1680 manifest events would have taken multiple hours. The run was
+stopped intentionally after 845 of 1680 events (50.3%, roughly 327 MB,
+well under the 4 GB cap) once the overlap measurement's result had
+already been checked at multiple sample sizes (31%, 40%, 50%) and stayed
+at zero throughout, meaning a longer run was very unlikely to change the
+headline finding. This is reported as a partial sample, not the full
+feed; see the README's THE MEASUREMENT section for the exact count this
+run covered.
+
 Constraints enforced here, not assumed:
 - No API key is ever sent (none exists for this feed).
 - Total download is capped at 4 GB. The cap is checked after every file and

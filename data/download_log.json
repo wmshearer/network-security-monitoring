@@ -3242,11 +3242,266 @@
       "url": "https://www.circl.lu/doc/misp/feed-osint/59db5cbe-a944-425b-b60a-473b950d210f.json",
       "status": 200,
       "bytes": 16155
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59db9d5b-e49c-455a-8a95-409c950d210f.json",
+      "status": 200,
+      "bytes": 24479
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59dc90da-d970-4168-901d-45c3950d210f.json",
+      "status": 200,
+      "bytes": 13212
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59dce1ec-b998-42ad-ba4f-48a4950d210f.json",
+      "status": 200,
+      "bytes": 19858
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59ddbaf9-3874-405c-b2e7-4770950d210f.json",
+      "status": 200,
+      "bytes": 18805
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59ddbb11-bf70-497d-8f9f-096f950d210f.json",
+      "status": 200,
+      "bytes": 32366
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59de12ce-625c-4b9a-95fb-fc5b950d210f.json",
+      "status": 200,
+      "bytes": 41316
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59df77e7-2420-4c6c-bc2c-44ce950d210f.json",
+      "status": 200,
+      "bytes": 41135
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59e4c923-a6e0-4894-a6a8-994d950d210f.json",
+      "status": 200,
+      "bytes": 7033
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59e72f27-d8a8-4d67-988f-4a72950d210f.json",
+      "status": 200,
+      "bytes": 25068
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59e87459-58e8-486d-98ab-432c950d210f.json",
+      "status": 200,
+      "bytes": 7274
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59e8c165-4460-4066-baa8-35d6950d210f.json",
+      "status": 200,
+      "bytes": 19607
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59e9ec59-a888-48e4-afb4-441602de0b81.json",
+      "status": 200,
+      "bytes": 22478
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59eb345d-34f0-4fc6-b785-2ace02de0b81.json",
+      "status": 200,
+      "bytes": 34532
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59ec91ee-ae0c-4d5a-b149-4c0d02de0b81.json",
+      "status": 200,
+      "bytes": 2724
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59f02f94-544c-4db8-b156-46ce950d210f.json",
+      "status": 200,
+      "bytes": 13152
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59f0462f-41d4-47b4-9e1b-4a07950d210f.json",
+      "status": 200,
+      "bytes": 5970
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59f04ba5-e890-4534-8fa9-47dd950d210f.json",
+      "status": 200,
+      "bytes": 1121910
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59f049c0-aae0-47d2-a888-4021950d210f.json",
+      "status": 200,
+      "bytes": 22263
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59f04995-3b8c-4cf0-b555-4b26950d210f.json",
+      "status": 200,
+      "bytes": 30031
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59f4a30d-fdf8-4617-b6ab-45df02de0b81.json",
+      "status": 200,
+      "bytes": 34216
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59f87123-2624-486b-92c9-4f14950d210f.json",
+      "status": 200,
+      "bytes": 25218
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59f889d2-b1a4-44f9-a31e-256c950d210f.json",
+      "status": 200,
+      "bytes": 384057
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59fc621f-6728-41c4-9cf3-4561950d210f.json",
+      "status": 200,
+      "bytes": 258029
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/59f6f4a5-0e10-4c36-9c71-5690c25ed030.json",
+      "status": 200,
+      "bytes": 28315
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a0066bf-f9bc-478a-afee-4410950d210f.json",
+      "status": 200,
+      "bytes": 16870
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a015fbc-3218-4ec8-a4e5-4622950d210f.json",
+      "status": 200,
+      "bytes": 82089
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a044f31-7dec-4bf7-b031-cc6f950d210f.json",
+      "status": 200,
+      "bytes": 16848
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a044fae-c0b0-45d4-8f7e-75a9950d210f.json",
+      "status": 200,
+      "bytes": 17182
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a044feb-cda0-4844-b5f0-2214950d210f.json",
+      "status": 200,
+      "bytes": 15175
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a04510c-b2d0-467b-97a3-75a9950d210f.json",
+      "status": 200,
+      "bytes": 20190
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a045167-9e00-4562-95ea-4f67950d210f.json",
+      "status": 200,
+      "bytes": 14538
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a0451b3-211c-45f2-ac24-403d950d210f.json",
+      "status": 200,
+      "bytes": 12542
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a0451dc-4468-4b5a-9175-473a950d210f.json",
+      "status": 200,
+      "bytes": 12443
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a05d1d7-5710-44c0-869f-4a52950d210f.json",
+      "status": 200,
+      "bytes": 12604
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a0a9aa9-23a4-4607-b6df-41a9950d210f.json",
+      "status": 200,
+      "bytes": 33324
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a142fcd-cb4c-4b8b-99c5-0efd950d210f.json",
+      "status": 200,
+      "bytes": 6289
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a1e6038-a088-46ac-95ef-ad9e950d210f.json",
+      "status": 200,
+      "bytes": 108255
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a1e6e1d-4cc0-4ce6-aeba-7e44950d210f.json",
+      "status": 200,
+      "bytes": 40528
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a214d9a-ed50-4a33-8812-491a950d210f.json",
+      "status": 200,
+      "bytes": 16029
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a216518-dd10-4191-9ac8-4919950d210f.json",
+      "status": 200,
+      "bytes": 9221
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a23a972-e6a0-4a05-b505-4e8f02de0b81.json",
+      "status": 200,
+      "bytes": 135885
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a24041c-d7c8-4dc1-b0ed-45f702de0b81.json",
+      "status": 200,
+      "bytes": 202684
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a25117c-6260-44a1-91b4-489d02de0b81.json",
+      "status": 200,
+      "bytes": 9561
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a252fea-cbdc-425d-ba82-436a950d210f.json",
+      "status": 200,
+      "bytes": 6938
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a265a9e-9e54-4d44-a04e-42af950d210f.json",
+      "status": 200,
+      "bytes": 7798
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a26b608-7e48-48c1-bf61-43a3950d210f.json",
+      "status": 200,
+      "bytes": 15976
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a26b77f-6250-4b25-bd53-4496950d210f.json",
+      "status": 200,
+      "bytes": 15799
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a26b88f-ba04-46a5-9f52-48ed950d210f.json",
+      "status": 200,
+      "bytes": 13640
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a26b911-af14-4c92-86a9-446c950d210f.json",
+      "status": 200,
+      "bytes": 10421
+    },
+    {
+      "url": "https://www.circl.lu/doc/misp/feed-osint/5a290dd3-ac58-46b1-9334-fe72950d210f.json",
+      "status": 200,
+      "bytes": 6352
     }
   ],
-  "total_bytes_downloaded": 239117047,
+  "total_bytes_downloaded": 327052184,
   "stopped_early_at_cap": false,
   "api_key_used": false,
   "events_in_manifest": 1680,
-  "events_fetched": 775
+  "events_fetched": 845,
+  "events_already_cached_from_prior_run": 0,
+  "stopped_intentionally_before_full_manifest": true,
+  "stop_reason": "Process killed intentionally after 845 of 1680 manifest events (50.3%). CIRCL server latency was roughly 8-10s per single event file (confirmed by direct curl timing), making a full sequential pull take multiple hours. The overlap measurement was checked at 31%, 40%, and 50% sample sizes during the run and stayed at zero overlap throughout, so continuing to 100% was very unlikely to change the headline finding. This is reported honestly as a partial sample, not the full feed.",
+  "finished_at": "2026-08-24T23:54:08Z",
+  "total_bytes_downloaded_note": "Corrected to the actual on-disk byte total (du -sb data/circl_cache/) since the incremental log checkpoint (every 25 fetches) undercounted slightly at the moment the process was stopped."
 }
