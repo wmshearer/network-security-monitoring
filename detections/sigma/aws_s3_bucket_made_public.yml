@@ -41,7 +41,7 @@ detection:
         eventName: PutBucketAcl
     condition: keywords and selection
 falsepositives:
-    - A deliberately public static-website or public-download bucket, where
+    - A knowingly public static-website or public-download bucket, where
       this ACL is the intended, documented configuration.
     - Because this rule free-text-searches the whole event rather than one
       field, any OTHER S3 API call whose request or response happens to

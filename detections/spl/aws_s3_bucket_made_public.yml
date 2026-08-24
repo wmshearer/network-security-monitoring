@@ -46,7 +46,7 @@ target_dataset: T1530/aws_s3_public_bucket/aws_cloudtrail_events.json
 mitre_attack_id:
     - T1530
 known_false_positives: >
-    A deliberately public static-website or public-download bucket, where
+    A knowingly public static-website or public-download bucket, where
     this ACL is the intended, documented configuration. Common in accounts
     that legitimately host static content directly from S3.
 specificity_note: >
