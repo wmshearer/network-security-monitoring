@@ -1,2 +1,2 @@
 
-{"preview":false,"init_offset":0,"messages":[],"fields":[{"name":"st","groupby_rank":"0"},{"name":"bytes"},{"name":"events"},{"name":"MB","type":"num"}],"results":[{"st":"ingest_lab:security:json","bytes":"27408495","events":"6","MB":"26.14"},{"st":"ingest_lab:security:json_naive","bytes":"14156332","events":"1","MB":"13.50"}], "highlighted":{}}
+{"preview":false,"init_offset":0,"messages":[],"fields":[{"name":"st","groupby_rank":"0"},{"name":"bytes"},{"name":"MB","type":"num"}],"results":[{"st":"ingest_lab:security:json","bytes":"27408495","MB":"26.14"},{"st":"ingest_lab:security:json_naive","bytes":"22258793","MB":"21.23"}], "highlighted":{}}
