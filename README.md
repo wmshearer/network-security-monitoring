@@ -64,7 +64,7 @@ so the accepted admin credentials match the indexer's:
 cat > /home/kali/splunkforwarder/etc/system/local/user-seed.conf <<'EOF'
 [user_info]
 USERNAME = admin
-PASSWORD = [REDACTED]
+PASSWORD = <CHOOSE-A-PASSWORD>
 EOF
 ```
 
