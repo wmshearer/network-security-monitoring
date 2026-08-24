@@ -151,7 +151,11 @@ def enrich_ip_greynoise(ip: str) -> SourceCall:
         return SourceCall(
             source="greynoise_community",
             called=True,
-            reason="200-class response (IP not observed / not in dataset)",
+            # GreyNoise returns HTTP 404 with a structured JSON body to mean
+            # "this IP is not in our dataset". That is a successful lookup with
+            # a negative answer, not a failed call, so it counts as called.
+            # Do not describe it as a 200; the status code is really 404.
+            reason="404 with a JSON body: IP not observed, so a successful lookup with a negative answer",
             result={"status_code": 404, "body": resp.json() if resp.content else None},
         )
     if resp.status_code != 200:
