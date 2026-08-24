@@ -1,0 +1,7 @@
+# Splunk UF binaries and runtime state are not portable/reproducible artifacts.
+# The README documents the exact tarball + checksum to fetch instead.
+splunkforwarder/
+*.pyc
+__pycache__/
+.pytest_cache/
+data/*.json
