@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+
+# Vendored tool clones (Zircolite is not pip-installable, it gets cloned)
+vendor/
+
+# Downloaded data caches. These are large, reproducible, and belong to the
+# source they came from, not to this repo. Each subproject documents how to
+# refetch them.
+**/data/circl_cache/
+**/data/converted/
+**/data/feed_cache/
+
+# Deliberately narrow. Do NOT add a broad *.json or evidence/ glob here:
+# saved search results and screenshots under evidence/ are real artifacts
+# and must stay tracked.
