@@ -1,0 +1,30 @@
+title: AWS New Virtual MFA Device Registered
+id: 6d4b9f21-3a8e-4c5d-b917-2e6a5c8d9f66
+status: experimental
+description: |
+    Detects CreateVirtualMFADevice followed by EnableMFADevice for an IAM
+    user or the root account. Registering a new MFA device is normal
+    account setup, but an attacker with stolen long-lived credentials can
+    use the same call to add a device they control, keeping account access
+    even if the legitimate MFA device or password is later reset.
+references:
+    - https://attack.mitre.org/techniques/T1556/006/
+author: cloud-detection-lab
+date: 2026-08-24
+logsource:
+    product: aws
+    service: cloudtrail
+detection:
+    selection:
+        eventSource: iam.amazonaws.com
+        eventName:
+            - CreateVirtualMFADevice
+            - EnableMFADevice
+    condition: selection
+falsepositives:
+    - Normal new-employee or new-role onboarding, where a person or an
+      automated provisioning pipeline registers their own first MFA device.
+level: low
+tags:
+    - attack.persistence
+    - attack.t1556.006

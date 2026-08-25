@@ -1,0 +1,30 @@
+title: O365 Exchange Management Role Assigned
+id: 8e2c6a19-5f3d-4b7e-a218-9c4d6a1f3e88
+status: experimental
+description: |
+    Detects a New-ManagementRoleAssignment operation in Exchange Online,
+    which grants a user or role group an Exchange management role
+    (for example ApplicationImpersonation, letting an app or account act
+    as any mailbox in the tenant). An attacker who compromises an admin
+    account can use this call to grant a lower-privileged or attacker-
+    controlled identity broad mailbox access that persists independently.
+references:
+    - https://attack.mitre.org/techniques/T1098/002/
+author: cloud-detection-lab
+date: 2026-08-24
+logsource:
+    product: o365
+    service: exchange
+detection:
+    selection:
+        Operation: New-ManagementRoleAssignment
+    condition: selection
+falsepositives:
+    - Legitimate Exchange admin work, such as delegating a helpdesk role or
+      setting up a backup/migration service account with
+      ApplicationImpersonation.
+level: medium
+tags:
+    - attack.persistence
+    - attack.privilege-escalation
+    - attack.t1098.002

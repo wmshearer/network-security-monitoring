@@ -1,0 +1,59 @@
+title: AWS S3 Bucket ACL Granted to AuthenticatedUsers or AllUsers
+id: 9a4e7c21-3b6d-4f8a-9c15-7e2b4d9a6c33
+status: experimental
+description: |
+    Detects a PutBucketAcl call whose grant target is one of S3's two
+    "global" special-purpose groups: AuthenticatedUsers (any AWS account
+    holder, not just the bucket owner's account) or AllUsers (fully public,
+    unauthenticated). Either grant on a bucket that previously was not
+    public is a well-documented pre-exfiltration or impact step.
+
+    The grant target's field name is NOT stable: PutBucketAcl accepts the
+    grant either as a canned header (x-amz-grant-read,
+    x-amz-grant-read-acp, x-amz-grant-write, x-amz-grant-write-acp,
+    x-amz-grant-full-control -- five distinct possible JSON key names, only
+    one populated per call) or as an XML request body
+    (AccessControlPolicy.AccessControlList.Grant[], a structurally
+    different shape again). Confirmed directly against this project's own
+    ingested T1530 capture: of 8 labelled PutBucketAcl-to-public events, 7
+    use the header-grant shape (across 5 different possible header names)
+    and 1 uses the XML-body shape, see README.md's Sigma section for the
+    exact counts and the raw event that proves it. A single fixed field
+    name (Sigma's normal `field: value` selection) cannot express a match
+    against a value that legitimately lives under a different key per
+    event, so this rule uses Sigma's `keywords` detection type (a
+    logsource-wide free-text search) instead of a field-based selection.
+    This is the "say so and write it differently" case named in this
+    project's brief: a genuine construct limitation, not a shortcut.
+references:
+    - https://attack.mitre.org/techniques/T1530/
+author: cloud-detection-lab
+date: 2026-08-24
+logsource:
+    product: aws
+    service: cloudtrail
+detection:
+    keywords:
+        - 'groups/global/AuthenticatedUsers'
+        - 'groups/global/AllUsers'
+    selection:
+        eventSource: s3.amazonaws.com
+        eventName: PutBucketAcl
+    condition: keywords and selection
+falsepositives:
+    - A knowingly public static-website or public-download bucket, where
+      this ACL is the intended, documented configuration.
+    - Because this rule free-text-searches the whole event rather than one
+      field, any OTHER S3 API call whose request or response happens to
+      mention the literal string "groups/global/AllUsers" (for example a
+      GetBucketAcl READ that merely reports an existing public grant,
+      rather than a PutBucketAcl that sets one) would also match; the
+      eventName=PutBucketAcl selection is what prevents that specific
+      false positive, but a differently-shaped event that both names
+      PutBucketAcl and mentions the string in an unrelated context is not
+      ruled out.
+level: high
+tags:
+    - attack.impact
+    - attack.exfiltration
+    - attack.t1530

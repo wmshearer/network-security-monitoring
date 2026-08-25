@@ -1,0 +1,41 @@
+name: O365 Mailbox Forwarding Rule or Forwarding Address Set
+id: 2c9f7e15-6a4b-4d8e-b923-5f1a8c6e2b11
+version: 1
+sigma_source: detections/sigma/o365_mailbox_forwarding_rule_created.yml
+status: experimental
+description: >
+    Detects the Exchange Online operations that establish silent mail
+    forwarding: New-InboxRule/Set-InboxRule with a ForwardTo/RedirectTo
+    parameter, or Set-Mailbox with a non-empty ForwardingAddress or
+    ForwardingSmtpAddress parameter. A forwarding rule set up on a
+    compromised mailbox gives an attacker ongoing access to a user's mail
+    even after the password is reset.
+search: |-
+    index=cloud_lab sourcetype="o365:management:activity"
+      Operation IN ("New-InboxRule", "Set-InboxRule", "Set-Mailbox")
+      Parameters{}.Name IN ("ForwardTo", "RedirectTo", "ForwardingAddress", "ForwardingSmtpAddress")
+      | rename UserId as user, ObjectId as object
+      | fillnull value="-" object ActorIpAddress
+      | stats count min(_time) as firstTime max(_time) as lastTime
+        by user object Operation ActorIpAddress
+      | `o365_mailbox_forwarding_rule_created_filter`
+sigma_field_note: >
+    Same {} vs [] gap as the Azure detection above: the Sigma rule used
+    Parameters[].Name, the real indexed field (INDEXED_EXTRACTIONS=json)
+    is Parameters{}.Name, confirmed by a live search against the
+    T1114.003 capture before writing this search.
+target_technique_id: T1114.003
+target_dataset: T1114.003/o365_mailbox_forwarding_enabled/o365_mailbox_forwarding_enabled.json
+mitre_attack_id:
+    - T1114.003
+known_false_positives: >
+    A user legitimately setting up forwarding to a personal or secondary
+    mailbox, or an admin migrating mail flow during an offboarding. Both
+    are common, real reasons this search fires with no attacker involved.
+specificity_note: >
+    Keys on the exact Exchange cmdlet operation names and the exact
+    forwarding-parameter names Microsoft defines, not a value specific to
+    the labelled capture (no address/mailbox name hardcoded). The captured
+    sample's own ForwardingAddress value happens to be empty (see
+    README.md), so this search intentionally does not require a non-empty
+    value, only that the parameter name itself is present in the call.

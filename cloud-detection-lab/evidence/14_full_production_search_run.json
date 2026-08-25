@@ -1,0 +1,166 @@
+[
+  {
+    "name": "AWS CloudTrail Logging Stopped or Deleted",
+    "file": "aws_cloudtrail_stop_delete_disable_logging.yml",
+    "result_rows": 3,
+    "messages": [],
+    "sample_row": {
+      "user": "arn:aws:iam::111111111111:user/bhavin_cli",
+      "vendor_account": "111111111111",
+      "eventName": "DeleteTrail",
+      "sourceIPAddress": "192.184.242.57",
+      "errorCode": "-",
+      "count": "4",
+      "firstTime": "1657738933",
+      "lastTime": "1657739031"
+    }
+  },
+  {
+    "name": "AWS Console Multiple Failed Logins for One User",
+    "file": "aws_console_login_multiple_failures.yml",
+    "result_rows": 1,
+    "messages": [],
+    "sample_row": {
+      "_time": "2022-10-19T13:30:00.000-07:00",
+      "userIdentity.userName": "HIDDEN_DUE_TO_SECURITY_REASONS",
+      "event_count": "27"
+    }
+  },
+  {
+    "name": "AWS IAM AccessDenied Burst From One Principal",
+    "file": "aws_iam_accessdenied_burst.yml",
+    "result_rows": 3,
+    "messages": [],
+    "sample_row": {
+      "_time": "2021-04-13T04:30:00.000-07:00",
+      "userIdentity.arn": "arn:aws:iam::111111111111:user/cloudsploit",
+      "value_count": "26"
+    }
+  },
+  {
+    "name": "AWS IAM Policy Deleted",
+    "file": "aws_iam_policy_deleted.yml",
+    "result_rows": 23,
+    "messages": [],
+    "sample_row": {
+      "user": "arn:aws:iam::151521547504:user/bhavin_cli",
+      "vendor_account": "151521547504",
+      "object": "-",
+      "sourceIPAddress": "61.25.42.212",
+      "errorCode": "AccessDenied",
+      "count": "3",
+      "firstTime": "1614214557",
+      "lastTime": "1614214560"
+    }
+  },
+  {
+    "name": "AWS New Virtual MFA Device Registered",
+    "file": "aws_new_mfa_device_registered.yml",
+    "result_rows": 1,
+    "messages": [],
+    "sample_row": {
+      "user": "arn:aws:iam::140429656527:root",
+      "user_type": "Root",
+      "vendor_account": "140429656527",
+      "sourceIPAddress": "23.93.193.6",
+      "count": "2",
+      "firstTime": "1675119616",
+      "lastTime": "1675119743"
+    }
+  },
+  {
+    "name": "AWS S3 Bucket ACL Granted to AuthenticatedUsers or AllUsers",
+    "file": "aws_s3_bucket_made_public.yml",
+    "result_rows": 3,
+    "messages": [],
+    "sample_row": {
+      "user": "arn:aws:iam::111111111111:user/patrick_cli",
+      "object": "patricktestbucket18",
+      "sourceIPAddress": "95.90.199.65",
+      "count": "2",
+      "firstTime": "1610456095",
+      "lastTime": "1610456153"
+    }
+  },
+  {
+    "name": "Azure AD Multiple Denied MFA Requests for One User",
+    "file": "azure_ad_mfa_denied_burst.yml",
+    "result_rows": 2,
+    "messages": [],
+    "sample_row": {
+      "_time": "2023-07-31T22:00:00.000-07:00",
+      "identity": "hereiam",
+      "event_count": "17"
+    }
+  },
+  {
+    "name": "Azure AD Distributed Password Spray",
+    "file": "azure_ad_password_spray.yml",
+    "result_rows": 1,
+    "messages": [],
+    "sample_row": {
+      "_time": "2023-06-16T18:10:00.000-07:00",
+      "callerIpAddress": "82.1.1.35",
+      "value_count": "31"
+    }
+  },
+  {
+    "name": "Azure AD Privileged Directory Role Assigned",
+    "file": "azure_ad_privileged_role_assigned.yml",
+    "result_rows": 1,
+    "messages": [],
+    "sample_row": {
+      "user": "MS-PIM",
+      "vendor_account": "fc69e276-e9e8-4af9-9002-1e410d77244e",
+      "callerIpAddress": "40.126.23.163",
+      "count": "1",
+      "firstTime": "1682560764.674271",
+      "lastTime": "1682560764.674271"
+    }
+  },
+  {
+    "name": "O365 Exchange Management Role Assigned",
+    "file": "o365_exchange_management_role_assigned.yml",
+    "result_rows": 1,
+    "messages": [],
+    "sample_row": {
+      "user": "compromisedAdmin@splunkresearch.onmicrosoft.com",
+      "object": "splunkresearch.onmicrosoft.com\\attack-test",
+      "ActorIpAddress": "-",
+      "ResultStatus": "True",
+      "count": "1",
+      "firstTime": "1697595599",
+      "lastTime": "1697595599"
+    }
+  },
+  {
+    "name": "O365 Mailbox Forwarding Rule or Forwarding Address Set",
+    "file": "o365_mailbox_forwarding_rule_created.yml",
+    "result_rows": 6,
+    "messages": [],
+    "sample_row": {
+      "user": "pbareiss@rodsoto.onmicrosoft.com",
+      "object": "bpatel",
+      "Operation": "Set-Mailbox",
+      "ActorIpAddress": "-",
+      "count": "40",
+      "firstTime": "1608143069",
+      "lastTime": "1608150748"
+    }
+  },
+  {
+    "name": "O365 Service Principal or Credential Added",
+    "file": "o365_service_principal_created.yml",
+    "result_rows": 31,
+    "messages": [],
+    "sample_row": {
+      "user": "Certificate",
+      "object": "https://cce.azure.us/;https://mface.windowsazure.com/;ea890292-c8c8-4433-b5ea-b09d0668e1a6",
+      "Operation": "Add service principal.",
+      "ActorIpAddress": "",
+      "count": "12",
+      "firstTime": "1608087420",
+      "lastTime": "1608087420"
+    }
+  }
+]

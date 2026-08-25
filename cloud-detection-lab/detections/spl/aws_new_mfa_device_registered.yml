@@ -1,0 +1,31 @@
+name: AWS New Virtual MFA Device Registered
+id: 6d4b9f21-3a8e-4c5d-b917-2e6a5c8d9f66
+version: 1
+sigma_source: detections/sigma/aws_new_mfa_device_registered.yml
+status: experimental
+description: >
+    Detects CreateVirtualMFADevice or EnableMFADevice for an IAM user or
+    the root account. Registering a new MFA device is normal account
+    setup, but an attacker with stolen long-lived credentials can use the
+    same call to add a device they control, keeping account access even if
+    the legitimate MFA device or password is later reset.
+search: |-
+    index=cloud_lab sourcetype="aws:cloudtrail"
+      eventSource="iam.amazonaws.com" eventName IN ("CreateVirtualMFADevice", "EnableMFADevice")
+      | rename userIdentity.arn as user, userIdentity.type as user_type,
+               userIdentity.accountId as vendor_account
+      | stats count min(_time) as firstTime max(_time) as lastTime
+        by user user_type vendor_account sourceIPAddress
+      | `aws_new_mfa_device_registered_filter`
+target_technique_id: T1556.006
+target_dataset: T1556.006/aws_new_mfa_method_registered_for_user/cloudtrail.json
+mitre_attack_id:
+    - T1556.006
+known_false_positives: >
+    Normal new-employee or new-role onboarding, where a person or an
+    automated provisioning pipeline registers their own first MFA device.
+    This is the single most common legitimate reason this search fires.
+specificity_note: >
+    Two exact eventName values in one AWS service, no capture-specific
+    literal. Low precision by itself (the false-positive cause above is
+    common), documented as such rather than implied otherwise.

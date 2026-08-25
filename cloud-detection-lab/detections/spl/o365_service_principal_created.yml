@@ -1,0 +1,31 @@
+name: O365 Service Principal or Credential Added
+id: 4d1a8c26-7b5e-4f3d-9a17-6e3c8f1b4d22
+version: 1
+sigma_source: detections/sigma/o365_service_principal_created.yml
+status: experimental
+description: >
+    Detects Azure AD / O365 audit events where the Operation begins with
+    "Add service principal", covering both a brand-new application identity
+    being created in the tenant and a new credential (client secret or
+    certificate) being added to an existing one. Both give an attacker a
+    durable, non-interactive identity that survives a user password reset.
+search: |-
+    index=cloud_lab sourcetype="o365:management:activity"
+      Operation="Add service principal*"
+      | rename UserId as user, ObjectId as object
+      | fillnull value="-" object ActorIpAddress
+      | stats count min(_time) as firstTime max(_time) as lastTime
+        by user object Operation ActorIpAddress
+      | `o365_service_principal_created_filter`
+target_technique_id: T1136.003
+target_dataset: T1136.003/o365_add_service_principal/o365_add_service_principal.json
+mitre_attack_id:
+    - T1136.003
+known_false_positives: >
+    Legitimate application registration by a developer or a CI/CD pipeline
+    that provisions its own service principal as part of a normal
+    deployment. Application/DevOps teams that rotate service-principal
+    credentials on a schedule will trigger this regularly.
+specificity_note: >
+    Prefix match on the Operation field's fixed vocabulary (Azure AD
+    audit's own operation-name string), not a capture-specific literal.

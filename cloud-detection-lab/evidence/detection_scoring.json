@@ -1,0 +1,157 @@
+[
+  {
+    "id": "4a1e2b8c-6e5c-4f9a-9d4e-1f0c6e2a9b11",
+    "name": "AWS CloudTrail Logging Stopped or Deleted",
+    "file": "aws_cloudtrail_stop_delete_disable_logging.yml",
+    "target_technique_id": "T1562.008",
+    "scoring_search": "index=cloud_lab sourcetype=\"aws:cloudtrail\"\n  eventSource=\"cloudtrail.amazonaws.com\" eventName IN (\"StopLogging\", \"DeleteTrail\")\n| stats count by host",
+    "recall_hit": true,
+    "recall_count_on_target": 7,
+    "off_target_hosts_fired": {},
+    "off_target_host_count": 0,
+    "off_target_total_events": 0
+  },
+  {
+    "id": "2a0e7f4b-8c3d-4b95-9f6e-7d2a0c3e4b55",
+    "name": "AWS Console Multiple Failed Logins for One User",
+    "file": "aws_console_login_multiple_failures.yml",
+    "target_technique_id": "T1110.003",
+    "scoring_search": "index=cloud_lab sourcetype=\"aws:cloudtrail\"\n  eventSource=\"signin.amazonaws.com\" eventName=\"ConsoleLogin\"\n  responseElements.ConsoleLogin=\"Failure\"\n| bin _time span=10m\n  | stats count as event_count by _time userIdentity.userName, host\n| where event_count > 5\n| stats sum(event_count) as total_matches by host",
+    "recall_hit": true,
+    "recall_count_on_target": 27,
+    "off_target_hosts_fired": {},
+    "off_target_host_count": 0,
+    "off_target_total_events": 0
+  },
+  {
+    "id": "6f3b9d25-0a4c-5e7f-b328-9c5d2f0a7d66",
+    "name": "AWS IAM AccessDenied Burst From One Principal",
+    "file": "aws_iam_accessdenied_burst.yml",
+    "target_technique_id": "T1580",
+    "scoring_search": "index=cloud_lab sourcetype=\"aws:cloudtrail\"\n  errorCode=\"AccessDenied\"\n| bin _time span=15m\n  | stats dc(eventName) as value_count by _time userIdentity.arn, host\n| where value_count > 20\n| stats sum(value_count) as total_matches by host",
+    "recall_hit": true,
+    "recall_count_on_target": 114,
+    "off_target_hosts_fired": {
+      "T1526": 26
+    },
+    "off_target_host_count": 1,
+    "off_target_total_events": 26
+  },
+  {
+    "id": "8c3f5a12-2d7e-4b6a-9c1f-3e5a7d9b4c22",
+    "name": "AWS IAM Policy Deleted",
+    "file": "aws_iam_policy_deleted.yml",
+    "target_technique_id": "T1098",
+    "scoring_search": "index=cloud_lab sourcetype=\"aws:cloudtrail\"\n  eventSource=\"iam.amazonaws.com\" eventName=\"DeletePolicy\"\n| stats count by host",
+    "recall_hit": true,
+    "recall_count_on_target": 116,
+    "off_target_hosts_fired": {},
+    "off_target_host_count": 0,
+    "off_target_total_events": 0
+  },
+  {
+    "id": "6d4b9f21-3a8e-4c5d-b917-2e6a5c8d9f66",
+    "name": "AWS New Virtual MFA Device Registered",
+    "file": "aws_new_mfa_device_registered.yml",
+    "target_technique_id": "T1556.006",
+    "scoring_search": "index=cloud_lab sourcetype=\"aws:cloudtrail\"\n  eventSource=\"iam.amazonaws.com\" eventName IN (\"CreateVirtualMFADevice\", \"EnableMFADevice\")\n| stats count by host",
+    "recall_hit": true,
+    "recall_count_on_target": 2,
+    "off_target_hosts_fired": {},
+    "off_target_host_count": 0,
+    "off_target_total_events": 0
+  },
+  {
+    "id": "9a4e7c21-3b6d-4f8a-9c15-7e2b4d9a6c33",
+    "name": "AWS S3 Bucket ACL Granted to AuthenticatedUsers or AllUsers",
+    "file": "aws_s3_bucket_made_public.yml",
+    "target_technique_id": "T1530",
+    "scoring_search": "index=cloud_lab sourcetype=\"aws:cloudtrail\"\n  \"groups/global/AuthenticatedUsers\" OR \"groups/global/AllUsers\"\n  eventSource=\"s3.amazonaws.com\" eventName=\"PutBucketAcl\"\n| stats count by host",
+    "recall_hit": true,
+    "recall_count_on_target": 8,
+    "off_target_hosts_fired": {},
+    "off_target_host_count": 0,
+    "off_target_total_events": 0
+  },
+  {
+    "id": "b18d2f47-2c6e-7a91-d54a-1b7f4c2c9f88",
+    "name": "Azure AD Multiple Denied MFA Requests for One User",
+    "file": "azure_ad_mfa_denied_burst.yml",
+    "target_technique_id": "T1621",
+    "scoring_search": "index=cloud_lab sourcetype=\"azure:monitor:aad\"\n  operationName=\"Sign-in activity\" resultType=\"500121\"\n| bin _time span=10m\n  | stats count as event_count by _time identity, host\n| where event_count > 3\n| stats sum(event_count) as total_matches by host",
+    "recall_hit": true,
+    "recall_count_on_target": 28,
+    "off_target_hosts_fired": {},
+    "off_target_host_count": 0,
+    "off_target_total_events": 0
+  },
+  {
+    "id": "a07c1e36-1b5d-6f80-c439-0a6e3f1b8e77",
+    "name": "Azure AD Distributed Password Spray",
+    "file": "azure_ad_password_spray.yml",
+    "target_technique_id": "T1110.003",
+    "scoring_search": "index=cloud_lab sourcetype=\"azure:monitor:aad\"\n  operationName=\"Sign-in activity\" resultType=\"50126\"\n| bin _time span=10m\n  | stats dc(identity) as value_count by _time callerIpAddress, host\n| where value_count > 5\n| stats sum(value_count) as total_matches by host",
+    "recall_hit": true,
+    "recall_count_on_target": 31,
+    "off_target_hosts_fired": {},
+    "off_target_host_count": 0,
+    "off_target_total_events": 0
+  },
+  {
+    "id": "7a5c3e19-4d8b-4f2a-9e6c-1b3d8f5a7c77",
+    "name": "Azure AD Privileged Directory Role Assigned",
+    "file": "azure_ad_privileged_role_assigned.yml",
+    "target_technique_id": "T1098.003",
+    "scoring_search": "index=cloud_lab sourcetype=\"azure:monitor:aad\"\n  operationName=\"Add member to role\"\n  properties.targetResources{}.modifiedProperties{}.newValue IN\n    (\"*Global Administrator*\", \"*Privileged Role Administrator*\", \"*Privileged Authentication Administrator*\")\n| stats count by host",
+    "recall_hit": true,
+    "recall_count_on_target": 6,
+    "off_target_hosts_fired": {},
+    "off_target_host_count": 0,
+    "off_target_total_events": 0
+  },
+  {
+    "id": "8e2c6a19-5f3d-4b7e-a218-9c4d6a1f3e88",
+    "name": "O365 Exchange Management Role Assigned",
+    "file": "o365_exchange_management_role_assigned.yml",
+    "target_technique_id": "T1098.002",
+    "scoring_search": "index=cloud_lab sourcetype=\"o365:management:activity\"\n  Operation=\"New-ManagementRoleAssignment\"\n| stats count by host",
+    "recall_hit": true,
+    "recall_count_on_target": 1,
+    "off_target_hosts_fired": {},
+    "off_target_host_count": 0,
+    "off_target_total_events": 0
+  },
+  {
+    "id": "2c9f7e15-6a4b-4d8e-b923-5f1a8c6e2b11",
+    "name": "O365 Mailbox Forwarding Rule or Forwarding Address Set",
+    "file": "o365_mailbox_forwarding_rule_created.yml",
+    "target_technique_id": "T1114.003",
+    "scoring_search": "index=cloud_lab sourcetype=\"o365:management:activity\"\n  Operation IN (\"New-InboxRule\", \"Set-InboxRule\", \"Set-Mailbox\")\n  Parameters{}.Name IN (\"ForwardTo\", \"RedirectTo\", \"ForwardingAddress\", \"ForwardingSmtpAddress\")\n| stats count by host",
+    "recall_hit": true,
+    "recall_count_on_target": 80,
+    "off_target_hosts_fired": {
+      "T1110": 93,
+      "T1114": 93,
+      "T1556": 93
+    },
+    "off_target_host_count": 3,
+    "off_target_total_events": 279
+  },
+  {
+    "id": "4d1a8c26-7b5e-4f3d-9a17-6e3c8f1b4d22",
+    "name": "O365 Service Principal or Credential Added",
+    "file": "o365_service_principal_created.yml",
+    "target_technique_id": "T1136.003",
+    "scoring_search": "index=cloud_lab sourcetype=\"o365:management:activity\"\n  Operation=\"Add service principal*\"\n| stats count by host",
+    "recall_hit": true,
+    "recall_count_on_target": 31,
+    "off_target_hosts_fired": {
+      "T1098.003": 1,
+      "T1110": 4,
+      "T1114": 4,
+      "T1556": 4
+    },
+    "off_target_host_count": 4,
+    "off_target_total_events": 13
+  }
+]

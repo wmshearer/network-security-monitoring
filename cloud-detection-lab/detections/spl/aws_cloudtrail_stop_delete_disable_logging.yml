@@ -1,0 +1,35 @@
+name: AWS CloudTrail Logging Stopped or Deleted
+id: 4a1e2b8c-6e5c-4f9a-9d4e-1f0c6e2a9b11
+version: 1
+sigma_source: detections/sigma/aws_cloudtrail_stop_delete_disable_logging.yml
+status: experimental
+description: >
+    Detects the AWS CloudTrail management API calls that stop or remove log
+    delivery: StopLogging and DeleteTrail. An adversary who wants to operate
+    without a CloudTrail record uses one of these calls rather than deleting
+    individual log files after the fact.
+search: |-
+    index=cloud_lab sourcetype="aws:cloudtrail"
+      eventSource="cloudtrail.amazonaws.com" eventName IN ("StopLogging", "DeleteTrail")
+      | rename userIdentity.arn as user, userIdentity.accountId as vendor_account
+      | fillnull value="-" errorCode
+      | stats count min(_time) as firstTime max(_time) as lastTime
+        by user vendor_account eventName sourceIPAddress errorCode
+      | `aws_cloudtrail_stop_delete_disable_logging_filter`
+target_technique_id: T1562.008
+target_dataset: T1562.008/stop_delete_cloudtrail/aws_cloudtrail_events.json
+mitre_attack_id:
+    - T1562.008
+known_false_positives: >
+    An AWS administrator legitimately decommissioning or migrating a trail
+    issues the same StopLogging/DeleteTrail API calls the AWS console itself
+    uses for a routine trail deletion. This search cannot distinguish
+    planned maintenance from an attacker covering their tracks; investigate
+    every hit rather than auto-closing it.
+specificity_note: >
+    Keys on two exact eventName values within a fixed AWS service
+    (cloudtrail.amazonaws.com), not a wildcard or a value tied to one
+    capture (no username/IP/timestamp literal). This is a behavior-level
+    signature (the API call itself), not an artifact of one sample, so it
+    scores reasonably high on the Pyramid of Pain even though it is a
+    simple static match.

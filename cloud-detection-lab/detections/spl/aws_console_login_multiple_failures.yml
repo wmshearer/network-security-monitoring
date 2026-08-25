@@ -1,0 +1,39 @@
+name: AWS Console Multiple Failed Logins for One User
+id: 2a0e7f4b-8c3d-4b95-9f6e-7d2a0c3e4b55
+version: 1
+sigma_source: detections/sigma/aws_console_login_multiple_failures.yml
+status: experimental
+description: >
+    Detects more than 5 failed AWS console sign-in attempts
+    (ConsoleLogin, responseElements.ConsoleLogin=Failure) by the same
+    userName in a 10-minute window, consistent with password guessing or a
+    password-spray attempt run against a single account. Converted from
+    a Sigma base rule (aws_console_login_failure) plus a Sigma
+    event_count correlation rule, since Sigma's older
+    `condition: selection | count() by ... > N` pipe syntax is deprecated
+    and rejected by pySigma 1.5.0 (see README.md's Sigma conversion
+    section for the exact error hit and the fix).
+search: |-
+    index=cloud_lab sourcetype="aws:cloudtrail"
+      eventSource="signin.amazonaws.com" eventName="ConsoleLogin"
+      responseElements.ConsoleLogin="Failure"
+      | bin _time span=10m
+      | stats count as event_count by _time userIdentity.userName
+      | where event_count > 5
+      | `aws_console_login_multiple_failures_filter`
+target_technique_id: T1110.003
+target_dataset: T1110.003/aws_mulitple_failed_console_login/aws_cloudtrail.json
+mitre_attack_id:
+    - T1110.003
+known_false_positives: >
+    A user who genuinely forgot their password and retried manually.
+    Automated health-check or monitoring tooling that authenticates with a
+    stale credential and retries on a fixed schedule can also cross this
+    threshold.
+specificity_note: >
+    A behavioral threshold (>5 failures per user per 10 minutes), not a
+    static string match. This is the class of detection the research
+    (security_content, 31+ detections) calls out as more robust than a
+    single-event static rule, though it is a fixed threshold rather than a
+    learned baseline ("previously unseen X"), which is the more robust
+    pattern still. No literal username/IP from the capture is hardcoded.

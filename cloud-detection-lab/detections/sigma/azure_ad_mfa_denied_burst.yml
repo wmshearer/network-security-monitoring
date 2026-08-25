@@ -1,0 +1,47 @@
+title: Azure AD Sign-in Failure, MFA Denied
+name: azure_ad_signin_mfa_denied
+id: 3f8e6a17-2b5d-4c9a-a614-7d2f9b6c3e99
+status: experimental
+description: |
+    Base event rule: one Azure AD sign-in failure with resultType 500121
+    ("Authentication failed during strong authentication request").
+    Paired with the event_count correlation rule below (id
+    b18d2f47-2c6e-7a91-d54a-1b7f4c2c9f88), which raises this to a
+    detection only when the same identity racks up more than 3 of these
+    failures in 10 minutes. Repeated MFA push prompts a user keeps
+    declining is consistent with an "MFA fatigue" / MFA-bombing attempt,
+    where an attacker holding valid credentials generates repeated prompts
+    hoping the user eventually approves one.
+references:
+    - https://attack.mitre.org/techniques/T1621/
+author: cloud-detection-lab
+date: 2026-08-24
+logsource:
+    product: azure
+    service: signinlogs
+detection:
+    selection:
+        operationName: Sign-in activity
+        resultType: '500121'
+    condition: selection
+falsepositives:
+    - A user with a flaky MFA app or poor mobile connectivity who declines
+      or times out prompts by accident several times in a row.
+level: low
+tags:
+    - attack.credential-access
+    - attack.t1621
+---
+title: Azure AD Multiple Denied MFA Requests for One User
+id: b18d2f47-2c6e-7a91-d54a-1b7f4c2c9f88
+status: experimental
+correlation:
+    type: event_count
+    rules:
+        - azure_ad_signin_mfa_denied
+    group-by:
+        - identity
+    timespan: 10m
+    condition:
+        gt: 3
+level: medium

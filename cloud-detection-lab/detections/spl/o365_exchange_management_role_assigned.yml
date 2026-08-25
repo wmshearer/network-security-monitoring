@@ -1,0 +1,35 @@
+name: O365 Exchange Management Role Assigned
+id: 8e2c6a19-5f3d-4b7e-a218-9c4d6a1f3e88
+version: 1
+sigma_source: detections/sigma/o365_exchange_management_role_assigned.yml
+status: experimental
+description: >
+    Detects a New-ManagementRoleAssignment operation in Exchange Online,
+    which grants a user or role group an Exchange management role (for
+    example ApplicationImpersonation, letting an app or account act as any
+    mailbox in the tenant). An attacker who compromises an admin account
+    can use this call to grant a lower-privileged or attacker-controlled
+    identity broad mailbox access that persists independently.
+search: |-
+    index=cloud_lab sourcetype="o365:management:activity"
+      Operation="New-ManagementRoleAssignment"
+      | rename UserId as user, ObjectId as object
+      | fillnull value="-" object ActorIpAddress ResultStatus
+      | stats count min(_time) as firstTime max(_time) as lastTime
+        by user object ActorIpAddress ResultStatus
+      | `o365_exchange_management_role_assigned_filter`
+target_technique_id: T1098.002
+target_dataset: T1098.002/application_impersonation_role_assigned/application_impersonation_role_assigned.log
+mitre_attack_id:
+    - T1098.002
+known_false_positives: >
+    Legitimate Exchange admin work, such as delegating a helpdesk role or
+    setting up a backup/migration service account with
+    ApplicationImpersonation. This is a normal, periodic admin action in
+    most tenants, not an inherently rare event.
+specificity_note: >
+    Single exact Operation value, Exchange's own fixed cmdlet name. No
+    capture-specific literal hardcoded. Does not distinguish which role was
+    assigned, so it cannot on its own tell a low-risk role assignment from
+    a high-risk one like ApplicationImpersonation, a real, stated blind
+    spot.

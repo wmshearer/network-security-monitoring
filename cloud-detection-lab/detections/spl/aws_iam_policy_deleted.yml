@@ -1,0 +1,33 @@
+name: AWS IAM Policy Deleted
+id: 8c3f5a12-2d7e-4b6a-9c1f-3e5a7d9b4c22
+version: 1
+sigma_source: detections/sigma/aws_iam_policy_deleted.yml
+status: experimental
+description: >
+    Detects an IAM DeletePolicy call, successful or failed. Removing a
+    managed IAM policy is a way to strip permissions from every principal
+    it was attached to, or to remove evidence of a policy an attacker
+    created earlier in the same session.
+search: |-
+    index=cloud_lab sourcetype="aws:cloudtrail"
+      eventSource="iam.amazonaws.com" eventName="DeletePolicy"
+      | rename userIdentity.arn as user, userIdentity.accountId as vendor_account,
+               requestParameters.policyArn as object
+      | fillnull value="-" object errorCode
+      | stats count min(_time) as firstTime max(_time) as lastTime
+        by user vendor_account object sourceIPAddress errorCode
+      | `aws_iam_policy_deleted_filter`
+target_technique_id: T1098
+target_dataset: T1098/aws_iam_delete_policy/aws_iam_delete_policy.json
+mitre_attack_id:
+    - T1098
+known_false_positives: >
+    Routine IAM cleanup by a platform or security team, common in accounts
+    that run scheduled unused-policy pruning. The labelled capture for this
+    detection is itself a failed call (errorCode NoSuchEntityException,
+    the policy did not exist), which this search still matches since a
+    failed DeletePolicy attempt is still evidence someone tried to remove
+    it.
+specificity_note: >
+    Single exact eventName within one AWS service, no literal ARN or
+    account ID hardcoded. Behavior-level, not sample-specific.

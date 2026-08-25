@@ -1,0 +1,68 @@
+=== aws_cloudtrail_stop_delete_disable_logging ===
+Parsing Sigma rules
+eventSource="cloudtrail.amazonaws.com" eventName IN ("StopLogging", "DeleteTrail")
+
+=== aws_console_login_multiple_failures ===
+Parsing Sigma rules
+eventSource="signin.amazonaws.com" eventName="ConsoleLogin" responseElements.ConsoleLogin="Failure"
+
+| bin _time span=10m
+| stats count as event_count by _time userIdentity.userName
+
+| search event_count > 5
+
+=== aws_iam_accessdenied_burst ===
+Parsing Sigma rules
+errorCode="AccessDenied"
+
+| bin _time span=15m
+| stats dc(eventName) as value_count by _time userIdentity.arn
+
+| search value_count > 20
+
+=== aws_iam_policy_deleted ===
+Parsing Sigma rules
+eventSource="iam.amazonaws.com" eventName="DeletePolicy"
+
+=== aws_new_mfa_device_registered ===
+Parsing Sigma rules
+eventSource="iam.amazonaws.com" eventName IN ("CreateVirtualMFADevice", "EnableMFADevice")
+
+=== aws_s3_bucket_made_public ===
+Parsing Sigma rules
+"groups/global/AuthenticatedUsers" OR "groups/global/AllUsers" eventSource="s3.amazonaws.com" eventName="PutBucketAcl"
+
+=== azure_ad_mfa_denied_burst ===
+Parsing Sigma rules
+operationName="Sign-in activity" resultType="500121"
+
+| bin _time span=10m
+| stats count as event_count by _time identity
+
+| search event_count > 3
+
+=== azure_ad_password_spray ===
+Parsing Sigma rules
+operationName="Sign-in activity" resultType="50126"
+
+| bin _time span=10m
+| stats dc(identity) as value_count by _time callerIpAddress
+
+| search value_count > 5
+
+=== azure_ad_privileged_role_assigned ===
+Parsing Sigma rules
+operationName="Add member to role" "properties.targetResources[].modifiedProperties[].newValue" IN ("*Global Administrator*", "*Privileged Role Administrator*", "*Privileged Authentication Administrator*")
+
+=== o365_exchange_management_role_assigned ===
+Parsing Sigma rules
+Operation="New-ManagementRoleAssignment"
+
+=== o365_mailbox_forwarding_rule_created ===
+Parsing Sigma rules
+Operation IN ("New-InboxRule", "Set-InboxRule", "Set-Mailbox") "Parameters[].Name" IN ("ForwardTo", "RedirectTo", "ForwardingAddress", "ForwardingSmtpAddress")
+
+=== o365_service_principal_created ===
+Parsing Sigma rules
+Operation="Add service principal*"
+

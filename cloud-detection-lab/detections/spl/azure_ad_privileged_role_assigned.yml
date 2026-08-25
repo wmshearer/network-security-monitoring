@@ -1,0 +1,45 @@
+name: Azure AD Privileged Directory Role Assigned
+id: 7a5c3e19-4d8b-4f2a-9e6c-1b3d8f5a7c77
+version: 1
+sigma_source: detections/sigma/azure_ad_privileged_role_assigned.yml
+status: experimental
+description: >
+    Detects Azure AD audit events where operationName is "Add member to
+    role" and the target role's display name is a highly privileged
+    built-in role (Global Administrator, Privileged Role Administrator, or
+    Privileged Authentication Administrator). Assigning one of these roles
+    to a new or already-compromised principal is a documented cloud
+    persistence and privilege-escalation technique.
+search: |-
+    index=cloud_lab sourcetype="azure:monitor:aad"
+      operationName="Add member to role"
+      properties.targetResources{}.modifiedProperties{}.newValue IN
+        ("*Global Administrator*", "*Privileged Role Administrator*", "*Privileged Authentication Administrator*")
+      | rename identity as user, tenantId as vendor_account
+      | stats count min(_time) as firstTime max(_time) as lastTime
+        by user vendor_account callerIpAddress
+      | `azure_ad_privileged_role_assigned_filter`
+sigma_field_note: >
+    The Sigma rule this was converted from used JSON-path array syntax
+    (properties.targetResources[].modifiedProperties[].newValue). Splunk's
+    INDEXED_EXTRACTIONS=json flattens nested JSON arrays using {} multivalue
+    notation, not []; confirmed by a live search against the actual
+    indexed field name (properties.targetResources{}.modifiedProperties{}.newValue,
+    verified populated) before writing this search. This is a real,
+    reportable gap between Sigma's generic JSON-path convention and
+    Splunk's specific multivalue field syntax, not something pySigma's
+    Splunk backend corrects automatically, see README.md.
+target_technique_id: T1098.003
+target_dataset: T1098.003/azure_ad_assign_global_administrator/azure-audit.log
+mitre_attack_id:
+    - T1098.003
+known_false_positives: >
+    Legitimate privileged-access-management (PIM) elevation performed by an
+    admin through the normal approval workflow. The raw audit event looks
+    the same whether the elevation went through PIM approval or not, this
+    search cannot tell the two apart.
+specificity_note: >
+    Keys on the exact built-in role display names Azure AD assigns (fixed
+    strings Microsoft defines, not an attacker's choice) rather than any
+    value specific to the labelled capture. Reasonably high on the Pyramid
+    of Pain for a static-match rule.

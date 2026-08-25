@@ -1,0 +1,34 @@
+title: Azure AD Privileged Directory Role Assigned
+id: 7a5c3e19-4d8b-4f2a-9e6c-1b3d8f5a7c77
+status: experimental
+description: |
+    Detects Azure AD audit events where operationName is "Add member to
+    role" and the target role's display name is a highly privileged
+    built-in role (Global Administrator, Privileged Role Administrator,
+    or Privileged Authentication Administrator). Assigning one of these
+    roles to a new or already-compromised principal is a documented cloud
+    persistence and privilege-escalation technique.
+references:
+    - https://attack.mitre.org/techniques/T1098/003/
+author: cloud-detection-lab
+date: 2026-08-24
+logsource:
+    product: azure
+    service: auditlogs
+detection:
+    selection:
+        operationName: Add member to role
+        properties.targetResources[].modifiedProperties[].newValue|contains:
+            - Global Administrator
+            - Privileged Role Administrator
+            - Privileged Authentication Administrator
+    condition: selection
+falsepositives:
+    - Legitimate privileged-access-management (PIM) elevation performed by
+      an admin through the normal approval workflow. The raw audit event
+      looks the same whether the elevation went through PIM approval or not.
+level: high
+tags:
+    - attack.persistence
+    - attack.privilege-escalation
+    - attack.t1098.003

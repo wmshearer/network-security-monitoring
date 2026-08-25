@@ -1,0 +1,30 @@
+name: Azure AD Multiple Denied MFA Requests for One User
+id: b18d2f47-2c6e-7a91-d54a-1b7f4c2c9f88
+version: 1
+sigma_source: detections/sigma/azure_ad_mfa_denied_burst.yml
+status: experimental
+description: >
+    Detects more than 3 Azure AD sign-in failures with resultType 500121
+    ("Authentication failed during strong authentication request") for the
+    same identity in a 10-minute window. Repeated MFA push prompts a user
+    keeps declining is consistent with an "MFA fatigue" / MFA-bombing
+    attempt, where an attacker holding valid credentials generates
+    repeated prompts hoping the user eventually approves one.
+search: |-
+    index=cloud_lab sourcetype="azure:monitor:aad"
+      operationName="Sign-in activity" resultType="500121"
+      | bin _time span=10m
+      | stats count as event_count by _time identity
+      | where event_count > 3
+      | `azure_ad_mfa_denied_burst_filter`
+target_technique_id: T1621
+target_dataset: T1621/azure_ad_multiple_denied_mfa_requests/azure_ad_multiple_denied_mfa_requests.log
+mitre_attack_id:
+    - T1621
+known_false_positives: >
+    A user with a flaky MFA app or poor mobile connectivity who declines
+    or times out prompts by accident several times in a row. This is a
+    plausible, non-malicious cause at any org that uses push-based MFA.
+specificity_note: >
+    Behavioral threshold on same-identity failure count, fixed at 3 in 10
+    minutes. No literal user/IP hardcoded.

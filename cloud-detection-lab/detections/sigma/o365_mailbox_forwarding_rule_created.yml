@@ -1,0 +1,37 @@
+title: O365 Mailbox Forwarding Rule or Forwarding Address Set
+id: 2c9f7e15-6a4b-4d8e-b923-5f1a8c6e2b11
+status: experimental
+description: |
+    Detects the Exchange Online operations that establish silent mail
+    forwarding: New-InboxRule/Set-InboxRule with a ForwardTo/RedirectTo
+    parameter, or Set-Mailbox with a non-empty ForwardingAddress or
+    ForwardingSmtpAddress parameter. A forwarding rule set up on a
+    compromised mailbox gives an attacker ongoing access to a user's mail
+    even after the password is reset.
+references:
+    - https://attack.mitre.org/techniques/T1114/003/
+author: cloud-detection-lab
+date: 2026-08-24
+logsource:
+    product: o365
+    service: exchange
+detection:
+    selection_op:
+        Operation:
+            - New-InboxRule
+            - Set-InboxRule
+            - Set-Mailbox
+    selection_param:
+        Parameters[].Name:
+            - ForwardTo
+            - RedirectTo
+            - ForwardingAddress
+            - ForwardingSmtpAddress
+    condition: selection_op and selection_param
+falsepositives:
+    - A user legitimately setting up forwarding to a personal or secondary
+      mailbox, or an admin migrating mail flow during an offboarding.
+level: medium
+tags:
+    - attack.collection
+    - attack.t1114.003
