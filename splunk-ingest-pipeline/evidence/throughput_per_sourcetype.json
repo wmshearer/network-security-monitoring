@@ -1,0 +1,2 @@
+
+{"preview":false,"init_offset":0,"messages":[],"fields":[{"name":"series","groupby_rank":"0"},{"name":"totalKB"},{"name":"totalEvents"}],"results":[{"series":"ingest_lab:security:json","totalKB":"70161.183","totalEvents":"45611"},{"series":"ingest_lab:security:json_naive","totalKB":"42898.490","totalEvents":"1356"}], "highlighted":{}}

@@ -1,0 +1,9 @@
+# UF management (splunkd REST/admin) port moved off the default 8089
+# because the indexer (Splunk Enterprise at /home/kali/splunk) already owns
+# 8089 on this host. This only affects the UF's own admin endpoint, not the
+# data path to the indexer (outputs.conf targets the indexer's port 9997).
+# startwebserver=0 because a Universal Forwarder has no search/web tier to
+# serve and does not need SplunkWeb running at all.
+[settings]
+mgmtHostPort = 127.0.0.1:8090
+startwebserver = 0

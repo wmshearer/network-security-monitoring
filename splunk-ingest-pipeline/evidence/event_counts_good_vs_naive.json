@@ -1,0 +1,2 @@
+
+{"preview":false,"init_offset":0,"messages":[],"fields":[{"name":"index","groupby_rank":"0"},{"name":"sourcetype","groupby_rank":"1"},{"name":"count"}],"results":[{"index":"ingest_lab","sourcetype":"ingest_lab:security:json","count":"22085"},{"index":"ingest_lab_naive","sourcetype":"ingest_lab:security:json_naive","count":"345"}], "highlighted":{}}
