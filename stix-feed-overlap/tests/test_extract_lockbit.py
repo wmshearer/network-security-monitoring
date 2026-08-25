@@ -4,11 +4,10 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
 from extract_lockbit import extract
+from src.corpora_path import lockbit_sysmon_log
 
 LOG_PATH = (
-    Path(__file__).resolve().parent.parent.parent
-    / "_corpora/attack_data/datasets/apt_simulations/"
-    "ActiveMQ_exploit_Lockbit_Ransomware/windows-sysmon.log"
+    lockbit_sysmon_log()
 )
 
 

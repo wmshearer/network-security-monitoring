@@ -24,6 +24,7 @@ import json
 from pathlib import Path
 
 import stix2
+from corpora_path import lockbit_sysmon_log
 
 IDENTITY_NAME = "stix-feed-overlap research project (portfolio measurement)"
 
@@ -154,9 +155,7 @@ if __name__ == "__main__":
     from filter_lockbit_iocs import filter_all
 
     default_path = (
-        Path(__file__).resolve().parent.parent.parent
-        / "_corpora/attack_data/datasets/apt_simulations/"
-        "ActiveMQ_exploit_Lockbit_Ransomware/windows-sysmon.log"
+        lockbit_sysmon_log()
     )
     log_path = sys.argv[1] if len(sys.argv) > 1 else default_path
     out_path = (

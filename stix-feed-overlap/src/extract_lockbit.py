@@ -33,6 +33,7 @@ from __future__ import annotations
 import ipaddress
 import re
 from pathlib import Path
+from corpora_path import lockbit_sysmon_log
 
 IP_RE = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
 SHA256_RE = re.compile(r"SHA256=([0-9A-Fa-f]{64})")
@@ -79,9 +80,7 @@ if __name__ == "__main__":
     import sys
 
     default_path = (
-        Path(__file__).resolve().parent.parent.parent
-        / "_corpora/attack_data/datasets/apt_simulations/"
-        "ActiveMQ_exploit_Lockbit_Ransomware/windows-sysmon.log"
+        lockbit_sysmon_log()
     )
     log_path = sys.argv[1] if len(sys.argv) > 1 else default_path
     result = extract(log_path)

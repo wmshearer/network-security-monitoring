@@ -67,6 +67,7 @@ from __future__ import annotations
 
 import ipaddress
 import re
+from corpora_path import lockbit_sysmon_log
 
 AMAZONAWS_SUFFIXES = (".amazonaws.com", ".ec2-utilities.amazonaws.com")
 ROOT_SERVERS = {f"{c}.root-servers.net" for c in "abcdefghijklm"}
@@ -162,9 +163,7 @@ if __name__ == "__main__":
     from extract_lockbit import extract
 
     default_path = (
-        Path(__file__).resolve().parent.parent.parent
-        / "_corpora/attack_data/datasets/apt_simulations/"
-        "ActiveMQ_exploit_Lockbit_Ransomware/windows-sysmon.log"
+        lockbit_sysmon_log()
     )
     log_path = sys.argv[1] if len(sys.argv) > 1 else default_path
     extracted = extract(log_path)

@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from corpora_path import lockbit_sysmon_log
 
 ATTACK_BUNDLE_PATH = Path(
     "/home/kali/director/projects/cloud-detection-coverage/data/enterprise-attack.json"
@@ -127,9 +128,7 @@ if __name__ == "__main__":
         )
 
     default_log = (
-        Path(__file__).resolve().parent.parent.parent
-        / "_corpora/attack_data/datasets/apt_simulations/"
-        "ActiveMQ_exploit_Lockbit_Ransomware/windows-sysmon.log"
+        lockbit_sysmon_log()
     )
     text = default_log.read_text(encoding="utf-8", errors="replace")
     matches = name_match_against_lockbit(result["software_names"], text)
