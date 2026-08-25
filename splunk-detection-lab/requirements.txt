@@ -1,0 +1,9 @@
+# Pinned to the same major/minor lines actually used and verified during this
+# project's build (see README.md's reproduction steps). evtx is the same
+# library ../ai-triage-engine already depends on and verifies field-name
+# parity against (see src/convert_evtx.py's module docstring) -- version
+# constraint matches that project's own pyproject.toml for consistency.
+evtx>=0.12
+pyyaml>=6.0
+requests>=2.31
+pytest>=8.0

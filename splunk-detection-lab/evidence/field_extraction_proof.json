@@ -1,0 +1,42 @@
+{
+  "preview": false,
+  "init_offset": 0,
+  "messages": [],
+  "fields": [
+    {
+      "name": "_time"
+    },
+    {
+      "name": "Hostname"
+    },
+    {
+      "name": "TargetObject"
+    },
+    {
+      "name": "Details"
+    },
+    {
+      "name": "EventType"
+    },
+    {
+      "name": "technique_id"
+    }
+  ],
+  "results": [
+    {
+      "_time": "2020-09-04T07:06:22.490-07:00",
+      "Hostname": "WORKSTATION5.theshire.local",
+      "TargetObject": "HKU\\S-1-5-21-3125456671-949036322-3048627137-1104\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\Updater",
+      "Details": "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -c \"$x=$((gp HKCU:Software\\Microsoft\\Windows\\CurrentVersion Debug).Debug);powershell -Win Hidden -enc $x\"",
+      "technique_id": "T1547.001"
+    },
+    {
+      "_time": "2020-09-04T07:09:05.126-07:00",
+      "Hostname": "WORKSTATION5.theshire.local",
+      "TargetObject": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\WindowsDefender",
+      "Details": "\"%%ProgramFiles%%\\Windows Defender\\MSASCuiL.exe\"",
+      "technique_id": "T1547.001"
+    }
+  ],
+  "highlighted": {}
+}

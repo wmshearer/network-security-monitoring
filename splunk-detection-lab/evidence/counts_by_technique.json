@@ -1,0 +1,46 @@
+{
+    "preview": false,
+    "init_offset": 0,
+    "messages": [],
+    "fields": [
+        {
+            "name": "technique_id",
+            "groupby_rank": "0"
+        },
+        {
+            "name": "source_capture",
+            "groupby_rank": "1"
+        },
+        {
+            "name": "count"
+        }
+    ],
+    "results": [
+        {
+            "technique_id": "T1053.005",
+            "source_capture": "empire_schtasks_creation_standard_user",
+            "count": "1297"
+        },
+        {
+            "technique_id": "T1069.001",
+            "source_capture": "empire_shell_net_localgroup_administrators",
+            "count": "884"
+        },
+        {
+            "technique_id": "T1087.001",
+            "source_capture": "empire_shell_net_local_users",
+            "count": "1907"
+        },
+        {
+            "technique_id": "T1123",
+            "source_capture": "msf_record_mic",
+            "count": "6202"
+        },
+        {
+            "technique_id": "T1547.001",
+            "source_capture": "empire_persistence_registry_modification_run_keys_standard_user",
+            "count": "40569"
+        }
+    ],
+    "highlighted": {}
+}

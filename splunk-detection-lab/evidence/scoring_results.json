@@ -1,0 +1,145 @@
+{
+  "per_detection": [
+    {
+      "detection": "D1_registry_run_key_setvalue",
+      "technique_id": "T1547.001",
+      "target_captures": [
+        "empire_persistence_registry_modification_run_keys_standard_user"
+      ],
+      "hits_by_capture": {
+        "empire_persistence_registry_modification_run_keys_standard_user": 2
+      },
+      "tp_captures": [
+        "empire_persistence_registry_modification_run_keys_standard_user"
+      ],
+      "fn_captures": [],
+      "cross_contamination": {},
+      "benign_fp_event_count": 0,
+      "n_opportunities": 1,
+      "tp": 1,
+      "fn": 0,
+      "recall": 1.0,
+      "fired_on_any_benign": false
+    },
+    {
+      "detection": "D2_schtasks_encoded_powershell",
+      "technique_id": "T1053.005",
+      "target_captures": [
+        "empire_schtasks_creation_standard_user"
+      ],
+      "hits_by_capture": {
+        "empire_schtasks_creation_standard_user": 1
+      },
+      "tp_captures": [
+        "empire_schtasks_creation_standard_user"
+      ],
+      "fn_captures": [],
+      "cross_contamination": {},
+      "benign_fp_event_count": 0,
+      "n_opportunities": 1,
+      "tp": 1,
+      "fn": 0,
+      "recall": 1.0,
+      "fired_on_any_benign": false
+    },
+    {
+      "detection": "D3_net_localgroup_administrators",
+      "technique_id": "T1069.001",
+      "target_captures": [
+        "empire_shell_net_localgroup_administrators"
+      ],
+      "hits_by_capture": {
+        "empire_shell_net_localgroup_administrators": 2
+      },
+      "tp_captures": [
+        "empire_shell_net_localgroup_administrators"
+      ],
+      "fn_captures": [],
+      "cross_contamination": {},
+      "benign_fp_event_count": 0,
+      "n_opportunities": 1,
+      "tp": 1,
+      "fn": 0,
+      "recall": 1.0,
+      "fired_on_any_benign": false
+    },
+    {
+      "detection": "D4_net_user_enumeration",
+      "technique_id": "T1087.001",
+      "target_captures": [
+        "empire_shell_net_local_users"
+      ],
+      "hits_by_capture": {
+        "empire_shell_net_local_users": 2
+      },
+      "tp_captures": [
+        "empire_shell_net_local_users"
+      ],
+      "fn_captures": [],
+      "cross_contamination": {},
+      "benign_fp_event_count": 0,
+      "n_opportunities": 1,
+      "tp": 1,
+      "fn": 0,
+      "recall": 1.0,
+      "fired_on_any_benign": false
+    },
+    {
+      "detection": "D5_process_access_audiodg",
+      "technique_id": "T1123",
+      "target_captures": [
+        "msf_record_mic"
+      ],
+      "hits_by_capture": {
+        "msf_record_mic": 74
+      },
+      "tp_captures": [
+        "msf_record_mic"
+      ],
+      "fn_captures": [],
+      "cross_contamination": {},
+      "benign_fp_event_count": 0,
+      "n_opportunities": 1,
+      "tp": 1,
+      "fn": 0,
+      "recall": 1.0,
+      "fired_on_any_benign": false
+    },
+    {
+      "detection": "D6_powershell_spawns_recon_tool",
+      "technique_id": "T1059.001",
+      "target_captures": [
+        "empire_schtasks_creation_standard_user",
+        "empire_shell_net_localgroup_administrators",
+        "empire_shell_net_local_users"
+      ],
+      "hits_by_capture": {
+        "empire_schtasks_creation_standard_user": 1,
+        "empire_shell_net_local_users": 1,
+        "empire_shell_net_localgroup_administrators": 1
+      },
+      "tp_captures": [
+        "empire_schtasks_creation_standard_user",
+        "empire_shell_net_localgroup_administrators",
+        "empire_shell_net_local_users"
+      ],
+      "fn_captures": [],
+      "cross_contamination": {},
+      "benign_fp_event_count": 0,
+      "n_opportunities": 3,
+      "tp": 3,
+      "fn": 0,
+      "recall": 1.0,
+      "fired_on_any_benign": false
+    }
+  ],
+  "totals": {
+    "total_tp_captures": 8,
+    "total_fn_captures": 0,
+    "total_detection_opportunities": 8,
+    "capture_level_recall": 1.0,
+    "total_benign_fp_events": 0,
+    "detections_with_any_benign_fp": 0,
+    "detections_total": 6
+  }
+}

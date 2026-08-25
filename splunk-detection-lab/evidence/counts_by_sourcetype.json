@@ -1,0 +1,21 @@
+{
+    "preview": false,
+    "init_offset": 0,
+    "messages": [],
+    "fields": [
+        {
+            "name": "sourcetype",
+            "groupby_rank": "0"
+        },
+        {
+            "name": "count"
+        }
+    ],
+    "results": [
+        {
+            "sourcetype": "mordor:winlog:json",
+            "count": "292992"
+        }
+    ],
+    "highlighted": {}
+}

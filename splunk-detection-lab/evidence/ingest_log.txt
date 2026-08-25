@@ -1,0 +1,207 @@
+Sun Aug 23 08:26:32 AM PDT 2026
+=== ATTACK captures ===
+-- data/converted/attack/empire_persistence_registry_modification_run_keys_standard_user.json --
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/attack/empire_persistence_registry_modification_run_keys_standard_user.json' added
+-- data/converted/attack/empire_schtasks_creation_standard_user.json --
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/attack/empire_schtasks_creation_standard_user.json' added
+-- data/converted/attack/empire_shell_net_localgroup_administrators.json --
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/attack/empire_shell_net_localgroup_administrators.json' added
+-- data/converted/attack/empire_shell_net_local_users.json --
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/attack/empire_shell_net_local_users.json' added
+-- data/converted/attack/msf_record_mic.json --
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/attack/msf_record_mic.json' added
+=== BENIGN baseline ===
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Application.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Client-Licensing-Platform_Admin.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-AAD_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Application-Experience_Program-Telemetry.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-AppModel-Runtime_Admin.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-AppReadiness_Admin.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-AppReadiness_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-AppXDeployment_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-AppXDeploymentServer_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-AppxPackaging_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Biometrics_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Bits-Client_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-CloudStore_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-CodeIntegrity_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Containers-BindFlt_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Containers-Wcifs_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Crypto-DPAPI_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Crypto-NCrypt_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-DataIntegrityScan_Admin.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-DeviceManagement-Enterprise-Diagnostics-Provider_Admin.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-DeviceSetupManager_Admin.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-DeviceSetupManager_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Dhcp-Client_Admin.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Diagnosis-DPS_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Diagnosis-Scheduled_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Diagnosis-Scripted_Admin.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Diagnosis-Scripted_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-GroupPolicy_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-HelloForBusiness_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Kernel-Boot_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Kernel-Cache_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Kernel-IO_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Kernel-PnP_Configuration.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Kernel-PnP_Device_Management.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Kernel-ShimEngine_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Kernel-WHEA_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Known_Folders_API_Service.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-LanguagePackSetup_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-LiveId_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-MUI_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-NCSI_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-NetworkProfile_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Ntfs_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Ntfs_WHC.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Partition_Diagnostic.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-PowerShell_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Privacy-Auditing_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-PushNotification-Platform_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Resource-Exhaustion-Detector_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Security-Mitigations_KernelMode.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Security-SPP-UX-Notifications_ActionCenter.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-ServerManager-DeploymentProvider_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-ServerManager-MgmtProvider_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-ServerManager-MultiMachine_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-ShellCommon-StartLayoutPopulation_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Shell-Core_AppDefaults.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Shell-Core_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-SmbClient_Connectivity.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-SMBServer_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-StateRepository_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-StorageManagement_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-StorageSpaces-Driver_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Storage-Storport_Health.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Storage-Storport_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Store_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Storsvc_Diagnostic.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Sysmon_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-SystemDataArchiver_Diagnostic.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-TaskScheduler_Maintenance.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-TerminalServices-LocalSessionManager_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Time-Service_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-TWinUI_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-TZSync_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-UniversalTelemetryClient_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-User_Device_Registration_Admin.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-UserPnp_DeviceInstall.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-User_Profile_Service_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-VolumeSnapshot-Driver_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Wcmsvc_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-WebAuthN_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-WER-PayloadHealth_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-WFP_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Windows_Defender_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Windows_Firewall_With_Advanced_Security_Firewall.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-WindowsSystemAssessmentTool_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-WindowsUpdateClient_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-WinINet-Config_ProxyConfigChanged.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-Winlogon_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-WinRM_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Microsoft-Windows-WMI-Activity_Operational.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Security.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Setup.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/System.json' added
+WARNING: Server Certificate Hostname Validation is disabled. Please see server.conf/[sslConfig]/cliVerifyServerName for details.
+Oneshot '/home/kali/director/projects/splunk-detection-lab/data/converted/benign/Windows_PowerShell.json' added
+ingested 94 benign files

@@ -1,0 +1,51 @@
+{
+    "preview": false,
+    "init_offset": 0,
+    "messages": [],
+    "fields": [
+        {
+            "name": "label",
+            "groupby_rank": "0"
+        },
+        {
+            "name": "source_capture",
+            "groupby_rank": "1"
+        },
+        {
+            "name": "count"
+        }
+    ],
+    "results": [
+        {
+            "label": "attack",
+            "source_capture": "empire_persistence_registry_modification_run_keys_standard_user",
+            "count": "40569"
+        },
+        {
+            "label": "attack",
+            "source_capture": "empire_schtasks_creation_standard_user",
+            "count": "1297"
+        },
+        {
+            "label": "attack",
+            "source_capture": "empire_shell_net_local_users",
+            "count": "1907"
+        },
+        {
+            "label": "attack",
+            "source_capture": "empire_shell_net_localgroup_administrators",
+            "count": "884"
+        },
+        {
+            "label": "attack",
+            "source_capture": "msf_record_mic",
+            "count": "6202"
+        },
+        {
+            "label": "benign",
+            "source_capture": "evtx_baseline_win2022",
+            "count": "242133"
+        }
+    ],
+    "highlighted": {}
+}
