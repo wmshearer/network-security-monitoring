@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+
+# Narrow on purpose. No broad *.json or evidence/ glob: saved results and
+# screenshots under evidence/ are real artifacts and stay tracked.
