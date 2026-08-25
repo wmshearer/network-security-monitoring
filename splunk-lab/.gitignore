@@ -1,0 +1,12 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.coverage
+*.coverage
+htmlcov/
+coverage_html/
+
+# 2.4MB wget transcript, no analytical value
+download.log
