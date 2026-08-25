@@ -1,0 +1,31 @@
+{
+  "lockbit_surviving_indicators": {
+    "ips": 301,
+    "dns": 168,
+    "sha256": 602,
+    "total": 1071
+  },
+  "circl_feed_indicators": {
+    "ips": 18577,
+    "dns": 49995,
+    "sha256": 18852,
+    "total": 87424
+  },
+  "matches": {
+    "ips": [],
+    "dns": [],
+    "sha256": []
+  },
+  "match_counts": {
+    "ips": 0,
+    "dns": 0,
+    "sha256": 0,
+    "total": 0
+  },
+  "overlap_percentage": {
+    "ips": 0.0,
+    "dns": 0.0,
+    "sha256": 0.0,
+    "total": 0.0
+  }
+}
