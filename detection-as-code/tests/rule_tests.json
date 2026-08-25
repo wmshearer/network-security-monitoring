@@ -1,0 +1,105 @@
+[
+  {
+    "id": "8f1a2b3c-0001-4d1e-9a11-1a2b3c4d5e01",
+    "title": "Registry Run Key Value Set",
+    "true_positive": [
+      {
+        "EventID": 13,
+        "TargetObject": "HKU\\S-1-5-21-3125456671-949036322-3048627137-1104\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\Updater"
+      }
+    ],
+    "true_negative": [
+      {
+        "EventID": 13
+      }
+    ]
+  },
+  {
+    "id": "8f1a2b3c-0002-4d1e-9a11-1a2b3c4d5e02",
+    "title": "Schtasks Creates Task Running Hidden PowerShell",
+    "true_positive": [
+      {
+        "EventID": 1,
+        "Image": "C:\\Windows\\System32\\schtasks.exe",
+        "CommandLine": "\"C:\\windows\\system32\\schtasks.exe\" /Create /F /SC DAILY /ST 09:00 /TN MordorSchtask /TR \"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NonI -W hidden -c \\\"IEX ([Text.Encoding]::UNICODE.GetString([Convert]::FromBase64String((gp HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion debug).debug)))\\\"\""
+      }
+    ],
+    "true_negative": [
+      {
+        "EventID": 1,
+        "Image": "C:\\Windows\\System32\\smss.exe",
+        "CommandLine": "\\SystemRoot\\System32\\smss.exe"
+      }
+    ]
+  },
+  {
+    "id": "8f1a2b3c-0003-4d1e-9a11-1a2b3c4d5e03",
+    "title": "Net.exe Localgroup Administrators Enumeration",
+    "true_positive": [
+      {
+        "EventID": 1,
+        "Image": "C:\\Windows\\System32\\net.exe",
+        "CommandLine": "\"C:\\windows\\system32\\net.exe\" localgroup Administrators"
+      }
+    ],
+    "true_negative": [
+      {
+        "EventID": 1,
+        "Image": "C:\\Windows\\System32\\smss.exe",
+        "CommandLine": "\\SystemRoot\\System32\\smss.exe"
+      }
+    ]
+  },
+  {
+    "id": "8f1a2b3c-0004-4d1e-9a11-1a2b3c4d5e04",
+    "title": "Net.exe User Enumeration",
+    "true_positive": [
+      {
+        "EventID": 1,
+        "Image": "C:\\Windows\\System32\\net.exe",
+        "CommandLine": "\"C:\\windows\\system32\\net.exe\" user"
+      }
+    ],
+    "true_negative": [
+      {
+        "EventID": 1,
+        "Image": "C:\\Windows\\System32\\smss.exe",
+        "CommandLine": "\\SystemRoot\\System32\\smss.exe"
+      }
+    ]
+  },
+  {
+    "id": "8f1a2b3c-0005-4d1e-9a11-1a2b3c4d5e05",
+    "title": "Process Access to AUDIODG.EXE",
+    "true_positive": [
+      {
+        "EventID": 10,
+        "TargetImage": "C:\\windows\\system32\\AUDIODG.EXE"
+      }
+    ],
+    "true_negative": [
+      {
+        "EventID": 10,
+        "TargetImage": "C:\\Windows\\winsxs\\amd64_microsoft-windows-servicingstack_31bf3856ad364e35_10.0.20348.557_none_f1edaeb8515fa10d\\TiWorker.exe"
+      }
+    ]
+  },
+  {
+    "id": "8f1a2b3c-0006-4d1e-9a11-1a2b3c4d5e06",
+    "title": "PowerShell Spawns Recon Tool",
+    "true_positive": [
+      {
+        "EventID": 1,
+        "ParentImage": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "Image": "C:\\Windows\\System32\\schtasks.exe"
+      }
+    ],
+    "true_negative": [
+      {
+        "EventID": 1,
+        "ParentImage": "System",
+        "Image": "C:\\Windows\\System32\\smss.exe"
+      }
+    ]
+  }
+]

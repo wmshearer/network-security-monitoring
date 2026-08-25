@@ -1,0 +1,26 @@
+title: Registry Run Key Value Set
+id: 8f1a2b3c-0001-4d1e-9a11-1a2b3c4d5e01
+status: experimental
+description: |
+    Sigma equivalent of splunk-detection-lab's D1 detection
+    (evidence/detection_dev/d1_registry_run_key.spl), translated field for
+    field, not rewritten. Original SPL:
+    `index=detection_lab EventID=13 TargetObject="*\Run\*"`
+references:
+    - https://attack.mitre.org/techniques/T1547/001/
+author: detection-as-code (translation of splunk-detection-lab D1, not an original rule)
+date: 2026-08-24
+logsource:
+    category: registry_set
+    product: windows
+detection:
+    selection:
+        EventID: 13
+        TargetObject|contains: '\Run\'
+    condition: selection
+falsepositives:
+    - Legitimate software installers that register autostart entries.
+level: medium
+tags:
+    - attack.persistence
+    - attack.t1547.001

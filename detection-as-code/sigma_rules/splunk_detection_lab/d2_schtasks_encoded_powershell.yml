@@ -1,0 +1,34 @@
+title: Schtasks Creates Task Running Hidden PowerShell
+id: 8f1a2b3c-0002-4d1e-9a11-1a2b3c4d5e02
+status: experimental
+description: |
+    Sigma equivalent of splunk-detection-lab's D2 detection
+    (evidence/detection_dev/d2_schtasks_encoded_powershell.spl), translated
+    field for field. Original SPL:
+    `index=detection_lab EventID=1 Image="*schtasks.exe" CommandLine="*powershell*" CommandLine="*hidden*"`
+    splunk-detection-lab's own STP robustness score for this detection is 1
+    (the lowest tier: matches two literal, attacker-chosen substrings with
+    no relationship to the technique). See
+    /home/kali/director/projects/splunk-detection-lab/evidence/robustness/stp_scores.csv.
+references:
+    - https://attack.mitre.org/techniques/T1053/005/
+author: detection-as-code (translation of splunk-detection-lab D2, not an original rule)
+date: 2026-08-24
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection:
+        EventID: 1
+        Image|endswith: schtasks.exe
+        CommandLine|contains|all:
+            - powershell
+            - hidden
+    condition: selection
+falsepositives:
+    - Legitimate scheduled tasks that happen to reference PowerShell and a
+      window-hiding argument in their command line.
+level: low
+tags:
+    - attack.execution
+    - attack.t1053.005

@@ -1,0 +1,111 @@
+=== AFTER: pipeline against the BROKEN copy (CommandlineArgs typo in D2) ===
+Command: python3 vendor/Zircolite/zircolite.py --ruleset phase3_broken_rule_demo --test-rules tests/rule_tests.json
+
+
+███████╗██╗██████╗  ██████╗ ██████╗ ██╗     ██╗████████╗███████╗
+╚══███╔╝██║██╔══██╗██╔════╝██╔═══██╗██║     ██║╚══██╔══╝██╔════╝
+  ███╔╝ ██║██████╔╝██║     ██║   ██║██║     ██║   ██║   █████╗
+ ███╔╝  ██║██╔══██╗██║     ██║   ██║██║     ██║   ██║   ██╔══╝
+███████╗██║██║  ██║╚██████╗╚██████╔╝███████╗██║   ██║   ███████╗
+╚══════╝╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝   ╚═╝   ╚══════╝
+-= Standalone Sigma Detection tool for EVTX/Auditd/Sysmon Linux =-
+                              v3.8.1
+
+[+] Loading ruleset(s)                                                          
+    [>] Converting Native Sigma to Zircolite ruleset : phase3_broken_rule_demo  
+
+[✓] Converted 6 rules                                                           
+[+] 6 rules loaded                                                              
+[+] Event filter enabled: 3 eventIDs                                            
+[+] Running rule tests from: tests/rule_tests.json                              
+───────────────────────────────── Rule Testing ─────────────────────────────────
+
+                               Rule Test Results                                
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Rule                      ┃   TP   ┃   TN   ┃ Notes                          ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ PowerShell Spawns Recon   │   ✓    │   ✓    │                                │
+│ Tool                      │        │        │                                │
+│ Process Access to         │   ✓    │   ✓    │                                │
+│ AUDIODG.EXE               │        │        │                                │
+│ Registry Run Key Value    │   ✓    │   ✓    │                                │
+│ Set                       │        │        │                                │
+│ Schtasks Creates Task     │   ✗    │   ✓    │ TP=0, TN=0                     │
+│ Running Hidden PowerShell │        │        │                                │
+│ Net.exe Localgroup        │   ✓    │   ✓    │                                │
+│ Administrators            │        │        │                                │
+│ Enumeration               │        │        │                                │
+│ Net.exe User Enumeration  │   ✓    │   ✓    │                                │
+└───────────────────────────┴────────┴────────┴────────────────────────────────┘
+    Passed: 5  Failed: 1  No test case: 0
+EXIT CODE: 1
+=== sigma check on the BROKEN rule (should NOT catch the wrong field name) ===
+Parsing Sigma rules
+Checking Sigma rules
+=== Issues ===
+issue=SigmahqFilenamePrefixIssue severity=medium description=The rule filename prefix doesn't match the SigmaHQ convention rule=/home/kali/director/projects/detection-as-code/phase3_broken_rule_demo/d2_schtasks_encoded_powershell.yml filename=d2_schtasks_encoded_powershell.yml logsource=SigmaLogSource(category='process_creation', product='windows', service=None, definition=None, source=SigmaRuleLocation(path=PosixPath('phase3_broken_rule_demo/d2_schtasks_encoded_powershell.yml'), line=None, char=None), custom_attributes=None) prefix=proc_creation_win_
+issue=SigmahqMitreLinkIssue severity=medium description=Rule has a MITRE link instead of a MITRE attack tag. Use e.g. - attack.t1053.003 rule=/home/kali/director/projects/detection-as-code/phase3_broken_rule_demo/d2_schtasks_encoded_powershell.yml link=https://attack.mitre.org/techniques/T1053/005/
+issue=SigmahqCategoryEventIdIssue severity=medium description=Rule uses a windows logsource category that doesn't require the use of an EventID field rule=/home/kali/director/projects/detection-as-code/phase3_broken_rule_demo/d2_schtasks_encoded_powershell.yml 
+issue=SigmahqTagsTechniquesWithoutTacticsIssue severity=medium description=A MITRE ATT&CK technique tag was found without its corresponding tactic name. (e.g. when using 'attack.t1059' you have to add 'attack.execution' as well) rule=/home/kali/director/projects/detection-as-code/phase3_broken_rule_demo/d2_schtasks_encoded_powershell.yml techniques=['attack.t1053.005'] missing_tactic=attack.persistence
+issue=SigmahqTagsTechniquesWithoutTacticsIssue severity=medium description=A MITRE ATT&CK technique tag was found without its corresponding tactic name. (e.g. when using 'attack.t1059' you have to add 'attack.execution' as well) rule=/home/kali/director/projects/detection-as-code/phase3_broken_rule_demo/d2_schtasks_encoded_powershell.yml techniques=['attack.t1053.005'] missing_tactic=attack.privilege-escalation
+issue=SigmahqInvalidFieldnameIssue severity=high description=A field name do not exist rule=/home/kali/director/projects/detection-as-code/phase3_broken_rule_demo/d2_schtasks_encoded_powershell.yml field=CommandlineArgs
+issue=SigmahqRedundantFieldIssue severity=high description=A field name is redundant (already covered by the logsource) rule=/home/kali/director/projects/detection-as-code/phase3_broken_rule_demo/d2_schtasks_encoded_powershell.yml field=EventID
+
+=== Summary ===
+Found 0 errors, 0 condition errors and 7 issues.
+No rule errors found.
+No condition errors found.
+
+Validation issue summary:
++-------+------------------------------------------+----------+--------------------------------------------------------------+
+| Count | Issue                                    | Severity | Description                                                  |
++-------+------------------------------------------+----------+--------------------------------------------------------------+
+| 2     | SigmahqTagsTechniquesWithoutTacticsIssue | MEDIUM   | A MITRE ATT&CK technique tag was found without its           |
+|       |                                          |          | corresponding tactic name. (e.g. when using 'attack.t1059'   |
+|       |                                          |          | you have to add 'attack.execution' as well)                  |
+| 1     | SigmahqFilenamePrefixIssue               | MEDIUM   | The rule filename prefix doesn't match the SigmaHQ           |
+|       |                                          |          | convention                                                   |
+| 1     | SigmahqMitreLinkIssue                    | MEDIUM   | Rule has a MITRE link instead of a MITRE attack tag. Use     |
+|       |                                          |          | e.g. - attack.t1053.003                                      |
+| 1     | SigmahqCategoryEventIdIssue              | MEDIUM   | Rule uses a windows logsource category that doesn't require  |
+|       |                                          |          | the use of an EventID field                                  |
+| 1     | SigmahqInvalidFieldnameIssue             | HIGH     | A field name do not exist                                    |
+| 1     | SigmahqRedundantFieldIssue               | HIGH     | A field name is redundant (already covered by the logsource) |
++-------+------------------------------------------+----------+--------------------------------------------------------------+
+sigma check EXIT CODE: 0
+
+=== sigma check --fail-on-error --fail-on-issues on the BROKEN rule (strict flags) ===
+Parsing Sigma rules
+Checking Sigma rules
+=== Issues ===
+issue=SigmahqFilenamePrefixIssue severity=medium description=The rule filename prefix doesn't match the SigmaHQ convention rule=/home/kali/director/projects/detection-as-code/phase3_broken_rule_demo/d2_schtasks_encoded_powershell.yml filename=d2_schtasks_encoded_powershell.yml logsource=SigmaLogSource(category='process_creation', product='windows', service=None, definition=None, source=SigmaRuleLocation(path=PosixPath('phase3_broken_rule_demo/d2_schtasks_encoded_powershell.yml'), line=None, char=None), custom_attributes=None) prefix=proc_creation_win_
+issue=SigmahqMitreLinkIssue severity=medium description=Rule has a MITRE link instead of a MITRE attack tag. Use e.g. - attack.t1053.003 rule=/home/kali/director/projects/detection-as-code/phase3_broken_rule_demo/d2_schtasks_encoded_powershell.yml link=https://attack.mitre.org/techniques/T1053/005/
+issue=SigmahqCategoryEventIdIssue severity=medium description=Rule uses a windows logsource category that doesn't require the use of an EventID field rule=/home/kali/director/projects/detection-as-code/phase3_broken_rule_demo/d2_schtasks_encoded_powershell.yml 
+issue=SigmahqTagsTechniquesWithoutTacticsIssue severity=medium description=A MITRE ATT&CK technique tag was found without its corresponding tactic name. (e.g. when using 'attack.t1059' you have to add 'attack.execution' as well) rule=/home/kali/director/projects/detection-as-code/phase3_broken_rule_demo/d2_schtasks_encoded_powershell.yml techniques=['attack.t1053.005'] missing_tactic=attack.persistence
+issue=SigmahqTagsTechniquesWithoutTacticsIssue severity=medium description=A MITRE ATT&CK technique tag was found without its corresponding tactic name. (e.g. when using 'attack.t1059' you have to add 'attack.execution' as well) rule=/home/kali/director/projects/detection-as-code/phase3_broken_rule_demo/d2_schtasks_encoded_powershell.yml techniques=['attack.t1053.005'] missing_tactic=attack.privilege-escalation
+issue=SigmahqInvalidFieldnameIssue severity=high description=A field name do not exist rule=/home/kali/director/projects/detection-as-code/phase3_broken_rule_demo/d2_schtasks_encoded_powershell.yml field=CommandlineArgs
+issue=SigmahqRedundantFieldIssue severity=high description=A field name is redundant (already covered by the logsource) rule=/home/kali/director/projects/detection-as-code/phase3_broken_rule_demo/d2_schtasks_encoded_powershell.yml field=EventID
+
+=== Summary ===
+Found 0 errors, 0 condition errors and 7 issues.
+No rule errors found.
+No condition errors found.
+
+Validation issue summary:
++-------+------------------------------------------+----------+--------------------------------------------------------------+
+| Count | Issue                                    | Severity | Description                                                  |
++-------+------------------------------------------+----------+--------------------------------------------------------------+
+| 2     | SigmahqTagsTechniquesWithoutTacticsIssue | MEDIUM   | A MITRE ATT&CK technique tag was found without its           |
+|       |                                          |          | corresponding tactic name. (e.g. when using 'attack.t1059'   |
+|       |                                          |          | you have to add 'attack.execution' as well)                  |
+| 1     | SigmahqFilenamePrefixIssue               | MEDIUM   | The rule filename prefix doesn't match the SigmaHQ           |
+|       |                                          |          | convention                                                   |
+| 1     | SigmahqMitreLinkIssue                    | MEDIUM   | Rule has a MITRE link instead of a MITRE attack tag. Use     |
+|       |                                          |          | e.g. - attack.t1053.003                                      |
+| 1     | SigmahqCategoryEventIdIssue              | MEDIUM   | Rule uses a windows logsource category that doesn't require  |
+|       |                                          |          | the use of an EventID field                                  |
+| 1     | SigmahqInvalidFieldnameIssue             | HIGH     | A field name do not exist                                    |
+| 1     | SigmahqRedundantFieldIssue               | HIGH     | A field name is redundant (already covered by the logsource) |
++-------+------------------------------------------+----------+--------------------------------------------------------------+
+Check failure
+EXIT CODE: 1
