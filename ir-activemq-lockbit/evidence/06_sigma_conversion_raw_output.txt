@@ -1,0 +1,24 @@
+=== d1_activemq_java_spawns_shell ===
+Parsing Sigma rules
+ParentImage="*\\java.exe" Image IN ("*\\cmd.exe", "*\\powershell.exe")
+
+=== d2_certutil_download_and_execute ===
+Parsing Sigma rules
+Image="*\\certutil.exe" CommandLine="*urlcache*"
+
+=== d3_anydesk_silent_install ===
+Parsing Sigma rules
+Image="*\\anydesk.exe" CommandLine="*--install*" CommandLine="*--silent*"
+
+=== d4_wevtutil_clear_logs ===
+Parsing Sigma rules
+Image="*\\wevtutil.exe" CommandLine="* cl *"
+
+=== d5_lockbit_builder_toolkit ===
+Parsing Sigma rules
+(Image="*\\keygen.exe" CommandLine="*-pubkey*" CommandLine="*-privkey*") OR (Image="*\\builder.exe" CommandLine="*-pubkey*")
+
+=== d6_ransom_note_dropped ===
+Parsing Sigma rules
+TargetFilename="*.README.txt*"
+

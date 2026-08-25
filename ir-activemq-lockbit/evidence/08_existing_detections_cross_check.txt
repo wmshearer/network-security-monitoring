@@ -1,0 +1,107 @@
+Cross-check: does each of the 6 splunk-detection-lab detections (evidence/detection_dev/*.spl
+in that project) fire against this dataset, run EXACTLY as stored (only index= changed from
+detection_lab to ir_activemq_lockbit; no other syntax touched)?
+
+Splunk auth: admin:[REDACTED] (local lab credential).
+
+=== d1_registry_run_key ===
+Original: index=detection_lab EventID=13 TargetObject="*\\Run\\*"
+Run as-is with only index swapped: index=ir_activemq_lockbit EventID=13 TargetObject="*\\Run\\*"
+count
+-----
+    1
+
+The single hit: 2026-04-24 01:42:54.256 PDT (2026-04-24 08:42:54 UTC), msiexec.exe writing
+HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run\SunJavaUpdateSched. This is
+the Java 8 installer registering its own legitimate auto-update entry during benign software
+setup, roughly 37 minutes BEFORE the ActiveMQ RCE (09:20:01 UTC). It is not attacker
+persistence. So the true result is 0 true positives, 1 false positive, against this
+intrusion's actual timeline.
+
+Escaping note (a genuine finding, not a detection outcome): re-running the same rule with a
+single backslash instead of the double-backslash literal stored in the .spl file
+(TargetObject="*\Run\*") returns 46 hits, because raw XML-extracted TargetObject values in
+this dataset contain single literal backslashes (confirmed directly:
+HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Runtime/Error\Enabled),
+not the doubled/escaped backslashes the original detection_lab project's JSON-sourced data
+apparently needed. Splunk's SPL wildcard matching treats a literal backslash in a quoted
+string differently depending on whether it is written once or twice, and the two counts
+(1 vs 46) are the direct, measured proof. This is reported as-is per the task instruction
+to run the detections unmodified; it is not fixed or adapted here, because doing so would
+misrepresent "would this detection, as it exists in that project today, have fired here."
+Manually inspecting the 46-hit set (see evidence/07_detection_scoring.txt companion notes)
+turns up mostly Sysmon/WINEVT channel-registration noise from LB3.exe itself plus one
+UI-notification entry tied to the AnyDesk install (RunNotification\AnyDesk.lnk, which is
+Explorer's own "new pinned app" bookkeeping, not attacker autorun), so even the corrected
+query would not have produced a clean persistence-technique true positive here; this
+intrusion's actual persistence mechanism (AnyDesk installed as a Windows SERVICE, not a
+Run key) is a different technique than D1 was built to catch.
+
+=== d2_schtasks_encoded_powershell ===
+Original: index=detection_lab EventID=1 Image="*schtasks.exe" CommandLine="*powershell*" CommandLine="*hidden*"
+Run as-is: index=ir_activemq_lockbit EventID=1 Image="*schtasks.exe" CommandLine="*powershell*" CommandLine="*hidden*"
+count
+-----
+    0
+
+No scheduled-task-based persistence observed in this intrusion (it used an AnyDesk service
+instead). Zero is the correct, expected result: this detection targets a technique this
+intrusion did not use.
+
+=== d3_net_localgroup_admins ===
+Original: index=detection_lab EventID=1 (Image="*\\net.exe" OR Image="*\\net1.exe") CommandLine="*localgroup*administ*"
+Run as-is: index=ir_activemq_lockbit EventID=1 (Image="*\\net.exe" OR Image="*\\net1.exe") CommandLine="*localgroup*administ*"
+count
+-----
+    0
+
+The attacker ran "net group \"Admins Domain\" /domain" (domain group enumeration), not
+"net localgroup administrators" (local admin group enumeration). Close but distinct
+command lines; this rule's exact substring match does not cover the variant actually used.
+A real, specific miss, not a data gap.
+
+=== d4_net_user_enum ===
+Original: index=detection_lab EventID=1 (Image="*\\net.exe" OR Image="*\\net1.exe") CommandLine="*user*" NOT CommandLine="*localgroup*"
+Run as-is: index=ir_activemq_lockbit EventID=1 (Image="*\\net.exe" OR Image="*\\net1.exe") CommandLine="*user*" NOT CommandLine="*localgroup*"
+count
+-----
+    2
+
+Both hits are real: "net user" and "net1 user" at 2026-04-24 10:02:51 UTC, the attacker's
+own local account enumeration during the discovery stage. This is a genuine true positive:
+this detection, unmodified, would have fired on this intrusion.
+
+=== d5_process_access_audiodg ===
+Original: index=detection_lab EventID=10 TargetImage="*AUDIODG.EXE"
+Run as-is: index=ir_activemq_lockbit EventID=10 TargetImage="*AUDIODG.EXE"
+count
+-----
+    0
+
+Zero for a structural reason, not a miss: EventID 10 (Sysmon ProcessAccess) does not occur
+anywhere in this dataset's Sysmon log at all (confirmed: the full EventID distribution has
+no "10" entry, see evidence/03_sysmon_eventid_distribution.txt). Sysmon ProcessAccess
+auditing (which also covers LSASS credential-dumping detection) was evidently not enabled
+in whatever Sysmon config produced this capture. This detection could not have fired
+regardless of what the attacker did, because the telemetry it depends on was never
+collected here.
+
+=== d6_powershell_spawns_recon_tool ===
+Original: index=detection_lab EventID=1 ParentImage="*powershell.exe" (Image="*\\net.exe" OR Image="*\\net1.exe" OR Image="*\\schtasks.exe")
+Run as-is: index=ir_activemq_lockbit EventID=1 ParentImage="*powershell.exe" (Image="*\\net.exe" OR Image="*\\net1.exe" OR Image="*\\schtasks.exe")
+count
+-----
+    0
+
+The attacker's discovery commands (net session, net view, net group, net user) were run
+from cmd.exe (via the Meterpreter/RCE shell and rdp.bat), not from a powershell.exe parent.
+Same recon behavior, different shell lineage; this parent-image constraint is what excludes
+it, a real and specific miss.
+
+=== Summary ===
+2 of 6 fire as true positives on real attacker activity in this intrusion (D4 clean; D1
+technically returns 1 row but it is a false positive, not the attacker, so the honest count
+of TRUE positives among the 6 is 1, not 2). 4 of 6 do not fire, for three distinct honest
+reasons: technique not used here (D2, scheduled tasks), close-but-not-exact command-line
+variant (D3, D6), and telemetry never collected in this capture (D5, no EventID 10 at all).
+Zero is a real, reportable finding for D2/D3/D5/D6, not a bug in the check.

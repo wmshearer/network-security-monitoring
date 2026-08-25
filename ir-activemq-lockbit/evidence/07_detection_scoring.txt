@@ -1,0 +1,36 @@
+=== d1_activemq_java_spawns_shell ===
+SPL: index=ir_activemq_lockbit source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventID=1 ParentImage="*\java.exe" Image IN ("*\cmd.exe", "*\powershell.exe")
+count
+-----
+    1
+
+=== d2_certutil_download_and_execute ===
+SPL: index=ir_activemq_lockbit source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventID=1 Image="*\certutil.exe" CommandLine="*urlcache*"
+count
+-----
+    3
+
+=== d3_anydesk_silent_install ===
+SPL: index=ir_activemq_lockbit source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventID=1 Image="*\anydesk.exe" CommandLine="*--install*" CommandLine="*--silent*"
+count
+-----
+    1
+
+=== d4_wevtutil_clear_logs ===
+SPL: index=ir_activemq_lockbit source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventID=1 Image="*\wevtutil.exe" CommandLine="* cl *"
+count
+-----
+    3
+
+=== d5_lockbit_builder_toolkit ===
+SPL: index=ir_activemq_lockbit source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventID=1 ((Image="*\keygen.exe" CommandLine="*-pubkey*" CommandLine="*-privkey*") OR (Image="*\builder.exe" CommandLine="*-pubkey*"))
+count
+-----
+    6
+
+=== d6_ransom_note_dropped ===
+SPL: index=ir_activemq_lockbit source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventID=11 TargetFilename="*.README.txt*"
+count
+-----
+  183
+

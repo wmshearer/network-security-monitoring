@@ -1,0 +1,5 @@
+                        source                            sourcetype   count
+------------------------------------------------------- -------------- -----
+XmlWinEventLog:Microsoft-Windows-PowerShell/Operational XmlWinEventLog 43104
+XmlWinEventLog:Microsoft-Windows-Sysmon/Operational     XmlWinEventLog 13462
+XmlWinEventLog:Security                                 XmlWinEventLog 16946

@@ -1,0 +1,4 @@
+                        source                          total exact_match min_d max_d
+------------------------------------------------------- ----- ----------- ----- -----
+XmlWinEventLog:Microsoft-Windows-PowerShell/Operational 43104       43104 0.000 0.000
+XmlWinEventLog:Security                                 16946       16946 0.000 0.000

@@ -1,0 +1,36 @@
+title: AnyDesk Silent Unattended Install
+id: a1c4f9d2-3e6a-4b8d-bf5c-3b8a9d2e1c34
+status: experimental
+description: |
+  AnyDesk installed with --start-with-win --silent, immediately followed by
+  a --set-password call. This is the exact remote-access persistence pattern
+  documented in this intrusion: a legitimate remote-support tool installed
+  as a Windows service for unattended access, its password set by the
+  attacker, then queried with --get-id to retrieve the connection identifier.
+  AnyDesk is a real, widely-used administration tool, so this rule targets
+  the SILENT unattended install flags specifically, not AnyDesk use in
+  general, to reduce noise against environments where it is deployed
+  normally (interactively, without --silent).
+references:
+  - https://thedfirreport.com/2026/02/23/apache-activemq-exploit-leads-to-lockbit-ransomware/
+author: IR portfolio
+date: 2026-08-24
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection:
+    Image|endswith: '\anydesk.exe'
+    CommandLine|contains|all:
+      - '--install'
+      - '--silent'
+  condition: selection
+falsepositives:
+  - Legitimate mass-deployment of AnyDesk via the same silent-install flags
+    (e.g. an MSP or IT team scripting a fleet rollout). Verify against
+    change-management records before treating a hit as malicious.
+level: high
+tags:
+  - attack.persistence
+  - attack.command_and_control
+  - attack.t1219
