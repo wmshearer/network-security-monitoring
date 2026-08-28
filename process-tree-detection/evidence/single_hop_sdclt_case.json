@@ -1,0 +1,449 @@
+{
+  "rules_naming_sdclt_or_uac_bypass": [
+    {
+      "rule_id": "40f9af16-589d-4984-b78d-8c2aec023197",
+      "title": "Potential UAC Bypass Via Sdclt.EXE",
+      "level": "medium",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "e52cb31c-10ed-4aea-bcb7-593c9f4a315b",
+      "title": "UAC Bypass via Windows Firewall Snap-In Hijack",
+      "level": "medium",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "da2738f2-fadb-4394-afa7-0a0674885afa",
+      "title": "Sdclt Child Processes",
+      "level": "medium",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "4f6c43e2-f989-4ea5-bcd8-843b49a0317c",
+      "title": "UAC Bypass Using WOW64 Logger DLL Hijack",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "9ed5959a-c43c-4c59-84e3-d28628429456",
+      "title": "UAC Bypass Using Iscsicpl - ImageLoad",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "a5ea83a7-05a5-44c1-be2e-addccbbd8c03",
+      "title": "UAC Bypass With Fake DLL",
+      "level": "high",
+      "tags": [
+        "attack.persistence",
+        "attack.privilege-escalation",
+        "attack.execution",
+        "attack.stealth",
+        "attack.t1548.002",
+        "attack.t1574.001"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "80fc36aa-945e-4181-89f2-2f907ab6775d",
+      "title": "UAC Bypass Using IEInstal - Process",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "0058b9e5-bcd7-40d4-9205-95ca5a16d7b2",
+      "title": "UAC Bypass Using Windows Media Player - Process",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "7a01183d-71a2-46ad-ad5c-acd989ac1793",
+      "title": "UAC Bypass Abusing Winsat Path Parsing - Process",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "3c05e90d-7eba-4324-9972-5d7f711a60a8",
+      "title": "UAC Bypass Tools Using ComputerDefaults",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "1ca6bd18-0ba0-44ca-851c-92ed89a61085",
+      "title": "UAC Bypass Using Consent and Comctl32 - Process",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "503d581c-7df0-4bbe-b9be-5840c0ecc1fc",
+      "title": "UAC Bypass Using ChangePK and SLUI",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "89a9a0e0-f61a-42e5-8957-b1479565a658",
+      "title": "UAC Bypass WSReset",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "4cbef972-f347-4170-b62a-8253f6168e6d",
+      "title": "UAC Bypass Using IDiagnostic Profile",
+      "level": "high",
+      "tags": [
+        "attack.execution",
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "30fc8de7-d833-40c4-96b6-28319fbc4f6c",
+      "title": "UAC Bypass Using Event Viewer RecentViews",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.stealth"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "853e74f9-9392-4935-ad3b-2e8c040dae86",
+      "title": "UAC Bypass Using DismHost",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "ad92e3f9-7eb6-460e-96b1-582b0ccbb980",
+      "title": "UAC Bypass Using MSConfig Token Modification - Process",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "b697e69c-746f-4a86-9f59-7bfff8eab881",
+      "title": "UAC Bypass Using Disk Cleanup",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "39ed3c80-e6a1-431b-9df3-911ac53d08a7",
+      "title": "UAC Bypass Using NTFS Reparse Point - Process",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "4b60e6f2-bf39-47b4-b4ea-398e33cfe253",
+      "title": "CMSTP UAC Bypass via COM Object Access",
+      "level": "high",
+      "tags": [
+        "attack.execution",
+        "attack.privilege-escalation",
+        "attack.stealth",
+        "attack.t1548.002",
+        "attack.t1218.003",
+        "attack.g0069",
+        "car.2019-04-001"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "49f2f17b-b4c8-4172-a68b-d5bf95d05130",
+      "title": "UAC Bypass via ICMLuaUtil",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "a743ceba-c771-4d75-97eb-8a90f7f4844c",
+      "title": "UAC Bypass Using PkgMgr and DISM",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "6597be7b-ac61-4ac8-bef4-d3ec88174853",
+      "title": "UAC Bypass Abusing Winsat Path Parsing - Registry",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "5b872a46-3b90-45c1-8419-f675db8053aa",
+      "title": "UAC Bypass via Sdclt",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002",
+        "car.2019-04-001"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "07743f65-7ec9-404a-a519-913db7118a8d",
+      "title": "COM Hijack via Sdclt",
+      "level": "high",
+      "tags": [
+        "attack.persistence",
+        "attack.privilege-escalation",
+        "attack.t1546",
+        "attack.t1548"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "7c81fec3-1c1d-43b0-996a-46753041b1b6",
+      "title": "UAC Bypass via Event Viewer",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002",
+        "car.2019-04-001"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "5f9db380-ea57-4d1e-beab-8a2d33397e93",
+      "title": "UAC Bypass Using Windows Media Player - Registry",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "6ea3bf32-9680-422d-9f50-e90716b12a66",
+      "title": "UAC Bypass Via Wsreset",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "48ea844d-19b1-4642-944e-fe39c2cc1fec",
+      "title": "UAC Bypass Using IDiagnostic Profile - File",
+      "level": "high",
+      "tags": [
+        "attack.execution",
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "63e4f530-65dc-49cc-8f80-ccfa95c69d43",
+      "title": "UAC Bypass Using EventVwr",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.stealth"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "93a19907-d4f9-4deb-9f91-aac4692776a6",
+      "title": "UAC Bypass Using .NET Code Profiler on MMC",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "155dbf56-e0a4-4dd0-8905-8a98705045e8",
+      "title": "UAC Bypass Abusing Winsat Path Parsing - File",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "68578b43-65df-4f81-9a9b-92f32711a951",
+      "title": "UAC Bypass Using Windows Media Player - File",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "7fff6773-2baa-46de-a24a-b6eec1aba2d1",
+      "title": "UAC Bypass Using NTFS Reparse Point - File",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "bdd8157d-8e85-4397-bb82-f06cc9c71dbb",
+      "title": "UAC Bypass Using IEInstal - File",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "62ed5b55-f991-406a-85d9-e8e8fdf18789",
+      "title": "UAC Bypass Using Consent and Comctl32 - File",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "41bb431f-56d8-4691-bb56-ed34e390906f",
+      "title": "UAC Bypass Using MSConfig Token Modification - File",
+      "level": "high",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "3268b746-88d8-4cd3-bffc-30077d02c787",
+      "title": "HackTool - Empire PowerShell UAC Bypass",
+      "level": "critical",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002",
+        "car.2019-04-001"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "4ac47ed3-44c2-4b1f-9d51-bf46e8914126",
+      "title": "TrustedPath UAC Bypass Pattern",
+      "level": "critical",
+      "tags": [
+        "attack.privilege-escalation",
+        "attack.t1548.002"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 0
+    }
+  ]
+}
