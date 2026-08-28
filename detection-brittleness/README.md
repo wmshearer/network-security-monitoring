@@ -105,8 +105,14 @@ python3 -m pytest tests/ -q
 ```
 
 Every script is idempotent: re-running from scratch reproduces the same
-evidence files (Zircolite's rule matching is deterministic against static
-input).
+evidence files. Zircolite's rule matching is deterministic against static
+input, and a regression test (`test_matrix_rebuild_is_byte_stable`) rebuilds
+the matrix twice and compares hashes, so a drift like the one described below
+fails the suite instead of going unnoticed.
+
+That claim was not true when this project was first written, and the way it
+failed is worth reading before trusting any similar number. See "A counting bug
+found in this project's own code".
 
 ## Why two corpora formats needed different handling
 

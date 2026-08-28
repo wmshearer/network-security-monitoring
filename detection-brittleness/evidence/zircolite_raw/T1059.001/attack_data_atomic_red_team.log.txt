@@ -1,6 +1,6 @@
 cmd: /home/kali/director/projects/detection-as-code/.venv/bin/python3 /home/kali/director/projects/detection-as-code/vendor/Zircolite/zircolite.py -e /home/kali/director/projects/detection-brittleness/evidence/samples/T1059.001/attack_data_atomic_red_team -x -r /home/kali/director/projects/detection-as-code/vendor/Zircolite/rules/rules_windows_merged.json -o /home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1059.001/attack_data_atomic_red_team.json
 returncode: 0
-duration_s: 10.38
+duration_s: 9.50
 
 --- stdout ---
 
@@ -25,9 +25,9 @@ pairs)
 ────────────────────────────────── Processing ──────────────────────────────────
 [+] Analyzing workload...
     [>] Files           4 (37.2 MB total, avg 9.3 MB)                           
-    [>] System          45.0 GB RAM available, 20 CPUs                          
+    [>] System          45.6 GB RAM available, 20 CPUs                          
     [>] DB Mode         PER-FILE                                                
-                        Sufficient RAM available (45.0 GB) with 4 files -       
+                        Sufficient RAM available (45.6 GB) with 4 files -       
                         parallel processing enabled                             
     [>] Parallel        ENABLED (4 workers)                                     
 
@@ -35,7 +35,7 @@ pairs)
 
 
 
-[+] Processed: 4 files │ 21,942 events │ 9.2s │ 2,380 events/s                  
+[+] Processed: 4 files │ 21,942 events │ 8.4s │ 2,603 events/s                  
 ────────────────────────────── Detection Results ───────────────────────────────
 
 ┏━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -137,9 +137,9 @@ pairs)
 └────────────────┴─────────────────────────┴──────────┴────────────────────────┘
 
 Processed 4 files
-├── get_ciminstance_windows-powershell.xml — 6 events — 0 detections
-├── 4104-psremoting-windows-powershell.xml — 8 events — 1 detection
 ├── start_stop_service_windows-powershell.xml — 2 events — 0 detections
+├── 4104-psremoting-windows-powershell.xml — 8 events — 1 detection
+├── get_ciminstance_windows-powershell.xml — 6 events — 0 detections
 └── windows-sysmon.xml — 21,926 events — 33 detections
 
 [+] Total events processed: 21,942 (0 filtered out by log source)               
@@ -147,14 +147,14 @@ Processed 4 files
 
 ╭───────────────────────────────── ✨ Summary ─────────────────────────────────╮
 │                                                                              │
-│    ⏱  Duration         9.3s                                                  │
-│                            ├─ Processing  ███████████████░  9.3s (100%)      │
+│    ⏱  Duration         8.5s                                                  │
+│                            ├─ Processing  ███████████████░  8.5s (100%)      │
 │    📁 Files            4                                                     │
 │    📊 Events           21,942 (0 filtered out — every event matched a        │
 │                        rule's log source)                                    │
-│    ⚡ Throughput       2,356 events/s                                        │
+│    ⚡ Throughput       2,577 events/s                                        │
 │    👥 Workers          4                                                     │
-│    💾 Peak Memory      204.09 MB                                             │
+│    💾 Peak Memory      188.19 MB                                             │
 │    🎯 Detections       157 HIGH │ 223 MED │ 147 LOW │ 118 INFO               │
 │    📏 Coverage         34/4319 rules matched (0.8%)  ░░░░░░░░░░░░░░░░        │
 │    🔍 Matched          645 events across 34 rules                            │

@@ -1,6 +1,6 @@
 cmd: /home/kali/director/projects/detection-as-code/.venv/bin/python3 /home/kali/director/projects/detection-as-code/vendor/Zircolite/zircolite.py -e /home/kali/director/projects/detection-brittleness/evidence/samples/T1059.001/attack_data_snapattack -x -r /home/kali/director/projects/detection-as-code/vendor/Zircolite/rules/rules_windows_merged.json -o /home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1059.001/attack_data_snapattack.json
 returncode: 0
-duration_s: 2.26
+duration_s: 2.24
 
 --- stdout ---
 
@@ -25,7 +25,7 @@ pairs)
 ────────────────────────────────── Processing ──────────────────────────────────
 [+] Analyzing workload...
     [>] Files           1 (132.3 KB total, avg 132.3 KB)                    
-    [>] System          45.0 GB RAM available, 20 CPUs                      
+    [>] System          45.7 GB RAM available, 20 CPUs                      
     [>] DB Mode         PER-FILE                                            
                         Single file detected                                
     [>] Parallel        disabled - Single file - parallel not applicable    
@@ -79,13 +79,13 @@ pairs)
 
 ╭───────────────────────────────── ✨ Summary ─────────────────────────────────╮
 │                                                                              │
-│    ⏱  Duration         1.2s                                                  │
+│    ⏱  Duration         1.3s                                                  │
 │                            ├─ Processing  ███████████████░  1.2s (97%)       │
 │    📁 Files            1                                                     │
 │    📊 Events           6 (0 filtered out — every event matched a rule's      │
 │                        log source)                                           │
 │    ⚡ Throughput       5 events/s                                            │
-│    💾 Peak Memory      104.87 MB                                             │
+│    💾 Peak Memory      105.20 MB                                             │
 │    🎯 Detections       4 HIGH │ 4 MED │ 2 LOW                                │
 │    📏 Coverage         9/4319 rules matched (0.2%)  ░░░░░░░░░░░░░░░░         │
 │    🔍 Matched          10 events across 9 rules                              │

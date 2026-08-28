@@ -1,6 +1,6 @@
 cmd: /home/kali/director/projects/detection-as-code/.venv/bin/python3 /home/kali/director/projects/detection-as-code/vendor/Zircolite/zircolite.py -e /home/kali/director/projects/detection-brittleness/evidence/samples/T1059.001/evtx_to_mitre_attack -r /home/kali/director/projects/detection-as-code/vendor/Zircolite/rules/rules_windows_merged.json -o /home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1059.001/evtx_to_mitre_attack.json
 returncode: 0
-duration_s: 5.76
+duration_s: 5.40
 
 --- stdout ---
 
@@ -27,16 +27,16 @@ pairs)
 [+] Auto-detected timestamp field: SystemTime                                   
 [+] Analyzing workload...
     [>] Files           3 (2.2 MB total, avg 750.7 KB)                          
-    [>] System          45.0 GB RAM available, 20 CPUs                          
+    [>] System          45.7 GB RAM available, 20 CPUs                          
     [>] DB Mode         PER-FILE                                                
-                        Sufficient RAM available (45.0 GB) with 3 files -       
+                        Sufficient RAM available (45.7 GB) with 3 files -       
                         parallel processing enabled                             
     [>] Parallel        ENABLED (3 workers)                                     
 
 
 
 
-[+] Processed: 3 files │ 92 events │ 4.7s │ 20 events/s                         
+[+] Processed: 3 files │ 92 events │ 4.3s │ 21 events/s                         
 ────────────────────────────── Detection Results ───────────────────────────────
 
 ┏━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -87,14 +87,14 @@ Processed 3 files
 
 ╭───────────────────────────────── ✨ Summary ─────────────────────────────────╮
 │                                                                              │
-│    ⏱  Duration         4.7s                                                  │
-│                            ├─ Processing  ███████████████░  4.7s (99%)       │
+│    ⏱  Duration         4.4s                                                  │
+│                            ├─ Processing  ███████████████░  4.4s (99%)       │
 │    📁 Files            3                                                     │
 │    📊 Events           92 (0 filtered out — every event matched a rule's     │
 │                        log source)                                           │
-│    ⚡ Throughput       19 events/s                                           │
+│    ⚡ Throughput       21 events/s                                           │
 │    👥 Workers          3                                                     │
-│    💾 Peak Memory      143.73 MB                                             │
+│    💾 Peak Memory      127.60 MB                                             │
 │    🎯 Detections       8 HIGH │ 9 MED │ 2 LOW                                │
 │    📏 Coverage         10/4319 rules matched (0.2%)  ░░░░░░░░░░░░░░░░        │
 │    🔍 Matched          19 events across 10 rules                             │

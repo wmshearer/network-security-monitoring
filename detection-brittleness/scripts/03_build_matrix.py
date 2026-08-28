@@ -64,8 +64,25 @@ def main() -> None:
                 rid = m["id"]
                 if rid not in eligible:
                     continue  # rule fired but isn't tagged for this technique; out of scope for this matrix
-                rules_seen.setdefault(rid, {"title": m["title"], "level": m.get("rule_level"), "counts": {}})
-                rules_seen[rid]["counts"][gname] = m.get("count", 0)
+                # A single rule id can appear more than once inside one group: the
+                # ruleset compiles some Sigma rules once per log-source variant
+                # ("- Sysmon" and "- Generic") and both variants keep the same id.
+                #
+                # Two things have to be order-independent here, because the order
+                # matches arrive in is not stable across runs:
+                #
+                #   title  - pick the alphabetically first variant title rather than
+                #            whichever arrived first, so the reported name is fixed.
+                #   counts - ADD each variant's matches instead of assigning. A plain
+                #            assignment let the last variant overwrite the earlier
+                #            one, which silently dropped real matches (one rule
+                #            reported 5 or 9 for the same data depending on order).
+                entry = rules_seen.setdefault(
+                    rid, {"title": m["title"], "level": m.get("rule_level"), "counts": {}}
+                )
+                if m["title"] < entry["title"]:
+                    entry["title"] = m["title"]
+                entry["counts"][gname] = entry["counts"].get(gname, 0) + m.get("count", 0)
 
         lines.append(f"=== {technique} ===")
         lines.append(f"Eligible (technique-tagged) distinct Sigma rule IDs in ruleset: {len(eligible)} "

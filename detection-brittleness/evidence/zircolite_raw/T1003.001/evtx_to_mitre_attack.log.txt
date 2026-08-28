@@ -1,6 +1,6 @@
 cmd: /home/kali/director/projects/detection-as-code/.venv/bin/python3 /home/kali/director/projects/detection-as-code/vendor/Zircolite/zircolite.py -e /home/kali/director/projects/detection-brittleness/evidence/samples/T1003.001/evtx_to_mitre_attack -r /home/kali/director/projects/detection-as-code/vendor/Zircolite/rules/rules_windows_merged.json -o /home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1003.001/evtx_to_mitre_attack.json
 returncode: 0
-duration_s: 24.95
+duration_s: 22.82
 
 --- stdout ---
 
@@ -27,9 +27,9 @@ pairs)
 [+] Auto-detected timestamp field: SystemTime                                   
 [+] Analyzing workload...
     [>] Files           8 (544.0 KB total, avg 68.0 KB)                         
-    [>] System          44.4 GB RAM available, 20 CPUs                          
+    [>] System          45.6 GB RAM available, 20 CPUs                          
     [>] DB Mode         PER-FILE                                                
-                        Sufficient RAM available (44.4 GB) with 8 files -       
+                        Sufficient RAM available (45.6 GB) with 8 files -       
                         parallel processing enabled                             
     [>] Parallel        ENABLED (8 workers)                                     
 
@@ -41,7 +41,7 @@ pairs)
 
 
 
-[+] Processed: 8 files │ 110 events │ 23.8s │ 5 events/s                        
+[+] Processed: 8 files │ 110 events │ 21.7s │ 5 events/s                        
 ────────────────────────────── Detection Results ───────────────────────────────
 
 ┏━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -50,48 +50,52 @@ pairs)
 │    CRITICAL    │ HackTool - Mimikatz     │        1 │ T1558                  │
 │                │ Kirbi File Creation     │          │                        │
 │      HIGH      │ Process Memory Dump Via │        2 │ T1036, T1003.001       │
-│                │ Comsvcs.DLL - Sysmon    │          │                        │
-│      HIGH      │ Process Memory Dump Via │        2 │ T1036, T1003.001       │
 │                │ Comsvcs.DLL - Generic   │          │                        │
+│      HIGH      │ Process Memory Dump Via │        2 │ T1036, T1003.001       │
+│                │ Comsvcs.DLL - Sysmon    │          │                        │
 │      HIGH      │ LSASS Process Memory    │        1 │ T1003.001              │
 │                │ Dump Files              │          │                        │
 │      HIGH      │ LSASS Process Memory    │        1 │ T1003.001              │
 │                │ Dump Creation Via       │          │                        │
 │                │ Taskmgr.EXE             │          │                        │
+│      HIGH      │ Security Eventlog       │        1 │ T1685.005              │
+│                │ Cleared                 │          │                        │
+│      HIGH      │ HackTool - Mimikatz     │        1 │ T1003.001, T1003.002,… │
+│                │ Execution - Sysmon      │          │                        │
+│      HIGH      │ HackTool - Generic      │        1 │ T1003.001              │
+│                │ Process Access          │          │                        │
 │      HIGH      │ PowerShell Get-Process  │        1 │ T1003.001              │
 │                │ LSASS in ScriptBlock    │          │                        │
+│      HIGH      │ LSASS Dump Keyword In   │        1 │ T1003.001              │
+│                │ CommandLine - Generic   │          │                        │
+│      HIGH      │ PowerShell Get-Process  │        1 │ T1552.004              │
+│                │ LSASS - Generic         │          │                        │
 │      HIGH      │ LSASS Dump Keyword In   │        1 │ T1003.001              │
 │                │ CommandLine - Sysmon    │          │                        │
 │      HIGH      │ PowerShell Get-Process  │        1 │ T1552.004              │
 │                │ LSASS - Sysmon          │          │                        │
 │      HIGH      │ Lsass Memory Dump via   │        1 │ T1003.001              │
 │                │ Comsvcs DLL             │          │                        │
-│      HIGH      │ HackTool - Mimikatz     │        1 │ T1003.001, T1003.002,… │
-│                │ Execution - Sysmon      │          │                        │
-│      HIGH      │ HackTool - Generic      │        1 │ T1003.001              │
-│                │ Process Access          │          │                        │
-│      HIGH      │ Security Eventlog       │        1 │ T1685.005              │
-│                │ Cleared                 │          │                        │
-│      HIGH      │ LSASS Dump Keyword In   │        1 │ T1003.001              │
-│                │ CommandLine - Generic   │          │                        │
-│      HIGH      │ PowerShell Get-Process  │        1 │ T1552.004              │
-│                │ LSASS - Generic         │          │                        │
 │     MEDIUM     │ Potentially Suspicious  │        5 │ T1003.001              │
 │                │ AccessMask Requested    │          │                        │
 │                │ From LSASS              │          │                        │
 │     MEDIUM     │ Suspicious Access to    │        3 │ T1039                  │
 │                │ Sensitive File          │          │                        │
 │                │ Extensions              │          │                        │
-│     MEDIUM     │ Potentially Suspicious  │        2 │ T1218.011              │
-│                │ Rundll32 Activity -     │          │                        │
-│                │ Sysmon                  │          │                        │
 │     MEDIUM     │ LSASS Access From Non   │        2 │ T1003.001              │
 │                │ System Account          │          │                        │
 │     MEDIUM     │ Potentially Suspicious  │        2 │ T1218.011              │
 │                │ Rundll32 Activity -     │          │                        │
 │                │ Generic                 │          │                        │
+│     MEDIUM     │ Potentially Suspicious  │        2 │ T1218.011              │
+│                │ Rundll32 Activity -     │          │                        │
+│                │ Sysmon                  │          │                        │
 │     MEDIUM     │ Potential Suspicious    │        1 │ T1059.001              │
 │                │ PowerShell Keywords     │          │                        │
+│     MEDIUM     │ Potentially Suspicious  │        1 │ T1059.001              │
+│                │ Powershell Script       │          │                        │
+│                │ Execution From Temp     │          │                        │
+│                │ Folder - Generic        │          │                        │
 │     MEDIUM     │ Potential WMI Lateral   │        1 │ T1047, T1059.001       │
 │                │ Movement WmiPrvSE       │          │                        │
 │                │ Spawned PowerShell -    │          │                        │
@@ -102,10 +106,6 @@ pairs)
 │                │ Folder - Sysmon         │          │                        │
 │     MEDIUM     │ WmiPrvSE Spawned A      │        1 │ T1047                  │
 │                │ Process - Sysmon        │          │                        │
-│     MEDIUM     │ Potentially Suspicious  │        1 │ T1059.001              │
-│                │ Powershell Script       │          │                        │
-│                │ Execution From Temp     │          │                        │
-│                │ Folder - Generic        │          │                        │
 │       LOW      │ Suspicious Process      │        2 │ T1057                  │
 │                │ Discovery With          │          │                        │
 │                │ Get-Process             │          │                        │
@@ -115,41 +115,41 @@ pairs)
 └────────────────┴─────────────────────────┴──────────┴────────────────────────┘
 
 Processed 8 files
-├── ID11-LSASS credentials dump via Task Manager.evtx — 1 events — 2 detections
-├── ID800-4103-4104-LSASS dump with LSASSY (PowerShell).evtx — 54 events — 3 
-│   detections — 2 filtered
 ├── ID11-Mimikatz LSA SSP clear text password exfiltration.evtx — 1 events — 1 
 │   detection
+├── ID11-LSASS credentials dump via Task Manager.evtx — 1 events — 2 detections
 ├── ID4663-Task Manager used to dump LSASS process.evtx — 2 events — 0 
 │   detections
-├── ID1-LSASS dump with LSASSY (SYSMON).evtx — 14 events — 9 detections
-├── ID10-Mimikatz LSASS process dump.evtx — 3 events — 2 detections
 ├── ID4656-4663-4658 Mimikatz sekurlsa password dump.evtx — 7 events — 3 
 │   detections
-└── ID4688-4663-4656-LSASS dump with LSASSY (process).evtx — 28 events — 8 
-    detections
+├── ID10-Mimikatz LSASS process dump.evtx — 3 events — 2 detections
+├── ID800-4103-4104-LSASS dump with LSASSY (PowerShell).evtx — 54 events — 3 
+│   detections — 2 filtered
+├── ID4688-4663-4656-LSASS dump with LSASSY (process).evtx — 28 events — 8 
+│   detections
+└── ID1-LSASS dump with LSASSY (SYSMON).evtx — 14 events — 9 detections
 
 [+] Total events processed: 110 (2 filtered out by log source)                  
 ─────────────────────────────────── Results ────────────────────────────────────
 
 ╭───────────────────────────────── ✨ Summary ─────────────────────────────────╮
 │                                                                              │
-│    ⏱  Duration         23.8s                                                 │
-│                            ├─ Processing  ███████████████░  23.8s (100%)     │
+│    ⏱  Duration         21.8s                                                 │
+│                            ├─ Processing  ███████████████░  21.8s (100%)     │
 │    📁 Files            8                                                     │
 │    📊 Events           110 (2 filtered out — 98.2% match rate)               │
 │    ⚡ Throughput       5 events/s                                            │
 │    👥 Workers          8                                                     │
-│    💾 Peak Memory      229.55 MB                                             │
+│    💾 Peak Memory      215.06 MB                                             │
 │    🎯 Detections       1 CRIT │ 15 HIGH │ 19 MED │ 3 LOW                     │
 │    📏 Coverage         21/4319 rules matched (0.5%)  ░░░░░░░░░░░░░░░░        │
 │    🔍 Matched          38 events across 21 rules                             │
 │    📋 Top Hits         CRIT HackTool - Mimikatz Kirbi File Creation (1)      │
-│                        HIGH Process Memory Dump Via Comsvcs.DLL - Sysmon     │
+│                        HIGH Process Memory Dump Via Comsvcs.DLL - Generic    │
 │                        (4)                                                   │
-│                        HIGH LSASS Dump Keyword In CommandLine - Sysmon       │
+│                        HIGH LSASS Dump Keyword In CommandLine - Generic      │
 │                        (2)                                                   │
-│                        HIGH PowerShell Get-Process LSASS - Sysmon (2)        │
+│                        HIGH PowerShell Get-Process LSASS - Generic (2)       │
 │                        HIGH LSASS Process Memory Dump Files (1)              │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯

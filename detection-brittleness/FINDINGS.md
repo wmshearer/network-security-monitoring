@@ -47,8 +47,8 @@ Result, from `evidence/04_miss_diagnosis.txt`
 
 | Cause | Count (individual rule-group miss pairs, both techniques combined) |
 |---|---|
-| **Telemetry absent** -- the rule's target EventID never occurs anywhere in that group's raw data | 36 |
-| **Logic too narrow** -- the EventID is present, but the rule's field/value match still did not fire | 51 |
+| **Telemetry absent**: the rule's target EventID never occurs anywhere in that group's raw data | 36 |
+| **Logic too narrow**: the EventID is present, but the rule's field/value match still did not fire | 51 |
 | Undetermined (this group's EventIDs could not be read) | 0 |
 | Unknown (SQL parse failed) | 0 |
 
@@ -56,7 +56,7 @@ Both counts are non-zero and neither dominates completely, which is itself
 informative: this is not a pure corpus-format artifact (that would show
 ~100% telemetry-absent) and it is not proof every rule is badly written
 either (some genuinely never had eligible data to test against). It is a mix,
-and the two causes require completely different fixes -- telemetry gaps are
+and the two causes require completely different fixes. Telemetry gaps are
 closed by turning on more logging, logic gaps are closed by rewriting the
 rule. Conflating them, as the build brief for this project warns, is exactly
 the mistake this exists to avoid.
@@ -295,3 +295,82 @@ live Navigator web app. Splunk Web was not used (its local admin password is
 intentionally not stored anywhere accessible to this project, a deliberate
 security decision from a prior incident, not a gap in this one), and this
 project's scoring does not depend on Splunk at all.
+
+## A counting bug found in this project's own code
+
+Two defects were found in this project's own analysis scripts after the first
+version was written. Both are recorded here rather than quietly fixed, because
+each one produced a confident, plausible, wrong number, which is the same
+failure this project studies in detection rules.
+
+### Defect 1: misses in binary files were all blamed on missing telemetry
+
+`scripts/04_diagnose_misses.py` sorts every miss into one of two causes:
+the event type the rule needs was never recorded (telemetry absent), or the
+event type was there and the rule's match still failed (logic too narrow).
+
+It decided which by extracting EventIDs from the sample data as text. Two of
+the four sample groups are `.evtx` files, which are a binary format. The
+extractor read nothing out of them, so their EventID lists came back empty, and
+an empty list meant every miss in those groups fell through to "telemetry
+absent" by default.
+
+| Cause | Before the fix | After the fix |
+|---|---|---|
+| Telemetry absent | 60 | 36 |
+| Logic too narrow | 27 | 51 |
+| Undetermined | not a category | 0 |
+| Total misses | 87 | 87 |
+
+The total is unchanged because nothing was re-scored. The same 87 misses were
+re-sorted. 38 of the original 60 "telemetry absent" calls came from the two
+groups whose EventIDs could not be read at all, and "logic too narrow" was
+never once assigned in those groups because the default swallowed it.
+
+The corrected split says close to the opposite of the original. Most misses are
+not caused by telemetry that was never collected. Most are rules whose matching
+logic was too specific for data that did contain the right kind of event.
+
+The fix reads EventIDs from Zircolite's own decoding of the EVTX files, using
+`--no-event-filter --keepflat -n` so that every parsed event is dumped rather
+than only those that matched a rule. Reading the ordinary run's output instead
+would have reproduced a smaller version of the same bug: for one group it lists
+7 distinct EventIDs where the full dump finds 16. A new `UNDETERMINED` outcome
+now exists so that an unreadable group is reported as unreadable instead of
+silently defaulting to a real-looking answer.
+
+### Defect 2: matches were being overwritten instead of added up
+
+`scripts/03_build_matrix.py` recorded each rule's per-group match count with an
+assignment. Some Sigma rules in this ruleset compile twice, once per log source
+("- Sysmon" and "- Generic"), and both copies keep the same rule id. When both
+matched in the same group, the second one's count replaced the first one's
+instead of adding to it.
+
+Two things followed. Counts were too low: one rule's real total in
+`attack_data_atomic_red_team` is 14, and the old code reported 5 or 9 depending
+on the order the matches happened to arrive in. And the numbers moved between
+runs on identical input, which is how the bug was noticed, along with rule
+titles flipping between their "Sysmon" and "Generic" spelling.
+
+Counts are now summed across variants and the reported title is the
+alphabetically first one, so neither depends on arrival order. Two tests pin
+this: one rebuilds the matrix twice and compares hashes, the other recomputes
+every per-group total straight from the raw Zircolite output and compares it to
+the matrix. Both were checked against the old code and both fail on it.
+
+**The headline numbers did not change.** T1003.001 still has 71 eligible rules,
+22 that fired somewhere, and 0 that fired in every group. T1059.001 still has
+208, 21, and 1. The bug affected how many times a rule was counted as matching,
+not whether it matched, and every survival claim in this document rests on
+whether, not how many.
+
+### Why both are in the writeup
+
+A rule that returns nothing because its field name was wrong looks exactly like
+a rule that correctly found nothing. A classifier that defaults to one category
+when its input is empty looks exactly like a classifier that examined the input.
+A counter that overwrites looks exactly like a counter that counts. In all three
+cases the output is confident and shows no error. That is the argument this
+project makes about detection rules, and the code written to make it had the
+same flaw twice.

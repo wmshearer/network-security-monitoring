@@ -227,3 +227,67 @@ def test_corpus_licence_verified_verbatim(corpus_dir, license_file, expected_sni
     _require_corpus(path)
     text = path.read_text(errors="replace")
     assert expected_snippet in text
+
+
+# ---------------------------------------------------------------------------
+# Matrix determinism
+#
+# A rule id can appear more than once inside a single group, because the ruleset
+# compiles some Sigma rules once per log-source variant ("- Sysmon" and
+# "- Generic") and both variants keep the same id. The matrix builder originally
+# assigned each variant's count to the group instead of adding it, so the last
+# variant processed overwrote the earlier one. Re-running the pipeline then
+# produced a different number for the same static input (one rule reported 5 in
+# one run and 9 in the next) and the reported title flipped between variants.
+#
+# These tests pin the fix: counts are summed, and the title is chosen
+# alphabetically rather than by arrival order.
+# ---------------------------------------------------------------------------
+
+def test_matrix_rebuild_is_byte_stable():
+    """Rebuilding the matrix twice from the same raw output must not change it."""
+    import subprocess, hashlib
+    script = ROOT / "scripts" / "03_build_matrix.py"
+    raw = EVIDENCE / "zircolite_raw"
+    if not script.exists() or not raw.exists():
+        pytest.skip("matrix builder or raw Zircolite output not present")
+
+    def _rebuild_hash():
+        subprocess.run(["python3", str(script)], check=True,
+                       capture_output=True, cwd=str(ROOT))
+        payload = json.loads((EVIDENCE / "03_matrix.json").read_text())
+        return hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
+
+    assert _rebuild_hash() == _rebuild_hash(), (
+        "matrix changed between two rebuilds from identical input; "
+        "the per-variant merge is order dependent again"
+    )
+
+
+def test_multi_variant_rule_counts_are_summed_not_overwritten():
+    """A rule compiled to several log-source variants must total all its matches."""
+    matrix_path = EVIDENCE / "03_matrix.json"
+    if not matrix_path.exists():
+        pytest.skip("matrix not built")
+    raw_dir = EVIDENCE / "zircolite_raw"
+    if not raw_dir.exists():
+        pytest.skip("raw Zircolite output not present")
+
+    matrix = json.loads(matrix_path.read_text())
+    for technique, block in matrix.items():
+        tech_raw = raw_dir / technique
+        if not tech_raw.exists():
+            continue
+        for group_file in sorted(tech_raw.glob("*.json")):
+            group = group_file.stem
+            totals: dict[str, int] = {}
+            for match in json.loads(group_file.read_text() or "[]"):
+                totals[match["id"]] = totals.get(match["id"], 0) + match.get("count", 0)
+            for rid, expected in totals.items():
+                detail = block.get("detail", {}).get(rid)
+                if detail is None:
+                    continue  # rule fired but is not tagged for this technique
+                assert detail["counts"].get(group, 0) == expected, (
+                    f"{technique}/{group} rule {rid[:8]} reports "
+                    f"{detail['counts'].get(group, 0)} but its variants total {expected}"
+                )

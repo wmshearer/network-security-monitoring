@@ -1,6 +1,6 @@
 cmd: /home/kali/director/projects/detection-as-code/.venv/bin/python3 /home/kali/director/projects/detection-as-code/vendor/Zircolite/zircolite.py -e /home/kali/director/projects/detection-brittleness/evidence/samples/T1003.001/evtx_attack_samples -r /home/kali/director/projects/detection-as-code/vendor/Zircolite/rules/rules_windows_merged.json -o /home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1003.001/evtx_attack_samples.json
 returncode: 0
-duration_s: 2.43
+duration_s: 2.36
 
 --- stdout ---
 
@@ -27,7 +27,7 @@ pairs)
 [+] Auto-detected timestamp field: SystemTime                                   
 [+] Analyzing workload...
     [>] Files          12 (816.0 KB total, avg 68.0 KB)                     
-    [>] System         44.5 GB RAM available, 20 CPUs                       
+    [>] System         45.6 GB RAM available, 20 CPUs                       
     [>] DB Mode        UNIFIED                                              
                        Many small files detected (12 files, avg 68.0 KB)    
 
@@ -99,11 +99,11 @@ pairs)
 ╭───────────────────────────────── ✨ Summary ─────────────────────────────────╮
 │                                                                              │
 │    ⏱  Duration         1.4s                                                  │
-│                            ├─ Processing  ███████████████░  1.4s (97%)       │
+│                            ├─ Processing  ███████████████░  1.3s (97%)       │
 │    📁 Files            12                                                    │
 │    📊 Events           61 (6 filtered out — 91.0% match rate)                │
-│    ⚡ Throughput       43 events/s                                           │
-│    💾 Peak Memory      106.42 MB                                             │
+│    ⚡ Throughput       45 events/s                                           │
+│    💾 Peak Memory      107.42 MB                                             │
 │    🎯 Detections       6 CRIT │ 20 HIGH │ 6 MED │ 3 LOW                      │
 │    📏 Coverage         20/4319 rules matched (0.5%)  ░░░░░░░░░░░░░░░░        │
 │    🔍 Matched          35 events across 20 rules                             │

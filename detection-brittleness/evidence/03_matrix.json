@@ -12,6 +12,22 @@
     "rules_fired_in_every_group": 0,
     "rules_fired_in_every_group_ids": [],
     "detail": {
+      "ffa6861c-4461-4f59-8a41-578c39f3f23e": {
+        "title": "LSASS Dump Keyword In CommandLine - Generic",
+        "level": "high",
+        "counts": {
+          "attack_data_atomic_red_team": 14,
+          "evtx_attack_samples": 2,
+          "evtx_to_mitre_attack": 2
+        }
+      },
+      "515c8be5-e5df-4c5e-8f6d-a4a2f05e4b48": {
+        "title": "CreateDump Process Dump - Sysmon",
+        "level": "high",
+        "counts": {
+          "attack_data_atomic_red_team": 5
+        }
+      },
       "9f5c1d59-33be-4e60-bcab-85d2f566effd": {
         "title": "Suspicious Process Access to LSASS with Dbgcore/Dbghelp DLLs",
         "level": "high",
@@ -67,27 +83,11 @@
           "attack_data_atomic_red_team": 9
         }
       },
-      "ffa6861c-4461-4f59-8a41-578c39f3f23e": {
-        "title": "LSASS Dump Keyword In CommandLine - Generic",
-        "level": "high",
-        "counts": {
-          "attack_data_atomic_red_team": 5,
-          "evtx_attack_samples": 2,
-          "evtx_to_mitre_attack": 1
-        }
-      },
       "2e65275c-8288-4ab4-aeb7-6274f58b6b20": {
         "title": "Procdump Execution - Generic",
         "level": "medium",
         "counts": {
           "attack_data_atomic_red_team": 6
-        }
-      },
-      "515c8be5-e5df-4c5e-8f6d-a4a2f05e4b48": {
-        "title": "CreateDump Process Dump - Sysmon",
-        "level": "high",
-        "counts": {
-          "attack_data_atomic_red_team": 5
         }
       },
       "a642964e-bead-4bed-8910-1bb4d63e3b4d": {
@@ -163,7 +163,7 @@
         "level": "medium",
         "counts": {
           "evtx_attack_samples": 2,
-          "evtx_to_mitre_attack": 3
+          "evtx_to_mitre_attack": 5
         }
       },
       "962fe167-e48d-4fd6-9974-11e5b9a5d6d1": {
@@ -171,14 +171,14 @@
         "level": "medium",
         "counts": {
           "evtx_attack_samples": 1,
-          "evtx_to_mitre_attack": 1
+          "evtx_to_mitre_attack": 2
         }
       },
       "646ea171-dded-4578-8a4d-65e9822892e3": {
-        "title": "Process Memory Dump Via Comsvcs.DLL - Sysmon",
+        "title": "Process Memory Dump Via Comsvcs.DLL - Generic",
         "level": "high",
         "counts": {
-          "evtx_to_mitre_attack": 2
+          "evtx_to_mitre_attack": 4
         }
       }
     }
@@ -205,7 +205,7 @@
         }
       },
       "d7bcd677-645d-4691-a8d4-7a5602b780d1": {
-        "title": "Potential PowerShell Command Line Obfuscation - Sysmon",
+        "title": "Potential PowerShell Command Line Obfuscation - Generic",
         "level": "high",
         "counts": {
           "attack_data_atomic_red_team": 3,
@@ -227,7 +227,7 @@
         }
       },
       "e32d4572-9826-4738-b651-95fa63747e8a": {
-        "title": "Base64 Encoded PowerShell Command Detected - Sysmon",
+        "title": "Base64 Encoded PowerShell Command Detected - Generic",
         "level": "high",
         "counts": {
           "attack_data_atomic_red_team": 3,
@@ -278,7 +278,7 @@
         }
       },
       "87e3c4e8-a6a8-4ad9-bb4f-46e7ff99a180": {
-        "title": "Change PowerShell Policies to an Insecure Level - Sysmon",
+        "title": "Change PowerShell Policies to an Insecure Level - Generic",
         "level": "medium",
         "counts": {
           "attack_data_atomic_red_team": 6,
@@ -307,11 +307,11 @@
         }
       },
       "f4bbd493-b796-416e-bbf2-121235348529": {
-        "title": "Non Interactive PowerShell Process Spawned - Sysmon",
+        "title": "Non Interactive PowerShell Process Spawned - Generic",
         "level": "low",
         "counts": {
           "attack_data_atomic_red_team": 117,
-          "attack_data_snapattack": 1,
+          "attack_data_snapattack": 2,
           "evtx_to_mitre_attack": 2
         }
       },

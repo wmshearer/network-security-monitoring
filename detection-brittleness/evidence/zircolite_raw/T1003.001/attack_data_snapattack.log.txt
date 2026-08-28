@@ -25,7 +25,7 @@ pairs)
 ────────────────────────────────── Processing ──────────────────────────────────
 [+] Analyzing workload...
     [>] Files           1 (57.1 KB total, avg 57.1 KB)                      
-    [>] System          44.5 GB RAM available, 20 CPUs                      
+    [>] System          45.6 GB RAM available, 20 CPUs                      
     [>] DB Mode         PER-FILE                                            
                         Single file detected                                
     [>] Parallel        disabled - Single file - parallel not applicable    
@@ -79,7 +79,7 @@ pairs)
 │    📊 Events           24 (0 filtered out — every event matched a rule's     │
 │                        log source)                                           │
 │    ⚡ Throughput       20 events/s                                           │
-│    💾 Peak Memory      104.24 MB                                             │
+│    💾 Peak Memory      104.44 MB                                             │
 │    🎯 Detections       21 HIGH │ 9 MED │ 5 LOW                               │
 │    📏 Coverage         10/4319 rules matched (0.2%)  ░░░░░░░░░░░░░░░░        │
 │    🔍 Matched          35 events across 10 rules                             │
