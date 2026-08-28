@@ -1,0 +1,263 @@
+[
+  {
+    "path": "detections/cloud/github_enterprise_delete_branch_ruleset.yml",
+    "name": "GitHub Enterprise Delete Branch Ruleset",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1685",
+      "T1195"
+    ]
+  },
+  {
+    "path": "detections/cloud/github_enterprise_disable_2fa_requirement.yml",
+    "name": "GitHub Enterprise Disable 2FA Requirement",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1685",
+      "T1195"
+    ]
+  },
+  {
+    "path": "detections/cloud/github_enterprise_disable_audit_log_event_stream.yml",
+    "name": "GitHub Enterprise Disable Audit Log Event Stream",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1685.002",
+      "T1195"
+    ]
+  },
+  {
+    "path": "detections/cloud/github_enterprise_disable_classic_branch_protection_rule.yml",
+    "name": "GitHub Enterprise Disable Classic Branch Protection Rule",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1685",
+      "T1195"
+    ]
+  },
+  {
+    "path": "detections/cloud/github_enterprise_disable_dependabot.yml",
+    "name": "GitHub Enterprise Disable Dependabot",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1685",
+      "T1195"
+    ]
+  },
+  {
+    "path": "detections/cloud/github_enterprise_disable_ip_allow_list.yml",
+    "name": "GitHub Enterprise Disable IP Allow List",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1685",
+      "T1195"
+    ]
+  },
+  {
+    "path": "detections/cloud/github_enterprise_modify_audit_log_event_stream.yml",
+    "name": "GitHub Enterprise Modify Audit Log Event Stream",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1685.002",
+      "T1195"
+    ]
+  },
+  {
+    "path": "detections/cloud/github_enterprise_pause_audit_log_event_stream.yml",
+    "name": "GitHub Enterprise Pause Audit Log Event Stream",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1685.002",
+      "T1195"
+    ]
+  },
+  {
+    "path": "detections/cloud/github_enterprise_register_self_hosted_runner.yml",
+    "name": "GitHub Enterprise Register Self Hosted Runner",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1685",
+      "T1195"
+    ]
+  },
+  {
+    "path": "detections/cloud/github_enterprise_remove_organization.yml",
+    "name": "GitHub Enterprise Remove Organization",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1485",
+      "T1195"
+    ]
+  },
+  {
+    "path": "detections/cloud/github_enterprise_repository_archived.yml",
+    "name": "GitHub Enterprise Repository Archived",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1485",
+      "T1195"
+    ]
+  },
+  {
+    "path": "detections/cloud/github_enterprise_repository_deleted.yml",
+    "name": "GitHub Enterprise Repository Deleted",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1485",
+      "T1195"
+    ]
+  },
+  {
+    "path": "detections/cloud/github_organizations_delete_branch_ruleset.yml",
+    "name": "GitHub Organizations Delete Branch Ruleset",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1685",
+      "T1195"
+    ]
+  },
+  {
+    "path": "detections/cloud/github_organizations_disable_2fa_requirement.yml",
+    "name": "GitHub Organizations Disable 2FA Requirement",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1685",
+      "T1195"
+    ]
+  },
+  {
+    "path": "detections/cloud/github_organizations_disable_classic_branch_protection_rule.yml",
+    "name": "GitHub Organizations Disable Classic Branch Protection Rule",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1685",
+      "T1195"
+    ]
+  },
+  {
+    "path": "detections/cloud/github_organizations_disable_dependabot.yml",
+    "name": "GitHub Organizations Disable Dependabot",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1685",
+      "T1195"
+    ]
+  },
+  {
+    "path": "detections/cloud/github_organizations_repository_archived.yml",
+    "name": "GitHub Organizations Repository Archived",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1485",
+      "T1195"
+    ]
+  },
+  {
+    "path": "detections/cloud/github_organizations_repository_deleted.yml",
+    "name": "GitHub Organizations Repository Deleted",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1485",
+      "T1195"
+    ]
+  },
+  {
+    "path": "detections/endpoint/github_workflow_file_creation_or_modification.yml",
+    "name": "GitHub Workflow File Creation or Modification",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1574.006",
+      "T1554",
+      "T1195"
+    ]
+  },
+  {
+    "path": "detections/endpoint/hunting_3cxdesktopapp_software.yml",
+    "name": "Hunting 3CXDesktopApp Software",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1195.002"
+    ]
+  },
+  {
+    "path": "detections/endpoint/python_network_traffic_during_package_build.yml",
+    "name": "Python Network Traffic During Package Build",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1195.002",
+      "T1059.006"
+    ]
+  },
+  {
+    "path": "detections/endpoint/python_pth_file_creation_during_package_installation.yml",
+    "name": "Python PTH File Creation During Package Installation",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1546",
+      "T1195.002"
+    ]
+  },
+  {
+    "path": "detections/endpoint/python_pythonpath_modification_during_package_installation.yml",
+    "name": "Python PYTHONPATH Modification During Package Installation",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1574.007",
+      "T1195.002"
+    ]
+  },
+  {
+    "path": "detections/endpoint/python_site_hooks_creation_during_package_installation.yml",
+    "name": "Python Site Hooks Creation During Package Installation",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1546",
+      "T1195.002"
+    ]
+  },
+  {
+    "path": "detections/endpoint/shai_hulud_2_exfiltration_artifact_files.yml",
+    "name": "Shai-Hulud 2 Exfiltration Artifact Files",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1074.001",
+      "T1552.001",
+      "T1195.002"
+    ]
+  },
+  {
+    "path": "detections/endpoint/shai_hulud_workflow_file_creation_or_modification.yml",
+    "name": "Shai-Hulud Workflow File Creation or Modification",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1574.006",
+      "T1554",
+      "T1195"
+    ]
+  },
+  {
+    "path": "detections/endpoint/windows_vulnerable_3cx_software.yml",
+    "name": "Windows Vulnerable 3CX Software",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1195.002"
+    ]
+  },
+  {
+    "path": "detections/network/3cx_supply_chain_attack_network_indicators.yml",
+    "name": "3CX Supply Chain Attack Network Indicators",
+    "status": "production",
+    "mitre_attack_id": [
+      "T1195.002"
+    ]
+  },
+  {
+    "path": "detections/endpoint/sunburst_correlation_dll_and_network_event.yml",
+    "name": "Sunburst Correlation DLL and Network Event",
+    "status": "experimental",
+    "mitre_attack_id": [
+      "T1203"
+    ],
+    "note": "included manually: canonical SUNBURST detection, tagged T1203 not T1195, verified by direct read"
+  }
+]
