@@ -1,0 +1,54 @@
+=== Zircolite: BASE RULE ONLY on volumetric JSONL (stateless, per-event) ===
+
+███████╗██╗██████╗  ██████╗ ██████╗ ██╗     ██╗████████╗███████╗
+╚══███╔╝██║██╔══██╗██╔════╝██╔═══██╗██║     ██║╚══██╔══╝██╔════╝
+  ███╔╝ ██║██████╔╝██║     ██║   ██║██║     ██║   ██║   █████╗
+ ███╔╝  ██║██╔══██╗██║     ██║   ██║██║     ██║   ██║   ██╔══╝
+███████╗██║██║  ██║╚██████╗╚██████╔╝███████╗██║   ██║   ███████╗
+╚══════╝╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝   ╚═╝   ╚══════╝
+-= Standalone Sigma Detection tool for EVTX/Auditd/Sysmon Linux =-
+                              v3.8.1
+
+[+] Loading ruleset(s)                                                          
+    [>] Converting Native Sigma to Zircolite ruleset : rules/sigma_base_only    
+
+[✓] Converted 1 rules                                                           
+[+] 1 rules loaded                                                              
+[+] Event filter enabled: 1 eventIDs                                            
+[+] Checking prerequisites                                                      
+────────────────────────────────── Processing ──────────────────────────────────
+[+] Analyzing workload...
+    [>] Files           1 (120.3 KB total, avg 120.3 KB)                    
+    [>] System          44.3 GB RAM available, 20 CPUs                      
+    [>] DB Mode         PER-FILE                                            
+                        Single file detected                                
+    [>] Parallel        disabled - Single file - parallel not applicable    
+
+[+] Processing 1 file(s) separately in streaming mode                           
+[+] Processing file: volumetric.jsonl                                           
+[+] Processing events (streaming mode)                                          
+[+] Creating dynamic model                                                      
+
+[+] Creating indexes                                                            
+[+] Total events processed: 159 (0 filtered out by log source)                  
+[+] Executing ruleset for volumetric.jsonl - 1 rules                            
+╭───────────────────────────────── SQL Query ──────────────────────────────────╮
+│ SELECT * FROM logs WHERE (EventID=4769 AND TicketEncryptionType='0x17' AND   │
+│ (TicketOptions='0x40810000' OR TicketOptions='0x40800000' OR                 │
+│ TicketOptions='0x40810010')) AND (NOT ServiceName LIKE '%$' ESCAPE '\')      │
+╰──────────────────────────────────────────────────────────────────────────────╯
+─────────────────────────────────── Results ────────────────────────────────────
+
+╭───────────────────────────────── ✨ Summary ─────────────────────────────────╮
+│                                                                              │
+│    ⏱  Duration         0.1s                                                  │
+│    📁 Files            1                                                     │
+│    📊 Events           159 (0 filtered out — every event matched a rule's    │
+│                        log source)                                           │
+│    ⚡ Throughput       1,156 events/s                                        │
+│    💾 Peak Memory      64.19 MB                                              │
+│    🎯 Detections       None                                                  │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+    → Output: evidence/11_zircolite_base_only_on_jsonl_raw.json

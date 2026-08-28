@@ -1,0 +1,90 @@
+YARA false positive demonstration, T1558.003 project.
+
+Source file (real, on-disk, not fabricated):
+  /home/kali/director/projects/_corpora/attack_data/datasets/attack_techniques/T1558.003/rubeus/windows-security.log
+
+Event matched (data/rubeus_events/event_00139.txt, split by
+scripts/03_run_yara_per_event.sh, full text preserved verbatim from the
+source log):
+
+  02/11/2022 07:26:42 PM
+  LogName=Security
+  EventCode=4688
+  TaskCategory=Process Creation
+  Message=A new process has been created.
+  Process Information:
+      New Process ID:        0x177c
+      New Process Name:      C:\Program Files\SplunkUniversalForwarder\bin\splunk-netmon.exe
+      Creator Process ID:    0x87c
+      Creator Process Name:  C:\Program Files\SplunkUniversalForwarder\bin\splunkd.exe
+
+This is EventCode 4688 (Windows process creation audit), not EventCode 4769
+(Kerberos service ticket request). It records the Splunk Universal
+Forwarder's own monitoring helper process starting. It has nothing to do
+with Kerberos, TGS tickets, or RC4 encryption.
+
+Result of `yara -s rules/yara/kerberoasting_rc4_stringmatch.yar
+data/rubeus_events/event_00139.txt`:
+
+  Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00139.txt
+  0x238:$enc_type: 0x17
+
+The rule Kerberoasting_RC4_Encryption_Type_Substring_Only (condition: just
+the substring "0x17" present anywhere) MATCHED. It matched because "New
+Process ID:  0x177c" contains the literal substring "0x17" as its first
+four hex digits, exactly as "TicketEncryptionType>0x17<" does on a genuine
+kerberoasting event. YARA has no concept of "the value of the field named
+TicketEncryptionType"; it only sees a stream of bytes and reports where a
+pattern occurs. A field boundary in the original structured event (the "0x17"
+inside "0x177c" belongs to a DIFFERENT field, "New Process ID", not
+TicketEncryptionType) is invisible to it.
+
+The stronger, EventID-anchored rule
+(Kerberoasting_RC4_TGS_Request_StringMatch, condition: EventID/EventCode
+4769 co-occurring with 0x17 and a known TicketOptions value) correctly did
+NOT match this event (see evidence/15_yara_false_positive_run.txt: no
+"Kerberoasting_RC4_TGS_Request_StringMatch" line for event_00139.txt),
+because EventCode=4688 never satisfies the "4769" substring check. This
+shows the mitigation (anchor on more substrings) reduces but does not
+eliminate the underlying problem: it only works because 4688 and 4769
+happen to differ as strings. A field-typed engine does not need luck; it
+compares the named field's actual value, so this class of coincidental
+collision cannot occur no matter what the unrelated field's value is.
+
+Counted false-positive-only matches from the weak substring rule across the
+whole rubeus/windows-security.log corpus (from
+evidence/15_yara_false_positive_run.txt, files matched by
+Kerberoasting_RC4_Encryption_Type_Substring_Only WITHOUT also being matched
+by Kerberoasting_RC4_TGS_Request_StringMatch), rechecked field-by-field
+against each event's own EventCode:
+  event_00139  EventCode=4688 (process creation, New Process ID 0x177c)
+  event_00140  EventCode=4689 (process termination, Process ID 0x1738)
+  event_00141  EventCode=4688 (process creation, New Process ID 0x1738)
+  event_00146  EventCode=4689 (process termination, Process ID 0x177c)
+  event_00315  EventCode=4689 (process termination, Process ID 0x1704)
+  event_00316  EventCode=4688 (process creation, New Process ID 0x1704)
+  event_00344  EventCode=4768 (Kerberos AS-REQ / TGT request, real field
+               "Ticket Encryption Type: 0x17")
+  event_00434  EventCode=4689 (process termination, Process ID 0x17a0)
+  event_00435  EventCode=4688 (process creation, New Process ID 0x17a0)
+
+  = 9 matches from the weak rule that the anchored rule correctly rejected,
+  out of 458 total events in this one file.
+
+Correction: 8 of the 9 (all except event_00344) are genuinely unrelated to
+Kerberos: EventCode 4688/4689 process creation/termination events whose
+Process ID or Creator Process ID happens to start with the hex digits "17"
+immediately after "0x" (0x177c, 0x1738, 0x1704, 0x17a0). These are the
+clean, unambiguous false positives and the headline example above
+(event_00139, splunk-netmon.exe) is one of them.
+
+event_00344 is DIFFERENT and is flagged here rather than folded into the
+same claim: it is a real EventCode 4768 (AS-REQ, a TGT request, the
+Kerberos step that precedes any TGS/service-ticket request) whose own
+"Ticket Encryption Type" field genuinely equals 0x17. This is not a
+substring collision; RC4 was actually used for a TGT. It is excluded from
+this project's kerberoasting definition because kerberoasting specifically
+targets TGS (service ticket, EventCode 4769) requests, not TGT (AS-REQ,
+EventCode 4768) requests, so the anchored YARA rule's rejection of it is
+CORRECT here, and it is reported separately so the false-positive count
+above is not overstated by including a legitimately-excluded event.

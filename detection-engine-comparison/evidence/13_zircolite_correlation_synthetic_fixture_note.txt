@@ -1,0 +1,9 @@
+data/synthetic_correlation_fixture.jsonl is a HAND-CONSTRUCTED, clearly
+synthetic fixture: 12 events for one TargetUserName, each matching the base
+rule's TicketOptions/TicketEncryptionType filter, all timestamped within
+the same minute. It is used ONLY to prove the correlation SQL mechanism
+itself is capable of firing (i.e. this project's Zircolite pipeline is not
+silently broken end-to-end); it is not presented anywhere as real captured
+attack data, and it does not appear in any true-positive coverage claim
+about the real corpus. This is a pipeline-sanity check, not a detection
+test.

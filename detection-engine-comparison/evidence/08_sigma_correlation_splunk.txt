@@ -1,0 +1,8 @@
+=== convert whole rules/sigma dir -> splunk ===
+Parsing Sigma rules
+source="WinEventLog:Security" EventCode=4769 TicketEncryptionType="0x17" TicketOptions IN ("0x40810000", "0x40800000", "0x40810010") NOT ServiceName="*$"
+
+| bin _time span=5m
+| stats count as event_count by _time TargetUserName
+
+| search event_count >= 10

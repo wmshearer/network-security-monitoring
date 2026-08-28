@@ -1,0 +1,21 @@
+# Hand-authored, taken verbatim from the published Splunk detection that
+# this project's Sigma rule was adapted from:
+#   /home/kali/director/projects/_corpora/security_content/detections/endpoint/kerberoasting_spn_request_with_rc4_encryption.yml
+#
+# It uses the `wineventlog_security` macro, whose definition (see
+# /home/kali/director/projects/_corpora/security_content/macros/wineventlog_security.yml)
+# is:
+#   eventtype="wineventlog_security" OR Channel="security"
+#     OR source="XmlWinEventLog:Security" OR source="WinEventLog:Security"
+#
+# Note it ORs BOTH the "XmlWinEventLog:Security" and "WinEventLog:Security"
+# source conventions. The pySigma-compiled version in
+# kerberoasting_rc4_pysigma_compiled.spl hardcodes ONLY
+# source="WinEventLog:Security" (see evidence/17_field_mapping_silent_mismatch.txt
+# for the pipeline source code that does this). This corpus's own published
+# test fixture (kerberoasting_spn_request_with_rc4_encryption.yml `tests:`
+# block) declares source: XmlWinEventLog:Security, sourcetype: XmlWinEventLog
+# for this exact data -- the convention the pySigma-compiled query does not
+# match.
+
+`wineventlog_security` EventCode=4769 ServiceName!="*$" (TicketOptions=0x40810000 OR TicketOptions=0x40800000 OR TicketOptions=0x40810010) TicketEncryptionType=0x17

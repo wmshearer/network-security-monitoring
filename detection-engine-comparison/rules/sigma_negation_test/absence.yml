@@ -1,0 +1,13 @@
+title: Absence of Kerberoasting RC4 requests
+id: e5c3c4b2-3f7c-4d9c-9d3f-3c4d5e6f7081
+status: test
+correlation:
+    type: event_count
+    rules:
+        - c3a1a2f0-1e5a-4b7a-9b1e-1a2b3c4d5e6f
+    group-by:
+        - TargetUserName
+    timespan: 5m
+    condition:
+        lt: 1
+level: high

@@ -1,0 +1,90 @@
+Silent field-mapping mismatch: pySigma's splunk_windows pipeline vs the
+published Splunk detection's macro, T1558.003 project.
+
+THIS IS A COMPILE-TIME / STATIC FINDING, CONFIRMED FROM PRIMARY SOURCE CODE
+AND FROM THIS CORPUS'S OWN PUBLISHED TEST FIXTURE. It was NOT run against
+live Splunk (auth unavailable, see evidence/05_splunk_auth_attempt.txt), so
+the claim below is precisely scoped to what is confirmed vs what would need
+a live run to confirm further.
+
+1. pySigma's splunk_windows pipeline source code (verbatim, saved at
+   evidence/04_pysigma_splunk_pipeline_source.py, from
+   sigma/pipelines/splunk/splunk.py in pysigma-backend-splunk 2.1.0 as
+   installed in detection-as-code/.venv):
+
+     def splunk_windows_pipeline():
+         return ProcessingPipeline(
+             name="Splunk Windows log source conditions",
+             allowed_backends={"splunk", "splunk_spl2"},
+             priority=20,
+             items=generate_windows_logsource_items("source", "WinEventLog:{source}")
+             + [...EventID -> EventCode field mapping...],
+         )
+
+   This templates the `source` field as literally "WinEventLog:{source}"
+   with NO alternative form. Compiling rules/sigma/kerberoasting_rc4_base.yml
+   with `sigma convert -t splunk -p splunk_windows` (command and full output
+   saved at evidence/02_sigma_convert_splunk.txt) produces:
+
+     source="WinEventLog:Security" EventCode=4769 TicketEncryptionType="0x17"
+       TicketOptions IN ("0x40810000", "0x40800000", "0x40810010")
+       NOT ServiceName="*$"
+
+   Only `source="WinEventLog:Security"` is ever emitted.
+
+2. The published Splunk detection this rule was adapted from
+   (_corpora/security_content/detections/endpoint/kerberoasting_spn_request_with_rc4_encryption.yml)
+   uses a macro instead of a literal source filter:
+
+     `wineventlog_security` EventCode=4769 ServiceName!="*$" ...
+
+   and that macro's definition
+   (_corpora/security_content/macros/wineventlog_security.yml, verbatim):
+
+     eventtype="wineventlog_security" OR Channel="security"
+       OR source="XmlWinEventLog:Security" OR source="WinEventLog:Security"
+
+   ORs four different ways the same logical data source might be tagged,
+   including BOTH "XmlWinEventLog:Security" and "WinEventLog:Security".
+
+3. This corpus's own published test fixture for that exact detection
+   declares (from the same yml file's `tests:` block, verbatim):
+
+     tests:
+         - name: True Positive Test
+           attack_data:
+               - data: https://.../windows-xml.log
+                 source: XmlWinEventLog:Security
+                 sourcetype: XmlWinEventLog
+
+   i.e. the attack_data maintainers themselves say this file's data, if
+   ingested into Splunk, would carry source="XmlWinEventLog:Security", NOT
+   source="WinEventLog:Security".
+
+CONCLUSION (confirmed statically, not run live): if this corpus's
+windows-xml.log data were ingested into Splunk following its own stated
+convention (source=XmlWinEventLog:Security) and searched with the
+pySigma-compiled query from step 1, the query's
+`source="WinEventLog:Security"` clause would not match any of that data's
+events, because the ingested source string and the hardcoded literal
+differ by the "Xml" prefix. The hand-authored reference query in step 2,
+using the `wineventlog_security` macro, would match, because its OR clause
+covers both spellings. Both queries look equally plausible reading the SPL
+text alone; only one would return anything against this data, and the
+other would return zero matches that look exactly like "no kerberoasting
+here" rather than "wrong source filter."
+
+What this finding IS: a structural mismatch between how pySigma's
+Windows-to-Splunk pipeline names Windows Security log sources and how this
+corpus's own data is documented to be ingested, confirmed from pipeline
+source code and the corpus's own test fixture metadata.
+
+What this finding is NOT (scoped honestly): it is not a live-search result.
+No search job was run against a real Splunk index for either query, because
+Splunk authentication was unavailable in this session (SPLUNK_PASS unset,
+no stored credential; see evidence/05_splunk_auth_attempt.txt). If Splunk
+authentication becomes available, the next step to fully confirm this
+empirically would be: ingest windows-xml.log with sourcetype=XmlWinEventLog
+(matching the corpus's own stated convention), run both queries, and
+record the actual hit counts. That step is explicitly left undone here and
+is called out in FINDINGS.md as unconfirmed-by-live-run.

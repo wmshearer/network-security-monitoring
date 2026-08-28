@@ -1,0 +1,34 @@
+title: Kerberoasting SPN Request with RC4 Encryption
+id: c3a1a2f0-1e5a-4b7a-9b1e-1a2b3c4d5e6f
+status: test
+description: |
+  Detects a single Kerberos service ticket request (EventID 4769) using RC4
+  encryption (TicketEncryptionType 0x17) for one of the TicketOptions values
+  commonly seen in Kerberoasting tooling. This is the STATELESS half of the
+  comparison in this project: it fires on one qualifying event, with no
+  memory of any other event.
+references:
+    - https://attack.mitre.org/techniques/T1558/003/
+    - /home/kali/director/projects/_corpora/security_content/detections/endpoint/kerberoasting_spn_request_with_rc4_encryption.yml
+author: detection-engine-comparison project (adapted from Splunk security_content)
+date: 2026-08-26
+tags:
+    - attack.credential-access
+    - attack.t1558.003
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        EventID: 4769
+        TicketEncryptionType: '0x17'
+        TicketOptions:
+            - '0x40810000'
+            - '0x40800000'
+            - '0x40810010'
+    filter_machine_accounts:
+        ServiceName|endswith: '$'
+    condition: selection and not filter_machine_accounts
+falsepositives:
+    - Older systems that support RC4 by default (e.g. some NetApp appliances)
+level: medium

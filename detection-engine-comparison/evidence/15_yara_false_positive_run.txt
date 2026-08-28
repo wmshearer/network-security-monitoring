@@ -1,0 +1,240 @@
+=== YARA test 2: rubeus benign security log, split per-event, both rules ===
+split into 458 per-event files under data/rubeus_events
+=== running YARA per-event ===
+--- data/rubeus_events/event_00139.txt ---
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00139.txt
+0x238:$enc_type: 0x17
+--- data/rubeus_events/event_00140.txt ---
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00140.txt
+0x1c5:$enc_type: 0x17
+--- data/rubeus_events/event_00141.txt ---
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00141.txt
+0x238:$enc_type: 0x17
+--- data/rubeus_events/event_00146.txt ---
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00146.txt
+0x1c5:$enc_type: 0x17
+--- data/rubeus_events/event_00315.txt ---
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00315.txt
+0x1c5:$enc_type: 0x17
+--- data/rubeus_events/event_00316.txt ---
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00316.txt
+0x238:$enc_type: 0x17
+--- data/rubeus_events/event_00335.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00335.txt
+0x58:$eventid_text: EventCode=4769
+0x2c7:$enc_type: 0x17
+0x2a3:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00335.txt
+0x2c7:$enc_type: 0x17
+--- data/rubeus_events/event_00336.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00336.txt
+0x58:$eventid_text: EventCode=4769
+0x2c7:$enc_type: 0x17
+0x2a3:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00336.txt
+0x2c7:$enc_type: 0x17
+--- data/rubeus_events/event_00337.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00337.txt
+0x58:$eventid_text: EventCode=4769
+0x2c7:$enc_type: 0x17
+0x2a3:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00337.txt
+0x2c7:$enc_type: 0x17
+--- data/rubeus_events/event_00338.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00338.txt
+0x58:$eventid_text: EventCode=4769
+0x2c7:$enc_type: 0x17
+0x2a3:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00338.txt
+0x2c7:$enc_type: 0x17
+--- data/rubeus_events/event_00339.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00339.txt
+0x58:$eventid_text: EventCode=4769
+0x2c7:$enc_type: 0x17
+0x2a3:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00339.txt
+0x2c7:$enc_type: 0x17
+--- data/rubeus_events/event_00340.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00340.txt
+0x58:$eventid_text: EventCode=4769
+0x2c7:$enc_type: 0x17
+0x2a3:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00340.txt
+0x2c7:$enc_type: 0x17
+--- data/rubeus_events/event_00341.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00341.txt
+0x58:$eventid_text: EventCode=4769
+0x2c7:$enc_type: 0x17
+0x2a3:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00341.txt
+0x2c7:$enc_type: 0x17
+--- data/rubeus_events/event_00342.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00342.txt
+0x58:$eventid_text: EventCode=4769
+0x2c9:$enc_type: 0x17
+0x2a5:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00342.txt
+0x2c9:$enc_type: 0x17
+--- data/rubeus_events/event_00343.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00343.txt
+0x58:$eventid_text: EventCode=4769
+0x2c7:$enc_type: 0x17
+0x2a3:$opt1: 0x40810000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00343.txt
+0x2c7:$enc_type: 0x17
+--- data/rubeus_events/event_00344.txt ---
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00344.txt
+0x2c3:$enc_type: 0x17
+--- data/rubeus_events/event_00348.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00348.txt
+0x58:$eventid_text: EventCode=4769
+0x2c7:$enc_type: 0x17
+0x2a3:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00348.txt
+0x2c7:$enc_type: 0x17
+--- data/rubeus_events/event_00349.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00349.txt
+0x58:$eventid_text: EventCode=4769
+0x2c9:$enc_type: 0x17
+0x2a5:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00349.txt
+0x2c9:$enc_type: 0x17
+--- data/rubeus_events/event_00350.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00350.txt
+0x58:$eventid_text: EventCode=4769
+0x2c7:$enc_type: 0x17
+0x2a3:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00350.txt
+0x2c7:$enc_type: 0x17
+--- data/rubeus_events/event_00351.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00351.txt
+0x58:$eventid_text: EventCode=4769
+0x2c9:$enc_type: 0x17
+0x2a5:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00351.txt
+0x2c9:$enc_type: 0x17
+--- data/rubeus_events/event_00352.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00352.txt
+0x58:$eventid_text: EventCode=4769
+0x2c9:$enc_type: 0x17
+0x2a5:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00352.txt
+0x2c9:$enc_type: 0x17
+--- data/rubeus_events/event_00353.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00353.txt
+0x58:$eventid_text: EventCode=4769
+0x2c9:$enc_type: 0x17
+0x2a5:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00353.txt
+0x2c9:$enc_type: 0x17
+--- data/rubeus_events/event_00354.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00354.txt
+0x58:$eventid_text: EventCode=4769
+0x2c9:$enc_type: 0x17
+0x2a5:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00354.txt
+0x2c9:$enc_type: 0x17
+--- data/rubeus_events/event_00355.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00355.txt
+0x58:$eventid_text: EventCode=4769
+0x2c9:$enc_type: 0x17
+0x2a5:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00355.txt
+0x2c9:$enc_type: 0x17
+--- data/rubeus_events/event_00356.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00356.txt
+0x58:$eventid_text: EventCode=4769
+0x2c9:$enc_type: 0x17
+0x2a5:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00356.txt
+0x2c9:$enc_type: 0x17
+--- data/rubeus_events/event_00357.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00357.txt
+0x58:$eventid_text: EventCode=4769
+0x2c9:$enc_type: 0x17
+0x2a5:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00357.txt
+0x2c9:$enc_type: 0x17
+--- data/rubeus_events/event_00358.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00358.txt
+0x58:$eventid_text: EventCode=4769
+0x2c9:$enc_type: 0x17
+0x2a5:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00358.txt
+0x2c9:$enc_type: 0x17
+--- data/rubeus_events/event_00359.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00359.txt
+0x58:$eventid_text: EventCode=4769
+0x2cb:$enc_type: 0x17
+0x2a7:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00359.txt
+0x2cb:$enc_type: 0x17
+--- data/rubeus_events/event_00360.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00360.txt
+0x58:$eventid_text: EventCode=4769
+0x2c9:$enc_type: 0x17
+0x2a5:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00360.txt
+0x2c9:$enc_type: 0x17
+--- data/rubeus_events/event_00361.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00361.txt
+0x58:$eventid_text: EventCode=4769
+0x2c7:$enc_type: 0x17
+0x2a3:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00361.txt
+0x2c7:$enc_type: 0x17
+--- data/rubeus_events/event_00363.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00363.txt
+0x58:$eventid_text: EventCode=4769
+0x2c7:$enc_type: 0x17
+0x2a3:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00363.txt
+0x2c7:$enc_type: 0x17
+--- data/rubeus_events/event_00364.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00364.txt
+0x58:$eventid_text: EventCode=4769
+0x2c7:$enc_type: 0x17
+0x2a3:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00364.txt
+0x2c7:$enc_type: 0x17
+--- data/rubeus_events/event_00365.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00365.txt
+0x58:$eventid_text: EventCode=4769
+0x2c7:$enc_type: 0x17
+0x2a3:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00365.txt
+0x2c7:$enc_type: 0x17
+--- data/rubeus_events/event_00366.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00366.txt
+0x58:$eventid_text: EventCode=4769
+0x2c7:$enc_type: 0x17
+0x2a3:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00366.txt
+0x2c7:$enc_type: 0x17
+--- data/rubeus_events/event_00367.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00367.txt
+0x58:$eventid_text: EventCode=4769
+0x2c7:$enc_type: 0x17
+0x2a3:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00367.txt
+0x2c7:$enc_type: 0x17
+--- data/rubeus_events/event_00370.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00370.txt
+0x58:$eventid_text: EventCode=4769
+0x2c7:$enc_type: 0x17
+0x2a3:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00370.txt
+0x2c7:$enc_type: 0x17
+--- data/rubeus_events/event_00371.txt ---
+Kerberoasting_RC4_TGS_Request_StringMatch data/rubeus_events/event_00371.txt
+0x58:$eventid_text: EventCode=4769
+0x2c7:$enc_type: 0x17
+0x2a3:$opt2: 0x40800000
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00371.txt
+0x2c7:$enc_type: 0x17
+--- data/rubeus_events/event_00434.txt ---
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00434.txt
+0x1c5:$enc_type: 0x17
+--- data/rubeus_events/event_00435.txt ---
+Kerberoasting_RC4_Encryption_Type_Substring_Only data/rubeus_events/event_00435.txt
+0x238:$enc_type: 0x17

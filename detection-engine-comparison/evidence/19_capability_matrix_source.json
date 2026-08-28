@@ -1,0 +1,137 @@
+{
+  "_comment": "Every cell here cites the evidence file it is drawn from. This file is the single source scripts/05_generate_capability_chart.py reads; the chart is never hand-drawn from numbers typed directly into plotting code.",
+  "statuses": {
+    "native": "Expressed natively, no workaround needed",
+    "workaround": "Expressed, but only via a workaround outside the plain rule",
+    "wrong": "Silently produced a DIFFERENT result, not merely absent",
+    "impossible": "Cannot be expressed in this engine at all"
+  },
+  "capabilities": [
+    "stateless_field_match",
+    "volumetric_threshold",
+    "field_typed_comparison",
+    "absence_of_event",
+    "silent_wrong_result"
+  ],
+  "capability_labels": {
+    "stateless_field_match": "Single-event field match (TicketEncryptionType=0x17)",
+    "volumetric_threshold": "N ticket requests per principal in T minutes",
+    "field_typed_comparison": "Field-bound comparison (not text-blob substring)",
+    "absence_of_event": "Absence of a qualifying event for one principal",
+    "silent_wrong_result": "Worst silent-wrong result found in this project"
+  },
+  "engines": {
+    "sigma_pysigma": {
+      "label": "Sigma (pySigma, compiled)",
+      "stateless_field_match": {
+        "status": "native",
+        "note": "Base rule compiles to a plain row-returning SELECT.",
+        "evidence": "evidence/06_sigma_base_rule_sqlite.txt"
+      },
+      "volumetric_threshold": {
+        "status": "workaround",
+        "note": "Requires a SEPARATE correlation rule type layered on the base rule by id reference; compiles to a GROUP BY/HAVING aggregate, not row-returning events.",
+        "evidence": "evidence/07_sigma_correlation_sqlite.txt"
+      },
+      "field_typed_comparison": {
+        "status": "native",
+        "note": "Every condition is a typed field comparison by construction.",
+        "evidence": "rules/sigma/kerberoasting_rc4_base.yml"
+      },
+      "absence_of_event": {
+        "status": "impossible",
+        "note": "condition:{lt:1} compiles without error but the compiled SQL (GROUP BY ... HAVING event_count < 1) can never match, since GROUP BY never emits a row for an empty group. Reasoned from the rule model and demonstrated live; no SigmaHQ primary source states this limitation explicitly (see FINDINGS.md).",
+        "evidence": "evidence/18_negation_sqlite_compile.txt"
+      },
+      "silent_wrong_result": {
+        "status": "impossible",
+        "note": "pySigma is a compiler, not an evaluator: it cannot itself produce a wrong RESULT because it never runs a query against data. Its risk surface is a wrong COMPILATION (see the splunk_windows source-field mismatch under SPL), not a wrong evaluation.",
+        "evidence": "evidence/17_field_mapping_silent_mismatch.txt"
+      }
+    },
+    "zircolite": {
+      "label": "Zircolite (evaluator)",
+      "stateless_field_match": {
+        "status": "native",
+        "note": "Correctly evaluates the base rule; 0 hits on the volumetric corpus because that corpus's real TicketOptions value never matches the base rule's filter (a corpus fact, not a Zircolite defect).",
+        "evidence": "evidence/11_zircolite_base_only_on_jsonl.txt"
+      },
+      "volumetric_threshold": {
+        "status": "workaround",
+        "note": "Correctly evaluates the pySigma-compiled correlation SQL end to end (proven with a synthetic 12-event fixture) and returns an aggregate row, but silently folds the base rule into the correlation and loads it as ONE rule (\"Converted 1 rules\"), not two.",
+        "evidence": "evidence/13_zircolite_correlation_synthetic_fixture.txt"
+      },
+      "field_typed_comparison": {
+        "status": "native",
+        "note": "SQLite-backed, so every comparison is a typed column comparison.",
+        "evidence": "evidence/11_zircolite_base_only_on_jsonl.txt"
+      },
+      "absence_of_event": {
+        "status": "impossible",
+        "note": "Inherits the same unsatisfiable compiled SQL from pySigma; Zircolite executes exactly what it is given and that query can never match.",
+        "evidence": "evidence/18_negation_sqlite_compile.txt"
+      },
+      "silent_wrong_result": {
+        "status": "wrong",
+        "note": "Native -x/--xml-input mode silently processes only 1 of 159 real events in the corpus's actual multi-root XML file format (170.3 KB file, reports \"Total events processed: 1 (0 filtered out)\"), a clean, confident, zero-error success that is completely wrong for the volumetric question the file exists to answer.",
+        "evidence": "evidence/10_zircolite_xml_truncation_repro.txt"
+      }
+    },
+    "spl": {
+      "label": "SPL / Splunk (compiled, not executed)",
+      "stateless_field_match": {
+        "status": "native",
+        "note": "Reference published detection is a plain per-event search. NOT run against live Splunk in this project (auth unavailable).",
+        "evidence": "rules/spl/kerberoasting_rc4_reference_hand_authored.spl"
+      },
+      "volumetric_threshold": {
+        "status": "native",
+        "note": "SPL's own `stats`/`eventstats` pipeline expresses this directly in one search (the published reference detection uses a 3-sigma anomaly calculation, richer than a flat threshold), unlike Sigma which needs a second rule TYPE. Not executed live.",
+        "evidence": "_corpora/security_content/detections/endpoint/unusual_number_of_kerberos_service_tickets_requested.yml"
+      },
+      "field_typed_comparison": {
+        "status": "native",
+        "note": "Field-value comparisons throughout.",
+        "evidence": "rules/spl/kerberoasting_rc4_reference_hand_authored.spl"
+      },
+      "absence_of_event": {
+        "status": "workaround",
+        "note": "stats can enumerate a wider universe of principals and filter to count=0, expressing absence directly, something the compiled Sigma correlation structurally cannot do. Not executed live (Splunk auth unavailable).",
+        "evidence": "rules/spl/kerberoasting_rc4_absence_of_event.spl"
+      },
+      "silent_wrong_result": {
+        "status": "wrong",
+        "note": "pySigma's splunk_windows pipeline hardcodes source=\"WinEventLog:Security\" only; this corpus's own published test fixture declares source=XmlWinEventLog:Security for this exact data, and the hand-authored reference query's macro ORs both conventions. A query built with the pySigma pipeline would return zero matches on this corpus's own documented ingestion convention, looking exactly like a true negative. Confirmed from pipeline source code and the corpus's own metadata, NOT from a live search (Splunk auth unavailable).",
+        "evidence": "evidence/17_field_mapping_silent_mismatch.txt"
+      }
+    },
+    "yara": {
+      "label": "YARA",
+      "stateless_field_match": {
+        "status": "workaround",
+        "note": "Matches on flattened text substrings only; correctly fires on the true-positive event using multiple co-occurring substrings as a proxy for a field match.",
+        "evidence": "evidence/14_yara_true_positive.txt"
+      },
+      "volumetric_threshold": {
+        "status": "impossible",
+        "note": "No event stream, no grouping, no time window concept at all.",
+        "evidence": "rules/yara/kerberoasting_rc4_stringmatch.yar"
+      },
+      "field_typed_comparison": {
+        "status": "impossible",
+        "note": "Cannot bind a string match to a named field. Demonstrated false positive: an unrelated EventCode=4688 process-creation event (Splunk Universal Forwarder's own splunk-netmon.exe, New Process ID 0x177c) is flagged because the substring 0x17 occurs inside an unrelated field's value.",
+        "evidence": "evidence/14_yara_false_positive.txt"
+      },
+      "absence_of_event": {
+        "status": "impossible",
+        "note": "YARA only reports matches; it has no query language construct for \"the count of matches is zero,\" and a scan with zero hits is indistinguishable from a scan that never ran.",
+        "evidence": "rules/yara/kerberoasting_rc4_stringmatch.yar"
+      },
+      "silent_wrong_result": {
+        "status": "wrong",
+        "note": "The substring-only rule matched a real, unrelated EventCode=4688 process-creation event (Splunk Universal Forwarder's own splunk-netmon.exe) as if it were a kerberoasting event, because \"New Process ID: 0x177c\" contains the literal text \"0x17\". This is not an absence of a result; it is a positive match on the wrong thing, indistinguishable in the tool's own output from a genuine hit.",
+        "evidence": "evidence/14_yara_false_positive.txt"
+      }
+    }
+  }
+}
