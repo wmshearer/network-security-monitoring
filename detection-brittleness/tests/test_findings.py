@@ -129,20 +129,67 @@ def test_miss_diagnosis_produces_both_cause_categories():
     """The core claim this project exists to demonstrate: misses split into
     telemetry-absent (structural) and logic-too-narrow (genuine detection
     failure) causes, and neither count is zero, i.e. this is not a pure
-    plumbing artifact nor a pure logic-failure story."""
+    plumbing artifact nor a pure logic-failure story.
+
+    Numbers recomputed after fixing the EVTX EventID extraction bug (see
+    FINDINGS.md, "Bug found during this project"): 36 telemetry-absent, 51
+    logic-too-narrow, 0 undetermined. Before the fix these were 60/27, with
+    38 of the 60 telemetry-absent calls resting on an empty EventID list for
+    the two binary .evtx sample groups, which a text regex cannot read."""
     diag_path = EVIDENCE / "04_miss_diagnosis.txt"
     _require(diag_path)
     text = diag_path.read_text()
     telemetry_absent = text.count("TELEMETRY ABSENT")
     logic_narrow = text.count("LOGIC TOO NARROW")
+    undetermined = text.count("UNDETERMINED")
     assert telemetry_absent > 0
     assert logic_narrow > 0
-    # Pull the script's own tally line and confirm it matches an independent count.
+    assert telemetry_absent == 36
+    assert logic_narrow == 51
+    assert undetermined == 0
+    # Pull the script's own tally lines and confirm they match an independent count.
     for line in text.splitlines():
         if line.startswith("telemetry absent:"):
             assert int(line.split(":")[1].strip()) == telemetry_absent
         if line.startswith("logic too narrow:"):
             assert int(line.split(":")[1].strip()) == logic_narrow
+        if line.startswith("undetermined"):
+            assert int(line.split(":")[1].strip()) == undetermined
+
+
+def test_evtx_groups_have_a_non_empty_eventid_inventory():
+    """Regression guard for the EVTX EventID extraction bug: any sample group
+    that has staged .evtx files must have a non-empty extracted EventID list
+    in evidence/03b_evtx_eventid_inventory.json (or an explicit null,
+    reported as UNDETERMINED, never a silent empty list standing in for
+    "absent"). A group with staged samples but an empty list is exactly the
+    bug that made every EVTX-group miss default to TELEMETRY ABSENT."""
+    inventory_path = EVIDENCE / "03b_evtx_eventid_inventory.json"
+    _require(inventory_path)
+    samples_dir = EVIDENCE / "samples"
+    _require(samples_dir)
+    inventory = json.loads(inventory_path.read_text())
+
+    checked = 0
+    for technique_dir in sorted(samples_dir.iterdir()):
+        if not technique_dir.is_dir():
+            continue
+        for group_dir in sorted(technique_dir.iterdir()):
+            if not group_dir.is_dir():
+                continue
+            if not list(group_dir.glob("*.evtx")):
+                continue
+            checked += 1
+            key = f"{technique_dir.name}/{group_dir.name}"
+            assert key in inventory, f"{key} has staged .evtx samples but no inventory entry at all"
+            entry = inventory[key]
+            assert entry != [], (
+                f"{key} has staged .evtx samples but an EMPTY extracted EventID list; "
+                "this is the exact silent-default bug this test guards against. "
+                "A group whose EventIDs genuinely could not be read must be null "
+                "(reported as UNDETERMINED), never an empty list."
+            )
+    assert checked >= 3, f"expected at least the 3 known EVTX groups to be checked, checked {checked}"
 
 
 # ---------------------------------------------------------------------------

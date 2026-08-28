@@ -47,8 +47,9 @@ Result, from `evidence/04_miss_diagnosis.txt`
 
 | Cause | Count (individual rule-group miss pairs, both techniques combined) |
 |---|---|
-| **Telemetry absent** -- the rule's target EventID never occurs anywhere in that group's raw data | 60 |
-| **Logic too narrow** -- the EventID is present, but the rule's field/value match still did not fire | 27 |
+| **Telemetry absent** -- the rule's target EventID never occurs anywhere in that group's raw data | 36 |
+| **Logic too narrow** -- the EventID is present, but the rule's field/value match still did not fire | 51 |
+| Undetermined (this group's EventIDs could not be read) | 0 |
 | Unknown (SQL parse failed) | 0 |
 
 Both counts are non-zero and neither dominates completely, which is itself
@@ -59,6 +60,100 @@ and the two causes require completely different fixes -- telemetry gaps are
 closed by turning on more logging, logic gaps are closed by rewriting the
 rule. Conflating them, as the build brief for this project warns, is exactly
 the mistake this exists to avoid.
+
+**These numbers were corrected once already during this project.** An
+earlier run of this same diagnosis reported 60 telemetry-absent and 27
+logic-too-narrow. That first result was wrong because of a bug in the
+diagnosis script itself, described in full in "Bug found during this
+project: the EVTX EventID extraction defect" below. Fixing it moved 24
+rule-group miss pairs from telemetry-absent to logic-too-narrow; the total
+number of misses, 87, did not change, because the fix only reclassifies
+existing misses, it does not add or remove any.
+
+## Bug found during this project: the EVTX EventID extraction defect
+
+`scripts/04_diagnose_misses.py` decides TELEMETRY ABSENT vs LOGIC TOO NARROW
+by checking whether a rule's target EventID occurs anywhere in the raw data
+of the sample group where it missed. The first version of that check found a
+group's EventIDs by running a text regex, `<EventID>(\d+)</EventID>`, over
+every file in the group's staged sample directory.
+
+That works for `attack_data`'s samples, which are XML text. It does not work
+for `EVTX-ATTACK-SAMPLES` and `EVTX-to-MITRE-Attack`, whose samples are
+native `.evtx` files: a **binary** format, not text. A text regex run against
+binary bytes matches nothing. The function returned an empty set for both
+EVTX groups every single time, and the diagnosis code, on seeing an empty
+"EventIDs present" set, always concluded the rule's EventID was absent, never
+that it could not tell. Every miss in those two groups was reported as
+TELEMETRY ABSENT by construction, regardless of what actually happened in
+the underlying capture.
+
+Measured effect: of the 60 TELEMETRY ABSENT calls in the first run, 38 came
+from the two EVTX groups, all of them unreliable. Zero LOGIC TOO NARROW calls
+were ever produced for either EVTX group, because the empty set made that
+branch of the code unreachable for those two groups specifically. Meanwhile
+the 22 TELEMETRY ABSENT and 27 LOGIC TOO NARROW calls in the two `attack_data`
+groups, which are XML and readable by the regex, were sound throughout; this
+bug did not affect them.
+
+**The fix:** `scripts/03b_extract_evtx_eventids.py` asks Zircolite itself
+(already vendored and used by this project to score every sample; no new
+parsing library was introduced) to decode each EVTX group's events to JSON,
+using `--no-event-filter --keepflat -n`. `--keepflat` writes every parsed
+event, not just events some Sigma rule already matched, so this reads the
+full inventory of EventIDs genuinely present in the capture, not a
+rule-matched subset. `--no-event-filter` matters for the same reason:
+Zircolite's default run pre-filters events by (channel, EventID) before
+matching, dropping any event whose EventID is not targeted by at least one
+loaded rule; skipping that flag would have reintroduced a smaller version of
+the same undercount, silently. `04_diagnose_misses.py` now reads this
+inventory instead of parsing binary EVTX as text. If a future run of that
+inventory script cannot determine a group's EventIDs (a corrupted file, a
+missing corpus, an unexpected format), the diagnosis reports
+`UNDETERMINED (could not read this group's EventIDs)` for every miss in that
+group, rather than silently defaulting to TELEMETRY ABSENT again. A
+regression test,
+`tests/test_findings.py::test_evtx_groups_have_a_non_empty_eventid_inventory`,
+fails if any staged EVTX group ever has an empty (as opposed to explicitly
+null/UNDETERMINED) EventID list, which is the exact condition that let this
+bug through undetected the first time.
+
+**Before and after**, both from `evidence/04_miss_diagnosis.txt`:
+
+| Cause | Before fix | After fix |
+|---|---|---|
+| Telemetry absent | 60 | 36 |
+| Logic too narrow | 27 | 51 |
+| Undetermined | (not a distinct outcome yet) | 0 |
+| Total misses | 87 | 87 |
+
+The total is unchanged, as it should be: this fix reclassifies existing
+misses using better information, it does not change which rules fired or
+missed (`evidence/03_matrix.json` and the raw Zircolite match output under
+`evidence/zircolite_raw/` were not touched by this fix and are identical
+before and after).
+
+A second, smaller defect was fixed alongside this one, disclosed here rather
+than only in the script's own comments: `rules_windows_merged.json` compiles
+some Sigma rules into more than one SQL variant under the same rule id, one
+per log-source (for example a "- Generic" variant against Windows Security
+EventID 4688 and a "- Sysmon" variant against Sysmon EventID 1, same
+detection intent). The original diagnosis script kept only the first
+compiled variant it happened to read for a given rule id, and which variant
+came first depended on filesystem glob order, not anything meaningful. A
+rule's true target EventID set is the union of every variant's EventIDs,
+since the rule fires if any variant matches; `load_rule_sql_by_id` in
+`scripts/04_diagnose_misses.py` now collects every distinct SQL variant seen
+for a rule id and unions their EventIDs, so this attribution no longer
+depends on directory read order.
+
+This bug is the same class of failure the whole project is built to surface
+in Sigma rules: a piece of detection logic that returns a default answer
+instead of an honest "I don't know" when its input is missing, and nobody
+downstream notices because the default and the true answer often overlap. A
+rule that returns zero matches because a field name did not exist in a log
+source, and a script that returns zero EventIDs because it could not parse a
+binary file, are the same shape of bug wearing different clothes.
 
 ## Worked example: a genuine telemetry gap (T1003.001, SnapAttack capture)
 

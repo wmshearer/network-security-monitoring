@@ -1,0 +1,15 @@
+=== T1003.001/evtx_attack_samples ===
+cmd: /home/kali/director/projects/detection-as-code/.venv/bin/python3 /home/kali/director/projects/detection-as-code/vendor/Zircolite/zircolite.py -e /home/kali/director/projects/detection-brittleness/evidence/samples/T1003.001/evtx_attack_samples --no-event-filter --keepflat -r /home/kali/director/projects/detection-as-code/vendor/Zircolite/rules/rules_windows_merged.json -n -q (cwd=/tmp/tmp57s38od0)
+returncode: 0
+flattened events read: 67, distinct EventIDs: 16
+
+=== T1003.001/evtx_to_mitre_attack ===
+cmd: /home/kali/director/projects/detection-as-code/.venv/bin/python3 /home/kali/director/projects/detection-as-code/vendor/Zircolite/zircolite.py -e /home/kali/director/projects/detection-brittleness/evidence/samples/T1003.001/evtx_to_mitre_attack --no-event-filter --keepflat -r /home/kali/director/projects/detection-as-code/vendor/Zircolite/rules/rules_windows_merged.json -n -q (cwd=/tmp/tmpmuckabvk)
+returncode: 0
+flattened events read: 112, distinct EventIDs: 22
+
+=== T1059.001/evtx_to_mitre_attack ===
+cmd: /home/kali/director/projects/detection-as-code/.venv/bin/python3 /home/kali/director/projects/detection-as-code/vendor/Zircolite/zircolite.py -e /home/kali/director/projects/detection-brittleness/evidence/samples/T1059.001/evtx_to_mitre_attack --no-event-filter --keepflat -r /home/kali/director/projects/detection-as-code/vendor/Zircolite/rules/rules_windows_merged.json -n -q (cwd=/tmp/tmpj75ool_p)
+returncode: 0
+flattened events read: 92, distinct EventIDs: 5
+

@@ -25,9 +25,12 @@ different fixes:
 - **Logic too narrow.** The event type is present, but the rule's exact
   field or string match does not cover this tool's variant of the technique.
 
-Across both techniques: **60 misses were telemetry-absent, 27 were
+Across both techniques: **36 misses were telemetry-absent, 51 were
 logic-too-narrow.** Full breakdown, per-rule, per-sample, with the exact
-EventIDs checked, is in [`FINDINGS.md`](FINDINGS.md).
+EventIDs checked, is in [`FINDINGS.md`](FINDINGS.md). (An earlier run of this
+diagnosis reported 60/27; that was wrong because of a bug in how EventIDs
+were read out of the two binary `.evtx` sample groups, fixed and written up
+in full in FINDINGS.md's "Bug found during this project" section.)
 
 ![T1003.001 rule x sample-group survival matrix](evidence/gui/matrix_heatmap_T1003001.png)
 
@@ -62,11 +65,24 @@ EventIDs checked, is in [`FINDINGS.md`](FINDINGS.md).
    sample group, saving raw JSON output before any summarizing happens.
 4. **Matrix.** [`scripts/03_build_matrix.py`](scripts/03_build_matrix.py) reads
    the raw output back and builds the rule x sample-group survival table.
-5. **Diagnose.** [`scripts/04_diagnose_misses.py`](scripts/04_diagnose_misses.py)
+5. **EVTX EventID inventory.** [`scripts/03b_extract_evtx_eventids.py`](scripts/03b_extract_evtx_eventids.py)
+   asks Zircolite to decode each `.evtx` sample group's full, unfiltered event
+   stream to JSON (`--no-event-filter --keepflat`), so the diagnosis step
+   below has a real inventory of which EventIDs occur in binary EVTX data,
+   not just the ones some rule already matched. This step exists because an
+   earlier, simpler approach (reading EventIDs with a text regex, which works
+   fine for `attack_data`'s XML) silently read nothing from the two `.evtx`
+   groups; see FINDINGS.md's "Bug found during this project" section for the
+   full story and the before/after numbers.
+6. **Diagnose.** [`scripts/04_diagnose_misses.py`](scripts/04_diagnose_misses.py)
    checks, for every miss, whether the rule's target EventID(s) even occur in
-   that sample group's raw data, splitting misses into telemetry-absent vs
-   logic-too-narrow rather than reporting one undifferentiated "miss" count.
-6. **Visualize.** [`scripts/05_render_matrix_heatmap.py`](scripts/05_render_matrix_heatmap.py)
+   that sample group's raw data (from the XML text directly for `attack_data`,
+   from step 5's inventory for EVTX groups), splitting misses into
+   telemetry-absent vs logic-too-narrow rather than reporting one
+   undifferentiated "miss" count. If a group's EventIDs cannot be determined
+   at all, it reports `UNDETERMINED` rather than assuming telemetry-absent by
+   default.
+7. **Visualize.** [`scripts/05_render_matrix_heatmap.py`](scripts/05_render_matrix_heatmap.py)
    renders the matrix as a PNG. [`scripts/06_build_navigator_layer.py`](scripts/06_build_navigator_layer.py)
    emits an ATT&CK Navigator layer scoring each technique by its survival
    percentage.
@@ -79,6 +95,7 @@ pip install matplotlib numpy
 python3 scripts/01_prepare_samples.py
 source /home/kali/director/projects/detection-as-code/.venv/bin/activate  # has Zircolite's deps (orjson, lxml)
 python3 scripts/02_run_zircolite.py
+python3 scripts/03b_extract_evtx_eventids.py  # also needs Zircolite's venv
 deactivate; source .venv/bin/activate
 python3 scripts/03_build_matrix.py
 python3 scripts/04_diagnose_misses.py
@@ -105,7 +122,10 @@ a preprocessing step in the manifest and scripts, not folded silently into
 the results.
 
 `EVTX-ATTACK-SAMPLES` and `EVTX-to-MITRE-Attack` are native `.evtx` binary
-event log files, which Zircolite reads directly with no preprocessing.
+event log files, which Zircolite reads directly with no preprocessing for
+staging and scoring. That same binary format did need separate handling one
+step later, in miss diagnosis: see FINDINGS.md's "Bug found during this
+project" section for the EVTX EventID extraction defect and its fix.
 
 ## Manifest audit
 
