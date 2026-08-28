@@ -1,0 +1,264 @@
+{
+  "yara-rules-official-index": {
+    "common_files_count": 416,
+    "yara_python_compiled_count": 419,
+    "yara_x_compiled_count": 426,
+    "merged_compile_seconds": {
+      "yara_python": 0.41,
+      "yara_x": 2.482
+    },
+    "corpora": {
+      "usr_bin": {
+        "sample_size": 150,
+        "full_corpus_size": 3239,
+        "agree": 150,
+        "disagree": 0,
+        "scan_seconds": {
+          "yara_python": 16.134,
+          "yara_x": 1.06
+        },
+        "disagreements": []
+      },
+      "usr_lib_x86_64": {
+        "sample_size": 150,
+        "full_corpus_size": 1683,
+        "agree": 148,
+        "disagree": 2,
+        "scan_seconds": {
+          "yara_python": 53.185,
+          "yara_x": 8.021
+        },
+        "disagreements": [
+          {
+            "path": "/usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.19",
+            "yara_python_only": [
+              "ns2:Big_Numbers1"
+            ],
+            "yara_x_only": []
+          },
+          {
+            "path": "/usr/lib/x86_64-linux-gnu/libQt6Core.so.6.10.2",
+            "yara_python_only": [
+              "ns2:Big_Numbers1"
+            ],
+            "yara_x_only": []
+          }
+        ]
+      },
+      "openwrt_firmware": {
+        "sample_size": 2181,
+        "full_corpus_size": 2181,
+        "agree": 2181,
+        "disagree": 0,
+        "scan_seconds": {
+          "yara_python": 23.115,
+          "yara_x": 3.807
+        },
+        "disagreements": []
+      },
+      "iotgoat_firmware": {
+        "sample_size": 1012,
+        "full_corpus_size": 1012,
+        "agree": 1011,
+        "disagree": 0,
+        "scan_seconds": {
+          "yara_python": 9.881,
+          "yara_x": 1.725
+        },
+        "disagreements": [
+          {
+            "path": "/home/kali/director/projects/firmware-binary-analysis/extracted/IoTGoat-raspberry-pi2-sysupgrade.img.extracted/0/FAT32_partition.0",
+            "yara_python": {
+              "error": "scanning timed out"
+            },
+            "yara_x": [
+              "ns1:ldpreload",
+              "ns239:spyeye",
+              "ns240:exploit",
+              "ns240:rootkit",
+              "ns265:Rooter",
+              "ns265:RooterStrings",
+              "ns2:Big_Numbers0",
+              "ns2:Big_Numbers1",
+              "ns2:CRC32_poly_Constant",
+              "ns2:CRC32_table",
+              "ns2:CRC32b_poly_Constant",
+              "ns2:CRC32c_poly_Constant",
+              "ns2:Chacha_256_constant",
+              "ns2:MD5_Constants",
+              "ns2:RIPEMD160_Constants",
+              "ns2:RijnDael_AES_CHAR",
+              "ns2:SHA1_Constants"
+            ],
+            "reason": "scan_error"
+          }
+        ]
+      }
+    }
+  },
+  "reversinglabs": {
+    "common_files_count": 308,
+    "yara_python_compiled_count": 308,
+    "yara_x_compiled_count": 310,
+    "merged_compile_seconds": {
+      "yara_python": 0.149,
+      "yara_x": 1.118
+    },
+    "corpora": {
+      "usr_bin": {
+        "sample_size": 300,
+        "full_corpus_size": 3239,
+        "agree": 300,
+        "disagree": 0,
+        "scan_seconds": {
+          "yara_python": 1.167,
+          "yara_x": 0.697
+        },
+        "disagreements": []
+      },
+      "usr_lib_x86_64": {
+        "sample_size": 300,
+        "full_corpus_size": 1683,
+        "agree": 300,
+        "disagree": 0,
+        "scan_seconds": {
+          "yara_python": 2.064,
+          "yara_x": 1.831
+        },
+        "disagreements": []
+      },
+      "openwrt_firmware": {
+        "sample_size": 2181,
+        "full_corpus_size": 2181,
+        "agree": 2181,
+        "disagree": 0,
+        "scan_seconds": {
+          "yara_python": 1.527,
+          "yara_x": 0.415
+        },
+        "disagreements": []
+      },
+      "iotgoat_firmware": {
+        "sample_size": 1012,
+        "full_corpus_size": 1012,
+        "agree": 1012,
+        "disagree": 0,
+        "scan_seconds": {
+          "yara_python": 0.722,
+          "yara_x": 0.217
+        },
+        "disagreements": []
+      }
+    }
+  },
+  "signature-base": {
+    "common_files_count": 640,
+    "yara_python_compiled_count": 640,
+    "yara_x_compiled_count": 733,
+    "merged_compile_seconds": {
+      "yara_python": 0.363,
+      "yara_x": 1.818
+    },
+    "corpora": {
+      "usr_bin": {
+        "sample_size": 300,
+        "full_corpus_size": 3239,
+        "agree": 300,
+        "disagree": 0,
+        "scan_seconds": {
+          "yara_python": 1.19,
+          "yara_x": 1.047
+        },
+        "disagreements": []
+      },
+      "usr_lib_x86_64": {
+        "sample_size": 300,
+        "full_corpus_size": 1683,
+        "agree": 300,
+        "disagree": 0,
+        "scan_seconds": {
+          "yara_python": 1.872,
+          "yara_x": 1.49
+        },
+        "disagreements": []
+      },
+      "openwrt_firmware": {
+        "sample_size": 2181,
+        "full_corpus_size": 2181,
+        "agree": 2181,
+        "disagree": 0,
+        "scan_seconds": {
+          "yara_python": 1.987,
+          "yara_x": 1.401
+        },
+        "disagreements": []
+      },
+      "iotgoat_firmware": {
+        "sample_size": 1012,
+        "full_corpus_size": 1012,
+        "agree": 1012,
+        "disagree": 0,
+        "scan_seconds": {
+          "yara_python": 0.848,
+          "yara_x": 0.681
+        },
+        "disagreements": []
+      }
+    }
+  },
+  "protections-artifacts": {
+    "common_files_count": 1040,
+    "yara_python_compiled_count": 1040,
+    "yara_x_compiled_count": 1040,
+    "merged_compile_seconds": {
+      "yara_python": 0.14,
+      "yara_x": 2.333
+    },
+    "corpora": {
+      "usr_bin": {
+        "sample_size": 300,
+        "full_corpus_size": 3239,
+        "agree": 300,
+        "disagree": 0,
+        "scan_seconds": {
+          "yara_python": 0.783,
+          "yara_x": 0.734
+        },
+        "disagreements": []
+      },
+      "usr_lib_x86_64": {
+        "sample_size": 300,
+        "full_corpus_size": 1683,
+        "agree": 300,
+        "disagree": 0,
+        "scan_seconds": {
+          "yara_python": 1.101,
+          "yara_x": 0.897
+        },
+        "disagreements": []
+      },
+      "openwrt_firmware": {
+        "sample_size": 2181,
+        "full_corpus_size": 2181,
+        "agree": 2181,
+        "disagree": 0,
+        "scan_seconds": {
+          "yara_python": 0.365,
+          "yara_x": 0.443
+        },
+        "disagreements": []
+      },
+      "iotgoat_firmware": {
+        "sample_size": 1012,
+        "full_corpus_size": 1012,
+        "agree": 1012,
+        "disagree": 0,
+        "scan_seconds": {
+          "yara_python": 0.206,
+          "yara_x": 0.257
+        },
+        "disagreements": []
+      }
+    }
+  }
+}

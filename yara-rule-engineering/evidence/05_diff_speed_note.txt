@@ -1,0 +1,17 @@
+Sizing probe for scripts/05_diff_yara_vs_yarax.py, run before the full sweep
+to pick a sample size that keeps the whole run inside the timebox.
+
+reversinglabs (308 common files): yara-x scanned 100 usr_bin files in 0.18s.
+
+yara-rules-official-index (416 common files -- files that compile under
+BOTH engines): merged compile 0.46s (yara-python) vs 2.72s (yara-x); scanning
+the SAME 100 usr_bin files took 18.0s under yara-python vs 1.04s under
+yara-x, roughly a 17x difference on the same rules and the same files. This
+by itself is a real Q3 performance finding (see FINDINGS.md), but it also
+means yara-python is the pacing side for how large a usr_bin/usr_lib sample
+is affordable for this ruleset within the timebox.
+
+Resulting caps applied in scripts/05_diff_yara_vs_yarax.py:
+  - usr_bin / usr_lib_x86_64, most rulesets: first 300 files
+  - usr_bin / usr_lib_x86_64, yara-rules-official-index specifically: first 150 files
+  - openwrt_firmware / iotgoat_firmware: full corpus, no cap (already small)

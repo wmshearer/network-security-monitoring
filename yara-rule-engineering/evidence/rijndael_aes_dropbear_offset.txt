@@ -1,0 +1,47 @@
+Second manual-inspection example for Q1 (RijnDael_AES rule firing on
+usr/sbin/dropbear inside the IoTGoat firmware), verified via CLI since a
+Cutter GUI screenshot could not be captured reliably for this file (Cutter
+exited without a visible window on repeated launches against this specific
+ARM32 binary; the working GUI screenshot in evidence/gui/ is for a different,
+successfully-captured example, /usr/bin/bash + ldpreload).
+
+Rule (from .rulesets/yara-rules/crypto/crypto_signatures.yar):
+  rule RijnDael_AES
+  {
+      strings:
+          $c0 = { A5 63 63 C6 84 7C 7C F8 }
+      condition:
+          $c0
+  }
+
+Match location: usr/sbin/dropbear (SHA and full path in
+evidence/04_scan_clean_corpus_yara_python.json, ruleset
+yara-rules-official-index, corpus iotgoat_firmware), file offset 0x25790.
+
+Bytes at that offset (yara-python match, then independently confirmed with
+plain xxd, i.e. two different tools):
+
+  $ python3 -c "import yara; ..." -> $c0 0x25790 a56363c6847c7cf8
+  $ xxd -s 0x25790 -l 16 usr/sbin/dropbear
+    00025790: a563 63c6 847c 7cf8 9977 77ee 8d7b 7bf6  .cc..||..ww..{{.
+
+These are the first 8 bytes of the AES forward S-box in the byte layout
+{Sbox[0], Sbox[0]^Sbox[1], Sbox[1], Sbox[1]^Sbox[2], ...} that this
+particular signature checks for (0xa5=0x63^0xc6, 0x63 is Sbox[0], 0xc6 is
+Sbox[1], etc.) -- unlike Big_Numbers1 (a coincidental 32-hex-char string) or
+ldpreload (ordinary libc symbol names), this is a REAL AES implementation:
+dropbear is an SSH server and legitimately implements AES for the SSH
+transport cipher. The rule fires correctly on real cryptographic code. It is
+still a "false positive" in the sense that dropbear is not malware, but the
+match is structurally meaningful, not coincidental -- the manual inspection
+result is different in kind from the other two examples, which is the point
+of doing the inspection rather than reporting a bare match count.
+
+file offset -> virtual address for this binary: confirmed via `readelf -l`,
+this is a non-PIE EXEC ELF with LOAD segment 0 at VirtAddr=0x10000,
+Offset=0x0, so file offset 0x25790 maps to virtual address 0x35790
+(0x25790 + 0x10000). This distinction (physical/file offset vs mapped
+virtual address) is also why an earlier attempt to seek Cutter's Hexdump
+view to "0x25790" in its default (virtual-addressing) mode showed the wrong
+bytes entirely -- a real, worth-documenting trap when pointing a
+disassembler at a YARA-reported offset for a non-PIE binary.

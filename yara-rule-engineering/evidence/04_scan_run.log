@@ -1,0 +1,98 @@
+=== yara-rules ===
+  merged 426 rule files in 0.42s
+/home/kali/director/projects/yara-rule-engineering/scripts/04_scan_clean_corpus.py:99: RuntimeWarning: too many matches for string $grammer_massacre in rule "PoetRat_Python"
+  m = rules.match(path, timeout=5)
+/home/kali/director/projects/yara-rule-engineering/scripts/04_scan_clean_corpus.py:99: RuntimeWarning: too many matches for string $a in rule "Microsoft_Visual_Cpp_8"
+  m = rules.match(path, timeout=5)
+/home/kali/director/projects/yara-rule-engineering/scripts/04_scan_clean_corpus.py:99: RuntimeWarning: too many matches for string $a in rule "Microsoft_Visual_Cpp_8_additional"
+  m = rules.match(path, timeout=5)
+/home/kali/director/projects/yara-rule-engineering/scripts/04_scan_clean_corpus.py:99: RuntimeWarning: too many matches for string $domain_regex in rule "domain"
+  m = rules.match(path, timeout=5)
+/home/kali/director/projects/yara-rule-engineering/scripts/04_scan_clean_corpus.py:99: RuntimeWarning: too many matches for string $fff in rule "possible_includes_base64_packed_functions"
+  m = rules.match(path, timeout=5)
+  corpus=usr_bin (CAPPED to 400/3239): 400 scanned, 395 matched, 45 distinct rules fired, 68.8s wall
+  corpus=usr_lib_x86_64 (CAPPED to 400/1683): 400 scanned, 398 matched, 36 distinct rules fired, 112.7s wall
+    ...yara-rules/openwrt_firmware: 500/2181 files, 14.6s elapsed
+    ...yara-rules/openwrt_firmware: 1000/2181 files, 18.3s elapsed
+    ...yara-rules/openwrt_firmware: 1500/2181 files, 25.9s elapsed
+    ...yara-rules/openwrt_firmware: 2000/2181 files, 29.0s elapsed
+  corpus=openwrt_firmware: 2181 scanned, 2159 matched, 28 distinct rules fired, 30.5s wall
+    ...yara-rules/iotgoat_firmware: 500/1012 files, 9.3s elapsed
+    ...yara-rules/iotgoat_firmware: 1000/1012 files, 11.2s elapsed
+  corpus=iotgoat_firmware: 1012 scanned, 1001 matched, 31 distinct rules fired, 11.2s wall
+=== yara-rules-official-index ===
+  merged 419 rule files in 0.44s
+  corpus=usr_bin (CAPPED to 400/3239): 400 scanned, 45 matched, 40 distinct rules fired, 60.9s wall
+  corpus=usr_lib_x86_64 (CAPPED to 400/1683): 400 scanned, 76 matched, 29 distinct rules fired, 86.8s wall
+    ...yara-rules-official-index/openwrt_firmware: 500/2181 files, 13.8s elapsed
+    ...yara-rules-official-index/openwrt_firmware: 1000/2181 files, 17.7s elapsed
+    ...yara-rules-official-index/openwrt_firmware: 1500/2181 files, 24.3s elapsed
+    ...yara-rules-official-index/openwrt_firmware: 2000/2181 files, 27.2s elapsed
+  corpus=openwrt_firmware: 2181 scanned, 183 matched, 22 distinct rules fired, 28.3s wall
+    ...yara-rules-official-index/iotgoat_firmware: 500/1012 files, 8.6s elapsed
+    ...yara-rules-official-index/iotgoat_firmware: 1000/1012 files, 10.4s elapsed
+  corpus=iotgoat_firmware: 1012 scanned, 69 matched, 26 distinct rules fired, 10.4s wall
+=== reversinglabs ===
+  merged 308 rule files in 0.14s
+    ...reversinglabs/usr_bin: 500/3239 files, 2.1s elapsed
+    ...reversinglabs/usr_bin: 1000/3239 files, 4.0s elapsed
+    ...reversinglabs/usr_bin: 1500/3239 files, 6.7s elapsed
+    ...reversinglabs/usr_bin: 2000/3239 files, 7.6s elapsed
+    ...reversinglabs/usr_bin: 2500/3239 files, 15.7s elapsed
+    ...reversinglabs/usr_bin: 3000/3239 files, 17.6s elapsed
+  corpus=usr_bin: 3239 scanned, 0 matched, 0 distinct rules fired, 19.4s wall
+    ...reversinglabs/usr_lib_x86_64: 500/1683 files, 3.4s elapsed
+    ...reversinglabs/usr_lib_x86_64: 1000/1683 files, 8.5s elapsed
+    ...reversinglabs/usr_lib_x86_64: 1500/1683 files, 13.1s elapsed
+  corpus=usr_lib_x86_64: 1683 scanned, 0 matched, 0 distinct rules fired, 15.3s wall
+    ...reversinglabs/openwrt_firmware: 500/2181 files, 0.4s elapsed
+    ...reversinglabs/openwrt_firmware: 1000/2181 files, 0.7s elapsed
+    ...reversinglabs/openwrt_firmware: 1500/2181 files, 1.0s elapsed
+    ...reversinglabs/openwrt_firmware: 2000/2181 files, 1.3s elapsed
+  corpus=openwrt_firmware: 2181 scanned, 0 matched, 0 distinct rules fired, 1.4s wall
+    ...reversinglabs/iotgoat_firmware: 500/1012 files, 0.4s elapsed
+    ...reversinglabs/iotgoat_firmware: 1000/1012 files, 0.6s elapsed
+  corpus=iotgoat_firmware: 1012 scanned, 0 matched, 0 distinct rules fired, 0.7s wall
+=== signature-base ===
+  merged 640 rule files in 0.32s
+    ...signature-base/usr_bin: 500/3239 files, 2.5s elapsed
+    ...signature-base/usr_bin: 1000/3239 files, 4.8s elapsed
+    ...signature-base/usr_bin: 1500/3239 files, 7.4s elapsed
+    ...signature-base/usr_bin: 2000/3239 files, 8.5s elapsed
+    ...signature-base/usr_bin: 2500/3239 files, 16.6s elapsed
+    ...signature-base/usr_bin: 3000/3239 files, 18.6s elapsed
+  corpus=usr_bin: 3239 scanned, 3 matched, 1 distinct rules fired, 20.2s wall
+    ...signature-base/usr_lib_x86_64: 500/1683 files, 3.3s elapsed
+    ...signature-base/usr_lib_x86_64: 1000/1683 files, 9.1s elapsed
+    ...signature-base/usr_lib_x86_64: 1500/1683 files, 13.4s elapsed
+  corpus=usr_lib_x86_64: 1683 scanned, 0 matched, 0 distinct rules fired, 15.5s wall
+    ...signature-base/openwrt_firmware: 500/2181 files, 0.5s elapsed
+    ...signature-base/openwrt_firmware: 1000/2181 files, 0.8s elapsed
+    ...signature-base/openwrt_firmware: 1500/2181 files, 1.2s elapsed
+    ...signature-base/openwrt_firmware: 2000/2181 files, 1.5s elapsed
+  corpus=openwrt_firmware: 2181 scanned, 0 matched, 0 distinct rules fired, 1.6s wall
+    ...signature-base/iotgoat_firmware: 500/1012 files, 0.5s elapsed
+    ...signature-base/iotgoat_firmware: 1000/1012 files, 0.8s elapsed
+  corpus=iotgoat_firmware: 1012 scanned, 0 matched, 0 distinct rules fired, 0.8s wall
+=== protections-artifacts ===
+  merged 1040 rule files in 0.13s
+    ...protections-artifacts/usr_bin: 500/3239 files, 1.5s elapsed
+    ...protections-artifacts/usr_bin: 1000/3239 files, 2.9s elapsed
+    ...protections-artifacts/usr_bin: 1500/3239 files, 4.6s elapsed
+    ...protections-artifacts/usr_bin: 2000/3239 files, 5.2s elapsed
+    ...protections-artifacts/usr_bin: 2500/3239 files, 10.9s elapsed
+    ...protections-artifacts/usr_bin: 3000/3239 files, 12.1s elapsed
+  corpus=usr_bin: 3239 scanned, 3 matched, 5 distinct rules fired, 13.1s wall
+    ...protections-artifacts/usr_lib_x86_64: 500/1683 files, 2.1s elapsed
+    ...protections-artifacts/usr_lib_x86_64: 1000/1683 files, 5.7s elapsed
+    ...protections-artifacts/usr_lib_x86_64: 1500/1683 files, 8.6s elapsed
+  corpus=usr_lib_x86_64: 1683 scanned, 0 matched, 0 distinct rules fired, 10.1s wall
+    ...protections-artifacts/openwrt_firmware: 500/2181 files, 0.2s elapsed
+    ...protections-artifacts/openwrt_firmware: 1000/2181 files, 0.2s elapsed
+    ...protections-artifacts/openwrt_firmware: 1500/2181 files, 0.3s elapsed
+    ...protections-artifacts/openwrt_firmware: 2000/2181 files, 0.3s elapsed
+  corpus=openwrt_firmware: 2181 scanned, 0 matched, 0 distinct rules fired, 0.4s wall
+    ...protections-artifacts/iotgoat_firmware: 500/1012 files, 0.2s elapsed
+    ...protections-artifacts/iotgoat_firmware: 1000/1012 files, 0.2s elapsed
+  corpus=iotgoat_firmware: 1012 scanned, 0 matched, 0 distinct rules fired, 0.2s wall
+Wrote /home/kali/director/projects/yara-rule-engineering/evidence/04_scan_clean_corpus_yara_python.json

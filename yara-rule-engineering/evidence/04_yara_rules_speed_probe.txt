@@ -1,0 +1,39 @@
+Speed probe run to decide the corpus cap for scripts/04_scan_clean_corpus.py.
+Method: for each ruleset, compile every individually-good rule file (per
+evidence/02_compile_results_yara_python.json) into one merged yara.Rules
+object, then time yara.Rules.match() (5s per-file timeout) over the FIRST
+100 files (alphabetical) of the usr_bin corpus manifest
+(evidence/corpus_manifest.json).
+
+Command run (interactively, via .venv/bin/python3, not saved as a script
+since it was a one-time sizing probe, not a repeatable claim):
+
+  for name in ['yara-rules', 'reversinglabs', 'signature-base', 'protections-artifacts']:
+      rules, n, t = build_merged_rules(name)
+      files = manifest['corpora']['usr_bin']['files'][:100]
+      t0 = time.time(); scan_corpus(rules, files); dt = time.time()-t0
+      print(name, n, 'files merged', dt, 'seconds for 100 files')
+
+Raw output:
+
+yara-rules: 426 files merged, 18.72s for 100 files (5.3 files/sec) -> est. full usr_bin (3239): 10.1 min
+reversinglabs: 308 files merged, 0.32s for 100 files (313.8 files/sec) -> est. full usr_bin (3239): 0.2 min
+signature-base: 640 files merged, 0.32s for 100 files (313.3 files/sec) -> est. full usr_bin (3239): 0.2 min
+protections-artifacts: 1040 files merged, 0.21s for 100 files (487.6 files/sec) -> est. full usr_bin (3239): 0.1 min
+
+Conclusion: yara-rules (12,630 total compiled rules, by far the largest of
+the four rulesets by rule count) is 50-1500x slower per file than the other
+three rulesets on the same 100 files. This is why scripts/04_scan_clean_corpus.py
+caps ONLY the yara-rules ruleset's usr_bin/usr_lib_x86_64 runs to 400 files;
+the other three rulesets run at full corpus size.
+
+Root cause investigated further: individually, no single yara-rules category
+subdirectory scanned anywhere near this slowly (crypto/packers/utils were the
+slowest individually at ~1-1.6s for 50 files; malware, the largest category
+at 346 files, took only 0.39s for 50 files). Merging ALL 426 files into one
+compiled ruleset and re-timing the SAME 50 files took 4.04s, several times
+slower than any single category alone. This points to a real, known YARA
+cost driver: combining many rule files into one Aho-Corasick automaton adds
+per-file scanning cost as the automaton grows and the atoms extracted from
+short/generic strings across thousands of rules produce more candidate
+matches to verify, not just as the sum of each category's individual cost.

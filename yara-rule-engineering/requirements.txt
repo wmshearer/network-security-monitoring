@@ -1,0 +1,16 @@
+# Venv setup used for this project:
+#   python3 -m venv .venv
+#   .venv/bin/pip install -r requirements.txt
+#
+# yara-python and yara-x were already present in the provided .venv
+# (versions confirmed by tests/test_environment.py). matplotlib/pytest were
+# added during this project.
+yara-python==4.5.4
+yara-x==1.20.0
+matplotlib==3.11.1
+pytest==9.1.1
+
+# System-wide tools used alongside the venv (not pip-installable):
+#   yara 4.5.8       (Debian/Kali package, the `yara` CLI binary, used for
+#                      `yara -S/--print-stats`)
+#   libyara10 4.5.8-1 (backs both the yara CLI and yara-python)

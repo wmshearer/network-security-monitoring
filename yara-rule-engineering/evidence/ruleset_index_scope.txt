@@ -1,0 +1,31 @@
+Which yara-rules top-level directories are referenced by the project's own
+maintained index.yar (the file the project's README points users to for a
+"ready to use" ruleset), checked directly against the cloned repo:
+
+  antidebug_antivm: INCLUDED
+  capabilities: INCLUDED
+  crypto: INCLUDED
+  cve_rules: INCLUDED
+  deprecated: NOT included in index.yar
+  email: INCLUDED
+  exploit_kits: INCLUDED
+  maldocs: INCLUDED
+  malware: INCLUDED
+  mobile_malware: NOT included in index.yar (there is a separate opt-in
+                   index_w_mobile.yar that adds it)
+  packers: INCLUDED
+  utils: NOT included in index.yar
+  webshells: INCLUDED
+
+Method: for each top-level directory name under .rulesets/yara-rules,
+grepped index.yar for an "include" line referencing that directory.
+`grep -c "include" index.yar` = 480 include lines total; `grep "utils"
+index.yar` returns nothing.
+
+utils/ contains: domain.yar, url.yar, ip.yar, base64.yar -- generic helper
+patterns like `rule domain { strings: $domain_regex = /([\w\.-]+)/ ...
+condition: $domain_regex }`, which matches any run of word characters,
+dots, or hyphens. These are building blocks meant to be combined with other
+conditions in a real detection rule (e.g. "url AND known-bad-domain-list"),
+not deployed standalone -- and the maintainers' own index.yar agrees, since
+it never includes them.

@@ -1,0 +1,33 @@
+=== yara-rules-official-index ===
+  yara-python compiled 419 files, yara-x compiled 426 files, 416 in common
+  merged-common compile: yara-python 0.41s, yara-x 2.48s
+/home/kali/director/projects/yara-rule-engineering/scripts/05_diff_yara_vs_yarax.py:72: RuntimeWarning: too many matches for string $a in rule "Microsoft_Visual_Cpp_8"
+  m = rules.match(entry["path"], timeout=5)
+/home/kali/director/projects/yara-rule-engineering/scripts/05_diff_yara_vs_yarax.py:72: RuntimeWarning: too many matches for string $a in rule "Microsoft_Visual_Cpp_8_additional"
+  m = rules.match(entry["path"], timeout=5)
+  corpus=usr_bin (n=150): agree=150 disagree=0 yara-python=16.1s yara-x=1.1s
+  corpus=usr_lib_x86_64 (n=150): agree=148 disagree=2 yara-python=53.2s yara-x=8.0s
+  corpus=openwrt_firmware (n=2181): agree=2181 disagree=0 yara-python=23.1s yara-x=3.8s
+  corpus=iotgoat_firmware (n=1012): agree=1011 disagree=0 yara-python=9.9s yara-x=1.7s
+=== reversinglabs ===
+  yara-python compiled 308 files, yara-x compiled 310 files, 308 in common
+  merged-common compile: yara-python 0.15s, yara-x 1.12s
+  corpus=usr_bin (n=300): agree=300 disagree=0 yara-python=1.2s yara-x=0.7s
+  corpus=usr_lib_x86_64 (n=300): agree=300 disagree=0 yara-python=2.1s yara-x=1.8s
+  corpus=openwrt_firmware (n=2181): agree=2181 disagree=0 yara-python=1.5s yara-x=0.4s
+  corpus=iotgoat_firmware (n=1012): agree=1012 disagree=0 yara-python=0.7s yara-x=0.2s
+=== signature-base ===
+  yara-python compiled 640 files, yara-x compiled 733 files, 640 in common
+  merged-common compile: yara-python 0.36s, yara-x 1.82s
+  corpus=usr_bin (n=300): agree=300 disagree=0 yara-python=1.2s yara-x=1.0s
+  corpus=usr_lib_x86_64 (n=300): agree=300 disagree=0 yara-python=1.9s yara-x=1.5s
+  corpus=openwrt_firmware (n=2181): agree=2181 disagree=0 yara-python=2.0s yara-x=1.4s
+  corpus=iotgoat_firmware (n=1012): agree=1012 disagree=0 yara-python=0.8s yara-x=0.7s
+=== protections-artifacts ===
+  yara-python compiled 1040 files, yara-x compiled 1040 files, 1040 in common
+  merged-common compile: yara-python 0.14s, yara-x 2.33s
+  corpus=usr_bin (n=300): agree=300 disagree=0 yara-python=0.8s yara-x=0.7s
+  corpus=usr_lib_x86_64 (n=300): agree=300 disagree=0 yara-python=1.1s yara-x=0.9s
+  corpus=openwrt_firmware (n=2181): agree=2181 disagree=0 yara-python=0.4s yara-x=0.4s
+  corpus=iotgoat_firmware (n=1012): agree=1012 disagree=0 yara-python=0.2s yara-x=0.3s
+Wrote /home/kali/director/projects/yara-rule-engineering/evidence/05_diff_yara_vs_yarax.json

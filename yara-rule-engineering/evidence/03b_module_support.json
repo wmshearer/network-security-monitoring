@@ -1,0 +1,44 @@
+{
+  "pe": {
+    "yara_python_compiles": true,
+    "yara_python_error": null,
+    "yara_x_compiles": true,
+    "yara_x_error": null
+  },
+  "elf": {
+    "yara_python_compiles": true,
+    "yara_python_error": null,
+    "yara_x_compiles": true,
+    "yara_x_error": null
+  },
+  "math": {
+    "yara_python_compiles": true,
+    "yara_python_error": null,
+    "yara_x_compiles": true,
+    "yara_x_error": null
+  },
+  "hash": {
+    "yara_python_compiles": false,
+    "yara_python_error": "line 1: unknown module \"hash\"",
+    "yara_x_compiles": true,
+    "yara_x_error": null
+  },
+  "cuckoo": {
+    "yara_python_compiles": false,
+    "yara_python_error": "line 1: unknown module \"cuckoo\"",
+    "yara_x_compiles": true,
+    "yara_x_error": null
+  },
+  "androguard": {
+    "yara_python_compiles": false,
+    "yara_python_error": "line 1: unknown module \"androguard\"",
+    "yara_x_compiles": false,
+    "yara_x_error": "error[E010]: unknown module `androguard`\n --> line:1:1\n  |\n1 | import \"androguard\"\n  | ^^^^^^^^^^^^^^^^^^^ module `androguard` not found"
+  },
+  "magic": {
+    "yara_python_compiles": false,
+    "yara_python_error": "line 1: unknown module \"magic\"",
+    "yara_x_compiles": false,
+    "yara_x_error": "error[E010]: unknown module `magic`\n --> line:1:1\n  |\n1 | import \"magic\"\n  | ^^^^^^^^^^^^^^ module `magic` not found"
+  }
+}
