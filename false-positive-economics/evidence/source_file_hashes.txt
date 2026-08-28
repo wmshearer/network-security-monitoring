@@ -1,0 +1,10 @@
+SHA-256 hashes of the two source files this project reads, recorded at the
+time this project's figures were computed. If these hashes ever change, the
+source project has been updated and every figure in this project must be
+recomputed and re-verified before reuse.
+
+2b0d0c9e10ed79cbe98d9a5f285731a73d0c55e33feb653251c218933ab61e75  detection-rule-lab/reports/scoring-run.json
+535ee323762a668bfb0eb841ee8f0082a1d3ac8ceee205d1a9f60592a7ca70c6  ebpf-container-detection/evidence/analysis.json
+
+Recorded: 2026-08-28
+Command used: sha256sum <path>
