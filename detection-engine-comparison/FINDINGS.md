@@ -19,7 +19,7 @@ filters `TicketOptions` to one of `0x40810000`, `0x40800000`, `0x40810010`.
 
 The single-event log
 (`kerberoasting_spn_request_with_rc4_encryption/windows-xml.log`, 1 event)
-has `TicketOptions=0x40810000` -- matches.
+has `TicketOptions=0x40810000`, so it matches.
 
 The volumetric log
 (`unusual_number_of_kerberos_service_tickets_requested/windows-xml.log`, 159
@@ -202,7 +202,7 @@ correctly rejected. Rechecking each by its own `EventCode` field:
   happens to start with the hex digits `17` right after `0x`
   (`0x177c`, `0x1738`, `0x1704`, `0x17a0`). One concrete example: an event
   containing `New Process ID: 0x177c`, `New Process Name:
-  C:\Program Files\SplunkUniversalForwarder\bin\splunk-netmon.exe` -- the
+  C:\Program Files\SplunkUniversalForwarder\bin\splunk-netmon.exe`. The
   Splunk Universal Forwarder's own monitoring process, nothing to do with
   Kerberos, RC4, or ticket requests. YARA cannot tell "0x17 inside a
   Process ID field" from "0x17 as the value of the TicketEncryptionType
@@ -247,7 +247,7 @@ eventtype="wineventlog_security" OR Channel="security"
 This corpus's own published test fixture for that exact detection
 (`_corpora/security_content/detections/endpoint/kerberoasting_spn_request_with_rc4_encryption.yml`,
 `tests:` block) states its data would be ingested as
-`source: XmlWinEventLog:Security`, `sourcetype: XmlWinEventLog` -- the
+`source: XmlWinEventLog:Security`, `sourcetype: XmlWinEventLog`. The
 convention the pySigma-compiled query does not match.
 
 **What this means, stated precisely**: if this corpus's data were ingested
@@ -263,7 +263,7 @@ alone.
 search. Splunk authentication was unavailable in every session that worked
 on this project (`SPLUNK_PASS` unset, no stored credential; the previous
 credential was found leaked in five files across three repos and
-intentionally burned -- see `memory/splunk-lab-local-credential.md`). No
+intentionally burned, see `memory/splunk-lab-local-credential.md`). No
 credential guessing or brute-forcing was attempted. `evidence/05_splunk_auth_attempt.txt`
 records the two auth attempts made (both refused) and the conclusion. The
 finding above is confirmed from pipeline source code and the corpus's own

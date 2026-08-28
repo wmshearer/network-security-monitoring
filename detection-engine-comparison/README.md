@@ -86,8 +86,8 @@ which cites every cell's evidence file).
 
 **Splunk authentication was never available in this project.** The local
 Splunk Enterprise instance (`http://localhost:8000`, licensed through
-2029-10-15) is genuinely running -- confirmed with a real screenshot,
-`evidence/gui/05-splunk-web-login-blocked.png` -- but its current admin
+2029-10-15) is genuinely running, confirmed with a real screenshot,
+`evidence/gui/05-splunk-web-login-blocked.png`, but its current admin
 password is intentionally not stored anywhere (the previous one was found
 leaked in five files across three repos and was intentionally burned; see
 `memory/splunk-lab-local-credential.md`). No credential guessing or
@@ -97,7 +97,7 @@ brute-forcing was attempted. This means:
   Every SPL claim here is either a `sigma-cli`-compiled query string or a
   hand-authored query taken from the published reference detection,
   never an observed search-job result.
-- The most requested piece of evidence for this project -- a screenshot of
+- The most requested piece of evidence for this project, a screenshot of
   the stateless-vs-threshold contrast inside Splunk Web, and a screenshot
   of the field-mapping mismatch actually returning different hit counts --
   could not be produced. `evidence/17_field_mapping_silent_mismatch.txt`
