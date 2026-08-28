@@ -1,7 +1,8 @@
 # Manual finding: basket IDOR (Broken Access Control)
 
-Maps to Juice Shop challenge `basketAccessChallenge` ("Basket Access", category
-Broken Access Control, difficulty 3) in `data/challenges.yml`.
+Maps to Juice Shop challenge `basketAccessChallenge` ("View Basket": "View
+another user's shopping basket.", category Broken Access Control, difficulty 2)
+in `data/challenges.yml`.
 
 ## Setup
 
