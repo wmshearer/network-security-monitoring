@@ -18,17 +18,17 @@ directory that the project's OWN maintained index file
 (`index.yar`) never includes. Scope the ruleset to exactly what
 the maintainers ship and the rate drops by roughly 10x, to 6.8-19%. This is
 the difference between "clone the repo" (what most blog posts and forum
-answers say to do) and "use what the project actually intends" -- and it is
+answers say to do) and "use what the project actually intends", and it is
 a ten-times difference in outcome.
 
 **2. The two professional rulesets tested (ReversingLabs, Elastic) were
-essentially silent on a clean corpus of 8,115 files -- and when they weren't
+essentially silent on a clean corpus of 8,115 files, and when they weren't
 silent, they were right.** `reversinglabs` matched 0 files across every
 corpus tested. `signature-base` and Elastic's `protections-artifacts` each
 matched 3 files out of 3,239 in `/usr/bin` and 0 everywhere else. Those 3
 matches were not false positives: they correctly identified Kali's own
 `dsniff`/`sshmitm`/`webmitm` MITM toolkit, `aircrack-ng`, `masscan`, and
-`sliver-client` as exactly what they are -- real offensive security tools
+`sliver-client` as exactly what they are: real offensive security tools
 that happen to be installed on this machine. A near-zero false-positive rate
 that is also a 100% true-positive rate on the handful of things it did flag
 is a genuinely strong result.
@@ -40,7 +40,7 @@ pattern with wildcards all compile to the identical Aho-Corasick automaton
 (confirmed with `yara -S`) and scan a 3,239-file corpus in statistically
 indistinguishable time (1.83-1.90 seconds, repeated 7 times each). A `for`
 loop over `elf.sections` checking the same underlying fact takes 3.64
-seconds -- not because loops are slow, but because it never touches YARA's
+seconds, not because loops are slow, but because it never touches YARA's
 string-matching engine at all (`number of strings: 0` in `yara -S`'s own
 output) and instead pays the cost of parsing the ELF section table.
 
@@ -57,7 +57,7 @@ faster than yara-python.
 
 **5. A rule counter I wrote for this project had two real bugs, both found
 by cross-checking against yara-python's own count rather than trusting my
-own code.** See "Method notes" below -- this is not a finding about YARA,
+own code.** See "Method notes" below. This is not a finding about YARA,
 it is a finding about not trusting a tool you just wrote.
 
 ## The three questions, answered
@@ -110,8 +110,8 @@ in this project.
 |---|---|---|
 | `Yara-Rules/rules` | GPLv2 | Yes |
 | `reversinglabs/reversinglabs-yara-rules` | MIT | Yes |
-| `Neo23x0/signature-base` | **Detection Rule License (DRL) 1.1** | **No** -- custom licence, requires attribution |
-| `elastic/protections-artifacts` | **Elastic License 2.0** | **No** -- source-available, forbids hosted/managed-service resale |
+| `Neo23x0/signature-base` | **Detection Rule License (DRL) 1.1** | **No**, custom licence, requires attribution |
+| `elastic/protections-artifacts` | **Elastic License 2.0** | **No**, source-available, forbids hosted/managed-service resale |
 
 The common advice ("just grab signature-base") points at a non-OSI, custom
 licence. None of the four rulesets are vendored into this repository; all

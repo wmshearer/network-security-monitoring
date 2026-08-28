@@ -102,8 +102,8 @@ of four rules that should never have been included.** `Yara-Rules/rules`'
 own `index.yar` (the file its README points users to) does NOT include the
 `utils/` directory. Checked directly (`evidence/ruleset_index_scope.txt`):
 `grep "utils" index.yar` returns nothing, while every other non-deprecated
-category is referenced. `utils/` contains four rules -- `domain`, `url`,
-`ip`, `contains_base64` -- built to detect "does this look like a domain /
+category is referenced. `utils/` contains four rules (`domain`, `url`,
+`ip`, `contains_base64`) built to detect "does this look like a domain /
 URL / IP address / base64 blob," not "is this malicious." `rule domain`'s
 entire detection surface is the regex `/([\w\.-]+)/`, which matches any run
 of word characters, dots, or hyphens: present in essentially every binary
@@ -139,7 +139,7 @@ heuristic rather than a real detection.
 **`ldpreload`** (`capabilities/capabilities.yar`, matched `/usr/bin/bash`
 among others) fires on the mere presence of common libc symbol names --
 `dlopen`, `dlsym`, `fopen`, `open`, `accept`, `unlink`, `opendir`,
-`readdir` -- which appear in the dynamic symbol table (`.dynstr`) of nearly
+`readdir`, which appear in the dynamic symbol table (`.dynstr`) of nearly
 every dynamically-linked ELF binary that touches the filesystem or network.
 Confirmed at the byte level in `/usr/bin/bash`: `dlopen` appears at file
 offset `0x15542`, screenshotted directly in Cutter's hexdump view
@@ -173,7 +173,7 @@ no image was fabricated to stand in for the missing screenshot.
 
 **The three real detections on `usr_bin` are not false positives at all.**
 `signature-base`'s `HKTL_Dsniff` rule fired on `/usr/bin/dsniff`,
-`/usr/bin/sshmitm`, `/usr/bin/webmitm` -- Kali's own dsniff/MITM toolkit.
+`/usr/bin/sshmitm`, `/usr/bin/webmitm`, which are Kali's own dsniff/MITM toolkit.
 `protections-artifacts`' rules fired on `/usr/bin/aircrack-ng` (a WiFi
 attack tool), `/usr/bin/masscan` (a port scanner, flagged twice by two
 separate `Linux_Hacktool_Portscan` sub-rules), and `/usr/bin/sliver-client`
@@ -181,7 +181,7 @@ separate `Linux_Hacktool_Portscan` sub-rules), and `/usr/bin/sliver-client`
 sub-signatures). These are Kali Linux's real, intentionally-installed
 offensive security tools, correctly identified as exactly what they are.
 The near-zero false-positive rate for these two rulesets is not because they
-are silent on everything -- it is because the handful of times they do fire
+are silent on everything, it is because the handful of times they do fire
 on this machine, they are right.
 
 ## Q2: rule cost, what makes a ruleset slow
@@ -200,7 +200,7 @@ over `elf.sections` checking for a `.dynstr` section. Measured by
 **Match parity, checked before trusting the timing comparison:** the literal
 string, regex, and hex-with-wildcards rules match the exact same 2,278 files
 (0 files different, checked pairwise). The `elf.sections` loop matches 2,310
-files -- 34 more (mostly `qemu-*` cross-architecture emulation binaries,
+files, 34 more (mostly `qemu-*` cross-architecture emulation binaries,
 which have a `.dynstr` section but are not themselves x86-64 binaries
 referencing that exact linker path string) and 2 fewer (`ldd`,
 `gprofng-display-html`, which contain the literal path text but were not
@@ -230,7 +230,7 @@ literal-equivalent pattern, the *syntax* used to write it does not change
 the scan cost.
 
 **The `elf` module loop is a genuinely different, ~2x slower cost.** Its own
-`yara -S` output shows `number of strings: 0` -- it never uses YARA's
+`yara -S` output shows `number of strings: 0`, it never uses YARA's
 string-matching engine at all, relying entirely on the `elf` module's parsed
 view of the file's section table. That is a fundamentally different code
 path (structured file parsing vs. a flat byte scan), and it costs roughly
@@ -258,7 +258,7 @@ all 11 categories into one ruleset and re-timing the same 50 files took
 4.04s, several times slower than any category alone. Combining many rule
 files into one shared Aho-Corasick automaton adds per-file cost as the
 automaton and its candidate-match lists grow, beyond the simple sum of each
-category's individual cost -- this is why `yara-rules` needed a corpus cap
+category's individual cost, this is why `yara-rules` needed a corpus cap
 (see Q1) while the other three rulesets, each with far fewer total rules,
 did not.
 
@@ -317,7 +317,7 @@ four rulesets and all four corpora (`evidence/05_diff_yara_vs_yarax.json`).
 on every corpus sampled. This supports treating "no behavioural difference"
 as the honest headline result for the files both engines can actually run,
 which is a legitimate finding given VirusTotal's own framing of YARA-X as
-the eventual replacement -- no difference was manufactured to make this
+the eventual replacement, no difference was manufactured to make this
 project more interesting than it is.
 
 **The two exceptions, both explained:**
@@ -331,7 +331,7 @@ project more interesting than it is.
    engine or fullword boundary check treats a specific byte sequence. This
    is the only true behavioural disagreement found, out of 14,871 sampled
    scans, and it is on the weakest, most coincidence-prone rule in the
-   ruleset -- not evidence of a systemic engine difference.
+   ruleset, not evidence of a systemic engine difference.
 
 2. A 20MB FAT32 partition image extracted from the IoTGoat firmware
    (`.../IoTGoat-raspberry-pi2-sysupgrade.img.extracted/0/FAT32_partition.0`):
@@ -347,7 +347,7 @@ project more interesting than it is.
 
 On the `yara-rules-official-index` ruleset (416 rule files compiling under
 both engines), scanning the same 150-file `usr_bin` sample: yara-python
-took 16.1s, yara-x took 1.1s -- roughly 15x faster. On the 300-file
+took 16.1s, yara-x took 1.1s, roughly 15x faster. On the 300-file
 `usr_lib_x86_64` sample: yara-python 53.2s vs yara-x 8.0s, roughly 6.6x. The
 other three, much smaller rulesets show far less difference (both engines
 complete in under 2 seconds on the same samples), consistent with the Q2
@@ -360,7 +360,7 @@ own docs, cited in the task brief) were checked directly rather than taken
 on faith: (1) the pip-installed `yara-x` package genuinely ships no `yr` CLI
 binary in this venv (`tests/test_environment.py::test_yara_x_has_no_cli_binary_in_this_venv`,
 confirmed with `shutil.which`); (2) the Python API is genuinely not a drop-in
-replacement for yara-python's -- `yara_x.Rules` has no `len()`/iteration
+replacement for yara-python's, `yara_x.Rules` has no `len()`/iteration
 support for enumerating rule names (unlike `yara.Rules`), no rule-count
 introspection method exists in 1.20.0, and file-scanning uses a separate
 `Scanner` object (`yara_x.Scanner(rules).scan_file(path)`) rather than
@@ -400,7 +400,7 @@ in under 15 minutes total on this machine.
 
 **Used:** Cutter 2.5.0 (Rizin GUI), launched with `-A 1` for automated
 analysis, for the `/usr/bin/bash` + `ldpreload` hexdump inspection
-(`evidence/gui/01-cutter-bash-ldpreload-hexdump.png`) -- the single
+(`evidence/gui/01-cutter-bash-ldpreload-hexdump.png`), the single
 highest-value manual-inspection artifact in this project, since it shows the
 actual matched bytes at the actual file offset in a real disassembler.
 
