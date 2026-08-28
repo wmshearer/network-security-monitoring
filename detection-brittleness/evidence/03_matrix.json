@@ -1,0 +1,355 @@
+{
+  "T1003.001": {
+    "eligible_rule_count": 71,
+    "eligible_raw_compiled_variant_count": 105,
+    "group_names": [
+      "attack_data_atomic_red_team",
+      "attack_data_snapattack",
+      "evtx_attack_samples",
+      "evtx_to_mitre_attack"
+    ],
+    "rules_fired_at_least_once": 22,
+    "rules_fired_in_every_group": 0,
+    "rules_fired_in_every_group_ids": [],
+    "detail": {
+      "9f5c1d59-33be-4e60-bcab-85d2f566effd": {
+        "title": "Suspicious Process Access to LSASS with Dbgcore/Dbghelp DLLs",
+        "level": "high",
+        "counts": {
+          "attack_data_atomic_red_team": 1,
+          "evtx_attack_samples": 3
+        }
+      },
+      "d0d2f720-d14f-448d-8242-51ff396a334e": {
+        "title": "HackTool - Generic Process Access",
+        "level": "high",
+        "counts": {
+          "attack_data_atomic_red_team": 4,
+          "evtx_attack_samples": 1,
+          "evtx_to_mitre_attack": 1
+        }
+      },
+      "a49fa4d5-11db-418c-8473-1e014a8dd462": {
+        "title": "Lsass Memory Dump via Comsvcs DLL",
+        "level": "high",
+        "counts": {
+          "attack_data_atomic_red_team": 1,
+          "evtx_to_mitre_attack": 1
+        }
+      },
+      "9bd012ee-0dff-44d7-84a0-aa698cfd87a3": {
+        "title": "LSASS Memory Access by Tool With Dump Keyword In Name",
+        "level": "high",
+        "counts": {
+          "attack_data_atomic_red_team": 2,
+          "evtx_attack_samples": 6
+        }
+      },
+      "a18dd26b-6450-46de-8c91-9659150cf088": {
+        "title": "Potentially Suspicious GrantedAccess Flags On LSASS",
+        "level": "medium",
+        "counts": {
+          "attack_data_atomic_red_team": 1,
+          "evtx_attack_samples": 1
+        }
+      },
+      "5ef9853e-4d0e-4a70-846f-a9ca37d876da": {
+        "title": "Potential Credential Dumping Activity Via LSASS",
+        "level": "medium",
+        "counts": {
+          "attack_data_atomic_red_team": 1
+        }
+      },
+      "5afee48e-67dd-4e03-a783-f74259dcf998": {
+        "title": "Potential LSASS Process Dump Via Procdump - Generic",
+        "level": "high",
+        "counts": {
+          "attack_data_atomic_red_team": 9
+        }
+      },
+      "ffa6861c-4461-4f59-8a41-578c39f3f23e": {
+        "title": "LSASS Dump Keyword In CommandLine - Generic",
+        "level": "high",
+        "counts": {
+          "attack_data_atomic_red_team": 5,
+          "evtx_attack_samples": 2,
+          "evtx_to_mitre_attack": 1
+        }
+      },
+      "2e65275c-8288-4ab4-aeb7-6274f58b6b20": {
+        "title": "Procdump Execution - Generic",
+        "level": "medium",
+        "counts": {
+          "attack_data_atomic_red_team": 6
+        }
+      },
+      "515c8be5-e5df-4c5e-8f6d-a4a2f05e4b48": {
+        "title": "CreateDump Process Dump - Sysmon",
+        "level": "high",
+        "counts": {
+          "attack_data_atomic_red_team": 5
+        }
+      },
+      "a642964e-bead-4bed-8910-1bb4d63e3b4d": {
+        "title": "HackTool - Mimikatz Execution - Generic",
+        "level": "high",
+        "counts": {
+          "attack_data_snapattack": 9,
+          "evtx_to_mitre_attack": 1
+        }
+      },
+      "a5a2d357-1ab8-4675-a967-ef9990a59391": {
+        "title": "LSASS Process Memory Dump Files",
+        "level": "high",
+        "counts": {
+          "attack_data_snapattack": 2,
+          "evtx_attack_samples": 4,
+          "evtx_to_mitre_attack": 1
+        }
+      },
+      "c3e76af5-4ce0-4a14-9c9a-25ceb8fda182": {
+        "title": "WerFault LSASS Process Memory Dump",
+        "level": "high",
+        "counts": {
+          "attack_data_snapattack": 4
+        }
+      },
+      "6902955a-01b7-432c-b32a-6f5f81d8f625": {
+        "title": "LSASS Process Dump Artefact In CrashDumps Folder",
+        "level": "high",
+        "counts": {
+          "attack_data_snapattack": 2
+        }
+      },
+      "c8da0dfd-4ed0-4b68-962d-13c9c884384e": {
+        "title": "Potential Credential Dumping Via LSASS Process Clone - Sysmon",
+        "level": "critical",
+        "counts": {
+          "evtx_attack_samples": 1
+        }
+      },
+      "93d94efc-d7ad-4161-ad7d-1638c4f908d8": {
+        "title": "HackTool - Dumpert Process Dumper Default File",
+        "level": "critical",
+        "counts": {
+          "evtx_attack_samples": 3
+        }
+      },
+      "edadb1e5-5919-4e4c-8462-a9e643b02c4b": {
+        "title": "Process Memory Dump via RdrLeakDiag.EXE - Sysmon",
+        "level": "high",
+        "counts": {
+          "evtx_attack_samples": 1
+        }
+      },
+      "84c174ab-d3ef-481f-9c86-a50d0b8e3edb": {
+        "title": "PowerShell Get-Process LSASS in ScriptBlock",
+        "level": "high",
+        "counts": {
+          "evtx_attack_samples": 1,
+          "evtx_to_mitre_attack": 1
+        }
+      },
+      "69ca12af-119d-44ed-b50f-a47af0ebc364": {
+        "title": "LSASS Process Memory Dump Creation Via Taskmgr.EXE",
+        "level": "high",
+        "counts": {
+          "evtx_attack_samples": 1,
+          "evtx_to_mitre_attack": 1
+        }
+      },
+      "4a1b6da0-d94f-4fc3-98fc-2d9cb9e5ee76": {
+        "title": "Potentially Suspicious AccessMask Requested From LSASS",
+        "level": "medium",
+        "counts": {
+          "evtx_attack_samples": 2,
+          "evtx_to_mitre_attack": 3
+        }
+      },
+      "962fe167-e48d-4fd6-9974-11e5b9a5d6d1": {
+        "title": "LSASS Access From Non System Account",
+        "level": "medium",
+        "counts": {
+          "evtx_attack_samples": 1,
+          "evtx_to_mitre_attack": 1
+        }
+      },
+      "646ea171-dded-4578-8a4d-65e9822892e3": {
+        "title": "Process Memory Dump Via Comsvcs.DLL - Sysmon",
+        "level": "high",
+        "counts": {
+          "evtx_to_mitre_attack": 2
+        }
+      }
+    }
+  },
+  "T1059.001": {
+    "eligible_rule_count": 208,
+    "eligible_raw_compiled_variant_count": 309,
+    "group_names": [
+      "attack_data_atomic_red_team",
+      "attack_data_snapattack",
+      "evtx_to_mitre_attack"
+    ],
+    "rules_fired_at_least_once": 21,
+    "rules_fired_in_every_group": 1,
+    "rules_fired_in_every_group_ids": [
+      "f4bbd493-b796-416e-bbf2-121235348529"
+    ],
+    "detail": {
+      "02030f2f-6199-49ec-b258-ea71b07e03dc": {
+        "title": "Malicious PowerShell Commandlets - ProcessCreation - Sysmon",
+        "level": "high",
+        "counts": {
+          "attack_data_atomic_red_team": 9
+        }
+      },
+      "d7bcd677-645d-4691-a8d4-7a5602b780d1": {
+        "title": "Potential PowerShell Command Line Obfuscation - Sysmon",
+        "level": "high",
+        "counts": {
+          "attack_data_atomic_red_team": 3,
+          "evtx_to_mitre_attack": 2
+        }
+      },
+      "09576804-7a05-458e-a817-eb718ca91f54": {
+        "title": "Suspicious PowerShell IEX Execution Patterns - Sysmon",
+        "level": "high",
+        "counts": {
+          "attack_data_atomic_red_team": 6
+        }
+      },
+      "f376c8a7-a2d0-4ddc-aa0c-16c17236d962": {
+        "title": "HackTool - Bloodhound/Sharphound Execution - Sysmon",
+        "level": "high",
+        "counts": {
+          "attack_data_atomic_red_team": 6
+        }
+      },
+      "e32d4572-9826-4738-b651-95fa63747e8a": {
+        "title": "Base64 Encoded PowerShell Command Detected - Sysmon",
+        "level": "high",
+        "counts": {
+          "attack_data_atomic_red_team": 3,
+          "evtx_to_mitre_attack": 3
+        }
+      },
+      "e6c54d94-498c-4562-a37c-b469d8e9a275": {
+        "title": "Suspicious PowerShell Download and Execute Pattern - Sysmon",
+        "level": "high",
+        "counts": {
+          "attack_data_atomic_red_team": 15
+        }
+      },
+      "edc2f8ae-2412-4dfd-b9d5-0c57727e70be": {
+        "title": "Potential Powershell ReverseShell Connection - Sysmon",
+        "level": "high",
+        "counts": {
+          "attack_data_atomic_red_team": 1
+        }
+      },
+      "36210e0d-5b19-485d-a087-c096088885f0": {
+        "title": "Suspicious PowerShell Parameter Substring - Sysmon",
+        "level": "high",
+        "counts": {
+          "attack_data_atomic_red_team": 58
+        }
+      },
+      "692f0bec-83ba-4d04-af7e-e884a96059b6": {
+        "title": "Potential WMI Lateral Movement WmiPrvSE Spawned PowerShell - Sysmon",
+        "level": "medium",
+        "counts": {
+          "attack_data_atomic_red_team": 57
+        }
+      },
+      "734f8d9b-42b8-41b2-bcf5-abaf49d5a3c8": {
+        "title": "Remote PowerShell Session Host Process (WinRM) - Sysmon",
+        "level": "medium",
+        "counts": {
+          "attack_data_atomic_red_team": 1
+        }
+      },
+      "fb843269-508c-4b76-8b8d-88679db22ce7": {
+        "title": "Suspicious Execution of Powershell with Base64 - Sysmon",
+        "level": "medium",
+        "counts": {
+          "attack_data_atomic_red_team": 39,
+          "attack_data_snapattack": 1
+        }
+      },
+      "87e3c4e8-a6a8-4ad9-bb4f-46e7ff99a180": {
+        "title": "Change PowerShell Policies to an Insecure Level - Sysmon",
+        "level": "medium",
+        "counts": {
+          "attack_data_atomic_red_team": 6,
+          "attack_data_snapattack": 1
+        }
+      },
+      "b3512211-c67e-4707-bedc-66efc7848863": {
+        "title": "Potential PowerShell Downgrade Attack - Sysmon",
+        "level": "medium",
+        "counts": {
+          "attack_data_atomic_red_team": 2
+        }
+      },
+      "3b6ab547-8ec2-4991-b9d2-2b06702a48d7": {
+        "title": "PowerShell Download Pattern - Sysmon",
+        "level": "medium",
+        "counts": {
+          "attack_data_atomic_red_team": 13
+        }
+      },
+      "cdf05894-89e7-4ead-b2b0-0a5f97a90f2f": {
+        "title": "Potential Encoded PowerShell Patterns In CommandLine - Sysmon",
+        "level": "low",
+        "counts": {
+          "attack_data_atomic_red_team": 4
+        }
+      },
+      "f4bbd493-b796-416e-bbf2-121235348529": {
+        "title": "Non Interactive PowerShell Process Spawned - Sysmon",
+        "level": "low",
+        "counts": {
+          "attack_data_atomic_red_team": 117,
+          "attack_data_snapattack": 1,
+          "evtx_to_mitre_attack": 2
+        }
+      },
+      "ac7102b4-9e1e-4802-9b4f-17c5524c015c": {
+        "title": "New PowerShell Instance Created",
+        "level": "informational",
+        "counts": {
+          "attack_data_atomic_red_team": 118
+        }
+      },
+      "ca2092a1-c273-4878-9b4b-0d60115bf5ea": {
+        "title": "Suspicious Encoded PowerShell Command Line - Sysmon",
+        "level": "high",
+        "counts": {
+          "attack_data_snapattack": 1
+        }
+      },
+      "89819aa4-bbd6-46bc-88ec-c7f7fe30efa6": {
+        "title": "Malicious PowerShell Commandlets - ScriptBlock",
+        "level": "high",
+        "counts": {
+          "attack_data_snapattack": 1
+        }
+      },
+      "f62176f3-8128-4faa-bf6c-83261322e5eb": {
+        "title": "Malicious PowerShell Keywords",
+        "level": "medium",
+        "counts": {
+          "attack_data_snapattack": 1
+        }
+      },
+      "ae7fbf8e-f3cb-49fd-8db4-5f3bed522c71": {
+        "title": "Suspicious PowerShell Invocations - Specific",
+        "level": "high",
+        "counts": {
+          "evtx_to_mitre_attack": 1
+        }
+      }
+    }
+  }
+}

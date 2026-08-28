@@ -1,0 +1,72 @@
+[
+  {
+    "technique": "T1003.001",
+    "group": "attack_data_atomic_red_team",
+    "returncode": 0,
+    "duration_s": 5.7,
+    "rules_matched": 14,
+    "total_matched_events": 56,
+    "out_path": "/home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1003.001/attack_data_atomic_red_team.json",
+    "log_path": "/home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1003.001/attack_data_atomic_red_team.log.txt"
+  },
+  {
+    "technique": "T1003.001",
+    "group": "attack_data_snapattack",
+    "returncode": 0,
+    "duration_s": 2.18,
+    "rules_matched": 10,
+    "total_matched_events": 35,
+    "out_path": "/home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1003.001/attack_data_snapattack.json",
+    "log_path": "/home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1003.001/attack_data_snapattack.log.txt"
+  },
+  {
+    "technique": "T1003.001",
+    "group": "evtx_attack_samples",
+    "returncode": 0,
+    "duration_s": 2.43,
+    "rules_matched": 20,
+    "total_matched_events": 35,
+    "out_path": "/home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1003.001/evtx_attack_samples.json",
+    "log_path": "/home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1003.001/evtx_attack_samples.log.txt"
+  },
+  {
+    "technique": "T1003.001",
+    "group": "evtx_to_mitre_attack",
+    "returncode": 0,
+    "duration_s": 24.95,
+    "rules_matched": 28,
+    "total_matched_events": 38,
+    "out_path": "/home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1003.001/evtx_to_mitre_attack.json",
+    "log_path": "/home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1003.001/evtx_to_mitre_attack.log.txt"
+  },
+  {
+    "technique": "T1059.001",
+    "group": "attack_data_atomic_red_team",
+    "returncode": 0,
+    "duration_s": 10.38,
+    "rules_matched": 34,
+    "total_matched_events": 645,
+    "out_path": "/home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1059.001/attack_data_atomic_red_team.json",
+    "log_path": "/home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1059.001/attack_data_atomic_red_team.log.txt"
+  },
+  {
+    "technique": "T1059.001",
+    "group": "attack_data_snapattack",
+    "returncode": 0,
+    "duration_s": 2.26,
+    "rules_matched": 10,
+    "total_matched_events": 10,
+    "out_path": "/home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1059.001/attack_data_snapattack.json",
+    "log_path": "/home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1059.001/attack_data_snapattack.log.txt"
+  },
+  {
+    "technique": "T1059.001",
+    "group": "evtx_to_mitre_attack",
+    "returncode": 0,
+    "duration_s": 5.76,
+    "rules_matched": 10,
+    "total_matched_events": 19,
+    "out_path": "/home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1059.001/evtx_to_mitre_attack.json",
+    "log_path": "/home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1059.001/evtx_to_mitre_attack.log.txt"
+  }
+]

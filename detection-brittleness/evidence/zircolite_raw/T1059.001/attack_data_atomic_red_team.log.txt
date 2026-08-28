@@ -1,0 +1,187 @@
+cmd: /home/kali/director/projects/detection-as-code/.venv/bin/python3 /home/kali/director/projects/detection-as-code/vendor/Zircolite/zircolite.py -e /home/kali/director/projects/detection-brittleness/evidence/samples/T1059.001/attack_data_atomic_red_team -x -r /home/kali/director/projects/detection-as-code/vendor/Zircolite/rules/rules_windows_merged.json -o /home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1059.001/attack_data_atomic_red_team.json
+returncode: 0
+duration_s: 10.38
+
+--- stdout ---
+
+███████╗██╗██████╗  ██████╗ ██████╗ ██╗     ██╗████████╗███████╗
+╚══███╔╝██║██╔══██╗██╔════╝██╔═══██╗██║     ██║╚══██╔══╝██╔════╝
+  ███╔╝ ██║██████╔╝██║     ██║   ██║██║     ██║   ██║   █████╗
+ ███╔╝  ██║██╔══██╗██║     ██║   ██║██║     ██║   ██║   ██╔══╝
+███████╗██║██║  ██║╚██████╗╚██████╔╝███████╗██║   ██║   ███████╗
+╚══════╝╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝   ╚═╝   ╚══════╝
+-= Standalone Sigma Detection tool for EVTX/Auditd/Sysmon Linux =-
+                              v3.8.1
+
+[+] Loading ruleset(s)                                                          
+    [>] Loaded JSON/Zircolite ruleset :                                         
+/home/kali/director/projects/detection-as-code/vendor/Zircolite/rules/rules_wind
+ows_merged.json                                                                 
+[+] 4319 rules loaded                                                           
+[+] Event filter enabled: 36 channels, 34 EventID-bounded (214 channel/eventID  
+pairs)                                                                          
+[+]   any EventID allowed on: Security, Windows PowerShell                      
+[+] Checking prerequisites                                                      
+────────────────────────────────── Processing ──────────────────────────────────
+[+] Analyzing workload...
+    [>] Files           4 (37.2 MB total, avg 9.3 MB)                           
+    [>] System          45.0 GB RAM available, 20 CPUs                          
+    [>] DB Mode         PER-FILE                                                
+                        Sufficient RAM available (45.0 GB) with 4 files -       
+                        parallel processing enabled                             
+    [>] Parallel        ENABLED (4 workers)                                     
+
+
+
+
+
+[+] Processed: 4 files │ 21,942 events │ 9.2s │ 2,380 events/s                  
+────────────────────────────── Detection Results ───────────────────────────────
+
+┏━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃    Severity    ┃ Rule                    ┃   Events ┃ ATT&CK                 ┃
+┡━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━┩
+│      HIGH      │ Suspicious PowerShell   │       58 │ T1059.001              │
+│                │ Parameter Substring -   │          │                        │
+│                │ Sysmon                  │          │                        │
+│      HIGH      │ Suspicious Program      │       21 │ T1059                  │
+│                │ Names - Sysmon          │          │                        │
+│      HIGH      │ PowerShell Download and │       19 │ T1059                  │
+│                │ Execution Cradles -     │          │                        │
+│                │ Sysmon                  │          │                        │
+│      HIGH      │ Suspicious PowerShell   │       15 │ T1059.001              │
+│                │ Download and Execute    │          │                        │
+│                │ Pattern - Sysmon        │          │                        │
+│      HIGH      │ Malicious PowerShell    │        9 │ T1482, T1087, T1087.0… │
+│                │ Commandlets -           │          │                        │
+│                │ ProcessCreation -       │          │                        │
+│                │ Sysmon                  │          │                        │
+│      HIGH      │ HackTool - Mimikatz     │        9 │ T1003.001, T1003.002,… │
+│                │ Execution - Sysmon      │          │                        │
+│      HIGH      │ Suspicious PowerShell   │        6 │ T1059.001              │
+│                │ IEX Execution Patterns  │          │                        │
+│                │ - Sysmon                │          │                        │
+│      HIGH      │ HackTool -              │        6 │ T1087.001, T1087.002,… │
+│                │ Bloodhound/Sharphound   │          │                        │
+│                │ Execution - Sysmon      │          │                        │
+│      HIGH      │ Suspicious JavaScript   │        3 │ T1218.005              │
+│                │ Execution Via Mshta.EXE │          │                        │
+│                │ - Sysmon                │          │                        │
+│      HIGH      │ Potential PowerShell    │        3 │ T1027, T1059.001       │
+│                │ Command Line            │          │                        │
+│                │ Obfuscation - Sysmon    │          │                        │
+│      HIGH      │ Base64 Encoded          │        3 │ T1027, T1140, T1059.0… │
+│                │ PowerShell Command      │          │                        │
+│                │ Detected - Sysmon       │          │                        │
+│      HIGH      │ Remotely Hosted HTA     │        3 │ T1218.005              │
+│                │ File Executed Via       │          │                        │
+│                │ Mshta.EXE - Sysmon      │          │                        │
+│      HIGH      │ Run PowerShell Script   │        1 │ T1564.004              │
+│                │ from ADS - Sysmon       │          │                        │
+│      HIGH      │ Potential Powershell    │        1 │ T1059.001              │
+│                │ ReverseShell Connection │          │                        │
+│                │ - Sysmon                │          │                        │
+│     MEDIUM     │ Potential WMI Lateral   │       57 │ T1047, T1059.001       │
+│                │ Movement WmiPrvSE       │          │                        │
+│                │ Spawned PowerShell -    │          │                        │
+│                │ Sysmon                  │          │                        │
+│     MEDIUM     │ WmiPrvSE Spawned A      │       57 │ T1047                  │
+│                │ Process - Sysmon        │          │                        │
+│     MEDIUM     │ Suspicious Execution of │       39 │ T1059.001              │
+│                │ Powershell with Base64  │          │                        │
+│                │ - Sysmon                │          │                        │
+│     MEDIUM     │ Suspicious PowerShell   │       22 │                        │
+│                │ Invocations - Specific  │          │                        │
+│                │ - ProcessCreation -     │          │                        │
+│                │ Sysmon                  │          │                        │
+│     MEDIUM     │ PowerShell Download     │       13 │ T1059.001              │
+│                │ Pattern - Sysmon        │          │                        │
+│     MEDIUM     │ Potential Binary Or     │       10 │                        │
+│                │ Script Dropper Via      │          │                        │
+│                │ PowerShell              │          │                        │
+│     MEDIUM     │ Enable Windows Remote   │        8 │ T1021.006              │
+│                │ Management              │          │                        │
+│     MEDIUM     │ Dynamic .NET            │        7 │ T1027.004              │
+│                │ Compilation Via Csc.EXE │          │                        │
+│                │ - Sysmon                │          │                        │
+│     MEDIUM     │ Change PowerShell       │        6 │ T1059.001              │
+│                │ Policies to an Insecure │          │                        │
+│                │ Level - Sysmon          │          │                        │
+│     MEDIUM     │ Potential PowerShell    │        2 │ T1059.001              │
+│                │ Downgrade Attack -      │          │                        │
+│                │ Sysmon                  │          │                        │
+│     MEDIUM     │ Remote PowerShell       │        1 │ T1059.001, T1021.006   │
+│                │ Session Host Process    │          │                        │
+│                │ (WinRM) - Sysmon        │          │                        │
+│     MEDIUM     │ Explorer Process Tree   │        1 │ T1036                  │
+│                │ Break - Sysmon          │          │                        │
+│       LOW      │ Non Interactive         │      117 │ T1059.001              │
+│                │ PowerShell Process      │          │                        │
+│                │ Spawned - Sysmon        │          │                        │
+│       LOW      │ Dynamic CSharp Compile  │        7 │ T1027.004              │
+│                │ Artefact                │          │                        │
+│       LOW      │ Local Accounts          │        6 │ T1033, T1087.001       │
+│                │ Discovery - Sysmon      │          │                        │
+│       LOW      │ Uncommon Process Access │        6 │ T1055.011              │
+│                │ Rights For Target Image │          │                        │
+│       LOW      │ Potential Encoded       │        4 │ T1027, T1059.001       │
+│                │ PowerShell Patterns In  │          │                        │
+│                │ CommandLine - Sysmon    │          │                        │
+│       LOW      │ Suspicious Execution of │        4 │ T1082                  │
+│                │ Hostname - Sysmon       │          │                        │
+│       LOW      │ PowerShell Script       │        3 │                        │
+│                │ Dropped Via             │          │                        │
+│                │ PowerShell.EXE          │          │                        │
+│      INFO      │ New PowerShell Instance │      118 │ T1059.001              │
+│                │ Created                 │          │                        │
+└────────────────┴─────────────────────────┴──────────┴────────────────────────┘
+
+Processed 4 files
+├── get_ciminstance_windows-powershell.xml — 6 events — 0 detections
+├── 4104-psremoting-windows-powershell.xml — 8 events — 1 detection
+├── start_stop_service_windows-powershell.xml — 2 events — 0 detections
+└── windows-sysmon.xml — 21,926 events — 33 detections
+
+[+] Total events processed: 21,942 (0 filtered out by log source)               
+─────────────────────────────────── Results ────────────────────────────────────
+
+╭───────────────────────────────── ✨ Summary ─────────────────────────────────╮
+│                                                                              │
+│    ⏱  Duration         9.3s                                                  │
+│                            ├─ Processing  ███████████████░  9.3s (100%)      │
+│    📁 Files            4                                                     │
+│    📊 Events           21,942 (0 filtered out — every event matched a        │
+│                        rule's log source)                                    │
+│    ⚡ Throughput       2,356 events/s                                        │
+│    👥 Workers          4                                                     │
+│    💾 Peak Memory      204.09 MB                                             │
+│    🎯 Detections       157 HIGH │ 223 MED │ 147 LOW │ 118 INFO               │
+│    📏 Coverage         34/4319 rules matched (0.8%)  ░░░░░░░░░░░░░░░░        │
+│    🔍 Matched          645 events across 34 rules                            │
+│    📋 Top Hits         HIGH Suspicious PowerShell Parameter Substring -      │
+│                        Sysmon (58)                                           │
+│                        HIGH Suspicious Program Names - Sysmon (21)           │
+│                        HIGH PowerShell Download and Execution Cradles -      │
+│                        Sysmon (19)                                           │
+│                        HIGH Suspicious PowerShell Download and Execute       │
+│                        Patt... (15)                                          │
+│                        HIGH Malicious PowerShell Commandlets -               │
+│                        ProcessCreat... (9)                                   │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────────────── 🗺  ATT&CK Coverage ─────────────────────────────╮
+│  Execution               ████████████████      14 techniques (558 hits)      │
+│  Stealth                 █▋                    8 techniques (60 hits)        │
+│  Discovery               ▋                     10 techniques (25 hits)       │
+│  Persistence             ▎                     0 techniques (13 hits)        │
+│  Lateral Movement        ▎                     2 techniques (9 hits)         │
+│  Credential Access       ▎                     5 techniques (9 hits)         │
+│  Privilege Escalation    ▏                     1 technique (6 hits)          │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+    → Output: 
+/home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1059.
+001/attack_data_atomic_red_team.json
+
+--- stderr ---
+

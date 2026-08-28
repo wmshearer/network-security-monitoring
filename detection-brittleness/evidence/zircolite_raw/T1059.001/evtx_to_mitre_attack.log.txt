@@ -1,0 +1,131 @@
+cmd: /home/kali/director/projects/detection-as-code/.venv/bin/python3 /home/kali/director/projects/detection-as-code/vendor/Zircolite/zircolite.py -e /home/kali/director/projects/detection-brittleness/evidence/samples/T1059.001/evtx_to_mitre_attack -r /home/kali/director/projects/detection-as-code/vendor/Zircolite/rules/rules_windows_merged.json -o /home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1059.001/evtx_to_mitre_attack.json
+returncode: 0
+duration_s: 5.76
+
+--- stdout ---
+
+███████╗██╗██████╗  ██████╗ ██████╗ ██╗     ██╗████████╗███████╗
+╚══███╔╝██║██╔══██╗██╔════╝██╔═══██╗██║     ██║╚══██╔══╝██╔════╝
+  ███╔╝ ██║██████╔╝██║     ██║   ██║██║     ██║   ██║   █████╗
+ ███╔╝  ██║██╔══██╗██║     ██║   ██║██║     ██║   ██║   ██╔══╝
+███████╗██║██║  ██║╚██████╗╚██████╔╝███████╗██║   ██║   ███████╗
+╚══════╝╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝   ╚═╝   ╚══════╝
+-= Standalone Sigma Detection tool for EVTX/Auditd/Sysmon Linux =-
+                              v3.8.1
+
+[+] Loading ruleset(s)                                                          
+    [>] Loaded JSON/Zircolite ruleset :                                         
+/home/kali/director/projects/detection-as-code/vendor/Zircolite/rules/rules_wind
+ows_merged.json                                                                 
+[+] 4319 rules loaded                                                           
+[+] Event filter enabled: 36 channels, 34 EventID-bounded (214 channel/eventID  
+pairs)                                                                          
+[+]   any EventID allowed on: Security, Windows PowerShell                      
+[+] Checking prerequisites                                                      
+────────────────────────────────── Processing ──────────────────────────────────
+[+] Auto-detected log type: windows_evtx (evtx) - confidence: high              
+[+] Auto-detected timestamp field: SystemTime                                   
+[+] Analyzing workload...
+    [>] Files           3 (2.2 MB total, avg 750.7 KB)                          
+    [>] System          45.0 GB RAM available, 20 CPUs                          
+    [>] DB Mode         PER-FILE                                                
+                        Sufficient RAM available (45.0 GB) with 3 files -       
+                        parallel processing enabled                             
+    [>] Parallel        ENABLED (3 workers)                                     
+
+
+
+
+[+] Processed: 3 files │ 92 events │ 4.7s │ 20 events/s                         
+────────────────────────────── Detection Results ───────────────────────────────
+
+┏━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃    Severity    ┃ Rule                    ┃   Events ┃ ATT&CK                 ┃
+┡━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━┩
+│      HIGH      │ Base64 Encoded          │        3 │ T1027, T1140, T1059.0… │
+│                │ PowerShell Command      │          │                        │
+│                │ Detected - Generic      │          │                        │
+│      HIGH      │ Potential PowerShell    │        2 │ T1027, T1059.001       │
+│                │ Command Line            │          │                        │
+│                │ Obfuscation - Generic   │          │                        │
+│      HIGH      │ Suspicious PowerShell   │        1 │ T1059.001              │
+│                │ Invocations - Specific  │          │                        │
+│      HIGH      │ PowerShell Scripts      │        1 │ T1569.002              │
+│                │ Installed as Services - │          │                        │
+│                │ Security                │          │                        │
+│      HIGH      │ CobaltStrike Service    │        1 │ T1021.002, T1543.003,… │
+│                │ Installations -         │          │                        │
+│                │ Security                │          │                        │
+│     MEDIUM     │ Gzip Archive Decode Via │        3 │ T1132.001              │
+│                │ PowerShell - Generic    │          │                        │
+│     MEDIUM     │ Suspicious              │        3 │ T1132.001              │
+│                │ FromBase64String Usage  │          │                        │
+│                │ On Gzip Archive -       │          │                        │
+│                │ Process Creation -      │          │                        │
+│                │ Generic                 │          │                        │
+│     MEDIUM     │ Potential Suspicious    │        2 │ T1685.001, T1547.001,… │
+│                │ Activity Using SeCEdit  │          │                        │
+│                │ - Generic               │          │                        │
+│     MEDIUM     │ Cmd Launched with       │        1 │ T1564.003              │
+│                │ Hidden Start Flags to   │          │                        │
+│                │ Suspicious Targets -    │          │                        │
+│                │ Generic                 │          │                        │
+│       LOW      │ Non Interactive         │        2 │ T1059.001              │
+│                │ PowerShell Process      │          │                        │
+│                │ Spawned - Generic       │          │                        │
+└────────────────┴─────────────────────────┴──────────┴────────────────────────┘
+
+Processed 3 files
+├── ID4103-4104-Payload download via PowerShell.evtx — 3 events — 1 detection
+├── ID800-4103-Interactive PipeShell over named pipe (server and client).evtx — 
+│   30 events — 0 detections
+└── ID4688-Encoded PowerShell MSF payload via process execution.evtx — 59 events
+    — 9 detections
+
+[+] Total events processed: 92 (0 filtered out by log source)                   
+─────────────────────────────────── Results ────────────────────────────────────
+
+╭───────────────────────────────── ✨ Summary ─────────────────────────────────╮
+│                                                                              │
+│    ⏱  Duration         4.7s                                                  │
+│                            ├─ Processing  ███████████████░  4.7s (99%)       │
+│    📁 Files            3                                                     │
+│    📊 Events           92 (0 filtered out — every event matched a rule's     │
+│                        log source)                                           │
+│    ⚡ Throughput       19 events/s                                           │
+│    👥 Workers          3                                                     │
+│    💾 Peak Memory      143.73 MB                                             │
+│    🎯 Detections       8 HIGH │ 9 MED │ 2 LOW                                │
+│    📏 Coverage         10/4319 rules matched (0.2%)  ░░░░░░░░░░░░░░░░        │
+│    🔍 Matched          19 events across 10 rules                             │
+│    📋 Top Hits         HIGH Base64 Encoded PowerShell Command Detected -     │
+│                        Ge... (3)                                             │
+│                        HIGH Potential PowerShell Command Line Obfuscation    │
+│                        -... (2)                                              │
+│                        HIGH Suspicious PowerShell Invocations - Specific     │
+│                        (1)                                                   │
+│                        HIGH PowerShell Scripts Installed as Services -       │
+│                        Secu... (1)                                           │
+│                        HIGH CobaltStrike Service Installations - Security    │
+│                        (1)                                                   │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────────────── 🗺  ATT&CK Coverage ─────────────────────────────╮
+│  Execution               ████████████████      20 techniques (12 hits)       │
+│  Stealth                 ██████████▋           18 techniques (8 hits)        │
+│  Command and Control     ████████              1 technique (6 hits)          │
+│  Persistence             ████                  17 techniques (3 hits)        │
+│  Privilege Escalation    ████                  17 techniques (3 hits)        │
+│  Collection              ██▋                   14 techniques (2 hits)        │
+│  Discovery               ██▋                   14 techniques (2 hits)        │
+│  Credential Access       ██▋                   14 techniques (2 hits)        │
+│  Defense Impairment      ██▋                   14 techniques (2 hits)        │
+│  Lateral Movement        █▎                    3 techniques (1 hit)          │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+    → Output: 
+/home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1059.
+001/evtx_to_mitre_attack.json
+
+--- stderr ---
+

@@ -1,0 +1,134 @@
+cmd: /home/kali/director/projects/detection-as-code/.venv/bin/python3 /home/kali/director/projects/detection-as-code/vendor/Zircolite/zircolite.py -e /home/kali/director/projects/detection-brittleness/evidence/samples/T1003.001/evtx_attack_samples -r /home/kali/director/projects/detection-as-code/vendor/Zircolite/rules/rules_windows_merged.json -o /home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1003.001/evtx_attack_samples.json
+returncode: 0
+duration_s: 2.43
+
+--- stdout ---
+
+███████╗██╗██████╗  ██████╗ ██████╗ ██╗     ██╗████████╗███████╗
+╚══███╔╝██║██╔══██╗██╔════╝██╔═══██╗██║     ██║╚══██╔══╝██╔════╝
+  ███╔╝ ██║██████╔╝██║     ██║   ██║██║     ██║   ██║   █████╗
+ ███╔╝  ██║██╔══██╗██║     ██║   ██║██║     ██║   ██║   ██╔══╝
+███████╗██║██║  ██║╚██████╗╚██████╔╝███████╗██║   ██║   ███████╗
+╚══════╝╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝   ╚═╝   ╚══════╝
+-= Standalone Sigma Detection tool for EVTX/Auditd/Sysmon Linux =-
+                              v3.8.1
+
+[+] Loading ruleset(s)                                                          
+    [>] Loaded JSON/Zircolite ruleset :                                         
+/home/kali/director/projects/detection-as-code/vendor/Zircolite/rules/rules_wind
+ows_merged.json                                                                 
+[+] 4319 rules loaded                                                           
+[+] Event filter enabled: 36 channels, 34 EventID-bounded (214 channel/eventID  
+pairs)                                                                          
+[+]   any EventID allowed on: Security, Windows PowerShell                      
+[+] Checking prerequisites                                                      
+────────────────────────────────── Processing ──────────────────────────────────
+[+] Auto-detected log type: windows_evtx (evtx) - confidence: high              
+[+] Auto-detected timestamp field: SystemTime                                   
+[+] Analyzing workload...
+    [>] Files          12 (816.0 KB total, avg 68.0 KB)                     
+    [>] System         44.5 GB RAM available, 20 CPUs                       
+    [>] DB Mode        UNIFIED                                              
+                       Many small files detected (12 files, avg 68.0 KB)    
+
+[+] Loading all 12 file(s) into a single unified database                       
+[+] Processing events (streaming mode)                                          
+[+] Creating dynamic model                                                      
+
+[+] Creating indexes                                                            
+[+] Total events processed: 61 (6 filtered out by log source)                   
+[+] Executing ruleset against unified database (61 events) - 4319 rules         
+
+┏━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃    Severity    ┃ Rule                    ┃   Events ┃ ATT&CK                 ┃
+┡━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━┩
+│    CRITICAL    │ HackTool - Dumpert      │        3 │ T1003.001              │
+│                │ Process Dumper Default  │          │                        │
+│                │ File                    │          │                        │
+│    CRITICAL    │ Potential Credential    │        1 │ T1003, T1003.001       │
+│                │ Dumping Via LSASS       │          │                        │
+│                │ Process Clone - Sysmon  │          │                        │
+│    CRITICAL    │ Hacktool Execution -    │        1 │ T1588.002, T1003       │
+│                │ Imphash - Sysmon        │          │                        │
+│    CRITICAL    │ HackTool - Mimikatz     │        1 │ T1558                  │
+│                │ Kirbi File Creation     │          │                        │
+│      HIGH      │ LSASS Memory Access by  │        6 │ T1003.001              │
+│                │ Tool With Dump Keyword  │          │                        │
+│                │ In Name                 │          │                        │
+│      HIGH      │ LSASS Process Memory    │        4 │ T1003.001              │
+│                │ Dump Files              │          │                        │
+│      HIGH      │ Suspicious Process      │        3 │ T1003.001, T1685       │
+│                │ Access to LSASS with    │          │                        │
+│                │ Dbgcore/Dbghelp DLLs    │          │                        │
+│      HIGH      │ LSASS Dump Keyword In   │        2 │ T1003.001              │
+│                │ CommandLine - Sysmon    │          │                        │
+│      HIGH      │ Process Memory Dump via │        1 │ T1003.001              │
+│                │ RdrLeakDiag.EXE -       │          │                        │
+│                │ Sysmon                  │          │                        │
+│      HIGH      │ PowerShell Get-Process  │        1 │ T1003.001              │
+│                │ LSASS in ScriptBlock    │          │                        │
+│      HIGH      │ HackTool - Generic      │        1 │ T1003.001              │
+│                │ Process Access          │          │                        │
+│      HIGH      │ RunMRU Registry Key     │        1 │ T1070.003              │
+│                │ Deletion - Registry     │          │                        │
+│      HIGH      │ LSASS Process Memory    │        1 │ T1003.001              │
+│                │ Dump Creation Via       │          │                        │
+│                │ Taskmgr.EXE             │          │                        │
+│     MEDIUM     │ Potentially Suspicious  │        2 │ T1003.001              │
+│                │ AccessMask Requested    │          │                        │
+│                │ From LSASS              │          │                        │
+│     MEDIUM     │ Uncommon Svchost Parent │        1 │ T1036.005              │
+│                │ Process - Sysmon        │          │                        │
+│     MEDIUM     │ LSASS Access From Non   │        1 │ T1003.001              │
+│                │ System Account          │          │                        │
+│     MEDIUM     │ Malicious PowerShell    │        1 │ T1059.001              │
+│                │ Keywords                │          │                        │
+│     MEDIUM     │ Potentially Suspicious  │        1 │ T1003.001              │
+│                │ GrantedAccess Flags On  │          │                        │
+│                │ LSASS                   │          │                        │
+│       LOW      │ Windows Processes       │        2 │ T1036.003, T1036.005   │
+│                │ Suspicious Parent       │          │                        │
+│                │ Directory - Sysmon      │          │                        │
+│       LOW      │ Suspicious Process      │        1 │ T1057                  │
+│                │ Discovery With          │          │                        │
+│                │ Get-Process             │          │                        │
+└────────────────┴─────────────────────────┴──────────┴────────────────────────┘
+
+─────────────────────────────────── Results ────────────────────────────────────
+
+╭───────────────────────────────── ✨ Summary ─────────────────────────────────╮
+│                                                                              │
+│    ⏱  Duration         1.4s                                                  │
+│                            ├─ Processing  ███████████████░  1.4s (97%)       │
+│    📁 Files            12                                                    │
+│    📊 Events           61 (6 filtered out — 91.0% match rate)                │
+│    ⚡ Throughput       43 events/s                                           │
+│    💾 Peak Memory      106.42 MB                                             │
+│    🎯 Detections       6 CRIT │ 20 HIGH │ 6 MED │ 3 LOW                      │
+│    📏 Coverage         20/4319 rules matched (0.5%)  ░░░░░░░░░░░░░░░░        │
+│    🔍 Matched          35 events across 20 rules                             │
+│    📋 Top Hits         CRIT HackTool - Dumpert Process Dumper Default        │
+│                        File (3)                                              │
+│                        CRIT Potential Credential Dumping Via LSASS           │
+│                        Process ... (1)                                       │
+│                        CRIT Hacktool Execution - Imphash - Sysmon (1)        │
+│                        CRIT HackTool - Mimikatz Kirbi File Creation (1)      │
+│                        HIGH LSASS Memory Access by Tool With Dump Keyword    │
+│                        I... (6)                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────────────── 🗺  ATT&CK Coverage ─────────────────────────────╮
+│  Credential Access       ████████████████      5 techniques (29 hits)        │
+│  Stealth                 ██▏                   3 techniques (4 hits)         │
+│  Defense Impairment      █▋                    2 techniques (3 hits)         │
+│  Resource Development    ▌                     2 techniques (1 hit)          │
+│  Execution               ▌                     1 technique (1 hit)           │
+│  Discovery               ▌                     1 technique (1 hit)           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+    → Output: 
+/home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1003.
+001/evtx_attack_samples.json
+
+--- stderr ---
+

@@ -1,0 +1,126 @@
+cmd: /home/kali/director/projects/detection-as-code/.venv/bin/python3 /home/kali/director/projects/detection-as-code/vendor/Zircolite/zircolite.py -e /home/kali/director/projects/detection-brittleness/evidence/samples/T1003.001/attack_data_atomic_red_team -x -r /home/kali/director/projects/detection-as-code/vendor/Zircolite/rules/rules_windows_merged.json -o /home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1003.001/attack_data_atomic_red_team.json
+returncode: 0
+duration_s: 5.70
+
+--- stdout ---
+
+███████╗██╗██████╗  ██████╗ ██████╗ ██╗     ██╗████████╗███████╗
+╚══███╔╝██║██╔══██╗██╔════╝██╔═══██╗██║     ██║╚══██╔══╝██╔════╝
+  ███╔╝ ██║██████╔╝██║     ██║   ██║██║     ██║   ██║   █████╗
+ ███╔╝  ██║██╔══██╗██║     ██║   ██║██║     ██║   ██║   ██╔══╝
+███████╗██║██║  ██║╚██████╗╚██████╔╝███████╗██║   ██║   ███████╗
+╚══════╝╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝   ╚═╝   ╚══════╝
+-= Standalone Sigma Detection tool for EVTX/Auditd/Sysmon Linux =-
+                              v3.8.1
+
+[+] Loading ruleset(s)                                                          
+    [>] Loaded JSON/Zircolite ruleset :                                         
+/home/kali/director/projects/detection-as-code/vendor/Zircolite/rules/rules_wind
+ows_merged.json                                                                 
+[+] 4319 rules loaded                                                           
+[+] Event filter enabled: 36 channels, 34 EventID-bounded (214 channel/eventID  
+pairs)                                                                          
+[+]   any EventID allowed on: Security, Windows PowerShell                      
+[+] Checking prerequisites                                                      
+────────────────────────────────── Processing ──────────────────────────────────
+[+] Analyzing workload...
+    [>] Files           4 (164.3 KB total, avg 41.1 KB)                         
+    [>] System          44.9 GB RAM available, 20 CPUs                          
+    [>] DB Mode         PER-FILE                                                
+                        Sufficient RAM available (44.9 GB) with 4 files -       
+                        parallel processing enabled                             
+    [>] Parallel        ENABLED (4 workers)                                     
+
+
+
+
+
+[+] Processed: 4 files │ 47 events │ 4.7s │ 10 events/s                         
+────────────────────────────── Detection Results ───────────────────────────────
+
+┏━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃    Severity    ┃ Rule                    ┃   Events ┃ ATT&CK                 ┃
+┡━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━┩
+│      HIGH      │ Potential LSASS Process │        9 │ T1036, T1003.001       │
+│                │ Dump Via Procdump -     │          │                        │
+│                │ Generic                 │          │                        │
+│      HIGH      │ LSASS Dump Keyword In   │        9 │ T1003.001              │
+│                │ CommandLine - Generic   │          │                        │
+│      HIGH      │ LSASS Dump Keyword In   │        5 │ T1003.001              │
+│                │ CommandLine - Sysmon    │          │                        │
+│      HIGH      │ CreateDump Process Dump │        5 │ T1036, T1003.001       │
+│                │ - Sysmon                │          │                        │
+│      HIGH      │ HackTool - Generic      │        4 │ T1003.001              │
+│                │ Process Access          │          │                        │
+│      HIGH      │ LSASS Memory Access by  │        2 │ T1003.001              │
+│                │ Tool With Dump Keyword  │          │                        │
+│                │ In Name                 │          │                        │
+│      HIGH      │ Renamed ProcDump        │        2 │ T1036.003              │
+│                │ Execution - Generic     │          │                        │
+│      HIGH      │ Suspicious Process      │        1 │ T1003.001, T1685       │
+│                │ Access to LSASS with    │          │                        │
+│                │ Dbgcore/Dbghelp DLLs    │          │                        │
+│      HIGH      │ Lsass Memory Dump via   │        1 │ T1003.001              │
+│                │ Comsvcs DLL             │          │                        │
+│     MEDIUM     │ Procdump Execution -    │        6 │ T1036, T1003.001       │
+│                │ Generic                 │          │                        │
+│     MEDIUM     │ Potentially Suspicious  │        1 │ T1003.001              │
+│                │ GrantedAccess Flags On  │          │                        │
+│                │ LSASS                   │          │                        │
+│     MEDIUM     │ Potential Credential    │        1 │ T1003.001              │
+│                │ Dumping Activity Via    │          │                        │
+│                │ LSASS                   │          │                        │
+│       LOW      │ Potential Execution of  │        9 │ T1588.002              │
+│                │ Sysinternals Tools -    │          │                        │
+│                │ Generic                 │          │                        │
+│       LOW      │ Non Interactive         │        1 │ T1059.001              │
+│                │ PowerShell Process      │          │                        │
+│                │ Spawned - Generic       │          │                        │
+└────────────────┴─────────────────────────┴──────────┴────────────────────────┘
+
+Processed 4 files
+├── crowdstrike_falcon.xml — 0 events — 0 detections
+├── windows-sysmon_creddump.xml — 32 events — 6 detections
+├── procdump_windows-security.xml — 10 events — 6 detections
+└── createdump_windows-sysmon.xml — 5 events — 2 detections
+
+[+] Total events processed: 47 (0 filtered out by log source)                   
+─────────────────────────────────── Results ────────────────────────────────────
+
+╭───────────────────────────────── ✨ Summary ─────────────────────────────────╮
+│                                                                              │
+│    ⏱  Duration         4.7s                                                  │
+│                            ├─ Processing  ███████████████░  4.7s (99%)       │
+│    📁 Files            4                                                     │
+│    📊 Events           47 (0 filtered out — every event matched a rule's     │
+│                        log source)                                           │
+│    ⚡ Throughput       10 events/s                                           │
+│    👥 Workers          4                                                     │
+│    💾 Peak Memory      145.40 MB                                             │
+│    🎯 Detections       38 HIGH │ 8 MED │ 10 LOW                              │
+│    📏 Coverage         13/4319 rules matched (0.3%)  ░░░░░░░░░░░░░░░░        │
+│    🔍 Matched          56 events across 13 rules                             │
+│    📋 Top Hits         HIGH LSASS Dump Keyword In CommandLine - Generic      │
+│                        (14)                                                  │
+│                        HIGH Potential LSASS Process Dump Via Procdump -      │
+│                        Gen... (9)                                            │
+│                        HIGH CreateDump Process Dump - Sysmon (5)             │
+│                        HIGH HackTool - Generic Process Access (4)            │
+│                        HIGH LSASS Memory Access by Tool With Dump Keyword    │
+│                        I... (2)                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────────────── 🗺  ATT&CK Coverage ─────────────────────────────╮
+│  Credential Access       ████████████████      3 techniques (44 hits)        │
+│  Stealth                 ████████              3 techniques (22 hits)        │
+│  Resource Development    ███▎                  1 technique (9 hits)          │
+│  Defense Impairment      ▎                     2 techniques (1 hit)          │
+│  Execution               ▎                     1 technique (1 hit)           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+    → Output: 
+/home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1003.
+001/attack_data_atomic_red_team.json
+
+--- stderr ---
+

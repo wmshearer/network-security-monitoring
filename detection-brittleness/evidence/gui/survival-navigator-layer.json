@@ -1,0 +1,49 @@
+{
+  "name": "Detection rule survival across independent tool executions",
+  "versions": {
+    "attack": "15",
+    "navigator": "5.3.2",
+    "layer": "4.5"
+  },
+  "domain": "enterprise-attack",
+  "description": "Percent of technique-tagged Sigma rules (from Zircolite's vendored rules_windows_merged.json) that fired unmodified against EVERY independently captured real telemetry sample scored for that technique, out of the rules that fired against at least one. 0% does not mean no detection exists for the technique; it means no single rule generalized across all of this project's sample groups. See FINDINGS.md for the telemetry-absent vs logic-too-narrow breakdown behind each number.",
+  "filters": {
+    "platforms": [
+      "Windows"
+    ]
+  },
+  "sorting": 3,
+  "layout": {
+    "layout": "side",
+    "showID": true,
+    "showName": true
+  },
+  "hideDisabled": false,
+  "techniques": [
+    {
+      "techniqueID": "T1003.001",
+      "score": 0.0,
+      "comment": "0 of 22 technique-tagged Sigma rules that fired at all survived every independently captured sample group scored (attack_data_atomic_red_team, attack_data_snapattack, evtx_attack_samples, evtx_to_mitre_attack). Source: detection-brittleness project, evidence/03_matrix.json."
+    },
+    {
+      "techniqueID": "T1059.001",
+      "score": 4.8,
+      "comment": "1 of 21 technique-tagged Sigma rules that fired at all survived every independently captured sample group scored (attack_data_atomic_red_team, attack_data_snapattack, evtx_to_mitre_attack). Source: detection-brittleness project, evidence/03_matrix.json."
+    }
+  ],
+  "gradient": {
+    "colors": [
+      "#e8e2d8",
+      "#f2d675",
+      "#2f6f4f"
+    ],
+    "minValue": 0,
+    "maxValue": 100
+  },
+  "legendItems": [],
+  "metadata": [],
+  "showTacticRowBackground": false,
+  "tacticRowBackground": "#dddddd",
+  "selectTechniquesAcrossTactics": true,
+  "selectSubtechniquesWithParent": false
+}

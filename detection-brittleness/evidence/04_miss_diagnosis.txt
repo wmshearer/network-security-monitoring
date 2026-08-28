@@ -1,0 +1,235 @@
+=== T1003.001: EventIDs present per group (from raw staged samples) ===
+  attack_data_atomic_red_team: ['1', '10', '4688']
+  attack_data_snapattack: ['11', '13', '4104', '4688']
+  evtx_attack_samples: []
+  evtx_to_mitre_attack: []
+
+=== T1003.001: miss diagnosis for rules that fired somewhere but not everywhere ===
+  CreateDump Process Dump - Sysmon (id 515c8be5...) targets EventID(s): ['1']
+    MISSED in attack_data_snapattack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: ['11', '13', '4104', '4688']
+    MISSED in evtx_attack_samples: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  HackTool - Dumpert Process Dumper Default File (id 93d94efc...) targets EventID(s): ['11']
+    MISSED in attack_data_atomic_red_team: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: ['1', '10', '4688']
+    MISSED in attack_data_snapattack: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['11', '13', '4104', '4688']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  HackTool - Generic Process Access (id d0d2f720...) targets EventID(s): ['10']
+    MISSED in attack_data_snapattack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: ['11', '13', '4104', '4688']
+  HackTool - Mimikatz Execution - Generic (id a642964e...) targets EventID(s): ['4688']
+    MISSED in attack_data_atomic_red_team: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['1', '10', '4688']
+    MISSED in evtx_attack_samples: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  LSASS Access From Non System Account (id 962fe167...) targets EventID(s): ['4656', '4663']
+    MISSED in attack_data_atomic_red_team: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: ['1', '10', '4688']
+    MISSED in attack_data_snapattack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: ['11', '13', '4104', '4688']
+  LSASS Dump Keyword In CommandLine - Generic (id ffa6861c...) targets EventID(s): ['1']
+    MISSED in attack_data_snapattack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: ['11', '13', '4104', '4688']
+  LSASS Memory Access by Tool With Dump Keyword In Name (id 9bd012ee...) targets EventID(s): ['10']
+    MISSED in attack_data_snapattack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: ['11', '13', '4104', '4688']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  LSASS Process Dump Artefact In CrashDumps Folder (id 6902955a...) targets EventID(s): ['11']
+    MISSED in attack_data_atomic_red_team: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: ['1', '10', '4688']
+    MISSED in evtx_attack_samples: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  LSASS Process Memory Dump Creation Via Taskmgr.EXE (id 69ca12af...) targets EventID(s): ['11']
+    MISSED in attack_data_atomic_red_team: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: ['1', '10', '4688']
+    MISSED in attack_data_snapattack: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['11', '13', '4104', '4688']
+  LSASS Process Memory Dump Files (id a5a2d357...) targets EventID(s): ['11']
+    MISSED in attack_data_atomic_red_team: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: ['1', '10', '4688']
+  Lsass Memory Dump via Comsvcs DLL (id a49fa4d5...) targets EventID(s): ['10']
+    MISSED in attack_data_snapattack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: ['11', '13', '4104', '4688']
+    MISSED in evtx_attack_samples: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  Potential Credential Dumping Activity Via LSASS (id 5ef9853e...) targets EventID(s): ['10']
+    MISSED in attack_data_snapattack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: ['11', '13', '4104', '4688']
+    MISSED in evtx_attack_samples: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  Potential Credential Dumping Via LSASS Process Clone - Sysmon (id c8da0dfd...) targets EventID(s): ['1']
+    MISSED in attack_data_atomic_red_team: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['1', '10', '4688']
+    MISSED in attack_data_snapattack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: ['11', '13', '4104', '4688']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  Potential LSASS Process Dump Via Procdump - Generic (id 5afee48e...) targets EventID(s): ['4688']
+    MISSED in attack_data_snapattack: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['11', '13', '4104', '4688']
+    MISSED in evtx_attack_samples: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  Potentially Suspicious AccessMask Requested From LSASS (id 4a1b6da0...) targets EventID(s): ['4656', '4663']
+    MISSED in attack_data_atomic_red_team: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: ['1', '10', '4688']
+    MISSED in attack_data_snapattack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: ['11', '13', '4104', '4688']
+  Potentially Suspicious GrantedAccess Flags On LSASS (id a18dd26b...) targets EventID(s): ['10']
+    MISSED in attack_data_snapattack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: ['11', '13', '4104', '4688']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  PowerShell Get-Process LSASS in ScriptBlock (id 84c174ab...) targets EventID(s): ['4104']
+    MISSED in attack_data_atomic_red_team: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: ['1', '10', '4688']
+    MISSED in attack_data_snapattack: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['11', '13', '4104', '4688']
+  Procdump Execution - Generic (id 2e65275c...) targets EventID(s): ['4688']
+    MISSED in attack_data_snapattack: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['11', '13', '4104', '4688']
+    MISSED in evtx_attack_samples: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  Process Memory Dump Via Comsvcs.DLL - Sysmon (id 646ea171...) targets EventID(s): ['1']
+    MISSED in attack_data_atomic_red_team: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['1', '10', '4688']
+    MISSED in attack_data_snapattack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: ['11', '13', '4104', '4688']
+    MISSED in evtx_attack_samples: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  Process Memory Dump via RdrLeakDiag.EXE - Sysmon (id edadb1e5...) targets EventID(s): ['1']
+    MISSED in attack_data_atomic_red_team: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['1', '10', '4688']
+    MISSED in attack_data_snapattack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: ['11', '13', '4104', '4688']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  Suspicious Process Access to LSASS with Dbgcore/Dbghelp DLLs (id 9f5c1d59...) targets EventID(s): ['10']
+    MISSED in attack_data_snapattack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: ['11', '13', '4104', '4688']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  WerFault LSASS Process Memory Dump (id c3e76af5...) targets EventID(s): ['11']
+    MISSED in attack_data_atomic_red_team: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: ['1', '10', '4688']
+    MISSED in evtx_attack_samples: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+
+=== T1059.001: EventIDs present per group (from raw staged samples) ===
+  attack_data_atomic_red_team: ['1', '3', '7', '10', '11', '13', '17', '22', '23', '4104']
+  attack_data_snapattack: ['1', '3', '4104', '4688']
+  evtx_to_mitre_attack: []
+
+=== T1059.001: miss diagnosis for rules that fired somewhere but not everywhere ===
+  Base64 Encoded PowerShell Command Detected - Sysmon (id e32d4572...) targets EventID(s): ['1']
+    MISSED in attack_data_snapattack: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['1', '3', '4104', '4688']
+  Change PowerShell Policies to an Insecure Level - Sysmon (id 87e3c4e8...) targets EventID(s): ['1']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  HackTool - Bloodhound/Sharphound Execution - Sysmon (id f376c8a7...) targets EventID(s): ['1']
+    MISSED in attack_data_snapattack: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['1', '3', '4104', '4688']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  Malicious PowerShell Commandlets - ProcessCreation - Sysmon (id 02030f2f...) targets EventID(s): ['1']
+    MISSED in attack_data_snapattack: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['1', '3', '4104', '4688']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  Malicious PowerShell Commandlets - ScriptBlock (id 89819aa4...) targets EventID(s): ['4104']
+    MISSED in attack_data_atomic_red_team: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['1', '3', '7', '10', '11', '13', '17', '22', '23', '4104']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  Malicious PowerShell Keywords (id f62176f3...) targets EventID(s): ['4104']
+    MISSED in attack_data_atomic_red_team: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['1', '3', '7', '10', '11', '13', '17', '22', '23', '4104']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  New PowerShell Instance Created (id ac7102b4...) targets EventID(s): ['17', '18']
+    MISSED in attack_data_snapattack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: ['1', '3', '4104', '4688']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  Potential Encoded PowerShell Patterns In CommandLine - Sysmon (id cdf05894...) targets EventID(s): ['1']
+    MISSED in attack_data_snapattack: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['1', '3', '4104', '4688']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  Potential PowerShell Command Line Obfuscation - Sysmon (id d7bcd677...) targets EventID(s): ['1']
+    MISSED in attack_data_snapattack: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['1', '3', '4104', '4688']
+  Potential PowerShell Downgrade Attack - Sysmon (id b3512211...) targets EventID(s): ['1']
+    MISSED in attack_data_snapattack: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['1', '3', '4104', '4688']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  Potential Powershell ReverseShell Connection - Sysmon (id edc2f8ae...) targets EventID(s): ['1']
+    MISSED in attack_data_snapattack: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['1', '3', '4104', '4688']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  Potential WMI Lateral Movement WmiPrvSE Spawned PowerShell - Sysmon (id 692f0bec...) targets EventID(s): ['1']
+    MISSED in attack_data_snapattack: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['1', '3', '4104', '4688']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  PowerShell Download Pattern - Sysmon (id 3b6ab547...) targets EventID(s): ['1']
+    MISSED in attack_data_snapattack: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['1', '3', '4104', '4688']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  Remote PowerShell Session Host Process (WinRM) - Sysmon (id 734f8d9b...) targets EventID(s): ['1']
+    MISSED in attack_data_snapattack: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['1', '3', '4104', '4688']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  Suspicious Encoded PowerShell Command Line - Sysmon (id ca2092a1...) targets EventID(s): ['1']
+    MISSED in attack_data_atomic_red_team: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['1', '3', '7', '10', '11', '13', '17', '22', '23', '4104']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  Suspicious Execution of Powershell with Base64 - Sysmon (id fb843269...) targets EventID(s): ['1']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  Suspicious PowerShell Download and Execute Pattern - Sysmon (id e6c54d94...) targets EventID(s): ['1']
+    MISSED in attack_data_snapattack: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['1', '3', '4104', '4688']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  Suspicious PowerShell IEX Execution Patterns - Sysmon (id 09576804...) targets EventID(s): ['1']
+    MISSED in attack_data_snapattack: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['1', '3', '4104', '4688']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+  Suspicious PowerShell Invocations - Specific (id ae7fbf8e...) targets EventID(s): ['4104']
+    MISSED in attack_data_atomic_red_team: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['1', '3', '7', '10', '11', '13', '17', '22', '23', '4104']
+    MISSED in attack_data_snapattack: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['1', '3', '4104', '4688']
+  Suspicious PowerShell Parameter Substring - Sysmon (id 36210e0d...) targets EventID(s): ['1']
+    MISSED in attack_data_snapattack: LOGIC TOO NARROW (rule's EventID is present in this group but the rule's field/value match still did not fire)
+      EventIDs present in that group: ['1', '3', '4104', '4688']
+    MISSED in evtx_to_mitre_attack: TELEMETRY ABSENT (rule's EventID never occurs in this group's raw data)
+      EventIDs present in that group: (none extracted)
+
+=== Overall miss-cause tally across both techniques ===
+telemetry absent: 60
+logic too narrow: 27
+unknown (SQL parse failed): 0

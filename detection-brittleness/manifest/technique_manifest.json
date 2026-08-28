@@ -1,0 +1,267 @@
+{
+  "generated_by": "manual audit, see FINDINGS.md methodology section",
+  "techniques": [
+    {
+      "technique_id": "T1003.001",
+      "technique_name": "OS Credential Dumping: LSASS Memory",
+      "mitre_url": "https://attack.mitre.org/techniques/T1003/001/",
+      "samples": [
+        {
+          "corpus": "attack_data",
+          "tool_or_source": "SnapAttack / Splunk (WerFault crash-dump artifact)",
+          "author": "Raven Tait, Splunk",
+          "date": "2026-04-01",
+          "path": "datasets/attack_techniques/T1003.001/snapattack/snapattack.log",
+          "format": "raw XML events, one <Event> per line, needs <Events> root wrapper for Zircolite -x mode",
+          "event_count": 24,
+          "mapping_basis": "yml metadata: mitre_technique: [T1003.001], description names 'LSASS Shtinkering - AppCrash Reports'"
+        },
+        {
+          "corpus": "attack_data",
+          "tool_or_source": "Atomic Red Team / Red Canary (multi-tool: WCE, ProcDump, comsvcs.dll, direct syscalls, Mimikatz, pypykatz)",
+          "author": "Patrick Bareiss, Michael Haag",
+          "date": "2022-01-12",
+          "path": "datasets/attack_techniques/T1003.001/atomic_red_team/*.log (windows-sysmon_creddump.log, windows-sysmon.log, procdump_windows-security.log, createdump_windows-sysmon.log, crowdstrike_falcon.log)",
+          "format": "raw XML events, one <Event> per line, needs <Events> root wrapper",
+          "event_count_by_file": {
+            "windows-sysmon_creddump.log": 32,
+            "createdump_windows-sysmon.log": 5,
+            "procdump_windows-security.log": 10,
+            "crowdstrike_falcon.log": 43
+          },
+          "mapping_basis": "yml metadata: mitre_technique: [T1003.001], description lists 6 Atomic tests including ProcDump, comsvcs.dll, Mimikatz"
+        },
+        {
+          "corpus": "EVTX-ATTACK-SAMPLES",
+          "tool_or_source": "hand-curated, 12 of 38 files in Credential Access/ folder, confirmed by content inspection (see notes)",
+          "path": "Credential Access/*.evtx",
+          "format": "native EVTX, no preprocessing needed",
+          "files": [
+            {
+              "name": "sysmon_10_11_lsass_memdump.evtx",
+              "tool": "unspecified LSASS memdump (ProcessAccess+CreateRemoteThread on lsass.exe)",
+              "event_count": 4
+            },
+            {
+              "name": "sysmon_10_11_outlfank_dumpert_and_andrewspecial_memdump.evtx",
+              "tool": "Dumpert / AndrewSpecial",
+              "event_count": 15
+            },
+            {
+              "name": "sysmon_10_lsass_mimikatz_sekurlsa_logonpasswords.evtx",
+              "tool": "Mimikatz sekurlsa::logonpasswords",
+              "event_count": 1
+            },
+            {
+              "name": "sysmon_2x10_lsass_with_different_pid_RtlCreateProcessReflection.evtx",
+              "tool": "RtlCreateProcessReflection API technique",
+              "event_count": 3
+            },
+            {
+              "name": "sysmon_3_10_Invoke-Mimikatz_hosted_Github.evtx",
+              "tool": "Invoke-Mimikatz (PowerShell, GitHub-hosted)",
+              "event_count": 2
+            },
+            {
+              "name": "sysmon_rdrleakdiag_lsass_dump.evtx",
+              "tool": "RdrLeakDiag.exe",
+              "event_count": 4
+            },
+            {
+              "name": "CA_hashdump_4663_4656_lsass_access.evtx",
+              "tool": "hashdump (Meterpreter-style, Security log ObjectAccess events)",
+              "event_count": 2
+            },
+            {
+              "name": "CA_Mimikatz_Memssp_Default_Logs_Sysmon_11.evtx",
+              "tool": "Mimikatz memssp",
+              "event_count": 1
+            },
+            {
+              "name": "CA_sysmon_hashdump_cmd_meterpreter.evtx",
+              "tool": "Meterpreter hashdump via cmd",
+              "event_count": 9
+            },
+            {
+              "name": "LsassSilentProcessExit_process_exit_monitor_3001_lsass.evtx",
+              "tool": "LSASS SilentProcessExit registry technique",
+              "event_count": 2
+            },
+            {
+              "name": "Powershell_4104_MiniDumpWriteDump_Lsass.evtx",
+              "tool": "MiniDumpWriteDump via PowerShell",
+              "event_count": 4
+            },
+            {
+              "name": "ppl_bypass_ppldump_knowdll_hijack_sysmon_security.evtx",
+              "tool": "ppldump (PPL bypass via known-DLL hijack)",
+              "event_count": 20
+            }
+          ],
+          "excluded_from_credential_access_folder": [
+            {
+              "name": "babyshark_mimikatz_powershell.evtx",
+              "reason": "content-checked: only whoami/eventvwr commands present, no lsass access or Mimikatz execution captured despite filename"
+            },
+            {
+              "name": "phish_windows_credentials_powershell_scriptblockLog_4104.evtx",
+              "reason": "content-checked: PowerShell credential-prompt phishing (PromptForCredential GUI capture), not LSASS memory access; different technique (input capture, not T1003.001)"
+            },
+            {
+              "name": "sysmon_10_1_memdump_comsvcs_minidump.evtx",
+              "reason": "content-checked: comsvcs.dll MiniDump targets notepad.exe, not lsass.exe, per TargetImage field; filename implies LSASS but payload does not target it"
+            },
+            {
+              "name": "CA_teamviewer-dumper_sysmon_10.evtx",
+              "reason": "content-checked: ProcessAccess source is a Frida injector targeting TeamViewer.exe per TargetImage field, not lsass.exe"
+            },
+            {
+              "name": "remote_pwd_reset_rpc_mimikatz_postzerologon_target_DC.evtx",
+              "reason": "content-checked: no lsass reference found; this is Zerologon (netlogon RPC) password reset, a different technique (T1210-adjacent) despite 'mimikatz' in filename"
+            }
+          ]
+        },
+        {
+          "corpus": "EVTX-to-MITRE-Attack",
+          "tool_or_source": "hand-curated, 8 of 19 files in T1003-Credential dumping/ folder, confirmed by content inspection",
+          "path": "TA0006-Credential Access/T1003-Credential dumping/*.evtx",
+          "format": "native EVTX, no preprocessing needed",
+          "files": [
+            {
+              "name": "ID10-Mimikatz LSASS process dump.evtx",
+              "tool": "Mimikatz (Sysmon EventID 10 ProcessAccess)",
+              "event_count": 3
+            },
+            {
+              "name": "ID11-LSASS credentials dump via Task Manager.evtx",
+              "tool": "Task Manager 'Create dump file'",
+              "event_count": 1
+            },
+            {
+              "name": "ID11-Mimikatz LSA SSP clear text password exfiltration.evtx",
+              "tool": "Mimikatz memssp / LSA SSP",
+              "event_count": 1
+            },
+            {
+              "name": "ID1-LSASS dump with LSASSY (SYSMON).evtx",
+              "tool": "LSASSY",
+              "event_count": 14
+            },
+            {
+              "name": "ID4656-4663-4658 Mimikatz sekurlsa password dump.evtx",
+              "tool": "Mimikatz sekurlsa (Security log ObjectAccess to lsass.exe)",
+              "event_count": 7
+            },
+            {
+              "name": "ID4663-Task Manager used to dump LSASS process.evtx",
+              "tool": "Task Manager",
+              "event_count": 2
+            },
+            {
+              "name": "ID4688-4663-4656-LSASS dump with LSASSY (process).evtx",
+              "tool": "LSASSY (process-execution variant)",
+              "event_count": 28
+            },
+            {
+              "name": "ID800-4103-4104-LSASS dump with LSASSY (PowerShell).evtx",
+              "tool": "LSASSY (PowerShell variant)",
+              "event_count": 56
+            }
+          ],
+          "excluded_from_folder_despite_technique_label": [
+            {
+              "name": "ID325-327-IFM created - ESENT.evtx",
+              "reason": "T1003.003 (NTDS via Install From Media / ntdsutil), not LSASS process memory; folder groups all T1003.* sub-techniques together"
+            },
+            {
+              "name": "ID4661-4658 Mimikatz sekurlsa password dump SAM.evtx",
+              "reason": "content-checked: ObjectName values are SAM/registry hive and AD DN paths, this is T1003.002 SAM, not LSASS memory"
+            },
+            {
+              "name": "ID4656, 5145, 4674-Impacket secret dump via SMB.evtx",
+              "reason": "content-checked: ObjectName RemoteRegistry/SAM, this is T1003.002 SAM via Impacket secretsdump, not LSASS memory"
+            },
+            {
+              "name": "ID4661-Suspicious SAM access to password attributes by LSASS (Dcshadow).evtx",
+              "reason": "content-checked: this is DCShadow/AD-object access (T1207-adjacent, T1003.006 DCSync family), not direct LSASS process memory access, despite 'LSASS' in filename"
+            },
+            {
+              "name": "ID4662-DCsync attack using Mimikatz.evtx",
+              "reason": "T1003.006 DCSync, a distinct sub-technique (replicates via directory-replication RPC, no LSASS process access)"
+            },
+            {
+              "name": "ID4688-Diskshadow abuse.evtx",
+              "reason": "T1003.003-adjacent (Diskshadow used to access NTDS.dit via VSS), not LSASS memory"
+            },
+            {
+              "name": "ID4688-IFM created.evtx",
+              "reason": "T1003.003 (Install From Media / ntdsutil), not LSASS memory"
+            },
+            {
+              "name": "ID4688-Task Manager access indicator for potential LSASS dump.evtx",
+              "reason": "content-checked: captures UAC-elevation lead-up (consent.exe, taskmgr.exe launch) only; no confirmed lsass.exe target event present in this capture, ambiguous, excluded rather than assumed"
+            },
+            {
+              "name": "ID4756-Exchange critical group change (DCsync).evtx",
+              "reason": "T1003.006 DCSync precondition (group membership change), not LSASS memory access"
+            },
+            {
+              "name": "ID4794-4688-DSRM password set with NTDSutil.evtx",
+              "reason": "T1003.003/T1098-adjacent (DSRM password reset via ntdsutil), not LSASS memory"
+            },
+            {
+              "name": "ID1-12-13-Wdigest authentication activation.evtx",
+              "reason": "T1112/T1003.001-precondition (registry change enabling WDigest plaintext caching), not the dump action itself; excluded to keep this set to actual dump/access events"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "technique_id": "T1059.001",
+      "technique_name": "Command and Scripting Interpreter: PowerShell",
+      "mitre_url": "https://attack.mitre.org/techniques/T1059/001/",
+      "samples": [
+        {
+          "corpus": "attack_data",
+          "tool_or_source": "SnapAttack / Splunk (Cobalt Strike PowerShell)",
+          "author": "Raven Tait, Splunk",
+          "date": "2026-04-01",
+          "path": "datasets/attack_techniques/T1059.001/snapattack/snapattack.log",
+          "format": "raw XML events, one <Event> per line, needs <Events> root wrapper",
+          "mapping_basis": "yml metadata: mitre_technique: [T1059.001], description 'Cobalt Strike Powershell'"
+        },
+        {
+          "corpus": "attack_data",
+          "tool_or_source": "Atomic Red Team (native PowerShell test suite, multiple atomics)",
+          "author": "Command and Scripting Interpreter: PowerShell (Atomic Red Team project)",
+          "date": "2021-03-01",
+          "path": "datasets/attack_techniques/T1059.001/atomic_red_team/windows-sysmon.log (plus 4104-psremoting-windows-powershell.log, get_ciminstance_windows-powershell.log, start_stop_service_windows-powershell.log)",
+          "format": "raw XML events, one <Event> per line, needs <Events> root wrapper",
+          "mapping_basis": "yml metadata: mitre_technique: [T1059.001], 'Invoke-atomictest T1059.001 of all Atomic Red Team T1059.001 PowerShell tests'"
+        },
+        {
+          "corpus": "EVTX-to-MITRE-Attack",
+          "tool_or_source": "hand-curated, 3 files with clean T1059.001-only folder label",
+          "path": "TA0002-Execution/T1059.001-PowerShell/*.evtx",
+          "format": "native EVTX, no preprocessing needed",
+          "files": [
+            {
+              "name": "ID4688-Encoded PowerShell MSF payload via process execution.evtx",
+              "tool": "Metasploit-generated base64-encoded PowerShell"
+            },
+            {
+              "name": "ID800-4103-Interactive PipeShell over named pipe (server and client).evtx",
+              "tool": "PipeShell over named pipe"
+            },
+            {
+              "name": "ID4103-4104-Payload download via PowerShell.evtx",
+              "tool": "PowerShell download cradle"
+            }
+          ]
+        }
+      ],
+      "note": "EVTX-ATTACK-SAMPLES has no technique-labelled T1059.001 folder (organized by tactic only), and the PowerShell-filename files found under other tactic folders (Credential Access, Lateral Movement) are PowerShell used as a means to another technique's end, not clean T1059.001 samples, so that corpus is not used for this technique to avoid mislabeling. This is disclosed rather than papered over."
+    }
+  ]
+}
