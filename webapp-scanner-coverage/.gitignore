@@ -4,3 +4,4 @@ __pycache__/
 *.session
 zap-session*
 .DS_Store
+auth-plan.rendered.yaml
