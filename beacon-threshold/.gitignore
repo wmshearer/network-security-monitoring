@@ -1,0 +1,5 @@
+# Capture-derived data. The zips are ~44 MB and the extracted logs several
+# hundred MB; both are re-fetchable from the URLs in docs/sources.md and
+# verified against the publisher's checksums in data/zeek/SHA256SUMS.published.
+data/zeek/*.zip
+data/logs/
