@@ -1,0 +1,26 @@
+{
+  "usr_bin": {
+    "file_count": 3239,
+    "total_bytes": 2319911792,
+    "excluded_too_large_count": 5,
+    "excluded_unreadable_count": 0
+  },
+  "usr_lib_x86_64": {
+    "file_count": 1683,
+    "total_bytes": 1713300712,
+    "excluded_too_large_count": 10,
+    "excluded_unreadable_count": 0
+  },
+  "openwrt_firmware": {
+    "file_count": 2181,
+    "total_bytes": 50845472,
+    "excluded_too_large_count": 0,
+    "excluded_unreadable_count": 0
+  },
+  "iotgoat_firmware": {
+    "file_count": 1012,
+    "total_bytes": 31223046,
+    "excluded_too_large_count": 0,
+    "excluded_unreadable_count": 0
+  }
+}

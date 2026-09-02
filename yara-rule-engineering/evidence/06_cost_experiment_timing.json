@@ -1,0 +1,85 @@
+{
+  "corpus_file_count": 3239,
+  "repeats": 7,
+  "results": {
+    "cost_literal_string": {
+      "rule": "cost_literal_string",
+      "match_count": 2278,
+      "repeats": 7,
+      "run_times_seconds": [
+        1.9472,
+        1.8273,
+        1.8378,
+        1.8407,
+        1.8288,
+        1.8317,
+        1.8408
+      ],
+      "mean_seconds": 1.8506,
+      "stdev_seconds": 0.043,
+      "min_seconds": 1.8273,
+      "max_seconds": 1.9472
+    },
+    "cost_regex": {
+      "rule": "cost_regex",
+      "match_count": 2278,
+      "repeats": 7,
+      "run_times_seconds": [
+        1.8317,
+        1.8249,
+        1.828,
+        1.8249,
+        1.8354,
+        1.8222,
+        1.8173
+      ],
+      "mean_seconds": 1.8264,
+      "stdev_seconds": 0.006,
+      "min_seconds": 1.8173,
+      "max_seconds": 1.8354
+    },
+    "cost_hex_wildcard": {
+      "rule": "cost_hex_wildcard",
+      "match_count": 2278,
+      "repeats": 7,
+      "run_times_seconds": [
+        1.8789,
+        1.8734,
+        1.8406,
+        1.8734,
+        1.8863,
+        1.8399,
+        2.076
+      ],
+      "mean_seconds": 1.8955,
+      "stdev_seconds": 0.0817,
+      "min_seconds": 1.8399,
+      "max_seconds": 2.076
+    },
+    "cost_elf_loop": {
+      "rule": "cost_elf_loop",
+      "match_count": 2310,
+      "repeats": 7,
+      "run_times_seconds": [
+        3.4668,
+        3.7712,
+        3.5019,
+        3.9058,
+        3.5426,
+        3.7947,
+        3.4696
+      ],
+      "mean_seconds": 3.6361,
+      "stdev_seconds": 0.1822,
+      "min_seconds": 3.4668,
+      "max_seconds": 3.9058
+    }
+  },
+  "match_parity": {
+    "cost_literal_string_vs_cost_regex_match_count_equal": true,
+    "cost_literal_string_vs_cost_hex_wildcard_match_count_equal": true,
+    "cost_literal_string_match_count": 2278,
+    "cost_elf_loop_match_count": 2310,
+    "note": "cost_elf_loop is NOT expected to equal the byte-scan rules; see FINDINGS.md for the 36-file explanation."
+  }
+}

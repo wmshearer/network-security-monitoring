@@ -1,0 +1,17 @@
+=== yara-rules (https://github.com/Yara-Rules/rules.git) ===
+Cloning into '/home/kali/director/projects/yara-rule-engineering/.rulesets/yara-rules'...
+commit: 0f93570194a80d2f2032869055808b0ddcdfb360
+
+=== reversinglabs (https://github.com/reversinglabs/reversinglabs-yara-rules.git) ===
+Cloning into '/home/kali/director/projects/yara-rule-engineering/.rulesets/reversinglabs'...
+commit: e0a0be54aa1e11ccfd6854e4f19e9476f328fd84
+
+=== protections-artifacts (https://github.com/elastic/protections-artifacts.git) ===
+Cloning into '/home/kali/director/projects/yara-rule-engineering/.rulesets/protections-artifacts'...
+commit: 9c334cf8298d9ff7e19c2a50817669072abc2d66
+
+=== signature-base (https://github.com/Neo23x0/signature-base.git) ===
+Cloning into '/home/kali/director/projects/yara-rule-engineering/.rulesets/signature-base'...
+commit: e737ebd96c27a52ee99485d4d3e02e9c256d1d3a
+
+Done. Rulesets in /home/kali/director/projects/yara-rule-engineering/.rulesets
