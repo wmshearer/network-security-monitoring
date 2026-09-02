@@ -1,0 +1,88 @@
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 21 files with 5 Code rules:
+  Scanning 7 files with 5 python rules.
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 5 (5 blocking)
+ • Rules run: 5
+ • Targets scanned: 7
+ • Parsed lines: ~100.0%
+ • No ignore information available
+Ran 5 rules on 7 files: 5 findings.
+                   
+                   
+┌─────────────────┐
+│ 5 Code Findings │
+└─────────────────┘
+                                                                      
+    /home/kali/director/projects/ai-redteam-harness/src/target/main.py
+    ❯❱ rules.untrusted-retrieval-into-prompt
+          ❰❰ Blocking ❱❱
+          Text returned from a retrieval/RAG lookup is concatenated into an LLM message body without going   
+          through a delimiting, escaping, or provenance-tagging step first. Retrieved documents are attacker-
+          reachable in most RAG deployments (anyone who can get content into the corpus, or compromise a     
+          source the corpus indexes, controls this text). Mixed untagged into the same message the model     
+          treats as instructions, this is the classic indirect prompt injection setup: the model has no      
+          structural signal that this text is "reference data" rather than "things to obey." Wrap retrieved  
+          content in an explicit, consistently-applied delimiter or data-marking scheme (OWASP LLM01:2026    
+          mitigation #6) and keep it out of the instruction channel, or treat it as untrusted input and re-  
+          validate any instruction-like content it contains before use.                                      
+                                                                                                             
+           79┆ f"Relevant internal documents:\n{context_block}\n\n"
+            ⋮┆----------------------------------------
+           85┆ {"role": "user", "content": user_content},
+   
+   ❯❯❱ rules.tool-dispatch-without-authz
+          ❰❰ Blocking ❱❱
+          Arguments parsed from a model-issued tool call are passed into a dynamically-selected tool          
+          implementation without first going through an authorization/policy check. An LLM agent's decision to
+          call a tool (and the arguments it supplies) can be steered by anything the model has read, including
+          an indirect prompt injection from a retrieved document or a tool result. OWASP LLM03:2026 Excessive 
+          Agency's top mitigation is to implement authorization in deterministic application logic, not to    
+          rely on the model to decide when a call is appropriate. Route the parsed arguments through an       
+          authorize()/permission-check call (and fail closed on denial) before invoking the tool              
+          implementation.                                                                                     
+                                                                                                              
+          182┆ result = impl(**fn_args)
+   
+    ❯❱ rules.tool-result-into-conversation-untiered
+          ❰❰ Blocking ❱❱
+          The return value of a tool call is serialized and appended back into the conversation the model    
+          reads, with no trust tiering, size limit, or content check applied first. Tool results are a second
+          indirect injection surface distinct from RAG retrieval: any tool that reaches external or attacker-
+          influenced data (a file, an API response, another user's input) can hand the model text that looks 
+          like an instruction, and that text goes straight back into the same message stream the model treats
+          as authoritative on the next hop. Treat tool output as untrusted the same way retrieved documents  
+          are treated; apply a trust tier, size cap, or content filter before appending it to the            
+          conversation.                                                                                      
+                                                                                                             
+          189┆ "content": json.dumps(result),
+                                                                       
+    /home/kali/director/projects/ai-redteam-harness/src/target/tools.py
+     ❱ rules.unchecked-path-to-file-read
+          ❰❰ Blocking ❱❱
+          SCOPE NOTE, READ BEFORE ACTING ON THIS FINDING: this rule can only check a path-read call and any   
+          containment check that appear in the SAME function. The realistic version of this vulnerability has 
+          the path parameter accepted in one function (e.g. a tool implementation like read_file()) and the   
+          containment/allow-list check enforced by a caller in a different function or module (e.g. an authz  
+          layer invoked from the agent's dispatch loop before the tool runs). Semgrep OSS taint mode cannot   
+          see across that call boundary ("Interprocedural taint analysis is a Semgrep Pro feature" per        
+          Semgrep's own docs), so a tool function that itself does no validation will always look unchecked to
+          this rule, REGARDLESS of whether a caller elsewhere already enforced containment. In this project's 
+          own target, that is exactly the real shape: tools.py's read_file() takes a raw path with no check of
+          its own, and the actual containment check lives in authz.py, called from main.py, neither of which  
+          read_file() itself references. Expect this rule to fire on every tool function that reads by path   
+          and validates nothing locally, whether or not the overall system is actually safe. Use Semgrep Pro's
+          interprocedural taint mode, or manual review of the call sites, to determine whether an external    
+          check actually gates the call before treating a finding here as a confirmed vulnerability.          
+                                                                                                              
+           68┆ content = FAKE_FILESYSTEM.get(path)
+

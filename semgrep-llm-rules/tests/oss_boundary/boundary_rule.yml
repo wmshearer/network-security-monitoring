@@ -1,0 +1,28 @@
+rules:
+  - id: boundary-test-intraprocedural
+    mode: taint
+    languages: [python]
+    message: "Tainted value reaches sink within the same function (OSS should catch this)."
+    severity: ERROR
+    metadata:
+      category: security
+      confidence: HIGH
+      subcategory: [vuln]
+    pattern-sources:
+      - pattern: source()
+    pattern-sinks:
+      - pattern: sink(...)
+
+  - id: boundary-test-interprocedural
+    mode: taint
+    languages: [python]
+    message: "Tainted value reaches sink across a function boundary (Semgrep docs say this needs Pro)."
+    severity: ERROR
+    metadata:
+      category: security
+      confidence: HIGH
+      subcategory: [vuln]
+    pattern-sources:
+      - pattern: source()
+    pattern-sinks:
+      - pattern: sink(...)
