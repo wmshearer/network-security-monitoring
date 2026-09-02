@@ -1,0 +1,107 @@
+cmd: /home/kali/director/projects/detection-as-code/.venv/bin/python3 /home/kali/director/projects/detection-as-code/vendor/Zircolite/zircolite.py -e /home/kali/director/projects/detection-brittleness/evidence/samples/T1003.001/attack_data_snapattack -x -r /home/kali/director/projects/detection-as-code/vendor/Zircolite/rules/rules_windows_merged.json -o /home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1003.001/attack_data_snapattack.json
+returncode: 0
+duration_s: 2.18
+
+--- stdout ---
+
+███████╗██╗██████╗  ██████╗ ██████╗ ██╗     ██╗████████╗███████╗
+╚══███╔╝██║██╔══██╗██╔════╝██╔═══██╗██║     ██║╚══██╔══╝██╔════╝
+  ███╔╝ ██║██████╔╝██║     ██║   ██║██║     ██║   ██║   █████╗
+ ███╔╝  ██║██╔══██╗██║     ██║   ██║██║     ██║   ██║   ██╔══╝
+███████╗██║██║  ██║╚██████╗╚██████╔╝███████╗██║   ██║   ███████╗
+╚══════╝╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝   ╚═╝   ╚══════╝
+-= Standalone Sigma Detection tool for EVTX/Auditd/Sysmon Linux =-
+                              v3.8.1
+
+[+] Loading ruleset(s)                                                          
+    [>] Loaded JSON/Zircolite ruleset :                                         
+/home/kali/director/projects/detection-as-code/vendor/Zircolite/rules/rules_wind
+ows_merged.json                                                                 
+[+] 4319 rules loaded                                                           
+[+] Event filter enabled: 36 channels, 34 EventID-bounded (214 channel/eventID  
+pairs)                                                                          
+[+]   any EventID allowed on: Security, Windows PowerShell                      
+[+] Checking prerequisites                                                      
+────────────────────────────────── Processing ──────────────────────────────────
+[+] Analyzing workload...
+    [>] Files           1 (57.1 KB total, avg 57.1 KB)                      
+    [>] System          45.6 GB RAM available, 20 CPUs                      
+    [>] DB Mode         PER-FILE                                            
+                        Single file detected                                
+    [>] Parallel        disabled - Single file - parallel not applicable    
+
+[+] Processing 1 file(s) separately in streaming mode                           
+[+] Processing file: snapattack.xml                                             
+[+] Processing events (streaming mode)                                          
+[+] Creating dynamic model                                                      
+
+[+] Creating indexes                                                            
+[+] Total events processed: 24 (0 filtered out by log source)                   
+[+] Executing ruleset for snapattack.xml - 4319 rules                           
+
+                                 snapattack.xml                                 
+┏━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃    Severity    ┃ Rule                    ┃   Events ┃ ATT&CK                 ┃
+┡━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━┩
+│      HIGH      │ HackTool - Mimikatz     │        9 │ T1003.001, T1003.002,… │
+│                │ Execution - Generic     │          │                        │
+│      HIGH      │ WerFault LSASS Process  │        4 │ T1003.001              │
+│                │ Memory Dump             │          │                        │
+│      HIGH      │ Malicious Nishang       │        2 │ T1059.001              │
+│                │ PowerShell Commandlets  │          │                        │
+│      HIGH      │ Potential               │        2 │ T1003                  │
+│                │ Invoke-Mimikatz         │          │                        │
+│                │ PowerShell Script       │          │                        │
+│      HIGH      │ LSASS Process Memory    │        2 │ T1003.001              │
+│                │ Dump Files              │          │                        │
+│      HIGH      │ LSASS Process Dump      │        2 │ T1003.001              │
+│                │ Artefact In CrashDumps  │          │                        │
+│                │ Folder                  │          │                        │
+│     MEDIUM     │ Malicious PowerShell    │        6 │ T1059.001              │
+│                │ Keywords                │          │                        │
+│     MEDIUM     │ Psexec Execution -      │        3 │ T1569, T1021           │
+│                │ Generic                 │          │                        │
+│       LOW      │ Potential Execution of  │        3 │ T1588.002              │
+│                │ Sysinternals Tools -    │          │                        │
+│                │ Generic                 │          │                        │
+│       LOW      │ Suspicious Process      │        2 │ T1057                  │
+│                │ Discovery With          │          │                        │
+│                │ Get-Process             │          │                        │
+└────────────────┴─────────────────────────┴──────────┴────────────────────────┘
+
+─────────────────────────────────── Results ────────────────────────────────────
+
+╭───────────────────────────────── ✨ Summary ─────────────────────────────────╮
+│                                                                              │
+│    ⏱  Duration         1.2s                                                  │
+│                            ├─ Processing  ███████████████░  1.2s (97%)       │
+│    📁 Files            1                                                     │
+│    📊 Events           24 (0 filtered out — every event matched a rule's     │
+│                        log source)                                           │
+│    ⚡ Throughput       20 events/s                                           │
+│    💾 Peak Memory      104.44 MB                                             │
+│    🎯 Detections       21 HIGH │ 9 MED │ 5 LOW                               │
+│    📏 Coverage         10/4319 rules matched (0.2%)  ░░░░░░░░░░░░░░░░        │
+│    🔍 Matched          35 events across 10 rules                             │
+│    📋 Top Hits         HIGH HackTool - Mimikatz Execution - Generic (9)      │
+│                        HIGH WerFault LSASS Process Memory Dump (4)           │
+│                        HIGH Malicious Nishang PowerShell Commandlets (2)     │
+│                        HIGH Potential Invoke-Mimikatz PowerShell Script      │
+│                        (2)                                                   │
+│                        HIGH LSASS Process Memory Dump Files (2)              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────────────── 🗺  ATT&CK Coverage ─────────────────────────────╮
+│  Credential Access       ████████████████      6 techniques (19 hits)        │
+│  Execution               █████████▎            3 techniques (11 hits)        │
+│  Lateral Movement        ██▌                   2 techniques (3 hits)         │
+│  Resource Development    ██▌                   1 technique (3 hits)          │
+│  Discovery               █▋                    1 technique (2 hits)          │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+    → Output: 
+/home/kali/director/projects/detection-brittleness/evidence/zircolite_raw/T1003.
+001/attack_data_snapattack.json
+
+--- stderr ---
+

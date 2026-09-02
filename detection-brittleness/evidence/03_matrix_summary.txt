@@ -1,0 +1,104 @@
+=== T1003.001 ===
+Eligible (technique-tagged) distinct Sigma rule IDs in ruleset: 71 (105 compiled rule-variants; the ruleset compiles some rules twice, once per log-source variant, same id)
+Sample groups scored: ['attack_data_atomic_red_team', 'attack_data_snapattack', 'evtx_attack_samples', 'evtx_to_mitre_attack']
+Technique-tagged rules that fired in at least one group: 22
+
+  [  high] CreateDump Process Dump - Sysmon (id 515c8be5...)
+           attack_data_atomic_red_team=5  attack_data_snapattack=0  evtx_attack_samples=0  evtx_to_mitre_attack=0
+  [critical] HackTool - Dumpert Process Dumper Default File (id 93d94efc...)
+           attack_data_atomic_red_team=0  attack_data_snapattack=0  evtx_attack_samples=3  evtx_to_mitre_attack=0
+  [  high] HackTool - Generic Process Access (id d0d2f720...)
+           attack_data_atomic_red_team=4  attack_data_snapattack=0  evtx_attack_samples=1  evtx_to_mitre_attack=1
+  [  high] HackTool - Mimikatz Execution - Generic (id a642964e...)
+           attack_data_atomic_red_team=0  attack_data_snapattack=9  evtx_attack_samples=0  evtx_to_mitre_attack=1
+  [medium] LSASS Access From Non System Account (id 962fe167...)
+           attack_data_atomic_red_team=0  attack_data_snapattack=0  evtx_attack_samples=1  evtx_to_mitre_attack=2
+  [  high] LSASS Dump Keyword In CommandLine - Generic (id ffa6861c...)
+           attack_data_atomic_red_team=14  attack_data_snapattack=0  evtx_attack_samples=2  evtx_to_mitre_attack=2
+  [  high] LSASS Memory Access by Tool With Dump Keyword In Name (id 9bd012ee...)
+           attack_data_atomic_red_team=2  attack_data_snapattack=0  evtx_attack_samples=6  evtx_to_mitre_attack=0
+  [  high] LSASS Process Dump Artefact In CrashDumps Folder (id 6902955a...)
+           attack_data_atomic_red_team=0  attack_data_snapattack=2  evtx_attack_samples=0  evtx_to_mitre_attack=0
+  [  high] LSASS Process Memory Dump Creation Via Taskmgr.EXE (id 69ca12af...)
+           attack_data_atomic_red_team=0  attack_data_snapattack=0  evtx_attack_samples=1  evtx_to_mitre_attack=1
+  [  high] LSASS Process Memory Dump Files (id a5a2d357...)
+           attack_data_atomic_red_team=0  attack_data_snapattack=2  evtx_attack_samples=4  evtx_to_mitre_attack=1
+  [  high] Lsass Memory Dump via Comsvcs DLL (id a49fa4d5...)
+           attack_data_atomic_red_team=1  attack_data_snapattack=0  evtx_attack_samples=0  evtx_to_mitre_attack=1
+  [medium] Potential Credential Dumping Activity Via LSASS (id 5ef9853e...)
+           attack_data_atomic_red_team=1  attack_data_snapattack=0  evtx_attack_samples=0  evtx_to_mitre_attack=0
+  [critical] Potential Credential Dumping Via LSASS Process Clone - Sysmon (id c8da0dfd...)
+           attack_data_atomic_red_team=0  attack_data_snapattack=0  evtx_attack_samples=1  evtx_to_mitre_attack=0
+  [  high] Potential LSASS Process Dump Via Procdump - Generic (id 5afee48e...)
+           attack_data_atomic_red_team=9  attack_data_snapattack=0  evtx_attack_samples=0  evtx_to_mitre_attack=0
+  [medium] Potentially Suspicious AccessMask Requested From LSASS (id 4a1b6da0...)
+           attack_data_atomic_red_team=0  attack_data_snapattack=0  evtx_attack_samples=2  evtx_to_mitre_attack=5
+  [medium] Potentially Suspicious GrantedAccess Flags On LSASS (id a18dd26b...)
+           attack_data_atomic_red_team=1  attack_data_snapattack=0  evtx_attack_samples=1  evtx_to_mitre_attack=0
+  [  high] PowerShell Get-Process LSASS in ScriptBlock (id 84c174ab...)
+           attack_data_atomic_red_team=0  attack_data_snapattack=0  evtx_attack_samples=1  evtx_to_mitre_attack=1
+  [medium] Procdump Execution - Generic (id 2e65275c...)
+           attack_data_atomic_red_team=6  attack_data_snapattack=0  evtx_attack_samples=0  evtx_to_mitre_attack=0
+  [  high] Process Memory Dump Via Comsvcs.DLL - Generic (id 646ea171...)
+           attack_data_atomic_red_team=0  attack_data_snapattack=0  evtx_attack_samples=0  evtx_to_mitre_attack=4
+  [  high] Process Memory Dump via RdrLeakDiag.EXE - Sysmon (id edadb1e5...)
+           attack_data_atomic_red_team=0  attack_data_snapattack=0  evtx_attack_samples=1  evtx_to_mitre_attack=0
+  [  high] Suspicious Process Access to LSASS with Dbgcore/Dbghelp DLLs (id 9f5c1d59...)
+           attack_data_atomic_red_team=1  attack_data_snapattack=0  evtx_attack_samples=3  evtx_to_mitre_attack=0
+  [  high] WerFault LSASS Process Memory Dump (id c3e76af5...)
+           attack_data_atomic_red_team=0  attack_data_snapattack=4  evtx_attack_samples=0  evtx_to_mitre_attack=0
+
+Fired in EVERY sample group scored for T1003.001: 0 / 22
+Fired in SOME but not all groups: 22 / 22
+
+=== T1059.001 ===
+Eligible (technique-tagged) distinct Sigma rule IDs in ruleset: 208 (309 compiled rule-variants; the ruleset compiles some rules twice, once per log-source variant, same id)
+Sample groups scored: ['attack_data_atomic_red_team', 'attack_data_snapattack', 'evtx_to_mitre_attack']
+Technique-tagged rules that fired in at least one group: 21
+
+  [  high] Base64 Encoded PowerShell Command Detected - Generic (id e32d4572...)
+           attack_data_atomic_red_team=3  attack_data_snapattack=0  evtx_to_mitre_attack=3
+  [medium] Change PowerShell Policies to an Insecure Level - Generic (id 87e3c4e8...)
+           attack_data_atomic_red_team=6  attack_data_snapattack=1  evtx_to_mitre_attack=0
+  [  high] HackTool - Bloodhound/Sharphound Execution - Sysmon (id f376c8a7...)
+           attack_data_atomic_red_team=6  attack_data_snapattack=0  evtx_to_mitre_attack=0
+  [  high] Malicious PowerShell Commandlets - ProcessCreation - Sysmon (id 02030f2f...)
+           attack_data_atomic_red_team=9  attack_data_snapattack=0  evtx_to_mitre_attack=0
+  [  high] Malicious PowerShell Commandlets - ScriptBlock (id 89819aa4...)
+           attack_data_atomic_red_team=0  attack_data_snapattack=1  evtx_to_mitre_attack=0
+  [medium] Malicious PowerShell Keywords (id f62176f3...)
+           attack_data_atomic_red_team=0  attack_data_snapattack=1  evtx_to_mitre_attack=0
+  [informational] New PowerShell Instance Created (id ac7102b4...)
+           attack_data_atomic_red_team=118  attack_data_snapattack=0  evtx_to_mitre_attack=0
+  [   low] Non Interactive PowerShell Process Spawned - Generic (id f4bbd493...)
+           attack_data_atomic_red_team=117  attack_data_snapattack=2  evtx_to_mitre_attack=2
+  [   low] Potential Encoded PowerShell Patterns In CommandLine - Sysmon (id cdf05894...)
+           attack_data_atomic_red_team=4  attack_data_snapattack=0  evtx_to_mitre_attack=0
+  [  high] Potential PowerShell Command Line Obfuscation - Generic (id d7bcd677...)
+           attack_data_atomic_red_team=3  attack_data_snapattack=0  evtx_to_mitre_attack=2
+  [medium] Potential PowerShell Downgrade Attack - Sysmon (id b3512211...)
+           attack_data_atomic_red_team=2  attack_data_snapattack=0  evtx_to_mitre_attack=0
+  [  high] Potential Powershell ReverseShell Connection - Sysmon (id edc2f8ae...)
+           attack_data_atomic_red_team=1  attack_data_snapattack=0  evtx_to_mitre_attack=0
+  [medium] Potential WMI Lateral Movement WmiPrvSE Spawned PowerShell - Sysmon (id 692f0bec...)
+           attack_data_atomic_red_team=57  attack_data_snapattack=0  evtx_to_mitre_attack=0
+  [medium] PowerShell Download Pattern - Sysmon (id 3b6ab547...)
+           attack_data_atomic_red_team=13  attack_data_snapattack=0  evtx_to_mitre_attack=0
+  [medium] Remote PowerShell Session Host Process (WinRM) - Sysmon (id 734f8d9b...)
+           attack_data_atomic_red_team=1  attack_data_snapattack=0  evtx_to_mitre_attack=0
+  [  high] Suspicious Encoded PowerShell Command Line - Sysmon (id ca2092a1...)
+           attack_data_atomic_red_team=0  attack_data_snapattack=1  evtx_to_mitre_attack=0
+  [medium] Suspicious Execution of Powershell with Base64 - Sysmon (id fb843269...)
+           attack_data_atomic_red_team=39  attack_data_snapattack=1  evtx_to_mitre_attack=0
+  [  high] Suspicious PowerShell Download and Execute Pattern - Sysmon (id e6c54d94...)
+           attack_data_atomic_red_team=15  attack_data_snapattack=0  evtx_to_mitre_attack=0
+  [  high] Suspicious PowerShell IEX Execution Patterns - Sysmon (id 09576804...)
+           attack_data_atomic_red_team=6  attack_data_snapattack=0  evtx_to_mitre_attack=0
+  [  high] Suspicious PowerShell Invocations - Specific (id ae7fbf8e...)
+           attack_data_atomic_red_team=0  attack_data_snapattack=0  evtx_to_mitre_attack=1
+  [  high] Suspicious PowerShell Parameter Substring - Sysmon (id 36210e0d...)
+           attack_data_atomic_red_team=58  attack_data_snapattack=0  evtx_to_mitre_attack=0
+
+Fired in EVERY sample group scored for T1059.001: 1 / 21
+Fired in SOME but not all groups: 20 / 21
+
