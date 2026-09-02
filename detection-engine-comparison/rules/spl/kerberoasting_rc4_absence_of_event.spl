@@ -1,0 +1,19 @@
+# Hand-authored SPL (not compiled by pySigma; pySigma cannot express this
+# at all, see evidence/18_negation_sqlite_compile.txt). SPL can express
+# "principal X made zero qualifying RC4 TGS requests" directly because
+# `stats` can be told to enumerate the UNIVERSE of principals from a
+# separate, wider search (e.g. all Kerberos activity, or a lookup of known
+# service accounts) and left-join/append qualifying-event counts onto it,
+# rather than only ever being able to GROUP BY existing rows in the
+# filtered result set. This is the SPL-side half of the same negation
+# comparison whose Sigma-side half is proven impossible in
+# scripts/04_prove_correlation_cannot_express_absence.py.
+#
+# This query was NOT run against live Splunk (auth unavailable, see
+# evidence/05_splunk_auth_attempt.txt); it is presented as the SPL-side
+# construct that pySigma's correlation compiler has no equivalent for, not
+# as an executed result.
+
+`wineventlog_security` EventCode=4769
+| stats count(eval(TicketEncryptionType="0x17")) as rc4_count by TargetUserName
+| where rc4_count=0

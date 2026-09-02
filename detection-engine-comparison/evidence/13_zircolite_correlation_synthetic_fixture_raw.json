@@ -1,0 +1,18 @@
+[{
+  "title": "Kerberoasting SPN Request with RC4 Encryption - Volumetric Correlation",
+  "id": "d4b2b3a1-2f6b-4c8b-8c2f-2b3c4d5e6f70",
+  "description": "Correlation rule layered on top of kerberoasting_rc4_base.yml: fires when\nthe same TargetUserName is seen in 10 or more qualifying RC4 TGS-request\nevents within a 5 minute window. This is the STATEFUL half of the\ncomparison. Sigma correlation rules are a SEPARATE rule type (see\nhttps://github.com/SigmaHQ/sigma-specification/blob/main/specification/sigma-correlation-rules-specification.md)\nlayered on a base detection rule by `rule` reference, not a capability of\na plain detection rule.\n",
+  "sigmafile": "",
+  "sigma": [
+    "SELECT TargetUserName, COUNT(*) AS event_count FROM (SELECT * FROM logs WHERE (EventID=4769 AND TicketEncryptionType='0x17' AND (TicketOptions='0x40810000' OR TicketOptions='0x40800000' OR TicketOptions='0x40810010')) AND (NOT ServiceName LIKE '%$' ESCAPE '\\')) AS subquery GROUP BY TargetUserName HAVING event_count >= 10"
+  ],
+  "rule_level": "high",
+  "tags": [],
+  "count": 1,
+  "matches": [
+    {
+      "TargetUserName": "testuser@ATTACKRANGE.LOCAL",
+      "event_count": 12
+    }
+  ]
+}]

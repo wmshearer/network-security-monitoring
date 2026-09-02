@@ -1,0 +1,15 @@
+=== Sigma correlation rule with condition lt:1 (attempted absence-of-event expression) compiled to sqlite ===
+Parsing Sigma rules
+SELECT TargetUserName, COUNT(*) AS event_count FROM (SELECT * FROM logs WHERE EventID=4769 AND TicketEncryptionType='0x17') AS subquery GROUP BY TargetUserName HAVING event_count < 1
+
+=== Executing that exact compiled SQL against real SQLite with a case it should catch ===
+Compiled query (from `sigma convert -t sqlite` on an event_count
+correlation with condition: {lt: 1}):
+  SELECT TargetUserName, COUNT(*) AS event_count FROM (SELECT * FROM logs WHERE EventID=4769 AND TicketEncryptionType='0x17') AS subquery GROUP BY TargetUserName HAVING event_count < 1
+
+Seed data: alice has 2 qualifying events; bob has 1 event that
+does NOT qualify (0 qualifying events for bob).
+
+Rows returned: []
+
+CONFIRMED: the query returns zero rows. bob, who genuinely made zero qualifying requests, does not appear. A GROUP BY query never emits a row for a group with no members in the filtered subquery, so HAVING event_count < 1 is unsatisfiable by construction, for any data.

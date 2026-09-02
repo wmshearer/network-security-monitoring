@@ -1,0 +1,3 @@
+=== convert whole rules/sigma dir -> sqlite ===
+Parsing Sigma rules
+SELECT TargetUserName, COUNT(*) AS event_count FROM (SELECT * FROM logs WHERE (EventID=4769 AND TicketEncryptionType='0x17' AND (TicketOptions='0x40810000' OR TicketOptions='0x40800000' OR TicketOptions='0x40810010')) AND (NOT ServiceName LIKE '%$' ESCAPE '\')) AS subquery GROUP BY TargetUserName HAVING event_count >= 10

@@ -1,0 +1,3 @@
+=== sigma convert -> sqlite (no pipeline) ===
+Parsing Sigma rules
+SELECT * FROM <TABLE_NAME> WHERE (EventID=4769 AND TicketEncryptionType='0x17' AND (TicketOptions='0x40810000' OR TicketOptions='0x40800000' OR TicketOptions='0x40810010')) AND (NOT ServiceName LIKE '%$' ESCAPE '\')

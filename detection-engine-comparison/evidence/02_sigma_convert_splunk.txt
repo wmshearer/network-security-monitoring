@@ -1,0 +1,3 @@
+=== sigma convert -> splunk (windows pipeline) ===
+Parsing Sigma rules
+source="WinEventLog:Security" EventCode=4769 TicketEncryptionType="0x17" TicketOptions IN ("0x40810000", "0x40800000", "0x40810010") NOT ServiceName="*$"

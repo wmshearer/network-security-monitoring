@@ -1,0 +1,9 @@
+# Compiled by: sigma convert -t splunk -p splunk_windows rules/sigma/kerberoasting_rc4_base.yml
+# See evidence/02_sigma_convert_splunk.txt for the raw command and output.
+#
+# NEVER RUN against real Splunk in this project: Splunk auth was not
+# available (see evidence/05_splunk_auth_attempt.txt). This file records
+# the compiled query text only, to demonstrate the silent field-mapping
+# gap described in evidence/17_field_mapping_silent_mismatch.txt.
+
+source="WinEventLog:Security" EventCode=4769 TicketEncryptionType="0x17" TicketOptions IN ("0x40810000", "0x40800000", "0x40810010") NOT ServiceName="*$"

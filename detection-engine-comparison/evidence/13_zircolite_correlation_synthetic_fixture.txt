@@ -1,0 +1,69 @@
+=== Zircolite correlation rule against synthetic 12-event fixture (sanity check the mechanism fires at all) ===
+
+███████╗██╗██████╗  ██████╗ ██████╗ ██╗     ██╗████████╗███████╗
+╚══███╔╝██║██╔══██╗██╔════╝██╔═══██╗██║     ██║╚══██╔══╝██╔════╝
+  ███╔╝ ██║██████╔╝██║     ██║   ██║██║     ██║   ██║   █████╗
+ ███╔╝  ██║██╔══██╗██║     ██║   ██║██║     ██║   ██║   ██╔══╝
+███████╗██║██║  ██║╚██████╗╚██████╔╝███████╗██║   ██║   ███████╗
+╚══════╝╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝   ╚═╝   ╚══════╝
+-= Standalone Sigma Detection tool for EVTX/Auditd/Sysmon Linux =-
+                              v3.8.1
+
+[+] Loading ruleset(s)                                                          
+    [>] Converting Native Sigma to Zircolite ruleset : rules/sigma              
+
+[✓] Converted 1 rules                                                           
+[+] 1 rules loaded                                                              
+[+] Checking prerequisites                                                      
+────────────────────────────────── Processing ──────────────────────────────────
+[+] Analyzing workload...
+    [>] Files           1 (2.3 KB total, avg 2.3 KB)                        
+    [>] System          45.0 GB RAM available, 20 CPUs                      
+    [>] DB Mode         PER-FILE                                            
+                        Single file detected                                
+    [>] Parallel        disabled - Single file - parallel not applicable    
+
+[+] Processing 1 file(s) separately in streaming mode                           
+[+] Processing file: synthetic_correlation_fixture.jsonl                        
+[+] Processing events (streaming mode)                                          
+[+] Creating dynamic model                                                      
+
+[+] Creating indexes                                                            
+[+] Total events processed: 12                                                  
+[+] Executing ruleset for synthetic_correlation_fixture.jsonl - 1 rules         
+╭───────────────────────────────── SQL Query ──────────────────────────────────╮
+│ SELECT TargetUserName, COUNT(*) AS event_count FROM (SELECT * FROM logs      │
+│ WHERE (EventID=4769 AND TicketEncryptionType='0x17' AND                      │
+│ (TicketOptions='0x40810000' OR TicketOptions='0x40800000' OR                 │
+│ TicketOptions='0x40810010')) AND (NOT ServiceName LIKE '%$' ESCAPE '\')) AS  │
+│ subquery GROUP BY TargetUserName HAVING event_count >= 10                    │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+                      synthetic_correlation_fixture.jsonl                       
+┏━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃    Severity    ┃ Rule                    ┃   Events ┃ ATT&CK                 ┃
+┡━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━┩
+│      HIGH      │ Kerberoasting SPN       │        1 │                        │
+│                │ Request with RC4        │          │                        │
+│                │ Encryption - Volumetric │          │                        │
+│                │ Correlation             │          │                        │
+└────────────────┴─────────────────────────┴──────────┴────────────────────────┘
+
+─────────────────────────────────── Results ────────────────────────────────────
+
+╭───────────────────────────────── ✨ Summary ─────────────────────────────────╮
+│                                                                              │
+│    ⏱  Duration         0.1s                                                  │
+│    📁 Files            1                                                     │
+│    📊 Events           12                                                    │
+│    ⚡ Throughput       97 events/s                                           │
+│    💾 Peak Memory      64.10 MB                                              │
+│    🎯 Detections       1 HIGH                                                │
+│    📏 Coverage         1/1 rules matched (100.0%)  ████████████████          │
+│    🔍 Matched          1 events across 1 rules                               │
+│    📋 Top Hits         HIGH Kerberoasting SPN Request with RC4 Encryption    │
+│                        -... (1)                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+    → Output: evidence/13_zircolite_correlation_synthetic_fixture_raw.json

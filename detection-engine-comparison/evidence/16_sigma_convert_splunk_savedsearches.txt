@@ -1,0 +1,13 @@
+Parsing Sigma rules
+
+[default]
+dispatch.earliest_time = -30d
+dispatch.latest_time = now
+
+[Kerberoasting SPN Request with RC4 Encryption]
+description = Detects a single Kerberos service ticket request (EventID 4769) using RC4 \
+encryption (TicketEncryptionType 0x17) for one of the TicketOptions values \
+commonly seen in Kerberoasting tooling. This is the STATELESS half of the \
+comparison in this project: it fires on one qualifying event, with no \
+memory of any other event.
+search = source="WinEventLog:Security" EventCode=4769 TicketEncryptionType="0x17" TicketOptions IN ("0x40810000", "0x40800000", "0x40810010") NOT ServiceName="*$"

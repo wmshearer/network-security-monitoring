@@ -1,0 +1,21 @@
+title: Kerberoasting SPN Request with RC4 Encryption - Volumetric Correlation
+id: d4b2b3a1-2f6b-4c8b-8c2f-2b3c4d5e6f70
+status: test
+description: |
+  Correlation rule layered on top of kerberoasting_rc4_base.yml: fires when
+  the same TargetUserName is seen in 10 or more qualifying RC4 TGS-request
+  events within a 5 minute window. This is the STATEFUL half of the
+  comparison. Sigma correlation rules are a SEPARATE rule type (see
+  https://github.com/SigmaHQ/sigma-specification/blob/main/specification/sigma-correlation-rules-specification.md)
+  layered on a base detection rule by `rule` reference, not a capability of
+  a plain detection rule.
+correlation:
+    type: event_count
+    rules:
+        - c3a1a2f0-1e5a-4b7a-9b1e-1a2b3c4d5e6f
+    group-by:
+        - TargetUserName
+    timespan: 5m
+    condition:
+        gte: 10
+level: high

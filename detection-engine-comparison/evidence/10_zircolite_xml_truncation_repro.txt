@@ -1,0 +1,52 @@
+Reproduction: Zircolite's -x/--xml-input silently reads only the FIRST
+<Event> element from a file containing many concatenated root-level <Event>
+elements (no wrapping root tag), the actual on-disk format of every
+attack_data windows-xml.log file in this corpus.
+
+Independent reproduction outside Zircolite, using the exact same lxml call
+Zircolite's zircolite/streaming.py stream_xml_events() makes
+(etree.iterparse(xml_file, events=("end",), recover=True)):
+
+    $ python3 -c "
+    from lxml import etree
+    context = etree.iterparse('<path>/unusual_number_of_kerberos_service_tickets_requested/windows-xml.log', events=('end',), recover=True)
+    count=0
+    for action, elem in context:
+        if elem.tag.endswith('Event'):
+            count += 1
+    print('Event elements seen:', count)
+    "
+    Event elements seen: 1
+
+Ground truth: the file has 159 non-empty lines, each one complete
+'<Event ...>...</Event>' document (verified: grep -c "." on the file = 159,
+and every line matches the same single-line-per-event pattern as the
+1-event file). lxml's recovery-mode parser treats the file as a stream that
+should contain ONE XML document; after the first top-level </Event> closes,
+the parser has satisfied a complete document and no further top-level
+siblings are consumable as further top-level elements without a wrapping
+root (e.g. <Events>...</Events>), which this file lacks.
+
+Zircolite's own CLI run against this file (see
+09_zircolite_correlation_attempt_stdout.txt) reports:
+    [+] Total events processed: 1
+with NO warning, NO error, and NO indication that 158 of 159 real events
+were silently dropped. Zircolite DOES have a "No <Event> documents found"
+warning path (streaming.py ~line 1310) but it only fires when ZERO <Event>
+tags are seen; it does not detect or warn about a truncated multi-root
+file where at least one event was found.
+
+This means: point Zircolite's native --xml-input mode at this corpus's
+actual on-disk file format, and it reports a clean, confident, non-empty
+success ("Total events processed: 1", 0 detections, no error) that is
+COMPLETELY WRONG for the volumetric question the whole file exists to
+answer. It looks exactly like a true negative (no correlation fired) but
+is actually "only saw 1/159 of the data."
+
+Workaround used in this project: convert the multi-root XML file to one
+JSON object per line (scripts/02_convert_xml_to_jsonl.py) and run Zircolite
+in --json-input mode instead, which correctly processes all 159 events (see
+evidence/11_zircolite_correlation_on_jsonl.txt). This is a genuine engine
+limitation for THIS corpus's on-disk convention, not a bug in the
+correlation-rule handling under test; it is documented here separately so
+it is not confused with the correlation-rule finding.

@@ -1,0 +1,7 @@
+=== YARA test 1: real single-event kerberoasting log (expect TRUE POSITIVE match) ===
+Kerberoasting_RC4_TGS_Request_StringMatch /home/kali/director/projects/_corpora/attack_data/datasets/attack_techniques/T1558.003/kerberoasting_spn_request_with_rc4_encryption/windows-xml.log
+0xb1:$eventid_xml: <EventID>4769</EventID>
+0x36e:$enc_type: 0x17
+0x33b:$opt1: 0x40810000
+Kerberoasting_RC4_Encryption_Type_Substring_Only /home/kali/director/projects/_corpora/attack_data/datasets/attack_techniques/T1558.003/kerberoasting_spn_request_with_rc4_encryption/windows-xml.log
+0x36e:$enc_type: 0x17

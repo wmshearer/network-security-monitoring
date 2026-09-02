@@ -1,0 +1,12 @@
+title: Kerberoasting SPN Request with RC4 Encryption
+id: c3a1a2f0-1e5a-4b7a-9b1e-1a2b3c4d5e6f
+status: test
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4769
+    TicketEncryptionType: '0x17'
+  condition: selection
+level: medium
