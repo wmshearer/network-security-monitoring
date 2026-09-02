@@ -1,0 +1,59 @@
+{
+  "summary": "Reconciliation of this project's direct-SQL re-execution vs the sibling detection-rule-lab live Zircolite run",
+  "sibling_source": "/home/kali/director/projects/detection-rule-lab/reports/scoring-run.json",
+  "sibling_fired_count": 135,
+  "this_project_fired_count": 129,
+  "fired_only_in_sibling": [
+    {
+      "rule_id": "13acf386-b8c6-4fe0-9a6e-c4756b974698",
+      "title": "Remote PowerShell Sessions Network Connections (WinRM)",
+      "malicious_hits": 22,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "166e9c50-8cd9-44af-815d-d1f0c0e90dde",
+      "title": "Suspicious Svchost Process Access",
+      "malicious_hits": 74,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "259a9cdf-c4dd-4fa2-b243-2269e5ab18a2",
+      "title": "External Remote RDP Logon from Public IP",
+      "malicious_hits": 2,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "78d5cab4-557e-454f-9fb9-a222bd0d5edc",
+      "title": "External Remote SMB Logon from Public IP",
+      "malicious_hits": 2,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "a24e5861-c6ca-4fde-a93c-ba9256feddf0",
+      "title": "Uncommon Process Access Rights For Target Image",
+      "malicious_hits": 2,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "c539afac-c12a-46ed-b1bd-5a5567c9f045",
+      "title": "Potential Remote PowerShell Session Initiated",
+      "malicious_hits": 22,
+      "benign_hits": 0
+    },
+    {
+      "rule_id": "dae8171c-5ec6-4396-b210-8466585b53e9",
+      "title": "SCM Database Privileged Operation",
+      "malicious_hits": 8,
+      "benign_hits": 0
+    }
+  ],
+  "fired_only_in_this_project": [
+    {
+      "rule_id": "3b5ba899-9842-4bc2-acc2-12308498bf42",
+      "title": "Office Application Initiated Network Connection Over Uncommon Ports",
+      "malicious_hits": 6,
+      "benign_hits": 0
+    }
+  ],
+  "explained_and_fixed": "Channel case mismatch (security vs Security) for 2 of the original 9 sibling-only rules; those now match. Remaining 7 unexplained, likely additional field-normalization differences in Zircolite's full ingestion pipeline (type coercion, e.g. hex/int for GrantedAccess/DestPort) not reproduced by this project's direct-SQL-replay method. None reference ParentImage, ParentProcessGuid, or any process-lineage field, so none affect the tree-detection comparison this project measures."
+}
