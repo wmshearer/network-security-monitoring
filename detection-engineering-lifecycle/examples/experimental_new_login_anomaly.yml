@@ -1,0 +1,14 @@
+# Example rule: freshly authored, still in the experimental stage.
+# This is Sigma-SHAPED, not Sigma-valid: the detection block below is a stand-in
+# for real Sigma selection/condition syntax, kept simple because this linter
+# only reads flat key:value and block-list fields (see src/lint_detection.py).
+title: Impossible Travel Login Within Short Window
+id: 3f2a9b10-0001-4e2a-9c11-000000000001
+status: experimental
+goal: Catch a single account authenticating from two geographically distant IPs closer together in time than travel between them allows.
+logsource: authentication logs, product = okta
+detection: two successful logins for the same user_id from IPs geo-resolved more than 500 miles apart within a 60 minute window
+falsepositives:
+  - Shared corporate VPN egress IP reused by many users
+  - Mobile carrier NAT reassigning IPs across regions
+level: medium
