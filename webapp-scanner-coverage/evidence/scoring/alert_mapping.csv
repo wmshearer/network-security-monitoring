@@ -1,0 +1,19 @@
+scanner,alert,mapped_challenge_key,mapped_challenge_name,mapped_category,note
+ZAP,Content Security Policy (CSP) Header Not Set,,,,"Real finding (no CSP header set). No manifest challenge asks for this specifically; 'CSP Bypass' (XSS) assumes a CSP already exists and asks to bypass it, which is a different flaw. Not a scored challenge."
+ZAP,Cross-Domain Misconfiguration,,,,Real finding (Access-Control-Allow-Origin: *). No manifest challenge matches this exact configuration. Not a scored challenge.
+ZAP,Timestamp Disclosure - Unix,,,,Real finding (a Unix timestamp in a response). No manifest challenge asks for this. Not a scored challenge.
+ZAP,Modern Web Application,,,,Informational fingerprint (detects the app is an Angular SPA). Not a vulnerability finding and not a scored challenge.
+ZAP,User Agent Fuzzer,,,,ZAP resending requests with different User-Agent strings to see if responses change. Raised 24 times in the authenticated run with no behavioural difference found. Not a scored challenge.
+nuclei,prometheus-metrics,exposedMetricsChallenge,Exposed Metrics,Observability Failures,"Exact match: challenge asks to find the Prometheus /metrics endpoint, nuclei's template detects exactly that endpoint. Confirmed hit."
+nuclei,swagger-api,,,,Real finding (a Swagger/OpenAPI doc is served). No manifest challenge asks for this. Not a scored challenge.
+nuclei,robots-txt-endpoint,,,,Informational. Not a scored challenge.
+nuclei,robots-txt,,,,"Informational, duplicate of the above. Not a scored challenge."
+nuclei,security-txt,,,,"Detects /.well-known/security.txt. The 'Security Advisory' challenge (csafChallenge, category Miscellaneous) hints that advisories are 'often listed in the security.txt', but solving it requires finding a specific CVE checksum, not just detecting the file exists. Not counted as a hit: nuclei found the file, not the challenge's actual objective."
+nuclei,http-missing-security-headers,,,,8 instances (missing headers like X-Content-Type-Options). No single manifest challenge matches. Not a scored challenge.
+nuclei,addeventlistener-detect,,,,Informational DOM fingerprint. Not a scored challenge.
+nuclei,deprecated-feature-policy,,,,Informational header fingerprint. Not a scored challenge.
+nuclei,owasp-juice-shop-detect,,,,Nuclei recognising the target as Juice Shop itself. Not a vulnerability.
+nuclei,fingerprinthub-web-fingerprints,,,,Tech fingerprinting. Not a scored challenge.
+nuclei,tech-detect,,,,Tech fingerprinting (Wappalyzer signatures). Not a scored challenge.
+nuclei,x-recruiting-header,,,,"Detects the X-Recruiting response header pointing to /#/jobs. The closest manifest entry, 'Login Support Team' (Security Misconfiguration), requires finding leaked support-team credentials, a different mechanism than reading this header. Not counted as a hit."
+Burp (manual),Basket IDOR (attacker token reads victim's basket),basketAccessChallenge,View Basket,Broken Access Control,"Confirmed hit, found only by manual testing. See evidence/burp/basket-idor-notes.md."
