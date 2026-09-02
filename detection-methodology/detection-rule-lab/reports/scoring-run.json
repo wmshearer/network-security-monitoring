@@ -1,0 +1,1816 @@
+{
+  "summary": {
+    "malicious_events": 834226,
+    "benign_events": 110095,
+    "rules_loaded": 2691,
+    "rules_fired": 135,
+    "rules_silent": 2556,
+    "rules_malicious_only": 131,
+    "rules_touching_benign": 4
+  },
+  "elapsed_seconds": 173.2,
+  "ruleset": "rules_windows_sysmon.json",
+  "malicious_captures": [
+    "APT29-EVALS-DAY1.zip",
+    "APT29-EVALS-DAY2.zip",
+    "empire_shell_net_localgroup_administrators.zip",
+    "empire_shell_net_local_users.zip",
+    "empire_persistence_registry_modification_run_keys_standard_user.zip",
+    "empire_schtasks_creation_standard_user.zip",
+    "msf_record_mic.zip"
+  ],
+  "benign_files": 3,
+  "rule_eventid_coverage_pct": 94.6,
+  "results": [
+    {
+      "rule_id": "d88d0ab2-e696-4d40-a2ed-9790064e66b3",
+      "title": "Modification of IE Registry Settings",
+      "level": "low",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1112"
+      ],
+      "malicious_hits": 0,
+      "benign_hits": 56,
+      "precision": 0.0
+    },
+    {
+      "rule_id": "3037d961-21e9-4732-b27a-637bcc7bf539",
+      "title": "Suspicious High IntegrityLevel Conhost Legacy Option",
+      "level": "informational",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1202"
+      ],
+      "malicious_hits": 10,
+      "benign_hits": 2,
+      "precision": 0.8333333333333334
+    },
+    {
+      "rule_id": "0eb46774-f1ab-4a74-8238-1155855f2263",
+      "title": "Disable Windows Defender Functionalities Via Registry Keys",
+      "level": "high",
+      "author": "AlertIQ, J\u00e1n Tren\u010dansk\u00fd, frack113, Nasreddine Bencherchali, Swachchhanda Shrawan Poudel",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1685"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 2,
+      "precision": 0.5
+    },
+    {
+      "rule_id": "3a9b8c1e-5b2e-4f7a-9d1c-2a7f3b6e1c55",
+      "title": "RunMRU Registry Key Deletion - Registry",
+      "level": "high",
+      "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1070.003"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 2,
+      "precision": 0.5
+    },
+    {
+      "rule_id": "64e8e417-c19a-475a-8d19-98ea705394cc",
+      "title": "Alternate PowerShell Hosts - PowerShell Module",
+      "level": "medium",
+      "author": "Roberto Rodriguez @Cyb3rWard0g",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 4124,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "1ddc1472-8e52-4f7d-9f11-eab14fc171f5",
+      "title": "PowerShell Decompress Commands",
+      "level": "informational",
+      "author": "Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1140"
+      ],
+      "malicious_hits": 620,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "0badd08f-c6a3-4630-90d3-6875cca440be",
+      "title": "User Logoff Event",
+      "level": "informational",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1531"
+      ],
+      "malicious_hits": 534,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "7047d730-036f-4f40-b9d8-1c63e36d5e62",
+      "title": "Potential Binary Or Script Dropper Via PowerShell",
+      "level": "medium",
+      "author": "frack113, Nasreddine Bencherchali (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [],
+      "malicious_hits": 293,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "166e9c50-8cd9-44af-815d-d1f0c0e90dde",
+      "title": "Suspicious Svchost Process Access",
+      "level": "high",
+      "author": "Tim Burrell",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1685.001"
+      ],
+      "malicious_hits": 74,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "d29ada0f-af45-4f27-8f32-f7b77c3dbc4e",
+      "title": "HackTool - SysmonEnte Execution",
+      "level": "high",
+      "author": "Florian Roth (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1685.001"
+      ],
+      "malicious_hits": 62,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "d223b46b-5621-4037-88fe-fda32eead684",
+      "title": "New Root or CA or AuthRoot Certificate to Store",
+      "level": "medium",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1490"
+      ],
+      "malicious_hits": 32,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "ac7102b4-9e1e-4802-9b4f-17c5524c015c",
+      "title": "New PowerShell Instance Created",
+      "level": "informational",
+      "author": "Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 29,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "4a1b6da0-d94f-4fc3-98fc-2d9cb9e5ee76",
+      "title": "Potentially Suspicious AccessMask Requested From LSASS",
+      "level": "medium",
+      "author": "Roberto Rodriguez, Teymur Kheirkhabarov, Dimitrios Slamaris, Mark Russinovich, Aleksey Potapov, oscd.community (update)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1003.001"
+      ],
+      "malicious_hits": 27,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "a982fc9c-6333-4ffb-a51d-addb04e8b529",
+      "title": "Windows Defender Exclusions Added - Registry",
+      "level": "medium",
+      "author": "Christian Burkard (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1685"
+      ],
+      "malicious_hits": 26,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "12ba6a38-adb3-4d6b-91ba-a7fb248e3199",
+      "title": "Password Policy Enumerated",
+      "level": "medium",
+      "author": "Zach Mathis",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1201"
+      ],
+      "malicious_hits": 23,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "c539afac-c12a-46ed-b1bd-5a5567c9f045",
+      "title": "Potential Remote PowerShell Session Initiated",
+      "level": "high",
+      "author": "Roberto Rodriguez @Cyb3rWard0g",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1021.006",
+        "T1059.001"
+      ],
+      "malicious_hits": 22,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "13acf386-b8c6-4fe0-9a6e-c4756b974698",
+      "title": "Remote PowerShell Sessions Network Connections (WinRM)",
+      "level": "high",
+      "author": "Roberto Rodriguez @Cyb3rWard0g",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 22,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "af4c87ce-bdda-4215-b998-15220772e993",
+      "title": "Suspicious Process Discovery With Get-Process",
+      "level": "low",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1057"
+      ],
+      "malicious_hits": 20,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "b5de0c9a-6f19-43e0-af4e-55ad01f550af",
+      "title": "Unsigned DLL Loaded by Windows Utility",
+      "level": "medium",
+      "author": "Swachchhanda Shrawan Poudel",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1218.010",
+        "T1218.011"
+      ],
+      "malicious_hits": 19,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "f4bbd493-b796-416e-bbf2-121235348529",
+      "title": "Non Interactive PowerShell Process Spawned",
+      "level": "low",
+      "author": "Roberto Rodriguez @Cyb3rWard0g (rule), oscd.community (improvements)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 17,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "52d8b0c6-53d6-439a-9e41-52ad442ad9ad",
+      "title": "First Time Seen Remote Named Pipe",
+      "level": "high",
+      "author": "Samir Bousseaden",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1021.002"
+      ],
+      "malicious_hits": 16,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "403c2cc0-7f6b-4925-9423-bfa573bed7eb",
+      "title": "Suspicious PowerShell Download - Powershell Script",
+      "level": "medium",
+      "author": "Florian Roth (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 16,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "4096a49c-7de4-4da0-a230-c66ccd56ea5a",
+      "title": "Suspicious PowerShell Get Current User",
+      "level": "low",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1033"
+      ],
+      "malicious_hits": 16,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "178e615d-e666-498b-9630-9ed363038101",
+      "title": "Elevated System Shell Spawned From Uncommon Parent Location",
+      "level": "medium",
+      "author": "frack113, Tim Shelton (update fp)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059"
+      ],
+      "malicious_hits": 15,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "baecf8fb-edbf-429f-9ade-31fc3f22b970",
+      "title": "Office Autorun Keys Modification",
+      "level": "medium",
+      "author": "Victor Sergeev, Daniil Yugoslavskiy, Gleb Sukhodolskiy, Timur Zinniatullin, oscd.community, Tim Shelton, frack113 (split)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1547.001"
+      ],
+      "malicious_hits": 13,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "25ffa65d-76d8-4da5-a832-3f2b0136e133",
+      "title": "PUA - Sysinternal Tool Execution - Registry",
+      "level": "low",
+      "author": "Markus Neis",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1588.002"
+      ],
+      "malicious_hits": 13,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "c7da8edc-49ae-45a2-9e61-9fd860e4e73d",
+      "title": "PUA - Sysinternals Tools Execution - Registry",
+      "level": "medium",
+      "author": "Nasreddine Bencherchali (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1588.002"
+      ],
+      "malicious_hits": 13,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "1027d292-dd87-4a1a-8701-2abe04d7783c",
+      "title": "PSScriptPolicyTest Creation By Uncommon Process",
+      "level": "medium",
+      "author": "Nasreddine Bencherchali (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [],
+      "malicious_hits": 12,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "7d0d0329-0ef1-4e84-a9f5-49500f9d7c6c",
+      "title": "Malicious PowerShell Commandlets - PoshModule",
+      "level": "high",
+      "author": "Nasreddine Bencherchali (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001",
+        "T1069",
+        "T1069.001",
+        "T1069.002",
+        "T1087",
+        "T1087.001",
+        "T1087.002",
+        "T1482"
+      ],
+      "malicious_hits": 11,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "f62176f3-8128-4faa-bf6c-83261322e5eb",
+      "title": "Malicious PowerShell Keywords",
+      "level": "medium",
+      "author": "Sean Metcalf (source), Florian Roth (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 11,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "ae7fbf8e-f3cb-49fd-8db4-5f3bed522c71",
+      "title": "Suspicious PowerShell Invocations - Specific",
+      "level": "high",
+      "author": "Florian Roth (Nextron Systems), Jonhnathan Ribeiro",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 11,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "7cccd811-7ae9-4ebe-9afd-cb5c406b824b",
+      "title": "Potential Execution of Sysinternals Tools",
+      "level": "low",
+      "author": "Markus Neis",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1588.002"
+      ],
+      "malicious_hits": 10,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "e36941d0-c0f0-443f-bc6f-cb2952eb69ea",
+      "title": "PowerShell Module File Created",
+      "level": "low",
+      "author": "Nasreddine Bencherchali (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [],
+      "malicious_hits": 10,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "db809f10-56ce-4420-8c86-d6a7d793c79c",
+      "title": "Potential Defense Evasion Via Raw Disk Access By Uncommon Tools",
+      "level": "low",
+      "author": "Teymur Kheirkhabarov, oscd.community",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1006"
+      ],
+      "malicious_hits": 9,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "1f49f2ab-26bc-48b3-96cc-dcffbc93eadf",
+      "title": "Potential Suspicious PowerShell Keywords",
+      "level": "medium",
+      "author": "Florian Roth (Nextron Systems), Perez Diego (@darkquassar), Tuan Le (NCSGroup)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 9,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "f50f3c09-557d-492d-81db-9064a8d4e211",
+      "title": "Suspicious Execution Of Renamed Sysinternals Tools - Registry",
+      "level": "high",
+      "author": "Nasreddine Bencherchali (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1588.002"
+      ],
+      "malicious_hits": 9,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "96cd126d-f970-49c4-848a-da3a09f55c55",
+      "title": "Potential PowerShell Obfuscation Using Alias Cmdlets",
+      "level": "low",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1027",
+        "T1059.001"
+      ],
+      "malicious_hits": 8,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "dae8171c-5ec6-4396-b210-8466585b53e9",
+      "title": "SCM Database Privileged Operation",
+      "level": "medium",
+      "author": "Roberto Rodriguez @Cyb3rWard0g, Tim Shelton",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1548"
+      ],
+      "malicious_hits": 8,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "941e5c45-cda7-4864-8cea-bbb7458d194a",
+      "title": "Suspicious Remote Logon with Explicit Credentials",
+      "level": "medium",
+      "author": "oscd.community, Teymur Kheirkhabarov @HeirhabarovT, Zach Stanford @svch0st, Tim Shelton",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1078"
+      ],
+      "malicious_hits": 8,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "7b836d7f-179c-4ba4-90a7-a7e60afb48e6",
+      "title": "Execute Invoke-command on Remote Host",
+      "level": "medium",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1021.006"
+      ],
+      "malicious_hits": 7,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "2dbd9d3d-9e27-42a8-b8df-f13825c6c3d5",
+      "title": "WebDav Client Execution Via Rundll32.EXE",
+      "level": "medium",
+      "author": "Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1048.003"
+      ],
+      "malicious_hits": 7,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "dcaa3f04-70c3-427a-80b4-b870d73c94c4",
+      "title": "Dynamic .NET Compilation Via Csc.EXE",
+      "level": "medium",
+      "author": "Florian Roth (Nextron Systems), X__Junior (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1027.004"
+      ],
+      "malicious_hits": 6,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "e4a74e34-ecde-4aab-b2fb-9112dd01aed0",
+      "title": "Dynamic CSharp Compile Artefact",
+      "level": "low",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1027.004"
+      ],
+      "malicious_hits": 6,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "89819aa4-bbd6-46bc-88ec-c7f7fe30efa6",
+      "title": "Malicious PowerShell Commandlets - ScriptBlock",
+      "level": "high",
+      "author": "Sean Metcalf, Florian Roth, Bartlomiej Czyz @bczyz1, oscd.community, Nasreddine Bencherchali, Tim Shelton, Mustafa Kaan Demir, Georg Lauenstein, Max Altgelt, Tobias Michalski, Austin Songer",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001",
+        "T1069",
+        "T1069.001",
+        "T1069.002",
+        "T1087",
+        "T1087.001",
+        "T1087.002",
+        "T1482"
+      ],
+      "malicious_hits": 6,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "a4824fca-976f-4964-b334-0621379e84c4",
+      "title": "Potential File Overwrite Via Sysinternals SDelete",
+      "level": "high",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1485"
+      ],
+      "malicious_hits": 6,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "092bc4b9-3d1d-43b4-a6b4-8c8acd83522f",
+      "title": "PowerShell Core DLL Loaded By Non PowerShell Process",
+      "level": "medium",
+      "author": "Tom Kern, oscd.community, Natalia Shornikova, Tim Shelton, Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 6,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "8cd538a4-62d5-4e83-810b-12d41e428d6e",
+      "title": "Processes Accessing the Microphone and Webcam",
+      "level": "medium",
+      "author": "Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1123"
+      ],
+      "malicious_hits": 6,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "734f8d9b-42b8-41b2-bcf5-abaf49d5a3c8",
+      "title": "Remote PowerShell Session Host Process (WinRM)",
+      "level": "medium",
+      "author": "Roberto Rodriguez @Cyb3rWard0g",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1021.006",
+        "T1059.001"
+      ],
+      "malicious_hits": 6,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "fb843269-508c-4b76-8b8d-88679db22ce7",
+      "title": "Suspicious Execution of Powershell with Base64",
+      "level": "medium",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 6,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "87e3c4e8-a6a8-4ad9-bb4f-46e7ff99a180",
+      "title": "Change PowerShell Policies to an Insecure Level",
+      "level": "medium",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 5,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "60936b49-fca0-4f32-993d-7415edcf9a5d",
+      "title": "New Application in AppCompat",
+      "level": "informational",
+      "author": "Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1204.002"
+      ],
+      "malicious_hits": 5,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "fdb62a13-9a81-4e5c-a38f-ea93a16f6d7c",
+      "title": "PowerShell Base64 Encoded FromBase64String Cmdlet",
+      "level": "high",
+      "author": "Florian Roth (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001",
+        "T1140"
+      ],
+      "malicious_hits": 5,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "96f697b0-b499-4e5d-9908-a67bec11cdb6",
+      "title": "Removal of Potential COM Hijacking Registry Keys",
+      "level": "medium",
+      "author": "Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1112"
+      ],
+      "malicious_hits": 5,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "36210e0d-5b19-485d-a087-c096088885f0",
+      "title": "Suspicious PowerShell Parameter Substring",
+      "level": "high",
+      "author": "Florian Roth (Nextron Systems), Daniel Bohannon (idea), Roberto Rodriguez (Fix)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 5,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "313fbb0a-a341-4682-848d-6d6f8c4fab7c",
+      "title": "Suspicious PowerShell WindowStyle Option",
+      "level": "medium",
+      "author": "frack113, Tim Shelton (fp AWS)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1564.003"
+      ],
+      "malicious_hits": 5,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "962fe167-e48d-4fd6-9974-11e5b9a5d6d1",
+      "title": "LSASS Access From Non System Account",
+      "level": "medium",
+      "author": "Roberto Rodriguez @Cyb3rWard0g",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1003.001"
+      ],
+      "malicious_hits": 4,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "75e33ce3-ae32-4dcc-9aa8-a2a3029d6f84",
+      "title": "Office Application Initiated Network Connection To Non-Local IP",
+      "level": "medium",
+      "author": "Christopher Peacock '@securepeacock', SCYTHE '@scythe_io', Florian Roth (Nextron Systems), Tim Shelton, Nasreddine Bencherchali (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1203"
+      ],
+      "malicious_hits": 4,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "ea011323-7045-460b-b2d7-0f7442ea6b38",
+      "title": "Potential PsExec Remote Execution",
+      "level": "high",
+      "author": "Florian Roth (Nextron Systems), Nasreddine Bencherchali (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1587.001"
+      ],
+      "malicious_hits": 4,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "692f0bec-83ba-4d04-af7e-e884a96059b6",
+      "title": "Potential WMI Lateral Movement WmiPrvSE Spawned PowerShell",
+      "level": "medium",
+      "author": "Markus Neis @Karneades",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1047",
+        "T1059.001"
+      ],
+      "malicious_hits": 4,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "fdfcbd78-48f1-4a4b-90ac-d82241e368c5",
+      "title": "PsExec Service Execution",
+      "level": "medium",
+      "author": "Thomas Patzke, Romaissa Adjailia, Florian Roth (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [],
+      "malicious_hits": 4,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "259e5a6a-b8d2-4c38-86e2-26c5e651361d",
+      "title": "PsExec Service File Creation",
+      "level": "low",
+      "author": "Thomas Patzke",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1569.002"
+      ],
+      "malicious_hits": 4,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "730fc21b-eaff-474b-ad23-90fd265d4988",
+      "title": "Psexec Execution",
+      "level": "medium",
+      "author": "omkar72",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1021",
+        "T1569"
+      ],
+      "malicious_hits": 4,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "6ddab845-b1b8-49c2-bbf7-1a11967f64bc",
+      "title": "File Deleted Via Sysinternals SDelete",
+      "level": "medium",
+      "author": "Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1070.004"
+      ],
+      "malicious_hits": 3,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "502b42de-4306-40b4-9596-6f590c81f073",
+      "title": "Local Accounts Discovery",
+      "level": "low",
+      "author": "Timur Zinniatullin, Daniil Yugoslavskiy, oscd.community",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1033",
+        "T1087.001"
+      ],
+      "malicious_hits": 3,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "f772cee9-b7c2-4cb2-8f07-49870adc02e0",
+      "title": "Malicious Nishang PowerShell Commandlets",
+      "level": "high",
+      "author": "Alec Costello",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 3,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "d3c3861d-c504-4c77-ba55-224ba82d0118",
+      "title": "New Network Trace Capture Started Via Netsh.EXE",
+      "level": "medium",
+      "author": "Kutepov Anton, oscd.community",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1040"
+      ],
+      "malicious_hits": 3,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "189e3b02-82b2-4b90-9662-411eb64486d4",
+      "title": "Potential Invoke-Mimikatz PowerShell Script",
+      "level": "high",
+      "author": "Tim Rauch, Elastic (idea)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1003"
+      ],
+      "malicious_hits": 3,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "5af54681-df95-4c26-854f-2565e13cfab0",
+      "title": "Successful Account Login Via WMI",
+      "level": "low",
+      "author": "Thomas Patzke",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1047"
+      ],
+      "malicious_hits": 3,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "0f06a3a5-6a09-413f-8743-e6cf35561297",
+      "title": "WMI Event Subscription",
+      "level": "medium",
+      "author": "Tom Ueltschi (@c_APT_ure)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1546.003"
+      ],
+      "malicious_hits": 3,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "00bb5bd5-1379-4fcf-a965-a5b6f7478064",
+      "title": "Windows Firewall Settings Have Been Changed",
+      "level": "low",
+      "author": "frack113, Nasreddine Bencherchali (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1686.003"
+      ],
+      "malicious_hits": 3,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "46dd5308-4572-4d12-aa43-8938f0184d4f",
+      "title": "Bypass UAC Using DelegateExecute",
+      "level": "high",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1548.002"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "8fbf3271-1ef6-4e94-8210-03c2317947f6",
+      "title": "Cred Dump Tools Dropped Files",
+      "level": "high",
+      "author": "Teymur Kheirkhabarov, oscd.community",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1003.001",
+        "T1003.002",
+        "T1003.003",
+        "T1003.004",
+        "T1003.005"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "20f0ee37-5942-4e45-b7d5-c5b5db9df5cd",
+      "title": "CurrentVersion Autorun Keys Modification",
+      "level": "medium",
+      "author": "Victor Sergeev, Daniil Yugoslavskiy, Gleb Sukhodolskiy, Timur Zinniatullin, oscd.community, Tim Shelton, frack113 (split)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1547.001"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "259a9cdf-c4dd-4fa2-b243-2269e5ab18a2",
+      "title": "External Remote RDP Logon from Public IP",
+      "level": "medium",
+      "author": "Micah Babinski (@micahbabinski), Zach Mathis (@yamatosecurity)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1078",
+        "T1110",
+        "T1133"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "78d5cab4-557e-454f-9fb9-a222bd0d5edc",
+      "title": "External Remote SMB Logon from Public IP",
+      "level": "high",
+      "author": "Micah Babinski (@micahbabinski), Zach Mathis (@yamatosecurity)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1078",
+        "T1110",
+        "T1133"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "a642964e-bead-4bed-8910-1bb4d63e3b4d",
+      "title": "HackTool - Mimikatz Execution",
+      "level": "high",
+      "author": "Teymur Kheirkhabarov, oscd.community, David ANDRE (additional keywords), Tim Shelton",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1003.001",
+        "T1003.002",
+        "T1003.004",
+        "T1003.005",
+        "T1003.006"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "cd219ff3-fa99-45d4-8380-a7d15116c6dc",
+      "title": "New User Created Via Net.EXE",
+      "level": "medium",
+      "author": "Endgame, JHasenbusch (adapted to Sigma for oscd.community)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1136.001"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "bbb9495b-58fc-4016-b9df-9a3a1b67ca82",
+      "title": "Password Policy Discovery With Get-AdDefaultDomainPasswordPolicy",
+      "level": "low",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1201"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "ddcd88cb-7f62-4ce5-86f9-1704190feb0a",
+      "title": "Potential In-Memory Execution Using Reflection.Assembly",
+      "level": "medium",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1620"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "40f9af16-589d-4984-b78d-8c2aec023197",
+      "title": "Potential UAC Bypass Via Sdclt.EXE",
+      "level": "medium",
+      "author": "Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1548.002"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "a0edd39f-a0c6-4c17-8141-261f958e8d8f",
+      "title": "PowerShell Remote Session Creation",
+      "level": "medium",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "34f90d3c-c297-49e9-b26d-911b05a4866c",
+      "title": "Powershell Keylogging",
+      "level": "medium",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1056.001"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "2837e152-93c8-43d2-85ba-c3cd3c2ae614",
+      "title": "Powershell Local Email Collection",
+      "level": "medium",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1114.001"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "c6438007-e081-42ce-9483-b067fbef33c3",
+      "title": "Powershell Timestomp",
+      "level": "medium",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1070.006"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "9e07f6e7-83aa-45c6-998e-0af26efd0a85",
+      "title": "Powershell WMI Persistence",
+      "level": "medium",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1546.003"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "c3a99af4-35a9-4668-879e-c09aeb4f2bdf",
+      "title": "Rundll32 Execution With Uncommon DLL Extension",
+      "level": "medium",
+      "author": "Tim Shelton, Florian Roth (Nextron Systems), Yassine Oukessou",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1218.011"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "da2738f2-fadb-4394-afa7-0a0674885afa",
+      "title": "Sdclt Child Processes",
+      "level": "medium",
+      "author": "Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1548.002"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "df69cb1d-b891-4cd9-90c7-d617d90100ce",
+      "title": "Suspicious FromBase64String Usage On Gzip Archive - Ps Script",
+      "level": "medium",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1132.001"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "d95de845-b83c-4a9a-8a6a-4fc802ebf6c0",
+      "title": "Suspicious Group And Account Reconnaissance Activity Using Net.EXE",
+      "level": "medium",
+      "author": "Florian Roth (Nextron Systems), omkar72, @svch0st, Nasreddine Bencherchali (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1087.001",
+        "T1087.002"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "a24e5861-c6ca-4fde-a93c-ba9256feddf0",
+      "title": "Uncommon Process Access Rights For Target Image",
+      "level": "low",
+      "author": "Nasreddine Bencherchali (Nextron Systems), frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1055.011"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "d4a11f63-2390-411c-9adf-d791fd152830",
+      "title": "Windows Screen Capture with CopyFromScreen",
+      "level": "medium",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1113"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "3a6586ad-127a-4d3b-a677-1e6eacdf8fde",
+      "title": "Windows Shell/Scripting Processes Spawning Suspicious Programs",
+      "level": "high",
+      "author": "Florian Roth (Nextron Systems), Tim Shelton",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001",
+        "T1059.005",
+        "T1218"
+      ],
+      "malicious_hits": 2,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "c43c26be-2e87-46c7-8661-284588c5a53e",
+      "title": "A Member Was Added to a Security-Enabled Global Group",
+      "level": "low",
+      "author": "Alexandr Yampolskyi, SOC Prime",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1098"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "e0d6c087-2d1c-47fd-8799-3904103c5a98",
+      "title": "AMSI Bypass Pattern Assembly GetType",
+      "level": "high",
+      "author": "Florian Roth (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1685"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "58cb02d5-78ce-4692-b3e1-dce850aae41a",
+      "title": "Alternate PowerShell Hosts Pipe",
+      "level": "medium",
+      "author": "Roberto Rodriguez @Cyb3rWard0g, Tim Shelton",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "6ec86d9e-912e-4726-91a2-209359b999b9",
+      "title": "Amsi.DLL Loaded Via LOLBIN Process",
+      "level": "medium",
+      "author": "Nasreddine Bencherchali (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "a7c3d773-caef-227e-a7e7-c2f13c622329",
+      "title": "Bad Opsec Defaults Sacrificial Processes With Improper Arguments",
+      "level": "high",
+      "author": "Oleg Kolesnikov @securonix invrep_de, oscd.community, Florian Roth (Nextron Systems), Christian Burkard (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1218.011"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "e32d4572-9826-4738-b651-95fa63747e8a",
+      "title": "Base64 Encoded PowerShell Command Detected",
+      "level": "high",
+      "author": "Florian Roth (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1027",
+        "T1059.001",
+        "T1140"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "aa7a3fce-bef5-4311-9cc1-5f04bb8c308c",
+      "title": "Certificate Exported Via PowerShell - ScriptBlock",
+      "level": "medium",
+      "author": "Florian Roth (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1552.004"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "cb062102-587e-4414-8efa-dbe3c7bf19c6",
+      "title": "CosmicDuke Service Installation",
+      "level": "critical",
+      "author": "Florian Roth (Nextron Systems), Daniil Yugoslavskiy, oscd.community (update)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1543.003",
+        "T1569.002"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "cc9cbe82-7bc0-4ef5-bc23-bbfb83947be7",
+      "title": "File Decoded From Base64/Hex Via Certutil.EXE",
+      "level": "high",
+      "author": "Florian Roth (Nextron Systems), Jonhnathan Ribeiro, oscd.community",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1027"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "6f3e2987-db24-4c78-a860-b4f4095a7095",
+      "title": "Files Added To An Archive Using Rar.EXE",
+      "level": "low",
+      "author": "Timur Zinniatullin, E.M. Anhaus, oscd.community",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1560.001"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "1cf465a1-2609-4c15-9b66-c32dbe4bfd67",
+      "title": "Legitimate Application Writing Files In Uncommon Location",
+      "level": "high",
+      "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1105",
+        "T1218"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "66b6be3d-55d0-4f47-9855-d69df21740ea",
+      "title": "Local User Creation",
+      "level": "low",
+      "author": "Patrick Bareiss",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1136.001"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "411742ad-89b0-49cb-a7b0-3971b5c1e0a4",
+      "title": "Locked Workstation",
+      "level": "informational",
+      "author": "Alexandr Yampolskyi, SOC Prime",
+      "sigmafile": "",
+      "attack_techniques": [],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "f26c6093-6f14-4b12-800f-0fcb46f5ffd0",
+      "title": "Malicious Base64 Encoded PowerShell Keywords in Command Lines",
+      "level": "high",
+      "author": "John Lambert (rule)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "8c521530-5169-495d-a199-0a3a881ad24e",
+      "title": "NTFS Alternate Data Stream",
+      "level": "high",
+      "author": "Sami Ruohonen",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001",
+        "T1564.004"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "02ee49e2-e294-4d0f-9278-f5b3212fc588",
+      "title": "New RUN Key Pointing to Suspicious Folder",
+      "level": "high",
+      "author": "Florian Roth (Nextron Systems), Markus Neis, Sander Wiebing, Swachchhanda Shrawan Poudel (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1547.001"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "d4498716-1d52-438f-8084-4a603157d131",
+      "title": "Password Provided In Command Line Of Net.EXE",
+      "level": "medium",
+      "author": "Tim Shelton (HAWK.IO)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1021.002",
+        "T1078"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "7cce6fc8-a07f-4d84-a53e-96e1879843c9",
+      "title": "Potential Binary Impersonating Sysinternals Tools",
+      "level": "medium",
+      "author": "frack113, Swachchhanda Shrawan Poudel (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1036.005",
+        "T1202",
+        "T1218"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "fb656378-f909-47c1-8747-278bf09f4f4f",
+      "title": "Potential Credential Dumping Attempt Via PowerShell Remote Thread",
+      "level": "high",
+      "author": "oscd.community, Natalia Shornikova",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1003.001"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "92fa78e7-4d39-45f1-91a3-8b23f3f1088d",
+      "title": "Potential Startup Shortcut Persistence Via PowerShell.EXE",
+      "level": "high",
+      "author": "Christopher Peacock '@securepeacock', SCYTHE",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1547.001"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "e2e01011-5910-4267-9c3b-4149ed5479cf",
+      "title": "Potential WWlib.DLL Sideloading",
+      "level": "medium",
+      "author": "X__Junior (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1574.001"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "4cbd4f12-2e22-43e3-882f-bff3247ffb78",
+      "title": "PowerShell Get Clipboard",
+      "level": "medium",
+      "author": "Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1115"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "dcd74b95-3f36-4ed9-9598-0490951643aa",
+      "title": "PowerView PowerShell Cmdlets - ScriptBlock",
+      "level": "high",
+      "author": "Bhabesh Raj",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "d93129cd-1ee0-479f-bc03-ca6f129882e3",
+      "title": "Powershell Detect Virtualization Environment",
+      "level": "medium",
+      "author": "frack113, Duc.Le-GTSC",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1497.001"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "63bf8794-9917-45bc-88dd-e1b5abc0ecfd",
+      "title": "Powershell Install a DLL in System Directory",
+      "level": "high",
+      "author": "frack113, Nasreddine Bencherchali (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1556.002"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "b26647de-4feb-4283-af6b-6117661283c5",
+      "title": "Powershell Suspicious Win32_PnPEntity",
+      "level": "low",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1120"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "faa48cae-6b25-4f00-a094-08947fef582f",
+      "title": "Rar Usage with Password and Compression Level",
+      "level": "high",
+      "author": "@ROxPinTeddy",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1560.001"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "aa35a627-33fb-4d04-a165-d33b4afca3e8",
+      "title": "Remote LSASS Process Access Through Windows Remote Management",
+      "level": "high",
+      "author": "Patryk Prauze - ING Tech",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1003.001",
+        "T1021.006",
+        "T1059.001"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "5bb68627-3198-40ca-b458-49f973db8752",
+      "title": "Rundll32 Execution Without Parameters",
+      "level": "high",
+      "author": "Bartlomiej Czyz, Relativity",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1021.002",
+        "T1569.002",
+        "T1570"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "1723e720-616d-4ddc-ab02-f7e3685a4713",
+      "title": "Rundll32 Spawned Via Explorer.EXE",
+      "level": "medium",
+      "author": "CD_ROM_",
+      "sigmafile": "",
+      "attack_techniques": [],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "92626ddd-662c-49e3-ac59-f6535f12d189",
+      "title": "Scheduled Task Creation Via Schtasks.EXE",
+      "level": "low",
+      "author": "Florian Roth (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1053.005"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "2aa0a6b4-a865-495b-ab51-c28249537b75",
+      "title": "Startup Folder File Write",
+      "level": "medium",
+      "author": "Roberto Rodriguez (Cyb3rWard0g), OTR (Open Threat Research)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1547.001"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "f2c64357-b1d2-41b7-849f-34d2682c0fad",
+      "title": "Suspicious Command Patterns In Scheduled Task Creation",
+      "level": "high",
+      "author": "Florian Roth (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1053.005"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "ca2092a1-c273-4878-9b4b-0d60115bf5ea",
+      "title": "Suspicious Encoded PowerShell Command Line",
+      "level": "high",
+      "author": "Florian Roth (Nextron Systems), Markus Neis, Jonhnathan Ribeiro, Daniil Yugoslavskiy, Anton Kutepov, oscd.community",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "1c563233-030e-4a07-af8c-ee0490a66d3a",
+      "title": "Suspicious New-PSDrive to Admin Share",
+      "level": "medium",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1021.002"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "b9d9cc83-380b-4ba3-8d8f-60c0e7e2930c",
+      "title": "Suspicious PowerShell Encoded Command Patterns",
+      "level": "high",
+      "author": "Florian Roth (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1059.001"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "8d85cf08-bf97-4260-ba49-986a2a65129c",
+      "title": "Suspicious PowerShell In Registry Run Keys",
+      "level": "medium",
+      "author": "frack113, Florian Roth (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1547.001"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "1c67a717-32ba-409b-a45d-0fb704a73a81",
+      "title": "System Network Connections Discovery Via Net.EXE",
+      "level": "low",
+      "author": "frack113",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1049"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "05936ce2-ee05-4dae-9d03-9a391cf2d2c6",
+      "title": "WMI Persistence - Command Line Event Consumer",
+      "level": "high",
+      "author": "Thomas Patzke",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1546.003"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "b8fd0e93-ff58-4cbd-8f48-1c114e342e62",
+      "title": "Windows Binaries Write Suspicious Extensions",
+      "level": "high",
+      "author": "Nasreddine Bencherchali (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1036"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "7e6237fe-3ddb-438f-9381-9bf9de5af8d0",
+      "title": "Windows Internet Hosted WebDav Share Mount Via Net.EXE",
+      "level": "high",
+      "author": "Nasreddine Bencherchali (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1021.002"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "f117933c-980c-4f78-b384-e3d838111165",
+      "title": "Windows Share Mount Via Net.EXE",
+      "level": "low",
+      "author": "Nasreddine Bencherchali (Nextron Systems)",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1021.002"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    },
+    {
+      "rule_id": "d21374ff-f574-44a7-9998-4a8c8bf33d7d",
+      "title": "WmiPrvSE Spawned A Process",
+      "level": "medium",
+      "author": "Roberto Rodriguez @Cyb3rWard0g",
+      "sigmafile": "",
+      "attack_techniques": [
+        "T1047"
+      ],
+      "malicious_hits": 1,
+      "benign_hits": 0,
+      "precision": 1.0
+    }
+  ]
+}
