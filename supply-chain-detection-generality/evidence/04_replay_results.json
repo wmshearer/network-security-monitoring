@@ -1,0 +1,33 @@
+[
+  {
+    "dataset": "npm (Shai-Hulud, its own incident)",
+    "detection": "shai_hulud_workflow_file_creation_or_modification (incident-bound)",
+    "total_file_events_seen": 23,
+    "matches": [
+      "/opt/npm-emulation/test-repo/.github/workflows/shai-hulud-workflow.yml",
+      "/tmp/npm-emulation/test-repo/.github/workflows/shai-hulud-workflow.yml"
+    ],
+    "match_count": 13,
+    "fires": true
+  },
+  {
+    "dataset": "3CX (a different supply chain incident)",
+    "detection": "shai_hulud_workflow_file_creation_or_modification (incident-bound)",
+    "total_file_events_seen": 0,
+    "matches": [],
+    "match_count": 0,
+    "fires": false
+  },
+  {
+    "dataset": "3CX (its own incident)",
+    "detection": "hunting_3cxdesktopapp_software (incident-bound)",
+    "match_count": 106,
+    "fires": true
+  },
+  {
+    "dataset": "npm (a different supply chain incident)",
+    "detection": "hunting_3cxdesktopapp_software (incident-bound)",
+    "match_count": 0,
+    "fires": false
+  }
+]

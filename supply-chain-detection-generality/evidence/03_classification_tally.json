@@ -1,0 +1,46 @@
+{
+  "total_detections": 29,
+  "counts_by_class": {
+    "incident-bound": 6,
+    "behavioral": 23
+  },
+  "incident_bound": 6,
+  "behavioral": 23,
+  "mixed": 0,
+  "claim_as_originally_framed": "6 of 29 detections are bound to indicators from one specific incident",
+  "claim_holds_majority_incident_bound": false,
+  "verdict": "CLAIM REVERSES: most detections are behavioral, not incident-bound",
+  "incident_bound_files": [
+    "detections/endpoint/sunburst_correlation_dll_and_network_event.yml",
+    "detections/endpoint/shai_hulud_workflow_file_creation_or_modification.yml",
+    "detections/endpoint/shai_hulud_2_exfiltration_artifact_files.yml",
+    "detections/endpoint/hunting_3cxdesktopapp_software.yml",
+    "detections/endpoint/windows_vulnerable_3cx_software.yml",
+    "detections/network/3cx_supply_chain_attack_network_indicators.yml"
+  ],
+  "behavioral_files": [
+    "detections/endpoint/github_workflow_file_creation_or_modification.yml",
+    "detections/endpoint/python_network_traffic_during_package_build.yml",
+    "detections/endpoint/python_pth_file_creation_during_package_installation.yml",
+    "detections/endpoint/python_pythonpath_modification_during_package_installation.yml",
+    "detections/endpoint/python_site_hooks_creation_during_package_installation.yml",
+    "detections/cloud/github_enterprise_delete_branch_ruleset.yml",
+    "detections/cloud/github_enterprise_disable_2fa_requirement.yml",
+    "detections/cloud/github_enterprise_disable_audit_log_event_stream.yml",
+    "detections/cloud/github_enterprise_disable_classic_branch_protection_rule.yml",
+    "detections/cloud/github_enterprise_disable_dependabot.yml",
+    "detections/cloud/github_enterprise_disable_ip_allow_list.yml",
+    "detections/cloud/github_enterprise_modify_audit_log_event_stream.yml",
+    "detections/cloud/github_enterprise_pause_audit_log_event_stream.yml",
+    "detections/cloud/github_enterprise_register_self_hosted_runner.yml",
+    "detections/cloud/github_enterprise_remove_organization.yml",
+    "detections/cloud/github_enterprise_repository_archived.yml",
+    "detections/cloud/github_enterprise_repository_deleted.yml",
+    "detections/cloud/github_organizations_delete_branch_ruleset.yml",
+    "detections/cloud/github_organizations_disable_2fa_requirement.yml",
+    "detections/cloud/github_organizations_disable_classic_branch_protection_rule.yml",
+    "detections/cloud/github_organizations_disable_dependabot.yml",
+    "detections/cloud/github_organizations_repository_archived.yml",
+    "detections/cloud/github_organizations_repository_deleted.yml"
+  ]
+}
