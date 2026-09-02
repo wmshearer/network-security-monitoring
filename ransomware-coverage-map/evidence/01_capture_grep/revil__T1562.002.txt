@@ -1,0 +1,6 @@
+# family=revil technique=T1562.002 (Impair Defenses: Disable Windows Event Logging)
+# patterns (each run as its own 'grep -inE', matches unioned): ['wevtutil.{0,20}(cl|clear-log|sl)', 'clear-eventlog', 'limit-eventlog']
+# files searched: ['/home/kali/director/projects/_corpora/attack_data/datasets/malware/revil/inf1/windows-powershell.log', '/home/kali/director/projects/_corpora/attack_data/datasets/malware/revil/inf1/windows-sysmon.log', '/home/kali/director/projects/_corpora/attack_data/datasets/malware/revil/inf2/windows-sysmon.log', '/home/kali/director/projects/_corpora/attack_data/datasets/malware/revil/inf3/windows-system.log', '/home/kali/director/projects/_corpora/attack_data/datasets/malware/revil/msmpeng_side/windows-sysmon.log']
+# matched lines (after noise exclusion): 0
+# lines dropped by NOISE_EXCLUDE_PATTERN (Aurora-Agent|sigma-rules|\.yml\.tmp): 0
+#

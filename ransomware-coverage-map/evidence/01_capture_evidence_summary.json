@@ -1,0 +1,567 @@
+{
+  "conti": {
+    "corpus_dir": "conti",
+    "log_files_found": [
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/conti/conti-cobalt/windows-security.log",
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/conti/conti-cobalt/windows-sysmon.log",
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/conti/conti_leak/windows-powershell.log",
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/conti/conti_leak/windows-security.log",
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/conti/conti_leak/windows-sysmon.log",
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/conti/conti_leak/windows-sysmon_7z.log",
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/conti/inf1/windows-sysmon.log"
+    ],
+    "techniques": {
+      "T1486": {
+        "present": true,
+        "lines_matched": 975,
+        "files_matched": 2,
+        "files_searched": 7,
+        "evidence_file": "evidence/01_capture_grep/conti__T1486.txt"
+      },
+      "T1490": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 7,
+        "evidence_file": "evidence/01_capture_grep/conti__T1490.txt"
+      },
+      "T1489": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 7,
+        "evidence_file": "evidence/01_capture_grep/conti__T1489.txt"
+      },
+      "T1491": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 7,
+        "evidence_file": "evidence/01_capture_grep/conti__T1491.txt"
+      },
+      "T1491.001": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 7,
+        "evidence_file": "evidence/01_capture_grep/conti__T1491.001.txt"
+      },
+      "T1112": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 7,
+        "evidence_file": "evidence/01_capture_grep/conti__T1112.txt"
+      },
+      "T1562": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 7,
+        "evidence_file": "evidence/01_capture_grep/conti__T1562.txt"
+      },
+      "T1562.001": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 7,
+        "evidence_file": "evidence/01_capture_grep/conti__T1562.001.txt"
+      },
+      "T1562.002": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 7,
+        "evidence_file": "evidence/01_capture_grep/conti__T1562.002.txt"
+      },
+      "T1562.003": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 7,
+        "evidence_file": "evidence/01_capture_grep/conti__T1562.003.txt"
+      }
+    }
+  },
+  "ryuk": {
+    "corpus_dir": "ryuk",
+    "log_files_found": [
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/ryuk/windows-sysmon.log"
+    ],
+    "techniques": {
+      "T1486": {
+        "present": true,
+        "lines_matched": 71,
+        "files_matched": 71,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/ryuk__T1486.txt"
+      },
+      "T1490": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/ryuk__T1490.txt"
+      },
+      "T1489": {
+        "present": true,
+        "lines_matched": 32,
+        "files_matched": 32,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/ryuk__T1489.txt"
+      },
+      "T1491": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/ryuk__T1491.txt"
+      },
+      "T1491.001": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/ryuk__T1491.001.txt"
+      },
+      "T1112": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/ryuk__T1112.txt"
+      },
+      "T1562": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/ryuk__T1562.txt"
+      },
+      "T1562.001": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/ryuk__T1562.001.txt"
+      },
+      "T1562.002": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/ryuk__T1562.002.txt"
+      },
+      "T1562.003": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/ryuk__T1562.003.txt"
+      }
+    }
+  },
+  "revil": {
+    "corpus_dir": "revil",
+    "log_files_found": [
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/revil/inf1/windows-powershell.log",
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/revil/inf1/windows-sysmon.log",
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/revil/inf2/windows-sysmon.log",
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/revil/inf3/windows-system.log",
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/revil/msmpeng_side/windows-sysmon.log"
+    ],
+    "techniques": {
+      "T1486": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 5,
+        "evidence_file": "evidence/01_capture_grep/revil__T1486.txt"
+      },
+      "T1490": {
+        "present": true,
+        "lines_matched": 5,
+        "files_matched": 1,
+        "files_searched": 5,
+        "evidence_file": "evidence/01_capture_grep/revil__T1490.txt"
+      },
+      "T1489": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 5,
+        "evidence_file": "evidence/01_capture_grep/revil__T1489.txt"
+      },
+      "T1491": {
+        "present": true,
+        "lines_matched": 3,
+        "files_matched": 1,
+        "files_searched": 5,
+        "evidence_file": "evidence/01_capture_grep/revil__T1491.txt"
+      },
+      "T1491.001": {
+        "present": true,
+        "lines_matched": 3,
+        "files_matched": 1,
+        "files_searched": 5,
+        "evidence_file": "evidence/01_capture_grep/revil__T1491.001.txt"
+      },
+      "T1112": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 5,
+        "evidence_file": "evidence/01_capture_grep/revil__T1112.txt"
+      },
+      "T1562": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 5,
+        "evidence_file": "evidence/01_capture_grep/revil__T1562.txt"
+      },
+      "T1562.001": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 5,
+        "evidence_file": "evidence/01_capture_grep/revil__T1562.001.txt"
+      },
+      "T1562.002": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 5,
+        "evidence_file": "evidence/01_capture_grep/revil__T1562.002.txt"
+      },
+      "T1562.003": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 5,
+        "evidence_file": "evidence/01_capture_grep/revil__T1562.003.txt"
+      }
+    }
+  },
+  "lockbit_ransomware": {
+    "corpus_dir": "lockbit_ransomware",
+    "log_files_found": [
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/lockbit_ransomware/sysmon.log"
+    ],
+    "techniques": {
+      "T1486": {
+        "present": true,
+        "lines_matched": 753,
+        "files_matched": 753,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/lockbit_ransomware__T1486.txt"
+      },
+      "T1490": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/lockbit_ransomware__T1490.txt"
+      },
+      "T1489": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/lockbit_ransomware__T1489.txt"
+      },
+      "T1491": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/lockbit_ransomware__T1491.txt"
+      },
+      "T1491.001": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/lockbit_ransomware__T1491.001.txt"
+      },
+      "T1112": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/lockbit_ransomware__T1112.txt"
+      },
+      "T1562": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/lockbit_ransomware__T1562.txt"
+      },
+      "T1562.001": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/lockbit_ransomware__T1562.001.txt"
+      },
+      "T1562.002": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/lockbit_ransomware__T1562.002.txt"
+      },
+      "T1562.003": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/lockbit_ransomware__T1562.003.txt"
+      }
+    }
+  },
+  "prestige_ransomware": {
+    "corpus_dir": "prestige_ransomware",
+    "log_files_found": [
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/prestige_ransomware/sysmon.log"
+    ],
+    "techniques": {
+      "T1486": {
+        "present": true,
+        "lines_matched": 2,
+        "files_matched": 2,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/prestige_ransomware__T1486.txt"
+      },
+      "T1490": {
+        "present": true,
+        "lines_matched": 9,
+        "files_matched": 9,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/prestige_ransomware__T1490.txt"
+      },
+      "T1489": {
+        "present": true,
+        "lines_matched": 3,
+        "files_matched": 3,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/prestige_ransomware__T1489.txt"
+      },
+      "T1491": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/prestige_ransomware__T1491.txt"
+      },
+      "T1491.001": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/prestige_ransomware__T1491.001.txt"
+      },
+      "T1112": {
+        "present": true,
+        "lines_matched": 4,
+        "files_matched": 4,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/prestige_ransomware__T1112.txt"
+      },
+      "T1562": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/prestige_ransomware__T1562.txt"
+      },
+      "T1562.001": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/prestige_ransomware__T1562.001.txt"
+      },
+      "T1562.002": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/prestige_ransomware__T1562.002.txt"
+      },
+      "T1562.003": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 1,
+        "evidence_file": "evidence/01_capture_grep/prestige_ransomware__T1562.003.txt"
+      }
+    }
+  },
+  "chaos_ransomware": {
+    "corpus_dir": "chaos_ransomware",
+    "log_files_found": [
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/chaos_ransomware/spread_in_root_drives/sysmon.log",
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/chaos_ransomware/sysmon.log"
+    ],
+    "techniques": {
+      "T1486": {
+        "present": true,
+        "lines_matched": 4,
+        "files_matched": 1,
+        "files_searched": 2,
+        "evidence_file": "evidence/01_capture_grep/chaos_ransomware__T1486.txt"
+      },
+      "T1490": {
+        "present": true,
+        "lines_matched": 245,
+        "files_matched": 2,
+        "files_searched": 2,
+        "evidence_file": "evidence/01_capture_grep/chaos_ransomware__T1490.txt"
+      },
+      "T1489": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 2,
+        "evidence_file": "evidence/01_capture_grep/chaos_ransomware__T1489.txt"
+      },
+      "T1491": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 2,
+        "evidence_file": "evidence/01_capture_grep/chaos_ransomware__T1491.txt"
+      },
+      "T1491.001": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 2,
+        "evidence_file": "evidence/01_capture_grep/chaos_ransomware__T1491.001.txt"
+      },
+      "T1112": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 2,
+        "evidence_file": "evidence/01_capture_grep/chaos_ransomware__T1112.txt"
+      },
+      "T1562": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 2,
+        "evidence_file": "evidence/01_capture_grep/chaos_ransomware__T1562.txt"
+      },
+      "T1562.001": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 2,
+        "evidence_file": "evidence/01_capture_grep/chaos_ransomware__T1562.001.txt"
+      },
+      "T1562.002": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 2,
+        "evidence_file": "evidence/01_capture_grep/chaos_ransomware__T1562.002.txt"
+      },
+      "T1562.003": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 2,
+        "evidence_file": "evidence/01_capture_grep/chaos_ransomware__T1562.003.txt"
+      }
+    }
+  },
+  "ransomware_ttp": {
+    "corpus_dir": "ransomware_ttp",
+    "log_files_found": [
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/ransomware_ttp/data1/windows-sysmon.log",
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/ransomware_ttp/data2/windows-powershell.log",
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/ransomware_ttp/data2/windows-security.log",
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/ransomware_ttp/data2/windows-sysmon.log",
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/ransomware_ttp/ssa_data1/net_user_del.log",
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/ransomware_ttp/ssa_data1/net_user_dis.log",
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/ransomware_ttp/ssa_data1/sc_del.log",
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/ransomware_ttp/ssa_data1/sc_disable.log",
+      "/home/kali/director/projects/_corpora/attack_data/datasets/malware/ransomware_ttp/ssa_data1/windows-security.log"
+    ],
+    "techniques": {
+      "T1486": {
+        "present": true,
+        "lines_matched": 2,
+        "files_matched": 1,
+        "files_searched": 9,
+        "evidence_file": "evidence/01_capture_grep/ransomware_ttp__T1486.txt"
+      },
+      "T1490": {
+        "present": true,
+        "lines_matched": 31,
+        "files_matched": 5,
+        "files_searched": 9,
+        "evidence_file": "evidence/01_capture_grep/ransomware_ttp__T1490.txt"
+      },
+      "T1489": {
+        "present": true,
+        "lines_matched": 12,
+        "files_matched": 1,
+        "files_searched": 9,
+        "evidence_file": "evidence/01_capture_grep/ransomware_ttp__T1489.txt"
+      },
+      "T1491": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 9,
+        "evidence_file": "evidence/01_capture_grep/ransomware_ttp__T1491.txt"
+      },
+      "T1491.001": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 9,
+        "evidence_file": "evidence/01_capture_grep/ransomware_ttp__T1491.001.txt"
+      },
+      "T1112": {
+        "present": true,
+        "lines_matched": 3,
+        "files_matched": 1,
+        "files_searched": 9,
+        "evidence_file": "evidence/01_capture_grep/ransomware_ttp__T1112.txt"
+      },
+      "T1562": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 9,
+        "evidence_file": "evidence/01_capture_grep/ransomware_ttp__T1562.txt"
+      },
+      "T1562.001": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 9,
+        "evidence_file": "evidence/01_capture_grep/ransomware_ttp__T1562.001.txt"
+      },
+      "T1562.002": {
+        "present": true,
+        "lines_matched": 1,
+        "files_matched": 1,
+        "files_searched": 9,
+        "evidence_file": "evidence/01_capture_grep/ransomware_ttp__T1562.002.txt"
+      },
+      "T1562.003": {
+        "present": false,
+        "lines_matched": 0,
+        "files_matched": 0,
+        "files_searched": 9,
+        "evidence_file": "evidence/01_capture_grep/ransomware_ttp__T1562.003.txt"
+      }
+    }
+  }
+}

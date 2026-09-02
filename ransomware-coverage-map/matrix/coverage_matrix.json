@@ -1,0 +1,1230 @@
+{
+  "family_order": [
+    "conti",
+    "ryuk",
+    "revil",
+    "lockbit_ransomware",
+    "prestige_ransomware",
+    "chaos_ransomware",
+    "ransomware_ttp"
+  ],
+  "technique_order": [
+    "T1486",
+    "T1490",
+    "T1489",
+    "T1491",
+    "T1491.001",
+    "T1112",
+    "T1562",
+    "T1562.001",
+    "T1562.002",
+    "T1562.003"
+  ],
+  "families": {
+    "conti": {
+      "is_reference_bucket": false,
+      "security_content_story": null,
+      "confidence": "STANDARD"
+    },
+    "ryuk": {
+      "is_reference_bucket": false,
+      "security_content_story": "Ryuk Ransomware",
+      "confidence": "LOW"
+    },
+    "revil": {
+      "is_reference_bucket": false,
+      "security_content_story": "Revil Ransomware",
+      "confidence": "STANDARD"
+    },
+    "lockbit_ransomware": {
+      "is_reference_bucket": false,
+      "security_content_story": "LockBit Ransomware",
+      "confidence": "LOW"
+    },
+    "prestige_ransomware": {
+      "is_reference_bucket": false,
+      "security_content_story": "Prestige Ransomware",
+      "confidence": "LOW"
+    },
+    "chaos_ransomware": {
+      "is_reference_bucket": false,
+      "security_content_story": "Chaos Ransomware",
+      "confidence": "STANDARD"
+    },
+    "ransomware_ttp": {
+      "is_reference_bucket": true,
+      "security_content_story": "Ransomware",
+      "confidence": "STANDARD"
+    }
+  },
+  "techniques": {
+    "T1486": {
+      "name": "Data Encrypted for Impact",
+      "url": "https://attack.mitre.org/techniques/T1486/"
+    },
+    "T1490": {
+      "name": "Inhibit System Recovery",
+      "url": "https://attack.mitre.org/techniques/T1490/"
+    },
+    "T1489": {
+      "name": "Service Stop",
+      "url": "https://attack.mitre.org/techniques/T1489/"
+    },
+    "T1491": {
+      "name": "Defacement",
+      "url": "https://attack.mitre.org/techniques/T1491/"
+    },
+    "T1491.001": {
+      "name": "Defacement: Internal Defacement",
+      "url": "https://attack.mitre.org/techniques/T1491/001/"
+    },
+    "T1112": {
+      "name": "Modify Registry",
+      "url": "https://attack.mitre.org/techniques/T1112/"
+    },
+    "T1562": {
+      "name": "Impair Defenses",
+      "url": "https://attack.mitre.org/techniques/T1562/"
+    },
+    "T1562.001": {
+      "name": "Impair Defenses: Disable or Modify Tools",
+      "url": "https://attack.mitre.org/techniques/T1562/001/"
+    },
+    "T1562.002": {
+      "name": "Impair Defenses: Disable Windows Event Logging",
+      "url": "https://attack.mitre.org/techniques/T1562/002/"
+    },
+    "T1562.003": {
+      "name": "Impair Defenses: Impair Command History Logging",
+      "url": "https://attack.mitre.org/techniques/T1562/003/"
+    }
+  },
+  "cells": {
+    "conti|T1486": {
+      "family": "conti",
+      "technique": "T1486",
+      "state": "RED-TELEMETRY",
+      "present_in_capture": true,
+      "capture_lines_matched": 975,
+      "capture_files_matched": 2,
+      "capture_evidence_file": "evidence/01_capture_grep/conti__T1486.txt",
+      "logic_verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": null,
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "conti|T1490": {
+      "family": "conti",
+      "technique": "T1490",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/conti__T1490.txt",
+      "logic_verdict": null,
+      "story_used": null,
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "conti|T1489": {
+      "family": "conti",
+      "technique": "T1489",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/conti__T1489.txt",
+      "logic_verdict": null,
+      "story_used": null,
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "conti|T1491": {
+      "family": "conti",
+      "technique": "T1491",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/conti__T1491.txt",
+      "logic_verdict": null,
+      "story_used": null,
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "conti|T1491.001": {
+      "family": "conti",
+      "technique": "T1491.001",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/conti__T1491.001.txt",
+      "logic_verdict": null,
+      "story_used": null,
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "conti|T1112": {
+      "family": "conti",
+      "technique": "T1112",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/conti__T1112.txt",
+      "logic_verdict": null,
+      "story_used": null,
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "conti|T1562": {
+      "family": "conti",
+      "technique": "T1562",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/conti__T1562.txt",
+      "logic_verdict": null,
+      "story_used": null,
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "conti|T1562.001": {
+      "family": "conti",
+      "technique": "T1562.001",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/conti__T1562.001.txt",
+      "logic_verdict": null,
+      "story_used": null,
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "conti|T1562.002": {
+      "family": "conti",
+      "technique": "T1562.002",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/conti__T1562.002.txt",
+      "logic_verdict": null,
+      "story_used": null,
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "conti|T1562.003": {
+      "family": "conti",
+      "technique": "T1562.003",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/conti__T1562.003.txt",
+      "logic_verdict": null,
+      "story_used": null,
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "ryuk|T1486": {
+      "family": "ryuk",
+      "technique": "T1486",
+      "state": "GREEN",
+      "present_in_capture": true,
+      "capture_lines_matched": 71,
+      "capture_files_matched": 71,
+      "capture_evidence_file": "evidence/01_capture_grep/ryuk__T1486.txt",
+      "logic_verdict": "LOGIC_MATCH",
+      "story_used": "Ryuk Ransomware",
+      "candidate_detection_count": 1,
+      "candidate_detections": [
+        {
+          "name": "Ryuk Test Files Detected",
+          "source_file": "security_content/detections/endpoint/ryuk_test_files_detected.yml",
+          "verdict": "LOGIC_MATCH"
+        }
+      ]
+    },
+    "ryuk|T1490": {
+      "family": "ryuk",
+      "technique": "T1490",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/ryuk__T1490.txt",
+      "logic_verdict": null,
+      "story_used": "Ryuk Ransomware",
+      "candidate_detection_count": 2,
+      "candidate_detections": [
+        {
+          "name": "BCDEdit Failure Recovery Modification",
+          "source_file": "security_content/detections/endpoint/bcdedit_failure_recovery_modification.yml",
+          "verdict": "LOGIC_NO_MATCH"
+        },
+        {
+          "name": "WBAdmin Delete System Backups",
+          "source_file": "security_content/detections/endpoint/wbadmin_delete_system_backups.yml",
+          "verdict": "LOGIC_NO_MATCH"
+        }
+      ]
+    },
+    "ryuk|T1489": {
+      "family": "ryuk",
+      "technique": "T1489",
+      "state": "GREEN",
+      "present_in_capture": true,
+      "capture_lines_matched": 32,
+      "capture_files_matched": 32,
+      "capture_evidence_file": "evidence/01_capture_grep/ryuk__T1489.txt",
+      "logic_verdict": "LOGIC_MATCH",
+      "story_used": "Ryuk Ransomware",
+      "candidate_detection_count": 1,
+      "candidate_detections": [
+        {
+          "name": "Windows Security Account Manager Stopped",
+          "source_file": "security_content/detections/endpoint/windows_security_account_manager_stopped.yml",
+          "verdict": "LOGIC_MATCH"
+        }
+      ]
+    },
+    "ryuk|T1491": {
+      "family": "ryuk",
+      "technique": "T1491",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/ryuk__T1491.txt",
+      "logic_verdict": null,
+      "story_used": "Ryuk Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "ryuk|T1491.001": {
+      "family": "ryuk",
+      "technique": "T1491.001",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/ryuk__T1491.001.txt",
+      "logic_verdict": null,
+      "story_used": "Ryuk Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "ryuk|T1112": {
+      "family": "ryuk",
+      "technique": "T1112",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/ryuk__T1112.txt",
+      "logic_verdict": null,
+      "story_used": "Ryuk Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "ryuk|T1562": {
+      "family": "ryuk",
+      "technique": "T1562",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/ryuk__T1562.txt",
+      "logic_verdict": null,
+      "story_used": "Ryuk Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "ryuk|T1562.001": {
+      "family": "ryuk",
+      "technique": "T1562.001",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/ryuk__T1562.001.txt",
+      "logic_verdict": null,
+      "story_used": "Ryuk Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "ryuk|T1562.002": {
+      "family": "ryuk",
+      "technique": "T1562.002",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/ryuk__T1562.002.txt",
+      "logic_verdict": null,
+      "story_used": "Ryuk Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "ryuk|T1562.003": {
+      "family": "ryuk",
+      "technique": "T1562.003",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/ryuk__T1562.003.txt",
+      "logic_verdict": null,
+      "story_used": "Ryuk Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "revil|T1486": {
+      "family": "revil",
+      "technique": "T1486",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/revil__T1486.txt",
+      "logic_verdict": null,
+      "story_used": "Revil Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "revil|T1490": {
+      "family": "revil",
+      "technique": "T1490",
+      "state": "GREEN",
+      "present_in_capture": true,
+      "capture_lines_matched": 5,
+      "capture_files_matched": 1,
+      "capture_evidence_file": "evidence/01_capture_grep/revil__T1490.txt",
+      "logic_verdict": "LOGIC_MATCH",
+      "story_used": "Revil Ransomware",
+      "candidate_detection_count": 1,
+      "candidate_detections": [
+        {
+          "name": "Delete ShadowCopy With PowerShell",
+          "source_file": "security_content/detections/endpoint/delete_shadowcopy_with_powershell.yml",
+          "verdict": "LOGIC_MATCH"
+        }
+      ]
+    },
+    "revil|T1489": {
+      "family": "revil",
+      "technique": "T1489",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/revil__T1489.txt",
+      "logic_verdict": null,
+      "story_used": "Revil Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "revil|T1491": {
+      "family": "revil",
+      "technique": "T1491",
+      "state": "GREEN",
+      "present_in_capture": true,
+      "capture_lines_matched": 3,
+      "capture_files_matched": 1,
+      "capture_evidence_file": "evidence/01_capture_grep/revil__T1491.txt",
+      "logic_verdict": "LOGIC_MATCH",
+      "story_used": "Revil Ransomware",
+      "candidate_detection_count": 1,
+      "candidate_detections": [
+        {
+          "name": "Modification Of Wallpaper",
+          "source_file": "security_content/detections/endpoint/modification_of_wallpaper.yml",
+          "verdict": "LOGIC_MATCH"
+        }
+      ]
+    },
+    "revil|T1491.001": {
+      "family": "revil",
+      "technique": "T1491.001",
+      "state": "RED-TELEMETRY",
+      "present_in_capture": true,
+      "capture_lines_matched": 3,
+      "capture_files_matched": 1,
+      "capture_evidence_file": "evidence/01_capture_grep/revil__T1491.001.txt",
+      "logic_verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Revil Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "revil|T1112": {
+      "family": "revil",
+      "technique": "T1112",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/revil__T1112.txt",
+      "logic_verdict": null,
+      "story_used": "Revil Ransomware",
+      "candidate_detection_count": 1,
+      "candidate_detections": [
+        {
+          "name": "Revil Registry Entry",
+          "source_file": "security_content/detections/endpoint/revil_registry_entry.yml",
+          "verdict": "LOGIC_MATCH"
+        }
+      ]
+    },
+    "revil|T1562": {
+      "family": "revil",
+      "technique": "T1562",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/revil__T1562.txt",
+      "logic_verdict": null,
+      "story_used": "Revil Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "revil|T1562.001": {
+      "family": "revil",
+      "technique": "T1562.001",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/revil__T1562.001.txt",
+      "logic_verdict": null,
+      "story_used": "Revil Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "revil|T1562.002": {
+      "family": "revil",
+      "technique": "T1562.002",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/revil__T1562.002.txt",
+      "logic_verdict": null,
+      "story_used": "Revil Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "revil|T1562.003": {
+      "family": "revil",
+      "technique": "T1562.003",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/revil__T1562.003.txt",
+      "logic_verdict": null,
+      "story_used": "Revil Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "lockbit_ransomware|T1486": {
+      "family": "lockbit_ransomware",
+      "technique": "T1486",
+      "state": "GREEN",
+      "present_in_capture": true,
+      "capture_lines_matched": 753,
+      "capture_files_matched": 753,
+      "capture_evidence_file": "evidence/01_capture_grep/lockbit_ransomware__T1486.txt",
+      "logic_verdict": "LOGIC_MATCH",
+      "story_used": "LockBit Ransomware",
+      "candidate_detection_count": 2,
+      "candidate_detections": [
+        {
+          "name": "High Process Termination Frequency",
+          "source_file": "security_content/detections/endpoint/high_process_termination_frequency.yml",
+          "verdict": "UNDETERMINED-UNPARSEABLE-SEARCH"
+        },
+        {
+          "name": "Ransomware Notes bulk creation",
+          "source_file": "security_content/detections/endpoint/ransomware_notes_bulk_creation.yml",
+          "verdict": "LOGIC_MATCH"
+        }
+      ]
+    },
+    "lockbit_ransomware|T1490": {
+      "family": "lockbit_ransomware",
+      "technique": "T1490",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/lockbit_ransomware__T1490.txt",
+      "logic_verdict": null,
+      "story_used": "LockBit Ransomware",
+      "candidate_detection_count": 2,
+      "candidate_detections": [
+        {
+          "name": "Deleting Shadow Copies",
+          "source_file": "security_content/detections/endpoint/deleting_shadow_copies.yml",
+          "verdict": "LOGIC_MATCH"
+        },
+        {
+          "name": "Windows Security And Backup Services Stop",
+          "source_file": "security_content/detections/endpoint/windows_security_and_backup_services_stop.yml",
+          "verdict": "UNDETERMINED-UNPARSEABLE-SEARCH"
+        }
+      ]
+    },
+    "lockbit_ransomware|T1489": {
+      "family": "lockbit_ransomware",
+      "technique": "T1489",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/lockbit_ransomware__T1489.txt",
+      "logic_verdict": null,
+      "story_used": "LockBit Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "lockbit_ransomware|T1491": {
+      "family": "lockbit_ransomware",
+      "technique": "T1491",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/lockbit_ransomware__T1491.txt",
+      "logic_verdict": null,
+      "story_used": "LockBit Ransomware",
+      "candidate_detection_count": 1,
+      "candidate_detections": [
+        {
+          "name": "Modification Of Wallpaper",
+          "source_file": "security_content/detections/endpoint/modification_of_wallpaper.yml",
+          "verdict": "LOGIC_NO_MATCH"
+        }
+      ]
+    },
+    "lockbit_ransomware|T1491.001": {
+      "family": "lockbit_ransomware",
+      "technique": "T1491.001",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/lockbit_ransomware__T1491.001.txt",
+      "logic_verdict": null,
+      "story_used": "LockBit Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "lockbit_ransomware|T1112": {
+      "family": "lockbit_ransomware",
+      "technique": "T1112",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/lockbit_ransomware__T1112.txt",
+      "logic_verdict": null,
+      "story_used": "LockBit Ransomware",
+      "candidate_detection_count": 1,
+      "candidate_detections": [
+        {
+          "name": "Windows Modify Registry Default Icon Setting",
+          "source_file": "security_content/detections/endpoint/windows_modify_registry_default_icon_setting.yml",
+          "verdict": "LOGIC_MATCH"
+        }
+      ]
+    },
+    "lockbit_ransomware|T1562": {
+      "family": "lockbit_ransomware",
+      "technique": "T1562",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/lockbit_ransomware__T1562.txt",
+      "logic_verdict": null,
+      "story_used": "LockBit Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "lockbit_ransomware|T1562.001": {
+      "family": "lockbit_ransomware",
+      "technique": "T1562.001",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/lockbit_ransomware__T1562.001.txt",
+      "logic_verdict": null,
+      "story_used": "LockBit Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "lockbit_ransomware|T1562.002": {
+      "family": "lockbit_ransomware",
+      "technique": "T1562.002",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/lockbit_ransomware__T1562.002.txt",
+      "logic_verdict": null,
+      "story_used": "LockBit Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "lockbit_ransomware|T1562.003": {
+      "family": "lockbit_ransomware",
+      "technique": "T1562.003",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/lockbit_ransomware__T1562.003.txt",
+      "logic_verdict": null,
+      "story_used": "LockBit Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "prestige_ransomware|T1486": {
+      "family": "prestige_ransomware",
+      "technique": "T1486",
+      "state": "RED-TELEMETRY",
+      "present_in_capture": true,
+      "capture_lines_matched": 2,
+      "capture_files_matched": 2,
+      "capture_evidence_file": "evidence/01_capture_grep/prestige_ransomware__T1486.txt",
+      "logic_verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Prestige Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "prestige_ransomware|T1490": {
+      "family": "prestige_ransomware",
+      "technique": "T1490",
+      "state": "GREEN",
+      "present_in_capture": true,
+      "capture_lines_matched": 9,
+      "capture_files_matched": 9,
+      "capture_evidence_file": "evidence/01_capture_grep/prestige_ransomware__T1490.txt",
+      "logic_verdict": "LOGIC_MATCH",
+      "story_used": "Prestige Ransomware",
+      "candidate_detection_count": 2,
+      "candidate_detections": [
+        {
+          "name": "Deleting Shadow Copies",
+          "source_file": "security_content/detections/endpoint/deleting_shadow_copies.yml",
+          "verdict": "LOGIC_MATCH"
+        },
+        {
+          "name": "WBAdmin Delete System Backups",
+          "source_file": "security_content/detections/endpoint/wbadmin_delete_system_backups.yml",
+          "verdict": "LOGIC_MATCH"
+        }
+      ]
+    },
+    "prestige_ransomware|T1489": {
+      "family": "prestige_ransomware",
+      "technique": "T1489",
+      "state": "GREEN",
+      "present_in_capture": true,
+      "capture_lines_matched": 3,
+      "capture_files_matched": 3,
+      "capture_evidence_file": "evidence/01_capture_grep/prestige_ransomware__T1489.txt",
+      "logic_verdict": "LOGIC_MATCH",
+      "story_used": "Prestige Ransomware",
+      "candidate_detection_count": 1,
+      "candidate_detections": [
+        {
+          "name": "Windows Service Stop Attempt",
+          "source_file": "security_content/detections/endpoint/windows_service_stop_attempt.yml",
+          "verdict": "LOGIC_MATCH"
+        }
+      ]
+    },
+    "prestige_ransomware|T1491": {
+      "family": "prestige_ransomware",
+      "technique": "T1491",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/prestige_ransomware__T1491.txt",
+      "logic_verdict": null,
+      "story_used": "Prestige Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "prestige_ransomware|T1491.001": {
+      "family": "prestige_ransomware",
+      "technique": "T1491.001",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/prestige_ransomware__T1491.001.txt",
+      "logic_verdict": null,
+      "story_used": "Prestige Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "prestige_ransomware|T1112": {
+      "family": "prestige_ransomware",
+      "technique": "T1112",
+      "state": "RED-TELEMETRY",
+      "present_in_capture": true,
+      "capture_lines_matched": 4,
+      "capture_files_matched": 4,
+      "capture_evidence_file": "evidence/01_capture_grep/prestige_ransomware__T1112.txt",
+      "logic_verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Prestige Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "prestige_ransomware|T1562": {
+      "family": "prestige_ransomware",
+      "technique": "T1562",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/prestige_ransomware__T1562.txt",
+      "logic_verdict": null,
+      "story_used": "Prestige Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "prestige_ransomware|T1562.001": {
+      "family": "prestige_ransomware",
+      "technique": "T1562.001",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/prestige_ransomware__T1562.001.txt",
+      "logic_verdict": null,
+      "story_used": "Prestige Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "prestige_ransomware|T1562.002": {
+      "family": "prestige_ransomware",
+      "technique": "T1562.002",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/prestige_ransomware__T1562.002.txt",
+      "logic_verdict": null,
+      "story_used": "Prestige Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "prestige_ransomware|T1562.003": {
+      "family": "prestige_ransomware",
+      "technique": "T1562.003",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/prestige_ransomware__T1562.003.txt",
+      "logic_verdict": null,
+      "story_used": "Prestige Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "chaos_ransomware|T1486": {
+      "family": "chaos_ransomware",
+      "technique": "T1486",
+      "state": "GREEN",
+      "present_in_capture": true,
+      "capture_lines_matched": 4,
+      "capture_files_matched": 1,
+      "capture_evidence_file": "evidence/01_capture_grep/chaos_ransomware__T1486.txt",
+      "logic_verdict": "LOGIC_MATCH",
+      "story_used": "Chaos Ransomware",
+      "candidate_detection_count": 1,
+      "candidate_detections": [
+        {
+          "name": "Ransomware Notes bulk creation",
+          "source_file": "security_content/detections/endpoint/ransomware_notes_bulk_creation.yml",
+          "verdict": "LOGIC_MATCH"
+        }
+      ]
+    },
+    "chaos_ransomware|T1490": {
+      "family": "chaos_ransomware",
+      "technique": "T1490",
+      "state": "GREEN",
+      "present_in_capture": true,
+      "capture_lines_matched": 245,
+      "capture_files_matched": 2,
+      "capture_evidence_file": "evidence/01_capture_grep/chaos_ransomware__T1490.txt",
+      "logic_verdict": "LOGIC_MATCH",
+      "story_used": "Chaos Ransomware",
+      "candidate_detection_count": 3,
+      "candidate_detections": [
+        {
+          "name": "Deleting Shadow Copies",
+          "source_file": "security_content/detections/endpoint/deleting_shadow_copies.yml",
+          "verdict": "LOGIC_MATCH"
+        },
+        {
+          "name": "Prevent Automatic Repair Mode using Bcdedit",
+          "source_file": "security_content/detections/endpoint/prevent_automatic_repair_mode_using_bcdedit.yml",
+          "verdict": "LOGIC_MATCH"
+        },
+        {
+          "name": "WBAdmin Delete System Backups",
+          "source_file": "security_content/detections/endpoint/wbadmin_delete_system_backups.yml",
+          "verdict": "LOGIC_MATCH"
+        }
+      ]
+    },
+    "chaos_ransomware|T1489": {
+      "family": "chaos_ransomware",
+      "technique": "T1489",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/chaos_ransomware__T1489.txt",
+      "logic_verdict": null,
+      "story_used": "Chaos Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "chaos_ransomware|T1491": {
+      "family": "chaos_ransomware",
+      "technique": "T1491",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/chaos_ransomware__T1491.txt",
+      "logic_verdict": null,
+      "story_used": "Chaos Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "chaos_ransomware|T1491.001": {
+      "family": "chaos_ransomware",
+      "technique": "T1491.001",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/chaos_ransomware__T1491.001.txt",
+      "logic_verdict": null,
+      "story_used": "Chaos Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "chaos_ransomware|T1112": {
+      "family": "chaos_ransomware",
+      "technique": "T1112",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/chaos_ransomware__T1112.txt",
+      "logic_verdict": null,
+      "story_used": "Chaos Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "chaos_ransomware|T1562": {
+      "family": "chaos_ransomware",
+      "technique": "T1562",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/chaos_ransomware__T1562.txt",
+      "logic_verdict": null,
+      "story_used": "Chaos Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "chaos_ransomware|T1562.001": {
+      "family": "chaos_ransomware",
+      "technique": "T1562.001",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/chaos_ransomware__T1562.001.txt",
+      "logic_verdict": null,
+      "story_used": "Chaos Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "chaos_ransomware|T1562.002": {
+      "family": "chaos_ransomware",
+      "technique": "T1562.002",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/chaos_ransomware__T1562.002.txt",
+      "logic_verdict": null,
+      "story_used": "Chaos Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "chaos_ransomware|T1562.003": {
+      "family": "chaos_ransomware",
+      "technique": "T1562.003",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/chaos_ransomware__T1562.003.txt",
+      "logic_verdict": null,
+      "story_used": "Chaos Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "ransomware_ttp|T1486": {
+      "family": "ransomware_ttp",
+      "technique": "T1486",
+      "state": "GREEN",
+      "present_in_capture": true,
+      "capture_lines_matched": 2,
+      "capture_files_matched": 1,
+      "capture_evidence_file": "evidence/01_capture_grep/ransomware_ttp__T1486.txt",
+      "logic_verdict": "LOGIC_MATCH",
+      "story_used": "Ransomware",
+      "candidate_detection_count": 2,
+      "candidate_detections": [
+        {
+          "name": "Windows .Key File Creation in Root Directory",
+          "source_file": "security_content/detections/endpoint/windows__key_file_creation_in_root_directory.yml",
+          "verdict": "LOGIC_MATCH"
+        },
+        {
+          "name": "Windows DiskCryptor Usage",
+          "source_file": "security_content/detections/endpoint/windows_diskcryptor_usage.yml",
+          "verdict": "LOGIC_NO_MATCH"
+        }
+      ]
+    },
+    "ransomware_ttp|T1490": {
+      "family": "ransomware_ttp",
+      "technique": "T1490",
+      "state": "GREEN",
+      "present_in_capture": true,
+      "capture_lines_matched": 31,
+      "capture_files_matched": 5,
+      "capture_evidence_file": "evidence/01_capture_grep/ransomware_ttp__T1490.txt",
+      "logic_verdict": "LOGIC_MATCH",
+      "story_used": "Ransomware",
+      "candidate_detection_count": 6,
+      "candidate_detections": [
+        {
+          "name": "BCDEdit Failure Recovery Modification",
+          "source_file": "security_content/detections/endpoint/bcdedit_failure_recovery_modification.yml",
+          "verdict": "LOGIC_MATCH"
+        },
+        {
+          "name": "Delete ShadowCopy With PowerShell",
+          "source_file": "security_content/detections/endpoint/delete_shadowcopy_with_powershell.yml",
+          "verdict": "LOGIC_MATCH"
+        },
+        {
+          "name": "Deleting Shadow Copies",
+          "source_file": "security_content/detections/endpoint/deleting_shadow_copies.yml",
+          "verdict": "LOGIC_MATCH"
+        },
+        {
+          "name": "Prevent Automatic Repair Mode using Bcdedit",
+          "source_file": "security_content/detections/endpoint/prevent_automatic_repair_mode_using_bcdedit.yml",
+          "verdict": "LOGIC_MATCH"
+        },
+        {
+          "name": "WBAdmin Delete System Backups",
+          "source_file": "security_content/detections/endpoint/wbadmin_delete_system_backups.yml",
+          "verdict": "LOGIC_MATCH"
+        },
+        {
+          "name": "Windows Security And Backup Services Stop",
+          "source_file": "security_content/detections/endpoint/windows_security_and_backup_services_stop.yml",
+          "verdict": "UNDETERMINED-UNPARSEABLE-SEARCH"
+        }
+      ]
+    },
+    "ransomware_ttp|T1489": {
+      "family": "ransomware_ttp",
+      "technique": "T1489",
+      "state": "GREEN",
+      "present_in_capture": true,
+      "capture_lines_matched": 12,
+      "capture_files_matched": 1,
+      "capture_evidence_file": "evidence/01_capture_grep/ransomware_ttp__T1489.txt",
+      "logic_verdict": "LOGIC_MATCH",
+      "story_used": "Ransomware",
+      "candidate_detection_count": 2,
+      "candidate_detections": [
+        {
+          "name": "Windows Excessive Service Stop Attempt",
+          "source_file": "security_content/detections/endpoint/windows_excessive_service_stop_attempt.yml",
+          "verdict": "LOGIC_MATCH"
+        },
+        {
+          "name": "Windows Set Account Password Policy To Unlimited Via Net",
+          "source_file": "security_content/detections/endpoint/windows_set_account_password_policy_to_unlimited_via_net.yml",
+          "verdict": "LOGIC_MATCH"
+        }
+      ]
+    },
+    "ransomware_ttp|T1491": {
+      "family": "ransomware_ttp",
+      "technique": "T1491",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/ransomware_ttp__T1491.txt",
+      "logic_verdict": null,
+      "story_used": "Ransomware",
+      "candidate_detection_count": 1,
+      "candidate_detections": [
+        {
+          "name": "Modification Of Wallpaper",
+          "source_file": "security_content/detections/endpoint/modification_of_wallpaper.yml",
+          "verdict": "LOGIC_NO_MATCH"
+        }
+      ]
+    },
+    "ransomware_ttp|T1491.001": {
+      "family": "ransomware_ttp",
+      "technique": "T1491.001",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/ransomware_ttp__T1491.001.txt",
+      "logic_verdict": null,
+      "story_used": "Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "ransomware_ttp|T1112": {
+      "family": "ransomware_ttp",
+      "technique": "T1112",
+      "state": "GREEN",
+      "present_in_capture": true,
+      "capture_lines_matched": 3,
+      "capture_files_matched": 1,
+      "capture_evidence_file": "evidence/01_capture_grep/ransomware_ttp__T1112.txt",
+      "logic_verdict": "LOGIC_MATCH",
+      "story_used": "Ransomware",
+      "candidate_detection_count": 7,
+      "candidate_detections": [
+        {
+          "name": "Revil Registry Entry",
+          "source_file": "security_content/detections/endpoint/revil_registry_entry.yml",
+          "verdict": "LOGIC_NO_MATCH"
+        },
+        {
+          "name": "Windows Disable Change Password Through Registry",
+          "source_file": "security_content/detections/endpoint/windows_disable_change_password_through_registry.yml",
+          "verdict": "LOGIC_MATCH"
+        },
+        {
+          "name": "Windows Disable Lock Workstation Feature Through Registry",
+          "source_file": "security_content/detections/endpoint/windows_disable_lock_workstation_feature_through_registry.yml",
+          "verdict": "LOGIC_MATCH"
+        },
+        {
+          "name": "Windows Disable LogOff Button Through Registry",
+          "source_file": "security_content/detections/endpoint/windows_disable_logoff_button_through_registry.yml",
+          "verdict": "LOGIC_MATCH"
+        },
+        {
+          "name": "Windows Disable Shutdown Button Through Registry",
+          "source_file": "security_content/detections/endpoint/windows_disable_shutdown_button_through_registry.yml",
+          "verdict": "LOGIC_MATCH"
+        },
+        {
+          "name": "Windows Disable Windows Group Policy Features Through Registry",
+          "source_file": "security_content/detections/endpoint/windows_disable_windows_group_policy_features_through_registry.yml",
+          "verdict": "LOGIC_MATCH"
+        },
+        {
+          "name": "Windows Hide Notification Features Through Registry",
+          "source_file": "security_content/detections/endpoint/windows_hide_notification_features_through_registry.yml",
+          "verdict": "LOGIC_MATCH"
+        }
+      ]
+    },
+    "ransomware_ttp|T1562": {
+      "family": "ransomware_ttp",
+      "technique": "T1562",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/ransomware_ttp__T1562.txt",
+      "logic_verdict": null,
+      "story_used": "Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "ransomware_ttp|T1562.001": {
+      "family": "ransomware_ttp",
+      "technique": "T1562.001",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/ransomware_ttp__T1562.001.txt",
+      "logic_verdict": null,
+      "story_used": "Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "ransomware_ttp|T1562.002": {
+      "family": "ransomware_ttp",
+      "technique": "T1562.002",
+      "state": "RED-TELEMETRY",
+      "present_in_capture": true,
+      "capture_lines_matched": 1,
+      "capture_files_matched": 1,
+      "capture_evidence_file": "evidence/01_capture_grep/ransomware_ttp__T1562.002.txt",
+      "logic_verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    },
+    "ransomware_ttp|T1562.003": {
+      "family": "ransomware_ttp",
+      "technique": "T1562.003",
+      "state": "GREY",
+      "present_in_capture": false,
+      "capture_lines_matched": 0,
+      "capture_files_matched": 0,
+      "capture_evidence_file": "evidence/01_capture_grep/ransomware_ttp__T1562.003.txt",
+      "logic_verdict": null,
+      "story_used": "Ransomware",
+      "candidate_detection_count": 0,
+      "candidate_detections": []
+    }
+  },
+  "state_counts": {
+    "GREEN": 13,
+    "RED-LOGIC": 0,
+    "RED-TELEMETRY": 5,
+    "GREY": 52
+  },
+  "total_cells": 70
+}

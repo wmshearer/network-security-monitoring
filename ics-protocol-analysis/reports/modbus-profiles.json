@@ -1,0 +1,266 @@
+{
+  "capture": "4sics-151022.pcap",
+  "total_operations": 99528,
+  "write_operations": 41962,
+  "write_percentage": 42.16,
+  "function_distribution": [
+    {
+      "code": 1,
+      "name": "Read Coils",
+      "count": 51346,
+      "is_write": false
+    },
+    {
+      "code": 23,
+      "name": "Read/Write Multiple Registers",
+      "count": 20594,
+      "is_write": true
+    },
+    {
+      "code": 15,
+      "name": "Write Multiple Coils",
+      "count": 20592,
+      "is_write": true
+    },
+    {
+      "code": 4,
+      "name": "Read Input Registers",
+      "count": 2287,
+      "is_write": false
+    },
+    {
+      "code": 2,
+      "name": "Read Discrete Inputs",
+      "count": 1887,
+      "is_write": false
+    },
+    {
+      "code": 3,
+      "name": "Read Holding Registers",
+      "count": 1884,
+      "is_write": false
+    },
+    {
+      "code": 5,
+      "name": "Write Single Coil",
+      "count": 388,
+      "is_write": true
+    },
+    {
+      "code": 6,
+      "name": "Write Single Register",
+      "count": 386,
+      "is_write": true
+    },
+    {
+      "code": 43,
+      "name": "Encapsulated Interface Transport",
+      "count": 45,
+      "is_write": false
+    },
+    {
+      "code": 17,
+      "name": "17",
+      "count": 43,
+      "is_write": false
+    },
+    {
+      "code": 0,
+      "name": "0",
+      "count": 34,
+      "is_write": false
+    },
+    {
+      "code": 32,
+      "name": "32",
+      "count": 11,
+      "is_write": false
+    },
+    {
+      "code": 48,
+      "name": "48",
+      "count": 6,
+      "is_write": false
+    },
+    {
+      "code": 66,
+      "name": "66",
+      "count": 5,
+      "is_write": false
+    },
+    {
+      "code": 84,
+      "name": "84",
+      "count": 3,
+      "is_write": false
+    },
+    {
+      "code": 19,
+      "name": "19",
+      "count": 3,
+      "is_write": false
+    },
+    {
+      "code": 99,
+      "name": "99",
+      "count": 3,
+      "is_write": false
+    },
+    {
+      "code": 116,
+      "name": "116",
+      "count": 3,
+      "is_write": false
+    },
+    {
+      "code": 112,
+      "name": "112",
+      "count": 2,
+      "is_write": false
+    },
+    {
+      "code": 16,
+      "name": "Write Multiple Registers",
+      "count": 2,
+      "is_write": true
+    },
+    {
+      "code": 13,
+      "name": "13",
+      "count": 1,
+      "is_write": false
+    },
+    {
+      "code": 127,
+      "name": "127",
+      "count": 1,
+      "is_write": false
+    },
+    {
+      "code": 12,
+      "name": "12",
+      "count": 1,
+      "is_write": false
+    },
+    {
+      "code": 31,
+      "name": "31",
+      "count": 1,
+      "is_write": false
+    }
+  ],
+  "hosts": [
+    {
+      "host": "192.168.2.166",
+      "total_ops": 49701,
+      "reads": 28721,
+      "writes": 20980,
+      "diagnostics": 0,
+      "write_ratio": 0.4221,
+      "distinct_targets": 4,
+      "role": "writes widely (engineering workstation/HMI)",
+      "top_functions": [
+        {
+          "code": 1,
+          "name": "Read Coils",
+          "count": 25679
+        },
+        {
+          "code": 15,
+          "name": "Write Multiple Coils",
+          "count": 10296
+        },
+        {
+          "code": 23,
+          "name": "Read/Write Multiple Registers",
+          "count": 10296
+        },
+        {
+          "code": 4,
+          "name": "Read Input Registers",
+          "count": 1146
+        },
+        {
+          "code": 2,
+          "name": "Read Discrete Inputs",
+          "count": 944
+        },
+        {
+          "code": 3,
+          "name": "Read Holding Registers",
+          "count": 943
+        }
+      ]
+    },
+    {
+      "host": "192.168.2.44",
+      "total_ops": 22,
+      "reads": 22,
+      "writes": 0,
+      "diagnostics": 0,
+      "write_ratio": 0.0,
+      "distinct_targets": 5,
+      "role": "read-only (monitoring/historian)",
+      "top_functions": [
+        {
+          "code": 17,
+          "name": "17",
+          "count": 12
+        },
+        {
+          "code": 43,
+          "name": "Encapsulated Interface Transport",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "host": "192.168.2.133",
+      "total_ops": 26,
+      "reads": 26,
+      "writes": 0,
+      "diagnostics": 0,
+      "write_ratio": 0.0,
+      "distinct_targets": 5,
+      "role": "read-only (monitoring/historian)",
+      "top_functions": [
+        {
+          "code": 17,
+          "name": "17",
+          "count": 9
+        },
+        {
+          "code": 43,
+          "name": "Encapsulated Interface Transport",
+          "count": 9
+        },
+        {
+          "code": 0,
+          "name": "0",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "host": "192.168.2.137",
+      "total_ops": 1,
+      "reads": 1,
+      "writes": 0,
+      "diagnostics": 0,
+      "write_ratio": 0.0,
+      "distinct_targets": 1,
+      "role": "read-only (monitoring/historian)",
+      "top_functions": [
+        {
+          "code": 0,
+          "name": "0",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "write_allow_list": [
+    "192.168.2.166"
+  ],
+  "unauthorised_writers": []
+}

@@ -1,0 +1,20 @@
+# Downloaded dataset: large, third-party, cite-don't-rehost. See data/README.md.
+data/*.csv
+data/*.zip
+data/*.txt
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+*.egg-info/
+
+# Generated at analysis time (results.json is the deliverable, rebuilt by
+# scripts/run_analysis.py; committed once as evidence, but reruns shouldn't
+# make git noisy if the numbers move by a rounding difference)
+
+# Editor/OS noise
+.DS_Store
+.vscode/
+.idea/

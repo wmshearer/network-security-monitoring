@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+images/*.bin
+images/sha256sums
+extracted/
+data/*.json

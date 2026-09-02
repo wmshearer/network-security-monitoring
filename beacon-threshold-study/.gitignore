@@ -1,0 +1,5 @@
+# Zeek logs extracted from the publisher's archives. Several hundred MB, and
+# re-fetchable from the URLs in docs/sources.md. The archives themselves are
+# verified against data/SHA256SUMS.published.
+data/logs/
+data/zeek/*.zip

@@ -1,0 +1,6 @@
+# family=prestige_ransomware technique=T1562.001 (Impair Defenses: Disable or Modify Tools)
+# patterns (each run as its own 'grep -inE', matches unioned): ['CommandLine.{0,300}set-mppreference', 'CommandLine.{0,300}disablerealtimemonitoring', 'CommandLine.{0,300}disableantispyware', 'CommandLine.{0,300}disableantivirus', 'CommandLine.{0,300}disablebehaviormonitoring', 'CommandLine.{0,300}amsi.{0,20}bypass']
+# files searched: ['/home/kali/director/projects/_corpora/attack_data/datasets/malware/prestige_ransomware/sysmon.log']
+# matched lines (after noise exclusion): 0
+# lines dropped by NOISE_EXCLUDE_PATTERN (Aurora-Agent|sigma-rules|\.yml\.tmp): 0
+#

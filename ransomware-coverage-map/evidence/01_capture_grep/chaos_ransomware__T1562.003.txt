@@ -1,0 +1,6 @@
+# family=chaos_ransomware technique=T1562.003 (Impair Defenses: Impair Command History Logging)
+# patterns (each run as its own 'grep -inE', matches unioned): ['unset histfile', 'histfilesize=0', 'clear-history']
+# files searched: ['/home/kali/director/projects/_corpora/attack_data/datasets/malware/chaos_ransomware/spread_in_root_drives/sysmon.log', '/home/kali/director/projects/_corpora/attack_data/datasets/malware/chaos_ransomware/sysmon.log']
+# matched lines (after noise exclusion): 0
+# lines dropped by NOISE_EXCLUDE_PATTERN (Aurora-Agent|sigma-rules|\.yml\.tmp): 0
+#

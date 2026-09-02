@@ -1,0 +1,123 @@
+{
+  "_purpose": "Hand-authored, reasoned mapping from this project's rows/columns to files on disk. Every inclusion or exclusion is recorded with a reason, following detection-brittleness's manifest pattern. This file is read by scripts/01_build_capture_evidence.py; nothing downstream re-derives family membership on its own.",
+
+  "techniques": {
+    "_purpose": "Every row of the matrix. Each technique_id was checked at attack.mitre.org on 2026-08-28 (see README verification log). grep_patterns are case-insensitive extended-regex patterns searched over each family's raw .log files to decide whether the behaviour is PRESENT in that capture (GREY vs non-GREY), independent of whether any detection fires. Every pattern below was iterated at least once after inspecting its actual matched lines, because three early drafts matched benign noise (see 'rejected patterns' on T1490, T1562, T1486). scripts/01_build_capture_evidence.py also applies a global NOISE_EXCLUDE filter (Aurora-Agent / sigma-rules / *.yml.tmp) documented there, because one shared EDR agent's own vendored Sigma-rule archive is present as inert files on some hosts and its filenames contain technique-suggestive strings like 'defender_disabled' that are not attacker activity.",
+    "T1486": {
+      "name": "Data Encrypted for Impact",
+      "url": "https://attack.mitre.org/techniques/T1486/",
+      "verified": true,
+      "grep_patterns": ["TargetFilename.*readme", "TargetFilename.*ransom", "TargetFilename.*decrypt", "TargetFilename.*\\.locked", "TargetFilename.*\\.lockbit"],
+      "note": "Anchored to Sysmon's TargetFilename field (EventID 11 FileCreate / EventID 23 FileDelete) so a ransom-note-style filename must be the actual file being created or renamed, not an unrelated word elsewhere on the line. Verified real signal, not noise: lockbit's matches are literally its ransom note 'cHpfiXA9s.README.txt' being dropped into hundreds of directories including third-party ones (e.g. under ProgramData\\Amazon\\...), which is exactly what mass encryption ransomware does; excluding matches under 'Program Files'/'ProgramData' was tried and rejected because it would have hidden this real signal, not removed noise."
+    },
+    "T1490": {
+      "name": "Inhibit System Recovery",
+      "url": "https://attack.mitre.org/techniques/T1490/",
+      "verified": true,
+      "grep_patterns": ["vssadmin", "wbadmin", "bcdedit", "shadowcopy"],
+      "note": "Pattern pinned to exactly the director-verified 4-term grep (vssadmin|wbadmin|bcdedit|shadowcopy), reproducing the stated per-family file counts (conti 0, ryuk 0, lockbit 0, revil 1, prestige 1, chaos 2, ransomware_ttp 5). REJECTED PATTERN: an earlier draft added 'shadow copy' (with a space) and matched conti's inf1 capture on the Sysmon Description field 'Microsoft (R) Volume Shadow Copy Service' for VSSVC.exe starting up as a normal OS service, not a deletion command. That false positive is exactly the failure mode this project exists to avoid, so 'shadow copy' / 'diskshadow' / 'wmic.*shadowcopy' were dropped and the pattern was tightened back to the director's exact 4 terms. See FINDINGS.md."
+    },
+    "T1489": {
+      "name": "Service Stop",
+      "url": "https://attack.mitre.org/techniques/T1489/",
+      "verified": true,
+      "grep_patterns": ["CommandLine.{0,300}net(1)?(\\.exe)?[\"' ]+stop ", "CommandLine.{0,300}sc(\\.exe)?[\"' ]+(stop|config) ", "CommandLine.{0,300}taskkill(\\.exe)?[\"' ].*(/f|/im)"],
+      "note": "Anchored to Sysmon's CommandLine field so 'stop' must appear as part of an actual command invocation (net stop / sc stop / sc config / taskkill /f /im), not a service display name or unrelated word. Ransomware stops backup agents, AV services and DB engines before encrypting locked files."
+    },
+    "T1491": {
+      "name": "Defacement",
+      "url": "https://attack.mitre.org/techniques/T1491/",
+      "verified": true,
+      "grep_patterns": ["desktop\\\\\\\\wallpaper", "systemparametersinfo.*wallpaper", "control panel.*desktop.*wallpaper"],
+      "note": "Parent technique row, kept alongside .001 because some family metadata tags the parent instead of the sub-technique. Anchored to the actual registry path (Control Panel\\\\Desktop\\\\Wallpaper) or the Win32 API name, not the bare word 'wallpaper', which could appear in unrelated strings."
+    },
+    "T1491.001": {
+      "name": "Defacement: Internal Defacement",
+      "url": "https://attack.mitre.org/techniques/T1491/001/",
+      "verified": true,
+      "grep_patterns": ["desktop\\\\\\\\wallpaper", "systemparametersinfo.*wallpaper", "control panel.*desktop.*wallpaper"],
+      "note": "The classic ransom-note wallpaper change. Same anchored pattern as parent T1491 since captures rarely distinguish sub-technique in raw text."
+    },
+    "T1112": {
+      "name": "Modify Registry",
+      "url": "https://attack.mitre.org/techniques/T1112/",
+      "verified": true,
+      "grep_patterns": ["CommandLine.{0,300}reg(\\.exe)?[\"' ]+(add|delete|import) ", "safeboot", "disablesystemrestore", "autoadminlogon"],
+      "note": "REJECTED PATTERN: an earlier draft matched bare 'EventID>13<' etc (Sysmon RegistryEvent) and 'Windows security' as a substring anywhere on the line. Bare registry-event EventIDs fire on nearly every Windows process and would make this row trivially GREEN everywhere, which is not a meaningful claim; 'Windows security' matched the OS's own benign product-name string 1033 times in one file. Tightened to explicit reg.exe command-line invocations plus specific ransomware-relevant registry paths (Safe Boot config, disabling System Restore, autologon for reboot-into-payload tricks), which is a much smaller, far more defensible signal and yields far more GREY cells, which is the honest result given how narrow the real signal is."
+    },
+    "T1562": {
+      "name": "Impair Defenses",
+      "url": "https://attack.mitre.org/techniques/T1562/",
+      "verified": true,
+      "grep_patterns": ["CommandLine.{0,300}netsh.*firewall.*(off|disable)", "CommandLine.{0,300}set-netfirewallprofile.*disabled"],
+      "note": "Parent row, kept for families whose metadata tags the parent rather than a sub-technique. REJECTED PATTERN: an early draft matched the bare word 'defender' and matched an EDR agent's own vendored Sigma-rule filename ('...defender_disabled.yml.tmp') being written to disk by that agent's own update process, not an attacker action. See global NOISE_EXCLUDE and T1562.001's note."
+    },
+    "T1562.001": {
+      "name": "Impair Defenses: Disable or Modify Tools",
+      "url": "https://attack.mitre.org/techniques/T1562/001/",
+      "verified": true,
+      "grep_patterns": ["CommandLine.{0,300}set-mppreference", "CommandLine.{0,300}disablerealtimemonitoring", "CommandLine.{0,300}disableantispyware", "CommandLine.{0,300}disableantivirus", "CommandLine.{0,300}disablebehaviormonitoring", "CommandLine.{0,300}amsi.{0,20}bypass"],
+      "note": "Anchored to CommandLine so a Defender-disable string must be part of an actual invoked command, not a filename or product-name mention. REJECTED PATTERN: bare 'defender'/'amsi' substrings matched a benign Sysmon ProcessAccess event where VBoxService.exe (a VirtualBox guest driver) opened a handle to MSASCuiL.exe (the Defender tray icon), which is routine, and separately matched the same Aurora-Agent sigma-rule-archive filenames described under T1562's rejected pattern."
+    },
+    "T1562.002": {
+      "name": "Impair Defenses: Disable Windows Event Logging",
+      "url": "https://attack.mitre.org/techniques/T1562/002/",
+      "verified": true,
+      "grep_patterns": ["wevtutil.{0,20}(cl|clear-log|sl)", "clear-eventlog", "limit-eventlog"],
+      "note": "Less commonly captured; kept because it is named in the brief's candidate row list."
+    },
+    "T1562.003": {
+      "name": "Impair Defenses: Impair Command History Logging",
+      "url": "https://attack.mitre.org/techniques/T1562/003/",
+      "verified": true,
+      "grep_patterns": ["unset histfile", "histfilesize=0", "clear-history"],
+      "note": "security_content has ZERO detections tagged to this exact sub-technique ID (verified by grep across detections/endpoint/*.yml). Kept as a row specifically to make that absence visible: every cell in this row will be RED-TELEMETRY or GREY by construction, never GREEN, regardless of family, because Splunk ships no detection to test. Also the Windows captures here are unlikely to show *nix shell-history clearing at all, so GREY is the expected honest answer for every family."
+    }
+  },
+
+  "families": {
+    "_purpose": "Every column. corpus_dir is relative to attack_data/datasets/malware/. security_content_story is the exact analytic_story string used to select which detections count as this family's tested detections; null means no dedicated story exists (a finding in itself, see conti).",
+    "conti": {
+      "corpus_dir": "conti",
+      "security_content_story": null,
+      "is_reference_bucket": false,
+      "note": "No dedicated 'Conti Ransomware' analytic_story in security_content (verified by grep, 2026-08-28). One Conti-named detection exists (conti_common_exec_parameter.yml) but it is tagged to T1204 (not one of our 8 rows) and to the generic 'Ransomware' and 'Compromised Windows Host' stories, not a Conti-specific one. This column's GREEN cells, if any, come only from the generic 'Ransomware' story's detections, and that is stated in the map, not hidden. Richest dataset by line count (115,348) and has hand-authored .yml provenance across 3 sub-captures (conti_leak, inf1, conti-cobalt)."
+    },
+    "ryuk": {
+      "corpus_dir": "ryuk",
+      "security_content_story": "Ryuk Ransomware",
+      "is_reference_bucket": false,
+      "note": "Thinnest dataset: 1 file, 6,199 lines, Sysmon-only (verified: single .log, single sourcetype in ryuk.yml). Any RED cell here is much weaker evidence of a real gap than the same red cell in conti or revil; the matrix marks this explicitly with a confidence flag, not just in prose."
+    },
+    "revil": {
+      "corpus_dir": "revil",
+      "security_content_story": "Revil Ransomware",
+      "is_reference_bucket": false,
+      "note": "92,384 lines across 4 sub-captures (inf1, inf2, inf3, msmpeng_side). Richest after conti and ransomware_ttp."
+    },
+    "lockbit_ransomware": {
+      "corpus_dir": "lockbit_ransomware",
+      "security_content_story": "LockBit Ransomware",
+      "is_reference_bucket": false,
+      "note": "Thin: 1 file, 10,920 lines, Sysmon-only (verified via lockbit_ransomware.yml: single dataset entry, sourcetype XmlWinEventLog). Same low-confidence caveat as ryuk."
+    },
+    "prestige_ransomware": {
+      "corpus_dir": "prestige_ransomware",
+      "security_content_story": "Prestige Ransomware",
+      "is_reference_bucket": false,
+      "note": "1 file, 14,894 lines, Sysmon-only."
+    },
+    "chaos_ransomware": {
+      "corpus_dir": "chaos_ransomware",
+      "security_content_story": "Chaos Ransomware",
+      "is_reference_bucket": false,
+      "note": "48,400 lines across 2 files (root + spread_in_root_drives sub-capture)."
+    },
+    "ransomware_ttp": {
+      "corpus_dir": "ransomware_ttp",
+      "security_content_story": "Ransomware",
+      "is_reference_bucket": true,
+      "note": "NOT a single family. This is a generic ransomware-techniques capture bucket (data1, data2, ssa_data1 sub-captures, 53,989 lines) used here as a REFERENCE column, labelled as such in every output, never presented as a family alongside the real six. Mapped to the generic 'Ransomware' analytic_story since it names no specific family."
+    }
+  }
+}

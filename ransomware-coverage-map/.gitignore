@@ -1,0 +1,13 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# This project does not vendor or invoke Zircolite (detection scoring here
+# is done by extracting each Splunk detection's own SPL literals and
+# grepping them against raw captures, see scripts/03_score_detection_logic.py),
+# but these are ignored in case a future script does, matching the sibling
+# detection-brittleness project's convention.
+zircolite.log
+*.db

@@ -1,0 +1,118 @@
+{
+  "scenarios": [
+    {
+      "scenario": "CTU-Honeypot-Capture-4-1-PhilipsHue-Benign",
+      "connections": 452,
+      "labels": {
+        "Benign": 452
+      },
+      "detail": {
+        "-": 452
+      },
+      "scores": [
+        {
+          "behaviour": "C&C",
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "behaviour": "DDoS",
+          "true_positives": 0,
+          "false_positives": 54,
+          "false_negatives": 0,
+          "precision": 0.0,
+          "recall": null
+        },
+        {
+          "behaviour": "PortScan",
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": null,
+          "recall": null
+        }
+      ]
+    },
+    {
+      "scenario": "CTU-IoT-Malware-Capture-20-1-Torii",
+      "connections": 3209,
+      "labels": {
+        "Benign": 3193,
+        "Malicious": 16
+      },
+      "detail": {
+        "-": 3193,
+        "C&C-Torii": 16
+      },
+      "scores": [
+        {
+          "behaviour": "C&C",
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 16,
+          "precision": null,
+          "recall": 0.0
+        },
+        {
+          "behaviour": "DDoS",
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": null,
+          "recall": null
+        },
+        {
+          "behaviour": "PortScan",
+          "true_positives": 0,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": null,
+          "recall": null
+        }
+      ]
+    },
+    {
+      "scenario": "CTU-IoT-Malware-Capture-34-1-Mirai",
+      "connections": 23145,
+      "labels": {
+        "Benign": 1923,
+        "Malicious": 21222
+      },
+      "detail": {
+        "-": 1923,
+        "C&C": 6706,
+        "PartOfAHorizontalPortScan": 122,
+        "DDoS": 14394
+      },
+      "scores": [
+        {
+          "behaviour": "C&C",
+          "true_positives": 6706,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        {
+          "behaviour": "DDoS",
+          "true_positives": 14393,
+          "false_positives": 65,
+          "false_negatives": 1,
+          "precision": 0.9955,
+          "recall": 0.9999
+        },
+        {
+          "behaviour": "PortScan",
+          "true_positives": 121,
+          "false_positives": 0,
+          "false_negatives": 1,
+          "precision": 1.0,
+          "recall": 0.9918
+        }
+      ]
+    }
+  ]
+}

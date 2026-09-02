@@ -1,0 +1,326 @@
+{
+  "capture": "4sics-151022.pcap",
+  "findings": [
+    {
+      "protocol": "FTP",
+      "exposures": 42,
+      "hosts_involved": 7,
+      "field_breakdown": {
+        "username": 21,
+        "password": 21
+      },
+      "samples": [
+        {
+          "src": "192.168.2.137",
+          "dst": "192.168.88.49",
+          "field": "username",
+          "value": "anonymous",
+          "severity": "medium"
+        },
+        {
+          "src": "192.168.2.137",
+          "dst": "192.168.88.49",
+          "field": "password",
+          "value": "<7 chars redacted>",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.2.137",
+          "dst": "192.168.88.49",
+          "field": "username",
+          "value": "anonymous",
+          "severity": "medium"
+        },
+        {
+          "src": "192.168.2.137",
+          "dst": "192.168.88.49",
+          "field": "password",
+          "value": "<7 chars redacted>",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.2.137",
+          "dst": "192.168.88.49",
+          "field": "username",
+          "value": "anonymous",
+          "severity": "medium"
+        },
+        {
+          "src": "192.168.2.137",
+          "dst": "192.168.88.49",
+          "field": "password",
+          "value": "<7 chars redacted>",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.2.137",
+          "dst": "192.168.88.49",
+          "field": "username",
+          "value": "anonymous",
+          "severity": "medium"
+        },
+        {
+          "src": "192.168.2.137",
+          "dst": "192.168.88.49",
+          "field": "password",
+          "value": "<7 chars redacted>",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.2.166",
+          "dst": "192.168.88.25",
+          "field": "username",
+          "value": "anonymous",
+          "severity": "medium"
+        },
+        {
+          "src": "192.168.2.166",
+          "dst": "192.168.88.25",
+          "field": "password",
+          "value": "<7 chars redacted>",
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "protocol": "Telnet",
+      "exposures": 49,
+      "hosts_involved": 13,
+      "field_breakdown": {
+        "session": 49
+      },
+      "samples": [
+        {
+          "src": "192.168.88.95",
+          "dst": "192.168.2.137",
+          "field": "session",
+          "value": "1937 packets",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.88.95",
+          "dst": "192.168.2.53",
+          "field": "session",
+          "value": "1905 packets",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.88.60",
+          "dst": "192.168.2.137",
+          "field": "session",
+          "value": "435 packets",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.2.137",
+          "dst": "192.168.88.60",
+          "field": "session",
+          "value": "362 packets",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.88.95",
+          "dst": "192.168.2.22",
+          "field": "session",
+          "value": "336 packets",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.88.95",
+          "dst": "192.168.2.199",
+          "field": "session",
+          "value": "263 packets",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.88.60",
+          "dst": "192.168.2.53",
+          "field": "session",
+          "value": "169 packets",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.88.61",
+          "dst": "192.168.2.53",
+          "field": "session",
+          "value": "84 packets",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.2.53",
+          "dst": "192.168.88.60",
+          "field": "session",
+          "value": "75 packets",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.2.53",
+          "dst": "192.168.88.61",
+          "field": "session",
+          "value": "75 packets",
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "protocol": "SNMP",
+      "exposures": 536,
+      "hosts_involved": 2,
+      "field_breakdown": {
+        "community_string": 536
+      },
+      "samples": [
+        {
+          "src": "192.168.2.22",
+          "dst": "192.168.88.30",
+          "field": "community_string",
+          "value": "public",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.88.30",
+          "dst": "192.168.2.22",
+          "field": "community_string",
+          "value": "public",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.2.22",
+          "dst": "192.168.88.30",
+          "field": "community_string",
+          "value": "public",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.88.30",
+          "dst": "192.168.2.22",
+          "field": "community_string",
+          "value": "public",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.2.22",
+          "dst": "192.168.88.30",
+          "field": "community_string",
+          "value": "public",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.88.30",
+          "dst": "192.168.2.22",
+          "field": "community_string",
+          "value": "public",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.2.22",
+          "dst": "192.168.88.30",
+          "field": "community_string",
+          "value": "public",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.88.30",
+          "dst": "192.168.2.22",
+          "field": "community_string",
+          "value": "public",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.2.22",
+          "dst": "192.168.88.30",
+          "field": "community_string",
+          "value": "public",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.88.30",
+          "dst": "192.168.2.22",
+          "field": "community_string",
+          "value": "public",
+          "severity": "high"
+        }
+      ]
+    },
+    {
+      "protocol": "HTTP",
+      "exposures": 18,
+      "hosts_involved": 9,
+      "field_breakdown": {
+        "authorization_header": 18
+      },
+      "samples": [
+        {
+          "src": "192.168.2.166",
+          "dst": "192.168.88.60",
+          "field": "authorization_header",
+          "value": "NTLM TlRMTVNTUAABAAAAB4I",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.2.166",
+          "dst": "192.168.88.49",
+          "field": "authorization_header",
+          "value": "NTLM TlRMTVNTUAABAAAAB4I",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.2.166",
+          "dst": "192.168.88.51",
+          "field": "authorization_header",
+          "value": "NTLM TlRMTVNTUAABAAAAB4I",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.2.166",
+          "dst": "192.168.88.60",
+          "field": "authorization_header",
+          "value": "NTLM TlRMTVNTUAABAAAAB4I",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.2.166",
+          "dst": "192.168.88.115",
+          "field": "authorization_header",
+          "value": "NTLM TlRMTVNTUAABAAAAB4I",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.2.166",
+          "dst": "192.168.88.115",
+          "field": "authorization_header",
+          "value": "NTLM TlRMTVNTUAABAAAAB4I",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.2.166",
+          "dst": "192.168.88.25",
+          "field": "authorization_header",
+          "value": "NTLM TlRMTVNTUAABAAAAB4I",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.2.199",
+          "dst": "192.168.88.51",
+          "field": "authorization_header",
+          "value": "NTLM TlRMTVNTUAABAAAAB4I",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.2.199",
+          "dst": "192.168.88.95",
+          "field": "authorization_header",
+          "value": "NTLM TlRMTVNTUAABAAAAB4I",
+          "severity": "high"
+        },
+        {
+          "src": "192.168.2.199",
+          "dst": "192.168.88.115",
+          "field": "authorization_header",
+          "value": "NTLM TlRMTVNTUAABAAAAB4I",
+          "severity": "high"
+        }
+      ]
+    }
+  ]
+}

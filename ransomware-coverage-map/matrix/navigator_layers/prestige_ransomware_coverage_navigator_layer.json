@@ -1,0 +1,60 @@
+{
+  "version": "4.3",
+  "name": "Prestige Ransomware Coverage (this project)",
+  "description": "Coverage of Prestige ransomware behaviour by Splunk security_content detections, scored from this project's evidence (matrix/coverage_matrix.json), not from Splunk's own (deprecated, ransomware-family-absent) mitre-map. Score 100=covered, 40=detection exists but its own logic does not match this capture, 10=behaviour occurred but Splunk ships no detection for it. Techniques not observed in this family's capture are omitted (GREY / no claim), not scored 0.",
+  "domain": "mitre-enterprise",
+  "techniques": [
+    {
+      "techniqueID": "T1486",
+      "score": 10,
+      "comment": "state=RED-TELEMETRY"
+    },
+    {
+      "techniqueID": "T1490",
+      "score": 100,
+      "comment": "state=GREEN\nDeleting Shadow Copies (LOGIC_MATCH): security_content/detections/endpoint/deleting_shadow_copies.yml\nWBAdmin Delete System Backups (LOGIC_MATCH): security_content/detections/endpoint/wbadmin_delete_system_backups.yml"
+    },
+    {
+      "techniqueID": "T1489",
+      "score": 100,
+      "comment": "state=GREEN\nWindows Service Stop Attempt (LOGIC_MATCH): security_content/detections/endpoint/windows_service_stop_attempt.yml"
+    },
+    {
+      "techniqueID": "T1112",
+      "score": 10,
+      "comment": "state=RED-TELEMETRY"
+    }
+  ],
+  "filters": {
+    "platforms": [
+      "Windows"
+    ]
+  },
+  "gradient": {
+    "colors": [
+      "#d8d6cd",
+      "#ec835a",
+      "#d03b3b",
+      "#0ca30c"
+    ],
+    "minValue": 0,
+    "maxValue": 100
+  },
+  "legendItems": [
+    {
+      "label": "GREEN: covered",
+      "color": "#0ca30c"
+    },
+    {
+      "label": "RED-LOGIC: detection exists, logic does not match",
+      "color": "#d03b3b"
+    },
+    {
+      "label": "RED-TELEMETRY: no detection shipped for this technique+family",
+      "color": "#ec835a"
+    }
+  ],
+  "sorting": 0,
+  "showTacticRowBackground": false,
+  "tacticRowBackground": "#dddddd"
+}

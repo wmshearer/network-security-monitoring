@@ -1,0 +1,28 @@
+SPL backslash-dot resolution, tested live against Splunk Enterprise 10.4.2
+Date: 2026-08-28
+
+QUESTION: does 'file_name IN ("*\.txt")' match a plainly-named .txt file?
+Detection under test: security_content/detections/endpoint/ransomware_notes_bulk_creation.yml
+
+--- A. literal SPL from the detection ---
+| makeresults | eval file_name="cHpfiXA9s.README.txt" | search file_name IN ("*\.txt","*\.html","*\.hta")
+RESULT: MATCHED (returned the row)
+
+--- B. permissive form, plain dot ---
+| makeresults | eval file_name="cHpfiXA9s.README.txt" | search file_name IN ("*.txt")
+RESULT: MATCHED
+
+--- C. negative control ---
+| makeresults | eval file_name="notes.pdf" | search file_name IN ("*\.txt","*\.html","*\.hta")
+RESULT: no match (correct)
+
+--- D. harness note ---
+'where ... IN' does NOT wildcard-match; 'search ... IN' does.
+An early test used 'where' and returned empty for BOTH readings, which
+would have been read as confirming the strict reading. The plain-dot
+control caught it: a form that must match returned nothing, proving the
+harness was wrong rather than the hypothesis right.
+
+CONCLUSION: Splunk treats the backslash permissively. The strict reading
+is WRONG. lockbit_ransomware|T1486 and chaos_ransomware|T1486 are GREEN,
+not RED-LOGIC.

@@ -1,0 +1,840 @@
+{
+  "conti": {
+    "T1486": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": null,
+      "candidate_detections": []
+    },
+    "T1490": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": null,
+      "candidate_detections": []
+    },
+    "T1489": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": null,
+      "candidate_detections": []
+    },
+    "T1491": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": null,
+      "candidate_detections": []
+    },
+    "T1491.001": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": null,
+      "candidate_detections": []
+    },
+    "T1112": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": null,
+      "candidate_detections": []
+    },
+    "T1562": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": null,
+      "candidate_detections": []
+    },
+    "T1562.001": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": null,
+      "candidate_detections": []
+    },
+    "T1562.002": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": null,
+      "candidate_detections": []
+    },
+    "T1562.003": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": null,
+      "candidate_detections": []
+    }
+  },
+  "ryuk": {
+    "T1486": {
+      "verdict": "LOGIC_MATCH",
+      "story_used": "Ryuk Ransomware",
+      "candidate_detections": [
+        {
+          "detection_name": "Ryuk Test Files Detected",
+          "source_file": "security_content/detections/endpoint/ryuk_test_files_detected.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "C:\\*Ryuk"
+          ],
+          "matched_lines": 71
+        }
+      ]
+    },
+    "T1490": {
+      "verdict": "LOGIC_NO_MATCH",
+      "story_used": "Ryuk Ransomware",
+      "candidate_detections": [
+        {
+          "detection_name": "BCDEdit Failure Recovery Modification",
+          "source_file": "security_content/detections/endpoint/bcdedit_failure_recovery_modification.yml",
+          "status": "production",
+          "verdict": "LOGIC_NO_MATCH",
+          "literals": [
+            "bcdedit.exe",
+            "recoveryenabled"
+          ],
+          "matched_lines": 0
+        },
+        {
+          "detection_name": "WBAdmin Delete System Backups",
+          "source_file": "security_content/detections/endpoint/wbadmin_delete_system_backups.yml",
+          "status": "production",
+          "verdict": "LOGIC_NO_MATCH",
+          "literals": [
+            "WBADMIN.EXE",
+            "backup",
+            "catalog",
+            "delete",
+            "wbadmin.exe"
+          ],
+          "matched_lines": 0
+        }
+      ]
+    },
+    "T1489": {
+      "verdict": "LOGIC_MATCH",
+      "story_used": "Ryuk Ransomware",
+      "candidate_detections": [
+        {
+          "detection_name": "Windows Security Account Manager Stopped",
+          "source_file": "security_content/detections/endpoint/windows_security_account_manager_stopped.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "net*.exe",
+            "stop \"samss\""
+          ],
+          "matched_lines": 203
+        }
+      ]
+    },
+    "T1491": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Ryuk Ransomware",
+      "candidate_detections": []
+    },
+    "T1491.001": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Ryuk Ransomware",
+      "candidate_detections": []
+    },
+    "T1112": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Ryuk Ransomware",
+      "candidate_detections": []
+    },
+    "T1562": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Ryuk Ransomware",
+      "candidate_detections": []
+    },
+    "T1562.001": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Ryuk Ransomware",
+      "candidate_detections": []
+    },
+    "T1562.002": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Ryuk Ransomware",
+      "candidate_detections": []
+    },
+    "T1562.003": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Ryuk Ransomware",
+      "candidate_detections": []
+    }
+  },
+  "revil": {
+    "T1486": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Revil Ransomware",
+      "candidate_detections": []
+    },
+    "T1490": {
+      "verdict": "LOGIC_MATCH",
+      "story_used": "Revil Ransomware",
+      "candidate_detections": [
+        {
+          "detection_name": "Delete ShadowCopy With PowerShell",
+          "source_file": "security_content/detections/endpoint/delete_shadowcopy_with_powershell.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "Delete",
+            "Remove",
+            "ShadowCopy"
+          ],
+          "matched_lines": 32
+        }
+      ]
+    },
+    "T1489": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Revil Ransomware",
+      "candidate_detections": []
+    },
+    "T1491": {
+      "verdict": "LOGIC_MATCH",
+      "story_used": "Revil Ransomware",
+      "candidate_detections": [
+        {
+          "detection_name": "Modification Of Wallpaper",
+          "source_file": "security_content/detections/endpoint/modification_of_wallpaper.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "\\Control Panel\\Desktop\\Wallpaper",
+            "\\Control Panel\\Desktop\\WallpaperStyle"
+          ],
+          "matched_lines": 3
+        }
+      ]
+    },
+    "T1491.001": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Revil Ransomware",
+      "candidate_detections": []
+    },
+    "T1112": {
+      "verdict": "LOGIC_MATCH",
+      "story_used": "Revil Ransomware",
+      "candidate_detections": [
+        {
+          "detection_name": "Revil Registry Entry",
+          "source_file": "security_content/detections/endpoint/revil_registry_entry.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "\\SOFTWARE\\WOW6432Node\\BlackLivesMatter",
+            "\\SOFTWARE\\WOW6432Node\\Facebook_Assistant\\"
+          ],
+          "matched_lines": 6
+        }
+      ]
+    },
+    "T1562": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Revil Ransomware",
+      "candidate_detections": []
+    },
+    "T1562.001": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Revil Ransomware",
+      "candidate_detections": []
+    },
+    "T1562.002": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Revil Ransomware",
+      "candidate_detections": []
+    },
+    "T1562.003": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Revil Ransomware",
+      "candidate_detections": []
+    }
+  },
+  "lockbit_ransomware": {
+    "T1486": {
+      "verdict": "LOGIC_MATCH",
+      "story_used": "LockBit Ransomware",
+      "candidate_detections": [
+        {
+          "detection_name": "High Process Termination Frequency",
+          "source_file": "security_content/detections/endpoint/high_process_termination_frequency.yml",
+          "status": "production",
+          "verdict": "UNDETERMINED-UNPARSEABLE-SEARCH",
+          "literals": [],
+          "matched_lines": 0
+        },
+        {
+          "detection_name": "Ransomware Notes bulk creation",
+          "source_file": "security_content/detections/endpoint/ransomware_notes_bulk_creation.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            ".hta",
+            ".html",
+            ".txt"
+          ],
+          "matched_lines": 761
+        }
+      ]
+    },
+    "T1490": {
+      "verdict": "LOGIC_MATCH",
+      "story_used": "LockBit Ransomware",
+      "candidate_detections": [
+        {
+          "detection_name": "Deleting Shadow Copies",
+          "source_file": "security_content/detections/endpoint/deleting_shadow_copies.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "delete",
+            "shadow",
+            "vssadmin.exe",
+            "wmic.exe"
+          ],
+          "matched_lines": 335
+        },
+        {
+          "detection_name": "Windows Security And Backup Services Stop",
+          "source_file": "security_content/detections/endpoint/windows_security_and_backup_services_stop.yml",
+          "status": "production",
+          "verdict": "UNDETERMINED-UNPARSEABLE-SEARCH",
+          "literals": [],
+          "matched_lines": 0
+        }
+      ]
+    },
+    "T1489": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "LockBit Ransomware",
+      "candidate_detections": []
+    },
+    "T1491": {
+      "verdict": "LOGIC_NO_MATCH",
+      "story_used": "LockBit Ransomware",
+      "candidate_detections": [
+        {
+          "detection_name": "Modification Of Wallpaper",
+          "source_file": "security_content/detections/endpoint/modification_of_wallpaper.yml",
+          "status": "production",
+          "verdict": "LOGIC_NO_MATCH",
+          "literals": [
+            "\\Control Panel\\Desktop\\Wallpaper",
+            "\\Control Panel\\Desktop\\WallpaperStyle"
+          ],
+          "matched_lines": 0
+        }
+      ]
+    },
+    "T1491.001": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "LockBit Ransomware",
+      "candidate_detections": []
+    },
+    "T1112": {
+      "verdict": "LOGIC_MATCH",
+      "story_used": "LockBit Ransomware",
+      "candidate_detections": [
+        {
+          "detection_name": "Windows Modify Registry Default Icon Setting",
+          "source_file": "security_content/detections/endpoint/windows_modify_registry_default_icon_setting.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "HKCR\\",
+            "\\defaultIcon\\(Default)"
+          ],
+          "matched_lines": 3
+        }
+      ]
+    },
+    "T1562": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "LockBit Ransomware",
+      "candidate_detections": []
+    },
+    "T1562.001": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "LockBit Ransomware",
+      "candidate_detections": []
+    },
+    "T1562.002": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "LockBit Ransomware",
+      "candidate_detections": []
+    },
+    "T1562.003": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "LockBit Ransomware",
+      "candidate_detections": []
+    }
+  },
+  "prestige_ransomware": {
+    "T1486": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Prestige Ransomware",
+      "candidate_detections": []
+    },
+    "T1490": {
+      "verdict": "LOGIC_MATCH",
+      "story_used": "Prestige Ransomware",
+      "candidate_detections": [
+        {
+          "detection_name": "Deleting Shadow Copies",
+          "source_file": "security_content/detections/endpoint/deleting_shadow_copies.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "delete",
+            "shadow",
+            "vssadmin.exe",
+            "wmic.exe"
+          ],
+          "matched_lines": 51
+        },
+        {
+          "detection_name": "WBAdmin Delete System Backups",
+          "source_file": "security_content/detections/endpoint/wbadmin_delete_system_backups.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "WBADMIN.EXE",
+            "backup",
+            "catalog",
+            "delete",
+            "wbadmin.exe"
+          ],
+          "matched_lines": 43
+        }
+      ]
+    },
+    "T1489": {
+      "verdict": "LOGIC_MATCH",
+      "story_used": "Prestige Ransomware",
+      "candidate_detections": [
+        {
+          "detection_name": "Windows Service Stop Attempt",
+          "source_file": "security_content/detections/endpoint/windows_service_stop_attempt.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "Stop-Service",
+            "stop"
+          ],
+          "matched_lines": 3
+        }
+      ]
+    },
+    "T1491": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Prestige Ransomware",
+      "candidate_detections": []
+    },
+    "T1491.001": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Prestige Ransomware",
+      "candidate_detections": []
+    },
+    "T1112": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Prestige Ransomware",
+      "candidate_detections": []
+    },
+    "T1562": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Prestige Ransomware",
+      "candidate_detections": []
+    },
+    "T1562.001": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Prestige Ransomware",
+      "candidate_detections": []
+    },
+    "T1562.002": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Prestige Ransomware",
+      "candidate_detections": []
+    },
+    "T1562.003": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Prestige Ransomware",
+      "candidate_detections": []
+    }
+  },
+  "chaos_ransomware": {
+    "T1486": {
+      "verdict": "LOGIC_MATCH",
+      "story_used": "Chaos Ransomware",
+      "candidate_detections": [
+        {
+          "detection_name": "Ransomware Notes bulk creation",
+          "source_file": "security_content/detections/endpoint/ransomware_notes_bulk_creation.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            ".hta",
+            ".html",
+            ".txt"
+          ],
+          "matched_lines": 229
+        }
+      ]
+    },
+    "T1490": {
+      "verdict": "LOGIC_MATCH",
+      "story_used": "Chaos Ransomware",
+      "candidate_detections": [
+        {
+          "detection_name": "Deleting Shadow Copies",
+          "source_file": "security_content/detections/endpoint/deleting_shadow_copies.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "delete",
+            "shadow",
+            "vssadmin.exe",
+            "wmic.exe"
+          ],
+          "matched_lines": 436
+        },
+        {
+          "detection_name": "Prevent Automatic Repair Mode using Bcdedit",
+          "source_file": "security_content/detections/endpoint/prevent_automatic_repair_mode_using_bcdedit.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "bcdedit.exe",
+            "bootstatuspolicy",
+            "ignoreallfailures"
+          ],
+          "matched_lines": 116
+        },
+        {
+          "detection_name": "WBAdmin Delete System Backups",
+          "source_file": "security_content/detections/endpoint/wbadmin_delete_system_backups.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "WBADMIN.EXE",
+            "backup",
+            "catalog",
+            "delete",
+            "wbadmin.exe"
+          ],
+          "matched_lines": 137
+        }
+      ]
+    },
+    "T1489": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Chaos Ransomware",
+      "candidate_detections": []
+    },
+    "T1491": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Chaos Ransomware",
+      "candidate_detections": []
+    },
+    "T1491.001": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Chaos Ransomware",
+      "candidate_detections": []
+    },
+    "T1112": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Chaos Ransomware",
+      "candidate_detections": []
+    },
+    "T1562": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Chaos Ransomware",
+      "candidate_detections": []
+    },
+    "T1562.001": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Chaos Ransomware",
+      "candidate_detections": []
+    },
+    "T1562.002": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Chaos Ransomware",
+      "candidate_detections": []
+    },
+    "T1562.003": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Chaos Ransomware",
+      "candidate_detections": []
+    }
+  },
+  "ransomware_ttp": {
+    "T1486": {
+      "verdict": "LOGIC_MATCH",
+      "story_used": "Ransomware",
+      "candidate_detections": [
+        {
+          "detection_name": "Windows .Key File Creation in Root Directory",
+          "source_file": "security_content/detections/endpoint/windows__key_file_creation_in_root_directory.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            ".key"
+          ],
+          "matched_lines": 6
+        },
+        {
+          "detection_name": "Windows DiskCryptor Usage",
+          "source_file": "security_content/detections/endpoint/windows_diskcryptor_usage.yml",
+          "status": "production",
+          "verdict": "LOGIC_NO_MATCH",
+          "literals": [
+            "dcinst.exe",
+            "dcrypt.exe"
+          ],
+          "matched_lines": 0
+        }
+      ]
+    },
+    "T1490": {
+      "verdict": "LOGIC_MATCH",
+      "story_used": "Ransomware",
+      "candidate_detections": [
+        {
+          "detection_name": "BCDEdit Failure Recovery Modification",
+          "source_file": "security_content/detections/endpoint/bcdedit_failure_recovery_modification.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "bcdedit.exe",
+            "recoveryenabled"
+          ],
+          "matched_lines": 4
+        },
+        {
+          "detection_name": "Delete ShadowCopy With PowerShell",
+          "source_file": "security_content/detections/endpoint/delete_shadowcopy_with_powershell.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "Delete",
+            "Remove",
+            "ShadowCopy"
+          ],
+          "matched_lines": 726
+        },
+        {
+          "detection_name": "Deleting Shadow Copies",
+          "source_file": "security_content/detections/endpoint/deleting_shadow_copies.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "delete",
+            "shadow",
+            "vssadmin.exe",
+            "wmic.exe"
+          ],
+          "matched_lines": 166
+        },
+        {
+          "detection_name": "Prevent Automatic Repair Mode using Bcdedit",
+          "source_file": "security_content/detections/endpoint/prevent_automatic_repair_mode_using_bcdedit.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "bcdedit.exe",
+            "bootstatuspolicy",
+            "ignoreallfailures"
+          ],
+          "matched_lines": 6
+        },
+        {
+          "detection_name": "WBAdmin Delete System Backups",
+          "source_file": "security_content/detections/endpoint/wbadmin_delete_system_backups.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "WBADMIN.EXE",
+            "backup",
+            "catalog",
+            "delete",
+            "wbadmin.exe"
+          ],
+          "matched_lines": 161
+        },
+        {
+          "detection_name": "Windows Security And Backup Services Stop",
+          "source_file": "security_content/detections/endpoint/windows_security_and_backup_services_stop.yml",
+          "status": "production",
+          "verdict": "UNDETERMINED-UNPARSEABLE-SEARCH",
+          "literals": [],
+          "matched_lines": 0
+        }
+      ]
+    },
+    "T1489": {
+      "verdict": "LOGIC_MATCH",
+      "story_used": "Ransomware",
+      "candidate_detections": [
+        {
+          "detection_name": "Windows Excessive Service Stop Attempt",
+          "source_file": "security_content/detections/endpoint/windows_excessive_service_stop_attempt.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "delete",
+            "stop"
+          ],
+          "matched_lines": 134
+        },
+        {
+          "detection_name": "Windows Set Account Password Policy To Unlimited Via Net",
+          "source_file": "security_content/detections/endpoint/windows_set_account_password_policy_to_unlimited_via_net.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "/maxpwage:49710",
+            "/maxpwage:unlimited",
+            "accounts"
+          ],
+          "matched_lines": 10
+        }
+      ]
+    },
+    "T1491": {
+      "verdict": "LOGIC_NO_MATCH",
+      "story_used": "Ransomware",
+      "candidate_detections": [
+        {
+          "detection_name": "Modification Of Wallpaper",
+          "source_file": "security_content/detections/endpoint/modification_of_wallpaper.yml",
+          "status": "production",
+          "verdict": "LOGIC_NO_MATCH",
+          "literals": [
+            "\\Control Panel\\Desktop\\Wallpaper",
+            "\\Control Panel\\Desktop\\WallpaperStyle"
+          ],
+          "matched_lines": 0
+        }
+      ]
+    },
+    "T1491.001": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Ransomware",
+      "candidate_detections": []
+    },
+    "T1112": {
+      "verdict": "LOGIC_MATCH",
+      "story_used": "Ransomware",
+      "candidate_detections": [
+        {
+          "detection_name": "Revil Registry Entry",
+          "source_file": "security_content/detections/endpoint/revil_registry_entry.yml",
+          "status": "production",
+          "verdict": "LOGIC_NO_MATCH",
+          "literals": [
+            "\\SOFTWARE\\WOW6432Node\\BlackLivesMatter",
+            "\\SOFTWARE\\WOW6432Node\\Facebook_Assistant\\"
+          ],
+          "matched_lines": 0
+        },
+        {
+          "detection_name": "Windows Disable Change Password Through Registry",
+          "source_file": "security_content/detections/endpoint/windows_disable_change_password_through_registry.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "0x00000001",
+            "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableChangePassword"
+          ],
+          "matched_lines": 77
+        },
+        {
+          "detection_name": "Windows Disable Lock Workstation Feature Through Registry",
+          "source_file": "security_content/detections/endpoint/windows_disable_lock_workstation_feature_through_registry.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "0x00000001",
+            "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableLockWorkstation"
+          ],
+          "matched_lines": 77
+        },
+        {
+          "detection_name": "Windows Disable LogOff Button Through Registry",
+          "source_file": "security_content/detections/endpoint/windows_disable_logoff_button_through_registry.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "0x00000001",
+            "NoLogOff",
+            "StartMenuLogOff",
+            "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\"
+          ],
+          "matched_lines": 77
+        },
+        {
+          "detection_name": "Windows Disable Shutdown Button Through Registry",
+          "source_file": "security_content/detections/endpoint/windows_disable_shutdown_button_through_registry.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "0x00000000",
+            "0x00000001",
+            "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\NoClose",
+            "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\shutdownwithoutlogon"
+          ],
+          "matched_lines": 170
+        },
+        {
+          "detection_name": "Windows Disable Windows Group Policy Features Through Registry",
+          "source_file": "security_content/detections/endpoint/windows_disable_windows_group_policy_features_through_registry.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "0x00000001",
+            "NoColorChoice",
+            "NoControlPanel",
+            "NoDesktop",
+            "NoFileMenu",
+            "NoFind",
+            "NoPropertiesMyDocuments",
+            "NoSetTaskbar",
+            "NoThemesTab",
+            "NoTrayContextMenu",
+            "NoVisualStyleChoice",
+            "TaskbarLockAll",
+            "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\",
+            "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\"
+          ],
+          "matched_lines": 79
+        },
+        {
+          "detection_name": "Windows Hide Notification Features Through Registry",
+          "source_file": "security_content/detections/endpoint/windows_hide_notification_features_through_registry.yml",
+          "status": "production",
+          "verdict": "LOGIC_MATCH",
+          "literals": [
+            "0x00000001",
+            "HideClock",
+            "HideSCAHealth",
+            "HideSCANetwork",
+            "HideSCAPower",
+            "HideSCAVolume",
+            "\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\"
+          ],
+          "matched_lines": 77
+        }
+      ]
+    },
+    "T1562": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Ransomware",
+      "candidate_detections": []
+    },
+    "T1562.001": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Ransomware",
+      "candidate_detections": []
+    },
+    "T1562.002": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Ransomware",
+      "candidate_detections": []
+    },
+    "T1562.003": {
+      "verdict": "UNDETERMINED-NO-DETECTION",
+      "story_used": "Ransomware",
+      "candidate_detections": []
+    }
+  }
+}

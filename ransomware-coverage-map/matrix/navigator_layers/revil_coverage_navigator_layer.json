@@ -1,0 +1,55 @@
+{
+  "version": "4.3",
+  "name": "Revil Ransomware Coverage (this project)",
+  "description": "Coverage of Revil ransomware behaviour by Splunk security_content detections, scored from this project's evidence (matrix/coverage_matrix.json), not from Splunk's own (deprecated, ransomware-family-absent) mitre-map. Score 100=covered, 40=detection exists but its own logic does not match this capture, 10=behaviour occurred but Splunk ships no detection for it. Techniques not observed in this family's capture are omitted (GREY / no claim), not scored 0.",
+  "domain": "mitre-enterprise",
+  "techniques": [
+    {
+      "techniqueID": "T1490",
+      "score": 100,
+      "comment": "state=GREEN\nDelete ShadowCopy With PowerShell (LOGIC_MATCH): security_content/detections/endpoint/delete_shadowcopy_with_powershell.yml"
+    },
+    {
+      "techniqueID": "T1491",
+      "score": 100,
+      "comment": "state=GREEN\nModification Of Wallpaper (LOGIC_MATCH): security_content/detections/endpoint/modification_of_wallpaper.yml"
+    },
+    {
+      "techniqueID": "T1491.001",
+      "score": 10,
+      "comment": "state=RED-TELEMETRY"
+    }
+  ],
+  "filters": {
+    "platforms": [
+      "Windows"
+    ]
+  },
+  "gradient": {
+    "colors": [
+      "#d8d6cd",
+      "#ec835a",
+      "#d03b3b",
+      "#0ca30c"
+    ],
+    "minValue": 0,
+    "maxValue": 100
+  },
+  "legendItems": [
+    {
+      "label": "GREEN: covered",
+      "color": "#0ca30c"
+    },
+    {
+      "label": "RED-LOGIC: detection exists, logic does not match",
+      "color": "#d03b3b"
+    },
+    {
+      "label": "RED-TELEMETRY: no detection shipped for this technique+family",
+      "color": "#ec835a"
+    }
+  ],
+  "sorting": 0,
+  "showTacticRowBackground": false,
+  "tacticRowBackground": "#dddddd"
+}

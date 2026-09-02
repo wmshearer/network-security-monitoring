@@ -1,0 +1,12 @@
+# Captures and rulesets are fetched, not vendored: large, third-party, and
+# under licenses separate from this project's.
+data/pcaps/
+data/rules/
+data/out/
+
+# Reports ARE committed. They are the deliverable.
+
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/

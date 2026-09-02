@@ -1,0 +1,5531 @@
+{
+  "capture": "ctu13-44-rbot.pcap",
+  "total_attempts": 160092,
+  "profiles": [
+    {
+      "source": "147.32.84.165",
+      "attempts": 159108,
+      "distinct_targets": 26851,
+      "hosts_that_answered": 491,
+      "response_rate": 0.01829,
+      "distinct_subnets": 21676,
+      "attempts_per_target": 5.93,
+      "duration_s": 238975.0,
+      "top_ports": [
+        [
+          22,
+          159108
+        ]
+      ],
+      "shape": "wide scanning (most targets never answered)"
+    },
+    {
+      "source": "208.100.50.117",
+      "attempts": 15,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 15.0,
+      "duration_s": 27.0,
+      "top_ports": [
+        [
+          22,
+          15
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "82.222.3.222",
+      "attempts": 12,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 12.0,
+      "duration_s": 11147.0,
+      "top_ports": [
+        [
+          22,
+          12
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "124.194.209.50",
+      "attempts": 6,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 6.0,
+      "duration_s": 9.9,
+      "top_ports": [
+        [
+          22,
+          6
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "125.235.249.18",
+      "attempts": 6,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 6.0,
+      "duration_s": 21.9,
+      "top_ports": [
+        [
+          22,
+          6
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "117.111.164.106",
+      "attempts": 6,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 6.0,
+      "duration_s": 9.4,
+      "top_ports": [
+        [
+          22,
+          6
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "208.180.65.190",
+      "attempts": 6,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 6.0,
+      "duration_s": 16.0,
+      "top_ports": [
+        [
+          22,
+          6
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "209.151.129.111",
+      "attempts": 6,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 6.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          6
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "82.222.13.170",
+      "attempts": 6,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 6.0,
+      "duration_s": 11146.8,
+      "top_ports": [
+        [
+          22,
+          6
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "82.222.3.154",
+      "attempts": 6,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 6.0,
+      "duration_s": 12.0,
+      "top_ports": [
+        [
+          22,
+          6
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "82.222.13.10",
+      "attempts": 6,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 6.0,
+      "duration_s": 755.4,
+      "top_ports": [
+        [
+          22,
+          6
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "149.6.30.58",
+      "attempts": 6,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 6.0,
+      "duration_s": 10.5,
+      "top_ports": [
+        [
+          22,
+          6
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "85.14.22.38",
+      "attempts": 6,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 6.0,
+      "duration_s": 10.7,
+      "top_ports": [
+        [
+          22,
+          6
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "222.238.15.146",
+      "attempts": 6,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 6.0,
+      "duration_s": 9.5,
+      "top_ports": [
+        [
+          22,
+          6
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "59.42.177.5",
+      "attempts": 5,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 5.0,
+      "duration_s": 8.7,
+      "top_ports": [
+        [
+          22,
+          5
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "124.146.229.49",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "202.89.54.22",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "124.199.211.131",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "124.207.231.34",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "203.104.107.107",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "125.7.230.198",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "125.63.56.66",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "125.64.76.1",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 27.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "119.146.120.42",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "125.91.75.66",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "125.103.86.42",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "61.130.41.2",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "60.191.219.73",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "125.131.222.231",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "221.163.227.210",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "59.24.176.54",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "118.44.94.194",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "59.9.123.190",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "125.145.64.6",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "125.145.40.182",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "218.153.207.202",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "125.168.253.33",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "125.168.65.1",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "1.208.71.54",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "1.213.78.106",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "1.213.78.102",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "202.193.156.201",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "27.68.241.86",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "117.111.163.178",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "117.111.163.206",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "117.111.163.242",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "117.111.164.38",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "180.81.6.114",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "180.81.6.214",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "117.111.164.82",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "117.111.164.138",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "208.100.40.206",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "208.100.40.227",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "208.100.40.229",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "208.100.40.228",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "208.100.42.144",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "208.100.42.145",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "208.100.42.148",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "208.100.42.146",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "208.100.42.147",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "208.100.42.149",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "208.100.42.150",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "208.100.42.151",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "208.100.43.43",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "208.100.57.40",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "208.100.1.77",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "208.100.162.56",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "75.101.94.22",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "208.110.177.37",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "206.222.110.30",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "209.20.79.21",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "139.142.80.69",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "173.245.86.18",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "209.176.175.202",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "12.81.8.20",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "209.150.244.2",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "209.217.98.142",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "209.239.171.113",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "209.242.226.158",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "121.167.115.148",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "210.19.7.81",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "58.243.103.74",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "210.69.162.73",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "210.220.126.186",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "222.113.62.86",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "61.97.193.122",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "115.91.227.27",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "219.146.138.198",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "211.210.148.26",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "222.100.177.222",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "123.141.251.234",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "210.137.52.0",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "210.155.133.38",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "211.12.9.250",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.4,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "115.92.232.218",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "210.200.86.22",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "1.213.30.102",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "211.62.189.90",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "210.124.1.138",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "203.228.24.190",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "113.157.228.234",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "59.12.170.226",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "221.162.14.94",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "210.118.3.146",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "61.255.215.122",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "116.126.95.242",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "211.180.25.230",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "220.72.18.2",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "202.207.131.66",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.1,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "219.249.102.6",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "211.179.97.194",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "211.143.233.105",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 0.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "210.207.105.82",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "211.170.38.130",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "211.169.142.90",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "61.254.6.46",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "219.250.103.2",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "211.208.1.246",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "175.214.1.124",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "222.106.142.54",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "59.21.78.194",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "121.137.198.114",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "211.199.223.251",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "222.116.138.126",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "58.224.187.150",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "114.203.2.254",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "61.105.250.1",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "211.205.177.162",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "219.250.198.94",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "211.210.148.14",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "112.188.70.186",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "218.152.232.10",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "121.176.92.94",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "59.3.122.214",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "218.145.234.39",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "115.89.248.210",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "221.143.231.138",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "61.98.208.6",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "124.111.86.118",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "58.127.99.162",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "58.229.55.46",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "62.80.213.4",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "109.160.1.30",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "217.71.99.218",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "212.14.63.234",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "62.178.192.12",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "212.26.133.249",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "212.28.45.74",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "212.33.203.254",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "212.33.233.18",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "212.39.29.13",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "212.51.207.29",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "109.160.0.42",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 11.3,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "212.75.63.70",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "212.77.162.142",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "212.89.160.26",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 11.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "212.160.211.18",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "195.185.187.219",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "212.179.45.179",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "77.67.94.158",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "213.52.30.18",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "193.93.244.13",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "88.135.128.8",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "83.97.64.66",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "213.135.15.99",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "62.183.253.29",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 0.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "213.148.16.174",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "82.222.3.50",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "86.111.43.233",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "213.163.234.233",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "212.122.62.1",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "213.180.65.187",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "213.180.112.199",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "213.180.65.188",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "213.157.13.142",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "81.30.242.162",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "212.75.0.9",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "62.108.96.68",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "65.46.13.118",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "216.17.135.16",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "216.26.222.100",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "209.44.183.214",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "65.46.62.74",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "216.51.60.18",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "69.55.148.166",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "12.81.8.94",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "209.208.0.166",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "66.62.136.9",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "69.64.6.242",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "216.211.73.93",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "216.211.73.94",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "216.218.201.55",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "216.235.138.34",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "64.251.17.147",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "83.167.150.150",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "213.30.180.2",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "217.30.200.8",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "81.134.109.60",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "217.64.32.254",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "212.25.160.88",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "217.69.91.200",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "93.91.144.5",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "217.79.151.2",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "80.58.86.238",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "217.125.231.230",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "85.15.192.206",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "94.249.129.58",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "212.121.241.29",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "217.151.63.1",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "217.168.208.80",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "213.172.49.253",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "217.194.176.1",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "93.63.239.90",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "115.178.71.11",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "211.110.92.150",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "218.38.74.2",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "218.39.223.90",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "222.237.111.246",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "211.244.8.10",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "218.39.28.146",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "222.238.20.170",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "124.111.68.165",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "58.229.86.42",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "218.72.251.200",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "218.2.249.58",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "125.136.124.154",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "121.186.130.62",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "115.23.247.98",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "221.145.5.78",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "218.185.224.67",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "221.131.191.145",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 6652.4,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "202.154.66.72",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "58.229.76.146",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "219.249.246.110",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "123.212.254.206",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "218.237.28.178",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "118.217.237.234",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "218.252.221.6",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "219.93.240.153",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "221.232.250.193",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "211.179.97.162",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "222.232.177.166",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "218.234.82.218",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "218.51.199.70",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "221.150.88.34",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "59.11.46.230",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "121.190.254.250",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "118.44.93.94",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "59.31.184.122",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "59.12.177.42",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "221.145.5.26",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "221.148.67.130",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "220.175.54.50",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "220.177.236.40",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "202.160.161.86",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "119.75.128.34",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "125.32.8.36",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "221.93.184.9",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "221.130.74.225",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 0.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "221.133.225.6",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "218.238.64.42",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "218.236.243.146",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "59.6.251.82",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "121.180.129.178",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "112.174.148.25",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "218.21.154.103",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "221.215.45.161",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 0.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "221.221.36.98",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.1,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "202.106.205.214",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 28.4,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "221.248.147.97",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "218.29.79.210",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "124.114.223.65",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "117.39.15.4",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "112.174.211.157",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "121.174.53.130",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "121.170.96.78",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "211.198.46.182",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "221.157.52.82",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "221.147.64.38",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "222.136.96.1",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 0.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "222.171.5.213",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "222.171.5.214",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "124.227.192.116",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "211.214.182.70",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "222.235.177.118",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "222.233.213.34",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "58.229.27.174",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "123.212.48.130",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "218.236.13.198",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.2,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "219.248.238.230",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "210.205.59.158",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "202.62.142.252",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "110.93.130.18",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "116.66.200.9",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "203.123.164.194",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 8.9,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "202.69.96.206",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "223.165.4.254",
+      "attempts": 3,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 3.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          3
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "61.145.68.189",
+      "attempts": 2,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 2.0,
+      "duration_s": 2.9,
+      "top_ports": [
+        [
+          22,
+          2
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "208.100.40.205",
+      "attempts": 2,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 2.0,
+      "duration_s": 7.9,
+      "top_ports": [
+        [
+          22,
+          2
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "61.82.170.150",
+      "attempts": 2,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 2.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          2
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "92.43.143.249",
+      "attempts": 2,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 2.0,
+      "duration_s": 6.0,
+      "top_ports": [
+        [
+          22,
+          2
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "212.68.1.105",
+      "attempts": 2,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 2.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          2
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "213.23.241.89",
+      "attempts": 2,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 2.0,
+      "duration_s": 6.0,
+      "top_ports": [
+        [
+          22,
+          2
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "212.193.32.1",
+      "attempts": 2,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 2.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          2
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "213.23.12.241",
+      "attempts": 2,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 2.0,
+      "duration_s": 6.0,
+      "top_ports": [
+        [
+          22,
+          2
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "193.69.11.114",
+      "attempts": 2,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 2.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          2
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "194.19.228.146",
+      "attempts": 2,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 2.0,
+      "duration_s": 6.6,
+      "top_ports": [
+        [
+          22,
+          2
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "218.23.4.81",
+      "attempts": 2,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 2.0,
+      "duration_s": 6.0,
+      "top_ports": [
+        [
+          22,
+          2
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "121.171.70.253",
+      "attempts": 2,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 2.0,
+      "duration_s": 9.0,
+      "top_ports": [
+        [
+          22,
+          2
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "182.252.138.47",
+      "attempts": 1,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 1.0,
+      "duration_s": 0.0,
+      "top_ports": [
+        [
+          22,
+          1
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "121.88.250.208",
+      "attempts": 1,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 1.0,
+      "duration_s": 0.0,
+      "top_ports": [
+        [
+          22,
+          1
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "121.88.249.94",
+      "attempts": 1,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 1.0,
+      "duration_s": 0.0,
+      "top_ports": [
+        [
+          22,
+          1
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "182.252.138.98",
+      "attempts": 1,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 1.0,
+      "duration_s": 0.0,
+      "top_ports": [
+        [
+          22,
+          1
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "208.100.40.204",
+      "attempts": 1,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 1.0,
+      "duration_s": 0.0,
+      "top_ports": [
+        [
+          22,
+          1
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "150.99.187.42",
+      "attempts": 1,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 1.0,
+      "duration_s": 0.0,
+      "top_ports": [
+        [
+          22,
+          1
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "211.58.125.238",
+      "attempts": 1,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 1.0,
+      "duration_s": 0.0,
+      "top_ports": [
+        [
+          22,
+          1
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "212.17.134.34",
+      "attempts": 1,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 1.0,
+      "duration_s": 0.0,
+      "top_ports": [
+        [
+          22,
+          1
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "212.34.128.5",
+      "attempts": 1,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 1.0,
+      "duration_s": 0.0,
+      "top_ports": [
+        [
+          22,
+          1
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "62.199.140.137",
+      "attempts": 1,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 1.0,
+      "duration_s": 0.0,
+      "top_ports": [
+        [
+          22,
+          1
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "202.37.244.226",
+      "attempts": 1,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 1.0,
+      "duration_s": 0.0,
+      "top_ports": [
+        [
+          22,
+          1
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "221.0.193.141",
+      "attempts": 1,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 1.0,
+      "duration_s": 0.0,
+      "top_ports": [
+        [
+          22,
+          1
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "125.35.67.74",
+      "attempts": 1,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 1.0,
+      "duration_s": 0.0,
+      "top_ports": [
+        [
+          22,
+          1
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "202.106.205.226",
+      "attempts": 1,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 1.0,
+      "duration_s": 0.0,
+      "top_ports": [
+        [
+          22,
+          1
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "221.230.38.54",
+      "attempts": 1,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 1.0,
+      "duration_s": 0.0,
+      "top_ports": [
+        [
+          22,
+          1
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    },
+    {
+      "source": "202.111.49.129",
+      "attempts": 1,
+      "distinct_targets": 1,
+      "hosts_that_answered": 0,
+      "response_rate": 0.0,
+      "distinct_subnets": 1,
+      "attempts_per_target": 1.0,
+      "duration_s": 0.0,
+      "top_ports": [
+        [
+          22,
+          1
+        ]
+      ],
+      "shape": "ordinary connection behaviour"
+    }
+  ]
+}

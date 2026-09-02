@@ -1,0 +1,5 @@
+data/pcaps/
+data/out/
+__pycache__/
+*.py[cod]
+.pytest_cache/

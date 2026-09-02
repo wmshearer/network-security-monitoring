@@ -1,0 +1,353 @@
+{
+  "capture": "ctu13-42-neris.pcap",
+  "beacon_threshold": 0.65,
+  "timing": {
+    "candidates_scored": 146,
+    "above_threshold": 16,
+    "destinations": 16
+  },
+  "signatures": {
+    "rules_loaded": 52415,
+    "et_signatures_default_homenet": 0,
+    "et_signatures_scoped_homenet": 21,
+    "destinations": 84,
+    "top_signatures": [
+      [
+        "ET USER_AGENTS Suspicious User-Agent (ClickAdsByIE)",
+        360
+      ],
+      [
+        "ET DNS Query for .su TLD (Soviet Union) Often Malware Related",
+        290
+      ],
+      [
+        "ET INFO Observed DNS Query to .biz TLD",
+        156
+      ],
+      [
+        "ET MALWARE Trojan Generic - POST To gate.php with no referer",
+        53
+      ],
+      [
+        "ET MALWARE Trojan Generic - POST To gate.php with no accept headers",
+        53
+      ],
+      [
+        "ET ADWARE_PUP User-Agent (Mozilla) - Possible Spyware Related",
+        31
+      ],
+      [
+        "ET INFO Free Hosting Domain (*.freehostia .com in DNS Lookup)",
+        30
+      ],
+      [
+        "ET HUNTING Hiloti Style GET to PHP with invalid terse MSIE headers",
+        20
+      ],
+      [
+        "ET INFO PE EXE or DLL Windows file download HTTP",
+        6
+      ],
+      [
+        "ET MALWARE Win32/Virut.BN Checkin",
+        4
+      ],
+      [
+        "ET MALWARE Driveby Loader Request List.php",
+        4
+      ],
+      [
+        "ET INFO Observed UA-CPU Header",
+        4
+      ],
+      [
+        "ET MALWARE Terse alphanumeric executable downloader high likelihood of being hostile",
+        3
+      ],
+      [
+        "ET MALWARE Possible Windows executable sent when remote host claims to send a Text File",
+        2
+      ],
+      [
+        "ET HUNTING SUSPICIOUS Dotted Quad Host MZ Response",
+        2
+      ]
+    ]
+  },
+  "overlap": {
+    "found_by_both": [
+      "174.133.57.141",
+      "31.192.109.167",
+      "94.63.150.20"
+    ],
+    "only_timing_analysis": [
+      "161.58.16.34",
+      "173.236.81.226",
+      "205.188.186.137",
+      "208.73.210.29",
+      "212.117.174.7",
+      "222.88.205.195",
+      "66.196.94.104",
+      "69.175.10.98",
+      "74.222.3.26",
+      "74.222.8.74",
+      "91.218.38.36",
+      "98.126.71.122",
+      "98.139.54.60"
+    ],
+    "only_signatures": [
+      "128.63.2.53",
+      "128.8.10.90",
+      "137.254.16.78",
+      "147.32.80.9",
+      "147.32.84.165",
+      "156.154.124.65",
+      "156.154.125.65",
+      "156.154.126.65",
+      "156.154.127.65",
+      "156.154.128.65",
+      "174.123.157.154",
+      "178.162.163.70",
+      "178.162.251.16",
+      "184.106.213.57",
+      "192.112.36.4",
+      "192.12.94.30",
+      "192.203.230.10",
+      "192.228.79.201",
+      "192.26.92.30",
+      "192.31.80.30",
+      "192.33.14.30",
+      "192.33.4.12",
+      "192.36.148.17",
+      "192.43.172.30",
+      "192.5.5.241",
+      "192.55.83.30",
+      "192.58.128.30",
+      "193.0.14.129",
+      "193.124.22.65",
+      "193.232.128.6",
+      "193.232.142.17",
+      "193.232.146.150",
+      "193.232.156.17",
+      "194.226.96.8",
+      "194.54.89.145",
+      "194.67.80.1",
+      "194.67.81.64",
+      "194.85.105.17",
+      "194.85.252.62",
+      "194.85.61.20",
+      "194.87.0.8",
+      "195.54.2.1",
+      "198.41.0.4",
+      "199.7.83.42",
+      "200.171.4.222",
+      "202.112.126.218",
+      "202.12.27.33",
+      "205.188.90.1",
+      "206.222.227.2",
+      "209.173.58.66",
+      "211.157.110.34",
+      "212.164.0.102",
+      "217.34.4.225",
+      "217.73.194.104",
+      "218.189.208.34",
+      "221.207.141.60",
+      "58.42.247.143",
+      "60.173.109.42",
+      "60.190.223.75",
+      "61.150.114.216",
+      "61.167.116.133",
+      "61.17.216.4",
+      "61.17.216.86",
+      "61.17.216.92",
+      "61.17.216.94",
+      "61.177.120.254",
+      "66.40.52.47",
+      "66.40.66.152",
+      "67.15.47.188",
+      "74.52.140.82",
+      "77.120.114.160",
+      "77.120.114.162",
+      "79.174.74.74",
+      "84.47.177.77",
+      "87.245.138.235",
+      "88.250.200.14",
+      "89.108.73.41",
+      "89.111.177.252",
+      "91.217.20.150",
+      "91.217.21.150",
+      "94.63.149.152"
+    ]
+  },
+  "timing_only_detail": [
+    {
+      "src": "147.32.84.165",
+      "dst": "208.73.210.29",
+      "dport": 80,
+      "connections": 29,
+      "median_interval_s": 296.77,
+      "interval_mad_s": 28.64,
+      "jitter_ratio": 0.0965,
+      "interval_score": 0.908,
+      "duration_hours": 4.62,
+      "bytes_out": 173130,
+      "bytes_in": 846988
+    },
+    {
+      "src": "147.32.84.165",
+      "dst": "222.88.205.195",
+      "dport": 443,
+      "connections": 21,
+      "median_interval_s": 55.83,
+      "interval_mad_s": 6.79,
+      "jitter_ratio": 0.1216,
+      "interval_score": 0.8855,
+      "duration_hours": 0.3,
+      "bytes_out": 75306,
+      "bytes_in": 681068
+    },
+    {
+      "src": "147.32.84.165",
+      "dst": "74.222.3.26",
+      "dport": 443,
+      "connections": 21,
+      "median_interval_s": 57.13,
+      "interval_mad_s": 7.21,
+      "jitter_ratio": 0.1262,
+      "interval_score": 0.8814,
+      "duration_hours": 0.3,
+      "bytes_out": 7812,
+      "bytes_in": 3780
+    },
+    {
+      "src": "147.32.84.165",
+      "dst": "69.175.10.98",
+      "dport": 4190,
+      "connections": 13,
+      "median_interval_s": 161.72,
+      "interval_mad_s": 33.26,
+      "jitter_ratio": 0.2056,
+      "interval_score": 0.8141,
+      "duration_hours": 2.28,
+      "bytes_out": 7272,
+      "bytes_in": 2666
+    },
+    {
+      "src": "147.32.84.165",
+      "dst": "173.236.81.226",
+      "dport": 3817,
+      "connections": 13,
+      "median_interval_s": 164.75,
+      "interval_mad_s": 34.76,
+      "jitter_ratio": 0.211,
+      "interval_score": 0.8098,
+      "duration_hours": 2.22,
+      "bytes_out": 6412,
+      "bytes_in": 2426
+    },
+    {
+      "src": "147.32.84.165",
+      "dst": "98.126.71.122",
+      "dport": 80,
+      "connections": 37,
+      "median_interval_s": 300.03,
+      "interval_mad_s": 63.41,
+      "jitter_ratio": 0.2113,
+      "interval_score": 0.8095,
+      "duration_hours": 4.17,
+      "bytes_out": 54410,
+      "bytes_in": 130178
+    },
+    {
+      "src": "147.32.84.165",
+      "dst": "74.222.8.74",
+      "dport": 443,
+      "connections": 14,
+      "median_interval_s": 64.19,
+      "interval_mad_s": 13.85,
+      "jitter_ratio": 0.2158,
+      "interval_score": 0.8059,
+      "duration_hours": 0.27,
+      "bytes_out": 5208,
+      "bytes_in": 0
+    },
+    {
+      "src": "147.32.84.165",
+      "dst": "66.196.94.104",
+      "dport": 25,
+      "connections": 8,
+      "median_interval_s": 3181.71,
+      "interval_mad_s": 796.69,
+      "jitter_ratio": 0.2504,
+      "interval_score": 0.7785,
+      "duration_hours": 4.34,
+      "bytes_out": 2976,
+      "bytes_in": 0
+    },
+    {
+      "src": "147.32.84.165",
+      "dst": "91.218.38.36",
+      "dport": 25,
+      "connections": 8,
+      "median_interval_s": 359.15,
+      "interval_mad_s": 98.71,
+      "jitter_ratio": 0.2748,
+      "interval_score": 0.7597,
+      "duration_hours": 0.74,
+      "bytes_out": 3348,
+      "bytes_in": 0
+    },
+    {
+      "src": "147.32.84.165",
+      "dst": "161.58.16.34",
+      "dport": 25,
+      "connections": 8,
+      "median_interval_s": 745.7,
+      "interval_mad_s": 225.25,
+      "jitter_ratio": 0.3021,
+      "interval_score": 0.7393,
+      "duration_hours": 4.09,
+      "bytes_out": 2976,
+      "bytes_in": 0
+    },
+    {
+      "src": "147.32.84.165",
+      "dst": "98.139.54.60",
+      "dport": 25,
+      "connections": 176,
+      "median_interval_s": 21.03,
+      "interval_mad_s": 7.61,
+      "jitter_ratio": 0.3619,
+      "interval_score": 0.6963,
+      "duration_hours": 4.15,
+      "bytes_out": 65472,
+      "bytes_in": 0
+    },
+    {
+      "src": "147.32.84.165",
+      "dst": "205.188.186.137",
+      "dport": 587,
+      "connections": 13,
+      "median_interval_s": 270.44,
+      "interval_mad_s": 107.38,
+      "jitter_ratio": 0.3971,
+      "interval_score": 0.6723,
+      "duration_hours": 4.07,
+      "bytes_out": 117824,
+      "bytes_in": 27667
+    },
+    {
+      "src": "147.32.84.165",
+      "dst": "212.117.174.7",
+      "dport": 4506,
+      "connections": 784,
+      "median_interval_s": 19.13,
+      "interval_mad_s": 8.21,
+      "jitter_ratio": 0.4293,
+      "interval_score": 0.651,
+      "duration_hours": 4.32,
+      "bytes_out": 335544,
+      "bytes_in": 0
+    }
+  ]
+}

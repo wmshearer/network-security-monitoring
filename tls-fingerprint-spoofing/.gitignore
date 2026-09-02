@@ -1,0 +1,9 @@
+*.pem
+*.key
+data/*.pcapng
+data/*.server.log
+data/*.tshark.log
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/

@@ -1,0 +1,267 @@
+{
+  "dataset": {
+    "n_rows": 374459,
+    "n_benign": 19746,
+    "n_malicious": 354713,
+    "tools": [
+      "dns2tcp",
+      "dnscat2",
+      "dnstt",
+      "iodine",
+      "tcp-over-dns",
+      "tuns"
+    ]
+  },
+  "features": {
+    "dropped_leaky": [
+      "SourceIP",
+      "DestinationIP",
+      "SourcePort",
+      "DestinationPort",
+      "TimeStamp"
+    ],
+    "kept_behavioral": [
+      "Duration",
+      "FlowBytesSent",
+      "FlowSentRate",
+      "FlowBytesReceived",
+      "FlowReceivedRate",
+      "PacketLengthVariance",
+      "PacketLengthStandardDeviation",
+      "PacketLengthMean",
+      "PacketLengthMedian",
+      "PacketLengthMode",
+      "PacketLengthSkewFromMedian",
+      "PacketLengthSkewFromMode",
+      "PacketLengthCoefficientofVariation",
+      "PacketTimeVariance",
+      "PacketTimeStandardDeviation",
+      "PacketTimeMean",
+      "PacketTimeMedian",
+      "PacketTimeMode",
+      "PacketTimeSkewFromMedian",
+      "PacketTimeSkewFromMode",
+      "PacketTimeCoefficientofVariation",
+      "ResponseTimeTimeVariance",
+      "ResponseTimeTimeStandardDeviation",
+      "ResponseTimeTimeMean",
+      "ResponseTimeTimeMedian",
+      "ResponseTimeTimeMode",
+      "ResponseTimeTimeSkewFromMedian",
+      "ResponseTimeTimeSkewFromMode",
+      "ResponseTimeTimeCoefficientofVariation"
+    ]
+  },
+  "models": {
+    "logistic_regression": {
+      "random_split_leaky": {
+        "name": "random_split (leaky)",
+        "n_train": 262121,
+        "n_test": 112338,
+        "accuracy": 0.9578,
+        "precision": 0.9924,
+        "recall": 0.9628,
+        "f1": 0.9774
+      },
+      "leave_one_tool_out_folds": [
+        {
+          "name": "leave_out=dns2tcp",
+          "n_train": 201248,
+          "n_test": 173211,
+          "accuracy": 0.1192,
+          "precision": 0.9751,
+          "recall": 0.0903,
+          "f1": 0.1653
+        },
+        {
+          "name": "leave_out=dnscat2",
+          "n_train": 332793,
+          "n_test": 41666,
+          "accuracy": 0.8851,
+          "precision": 0.9789,
+          "recall": 0.8851,
+          "f1": 0.9296
+        },
+        {
+          "name": "leave_out=dnstt",
+          "n_train": 322455,
+          "n_test": 52004,
+          "accuracy": 0.5456,
+          "precision": 0.9718,
+          "recall": 0.5017,
+          "f1": 0.6618
+        },
+        {
+          "name": "leave_out=iodine",
+          "n_train": 322011,
+          "n_test": 52448,
+          "accuracy": 0.8747,
+          "precision": 0.9835,
+          "recall": 0.8734,
+          "f1": 0.9252
+        },
+        {
+          "name": "leave_out=tcp-over-dns",
+          "n_train": 338495,
+          "n_test": 35964,
+          "accuracy": 0.9669,
+          "precision": 0.9765,
+          "recall": 0.984,
+          "f1": 0.9803
+        },
+        {
+          "name": "leave_out=tuns",
+          "n_train": 339495,
+          "n_test": 34964,
+          "accuracy": 0.9794,
+          "precision": 0.9758,
+          "recall": 1.0,
+          "f1": 0.9878
+        }
+      ],
+      "leave_one_tool_out_summary": {
+        "mean_accuracy": 0.7285,
+        "min_accuracy": 0.1192,
+        "max_accuracy": 0.9794,
+        "n_folds": 6
+      },
+      "gap_leaky_minus_honest": 0.2293,
+      "feature_importances": {
+        "PacketLengthStandardDeviation": 21.32267,
+        "ResponseTimeTimeMean": 11.589548,
+        "PacketLengthVariance": 7.541725,
+        "PacketLengthCoefficientofVariation": 7.372984,
+        "PacketLengthMean": 4.979495,
+        "PacketTimeStandardDeviation": 4.623828,
+        "PacketTimeVariance": 4.004313,
+        "ResponseTimeTimeMedian": 2.864629,
+        "PacketLengthMedian": 2.338802,
+        "ResponseTimeTimeStandardDeviation": 1.816307,
+        "Duration": 1.812246,
+        "PacketLengthSkewFromMedian": 1.649348,
+        "PacketLengthSkewFromMode": 1.391864,
+        "ResponseTimeTimeVariance": 1.04026,
+        "ResponseTimeTimeMode": 0.794652,
+        "PacketTimeMedian": 0.693378,
+        "FlowBytesSent": 0.659558,
+        "FlowReceivedRate": 0.61205,
+        "PacketTimeCoefficientofVariation": 0.58002,
+        "FlowSentRate": 0.572742,
+        "ResponseTimeTimeSkewFromMedian": 0.542731,
+        "FlowBytesReceived": 0.295638,
+        "ResponseTimeTimeSkewFromMode": 0.203082,
+        "ResponseTimeTimeCoefficientofVariation": 0.200223,
+        "PacketTimeSkewFromMode": 0.177034,
+        "PacketTimeMean": 0.120936,
+        "PacketTimeMode": 0.109335,
+        "PacketLengthMode": 0.103737,
+        "PacketTimeSkewFromMedian": 0.025848
+      }
+    },
+    "random_forest": {
+      "random_split_leaky": {
+        "name": "random_split (leaky)",
+        "n_train": 262121,
+        "n_test": 112338,
+        "accuracy": 0.9992,
+        "precision": 1.0,
+        "recall": 0.9991,
+        "f1": 0.9996
+      },
+      "leave_one_tool_out_folds": [
+        {
+          "name": "leave_out=dns2tcp",
+          "n_train": 201248,
+          "n_test": 173211,
+          "accuracy": 0.2153,
+          "precision": 0.9999,
+          "recall": 0.1875,
+          "f1": 0.3158
+        },
+        {
+          "name": "leave_out=dnscat2",
+          "n_train": 332793,
+          "n_test": 41666,
+          "accuracy": 0.9685,
+          "precision": 0.9998,
+          "recall": 0.9635,
+          "f1": 0.9813
+        },
+        {
+          "name": "leave_out=dnstt",
+          "n_train": 322455,
+          "n_test": 52004,
+          "accuracy": 0.5557,
+          "precision": 0.9998,
+          "recall": 0.4987,
+          "f1": 0.6655
+        },
+        {
+          "name": "leave_out=iodine",
+          "n_train": 322011,
+          "n_test": 52448,
+          "accuracy": 0.9921,
+          "precision": 0.9998,
+          "recall": 0.9913,
+          "f1": 0.9955
+        },
+        {
+          "name": "leave_out=tcp-over-dns",
+          "n_train": 338495,
+          "n_test": 35964,
+          "accuracy": 0.9999,
+          "precision": 0.9998,
+          "recall": 1.0,
+          "f1": 0.9999
+        },
+        {
+          "name": "leave_out=tuns",
+          "n_train": 339495,
+          "n_test": 34964,
+          "accuracy": 0.9999,
+          "precision": 0.9999,
+          "recall": 1.0,
+          "f1": 0.9999
+        }
+      ],
+      "leave_one_tool_out_summary": {
+        "mean_accuracy": 0.7886,
+        "min_accuracy": 0.2153,
+        "max_accuracy": 0.9999,
+        "n_folds": 6
+      },
+      "gap_leaky_minus_honest": 0.2106,
+      "feature_importances": {
+        "PacketLengthMode": 0.125581,
+        "FlowBytesReceived": 0.090815,
+        "Duration": 0.08647,
+        "PacketLengthMean": 0.074494,
+        "PacketTimeStandardDeviation": 0.063563,
+        "FlowBytesSent": 0.062311,
+        "PacketLengthStandardDeviation": 0.05626,
+        "PacketTimeVariance": 0.052663,
+        "PacketLengthVariance": 0.049746,
+        "PacketLengthMedian": 0.046754,
+        "PacketTimeMean": 0.043164,
+        "PacketLengthCoefficientofVariation": 0.035459,
+        "ResponseTimeTimeMedian": 0.03202,
+        "FlowReceivedRate": 0.023021,
+        "PacketLengthSkewFromMode": 0.02096,
+        "PacketLengthSkewFromMedian": 0.018388,
+        "FlowSentRate": 0.017525,
+        "PacketTimeMedian": 0.015244,
+        "ResponseTimeTimeMean": 0.014203,
+        "PacketTimeSkewFromMedian": 0.013364,
+        "ResponseTimeTimeStandardDeviation": 0.013145,
+        "PacketTimeCoefficientofVariation": 0.009707,
+        "ResponseTimeTimeVariance": 0.007271,
+        "PacketTimeSkewFromMode": 0.006637,
+        "ResponseTimeTimeMode": 0.006189,
+        "ResponseTimeTimeCoefficientofVariation": 0.004688,
+        "ResponseTimeTimeSkewFromMode": 0.00455,
+        "ResponseTimeTimeSkewFromMedian": 0.003184,
+        "PacketTimeMode": 0.002625
+      }
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "dcsync": {
+    "frames": 23,
+    "drsuapi_calls": 12,
+    "flagged": [
+      {
+        "frame": 17,
+        "src": "192.168.1.46",
+        "dst": "192.168.1.195"
+      }
+    ]
+  },
+  "spn_recon": {
+    "frames": 81,
+    "searches": [
+      {
+        "frame": 52,
+        "src": "192.168.1.46",
+        "dst": "192.168.1.195"
+      }
+    ]
+  },
+  "ldap_recon": {
+    "frames": 252,
+    "searches": [
+      {
+        "frame": 10,
+        "scope": 0,
+        "base": "",
+        "subtree_dump": false
+      },
+      {
+        "frame": 32,
+        "scope": 2,
+        "base": "DC=picklesworth,DC=local",
+        "subtree_dump": true
+      }
+    ],
+    "binds": [
+      {
+        "frame": 6,
+        "name": ""
+      },
+      {
+        "frame": 28,
+        "name": "chewbacca@picklesworth"
+      }
+    ]
+  },
+  "samr_enum": {
+    "frames": 86,
+    "samr_calls": 42,
+    "sequences": [
+      {
+        "src": "192.168.1.46",
+        "dst": "192.168.1.195",
+        "group": "Domain Admins",
+        "opnums": [
+          64,
+          6,
+          5,
+          7,
+          17,
+          19,
+          20,
+          1,
+          1,
+          1,
+          64,
+          6,
+          5,
+          7,
+          17,
+          19,
+          25,
+          18,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "src": "192.168.1.195",
+        "dst": "192.168.1.46",
+        "group": null,
+        "opnums": [
+          64,
+          6,
+          5,
+          7,
+          17,
+          19,
+          20,
+          1,
+          1,
+          1,
+          64,
+          6,
+          5,
+          7,
+          17,
+          19,
+          25,
+          18,
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  }
+}

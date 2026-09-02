@@ -1,7 +1,0 @@
-__pycache__/
-*.pyc
-.pytest_cache/
-*.session
-zap-session*
-.DS_Store
-auth-plan.rendered.yaml

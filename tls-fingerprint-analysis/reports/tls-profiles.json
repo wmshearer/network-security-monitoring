@@ -1,0 +1,147 @@
+{
+  "capture": "ctu13-42-neris.pcap",
+  "client_hellos": 60,
+  "distinct_fingerprints": 5,
+  "fingerprints_without_sni": 4,
+  "parse_inconsistencies": 0,
+  "profiles": [
+    {
+      "ja4": "t10i460300_234845559c90_a875e5012fde",
+      "count": 16,
+      "tls_version": "TLS 1.0",
+      "sends_sni": false,
+      "distinct_sources": 2,
+      "distinct_destinations": 3,
+      "top_server_names": [],
+      "ports": {
+        "1881": 1,
+        "443": 8,
+        "2302": 1,
+        "2332": 1,
+        "2376": 1,
+        "2528": 1,
+        "2098": 1,
+        "1038": 1,
+        "2965": 1
+      }
+    },
+    {
+      "ja4": "t10i110100_3609b414f052_bc98f8e001b5",
+      "count": 14,
+      "tls_version": "TLS 1.0",
+      "sends_sni": false,
+      "distinct_sources": 2,
+      "distinct_destinations": 4,
+      "top_server_names": [],
+      "ports": {
+        "3796": 1,
+        "443": 7,
+        "1464": 1,
+        "1461": 1,
+        "4097": 1,
+        "4104": 1,
+        "4227": 1,
+        "4404": 1
+      }
+    },
+    {
+      "ja4": "t10d120300_d94e65cdb899_33a13ba74d1c",
+      "count": 14,
+      "tls_version": "TLS 1.0",
+      "sends_sni": true,
+      "distinct_sources": 2,
+      "distinct_destinations": 4,
+      "top_server_names": [
+        [
+          "my.screenname.aol.com",
+          8
+        ],
+        [
+          "account.login.aol.com",
+          6
+        ]
+      ],
+      "ports": {
+        "1082": 1,
+        "443": 7,
+        "1406": 1,
+        "1413": 1,
+        "1799": 1,
+        "1767": 1,
+        "1814": 1,
+        "1822": 1
+      }
+    },
+    {
+      "ja4": "t10i290100_cdba58456bdf_e78b541c01a9",
+      "count": 12,
+      "tls_version": "TLS 1.0",
+      "sends_sni": false,
+      "distinct_sources": 2,
+      "distinct_destinations": 3,
+      "top_server_names": [],
+      "ports": {
+        "2238": 1,
+        "443": 6,
+        "2670": 1,
+        "2844": 1,
+        "3293": 1,
+        "4548": 1,
+        "4564": 1
+      }
+    },
+    {
+      "ja4": "t10i110000_3609b414f052_000000000000",
+      "count": 4,
+      "tls_version": "TLS 1.0",
+      "sends_sni": false,
+      "distinct_sources": 2,
+      "distinct_destinations": 2,
+      "top_server_names": [],
+      "ports": {
+        "1351": 1,
+        "443": 2,
+        "1374": 1
+      }
+    }
+  ],
+  "destinations_by_client_count": [
+    {
+      "dst": "147.32.84.165",
+      "distinct_fingerprints": 5
+    },
+    {
+      "dst": "65.55.196.251",
+      "distinct_fingerprints": 2
+    },
+    {
+      "dst": "65.55.16.187",
+      "distinct_fingerprints": 2
+    },
+    {
+      "dst": "65.54.165.169",
+      "distinct_fingerprints": 2
+    },
+    {
+      "dst": "65.54.186.47",
+      "distinct_fingerprints": 1
+    },
+    {
+      "dst": "206.222.227.2",
+      "distinct_fingerprints": 1
+    },
+    {
+      "dst": "205.188.101.160",
+      "distinct_fingerprints": 1
+    },
+    {
+      "dst": "205.188.100.160",
+      "distinct_fingerprints": 1
+    },
+    {
+      "dst": "65.54.165.139",
+      "distinct_fingerprints": 1
+    }
+  ],
+  "single_destination_clients": []
+}
