@@ -1,0 +1,1526 @@
+[
+  {
+    "rule_id": "d88d0ab2-e696-4d40-a2ed-9790064e66b3",
+    "title": "Modification of IE Registry Settings",
+    "malicious_hits": 0,
+    "benign_hits": 56,
+    "total_hits": 56,
+    "cost_negative_at_any_nonzero_assumption": true,
+    "sweep": [
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 186.67,
+        "value_captured_usd": 0,
+        "net_usd": -186.67,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 186.67,
+        "value_captured_usd": 0,
+        "net_usd": -186.67,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 186.67,
+        "value_captured_usd": 0,
+        "net_usd": -186.67,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 350.0,
+        "value_captured_usd": 0,
+        "net_usd": -350.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 350.0,
+        "value_captured_usd": 0,
+        "net_usd": -350.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 350.0,
+        "value_captured_usd": 0,
+        "net_usd": -350.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 560.0,
+        "value_captured_usd": 0,
+        "net_usd": -560.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 560.0,
+        "value_captured_usd": 0,
+        "net_usd": -560.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 560.0,
+        "value_captured_usd": 0,
+        "net_usd": -560.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 560.0,
+        "value_captured_usd": 0,
+        "net_usd": -560.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 560.0,
+        "value_captured_usd": 0,
+        "net_usd": -560.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 560.0,
+        "value_captured_usd": 0,
+        "net_usd": -560.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 1050.0,
+        "value_captured_usd": 0,
+        "net_usd": -1050.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 1050.0,
+        "value_captured_usd": 0,
+        "net_usd": -1050.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 1050.0,
+        "value_captured_usd": 0,
+        "net_usd": -1050.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 1680.0,
+        "value_captured_usd": 0,
+        "net_usd": -1680.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 1680.0,
+        "value_captured_usd": 0,
+        "net_usd": -1680.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 1680.0,
+        "value_captured_usd": 0,
+        "net_usd": -1680.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 1120.0,
+        "value_captured_usd": 0,
+        "net_usd": -1120.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 1120.0,
+        "value_captured_usd": 0,
+        "net_usd": -1120.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 1120.0,
+        "value_captured_usd": 0,
+        "net_usd": -1120.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 2100.0,
+        "value_captured_usd": 0,
+        "net_usd": -2100.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 2100.0,
+        "value_captured_usd": 0,
+        "net_usd": -2100.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 2100.0,
+        "value_captured_usd": 0,
+        "net_usd": -2100.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 3360.0,
+        "value_captured_usd": 0,
+        "net_usd": -3360.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 3360.0,
+        "value_captured_usd": 0,
+        "net_usd": -3360.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 3360.0,
+        "value_captured_usd": 0,
+        "net_usd": -3360.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 2240.0,
+        "value_captured_usd": 0,
+        "net_usd": -2240.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 2240.0,
+        "value_captured_usd": 0,
+        "net_usd": -2240.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 2240.0,
+        "value_captured_usd": 0,
+        "net_usd": -2240.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 4200.0,
+        "value_captured_usd": 0,
+        "net_usd": -4200.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 4200.0,
+        "value_captured_usd": 0,
+        "net_usd": -4200.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 4200.0,
+        "value_captured_usd": 0,
+        "net_usd": -4200.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 6720.0,
+        "value_captured_usd": 0,
+        "net_usd": -6720.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 6720.0,
+        "value_captured_usd": 0,
+        "net_usd": -6720.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 6720.0,
+        "value_captured_usd": 0,
+        "net_usd": -6720.0,
+        "cost_justified": false
+      }
+    ],
+    "breakeven_triage_minutes_by_assumption": [
+      {
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 50,
+        "breakeven_triage_minutes": null
+      },
+      {
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 200,
+        "breakeven_triage_minutes": null
+      },
+      {
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 1000,
+        "breakeven_triage_minutes": null
+      },
+      {
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 50,
+        "breakeven_triage_minutes": null
+      },
+      {
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 200,
+        "breakeven_triage_minutes": null
+      },
+      {
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 1000,
+        "breakeven_triage_minutes": null
+      },
+      {
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 50,
+        "breakeven_triage_minutes": null
+      },
+      {
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 200,
+        "breakeven_triage_minutes": null
+      },
+      {
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 1000,
+        "breakeven_triage_minutes": null
+      }
+    ]
+  },
+  {
+    "rule_id": "3037d961-21e9-4732-b27a-637bcc7bf539",
+    "title": "Suspicious High IntegrityLevel Conhost Legacy Option",
+    "malicious_hits": 10,
+    "benign_hits": 2,
+    "total_hits": 12,
+    "cost_negative_at_any_nonzero_assumption": false,
+    "sweep": [
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 40.0,
+        "value_captured_usd": 500,
+        "net_usd": 460.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 40.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1960.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 40.0,
+        "value_captured_usd": 10000,
+        "net_usd": 9960.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 75.0,
+        "value_captured_usd": 500,
+        "net_usd": 425.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 75.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1925.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 75.0,
+        "value_captured_usd": 10000,
+        "net_usd": 9925.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 120.0,
+        "value_captured_usd": 500,
+        "net_usd": 380.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 120.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1880.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 120.0,
+        "value_captured_usd": 10000,
+        "net_usd": 9880.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 120.0,
+        "value_captured_usd": 500,
+        "net_usd": 380.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 120.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1880.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 120.0,
+        "value_captured_usd": 10000,
+        "net_usd": 9880.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 225.0,
+        "value_captured_usd": 500,
+        "net_usd": 275.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 225.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1775.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 225.0,
+        "value_captured_usd": 10000,
+        "net_usd": 9775.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 360.0,
+        "value_captured_usd": 500,
+        "net_usd": 140.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 360.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1640.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 360.0,
+        "value_captured_usd": 10000,
+        "net_usd": 9640.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 240.0,
+        "value_captured_usd": 500,
+        "net_usd": 260.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 240.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1760.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 240.0,
+        "value_captured_usd": 10000,
+        "net_usd": 9760.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 450.0,
+        "value_captured_usd": 500,
+        "net_usd": 50.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 450.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1550.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 450.0,
+        "value_captured_usd": 10000,
+        "net_usd": 9550.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 720.0,
+        "value_captured_usd": 500,
+        "net_usd": -220.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 720.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1280.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 720.0,
+        "value_captured_usd": 10000,
+        "net_usd": 9280.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 480.0,
+        "value_captured_usd": 500,
+        "net_usd": 20.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 480.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1520.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 480.0,
+        "value_captured_usd": 10000,
+        "net_usd": 9520.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 900.0,
+        "value_captured_usd": 500,
+        "net_usd": -400.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 900.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1100.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 900.0,
+        "value_captured_usd": 10000,
+        "net_usd": 9100.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 1440.0,
+        "value_captured_usd": 500,
+        "net_usd": -940.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 1440.0,
+        "value_captured_usd": 2000,
+        "net_usd": 560.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 1440.0,
+        "value_captured_usd": 10000,
+        "net_usd": 8560.0,
+        "cost_justified": true
+      }
+    ],
+    "breakeven_triage_minutes_by_assumption": [
+      {
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 50,
+        "breakeven_triage_minutes": 62.5
+      },
+      {
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 200,
+        "breakeven_triage_minutes": 250.0
+      },
+      {
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 1000,
+        "breakeven_triage_minutes": 1250.0
+      },
+      {
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 50,
+        "breakeven_triage_minutes": 33.33
+      },
+      {
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 200,
+        "breakeven_triage_minutes": 133.33
+      },
+      {
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 1000,
+        "breakeven_triage_minutes": 666.67
+      },
+      {
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 50,
+        "breakeven_triage_minutes": 20.83
+      },
+      {
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 200,
+        "breakeven_triage_minutes": 83.33
+      },
+      {
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 1000,
+        "breakeven_triage_minutes": 416.67
+      }
+    ]
+  },
+  {
+    "rule_id": "0eb46774-f1ab-4a74-8238-1155855f2263",
+    "title": "Disable Windows Defender Functionalities Via Registry Keys",
+    "malicious_hits": 2,
+    "benign_hits": 2,
+    "total_hits": 4,
+    "cost_negative_at_any_nonzero_assumption": false,
+    "sweep": [
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 13.33,
+        "value_captured_usd": 100,
+        "net_usd": 86.67,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 13.33,
+        "value_captured_usd": 400,
+        "net_usd": 386.67,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 13.33,
+        "value_captured_usd": 2000,
+        "net_usd": 1986.67,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 25.0,
+        "value_captured_usd": 100,
+        "net_usd": 75.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 25.0,
+        "value_captured_usd": 400,
+        "net_usd": 375.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 25.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1975.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 40.0,
+        "value_captured_usd": 100,
+        "net_usd": 60.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 40.0,
+        "value_captured_usd": 400,
+        "net_usd": 360.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 40.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1960.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 40.0,
+        "value_captured_usd": 100,
+        "net_usd": 60.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 40.0,
+        "value_captured_usd": 400,
+        "net_usd": 360.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 40.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1960.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 75.0,
+        "value_captured_usd": 100,
+        "net_usd": 25.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 75.0,
+        "value_captured_usd": 400,
+        "net_usd": 325.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 75.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1925.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 120.0,
+        "value_captured_usd": 100,
+        "net_usd": -20.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 120.0,
+        "value_captured_usd": 400,
+        "net_usd": 280.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 120.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1880.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 80.0,
+        "value_captured_usd": 100,
+        "net_usd": 20.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 80.0,
+        "value_captured_usd": 400,
+        "net_usd": 320.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 80.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1920.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 150.0,
+        "value_captured_usd": 100,
+        "net_usd": -50.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 150.0,
+        "value_captured_usd": 400,
+        "net_usd": 250.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 150.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1850.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 240.0,
+        "value_captured_usd": 100,
+        "net_usd": -140.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 240.0,
+        "value_captured_usd": 400,
+        "net_usd": 160.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 240.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1760.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 160.0,
+        "value_captured_usd": 100,
+        "net_usd": -60.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 160.0,
+        "value_captured_usd": 400,
+        "net_usd": 240.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 160.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1840.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 300.0,
+        "value_captured_usd": 100,
+        "net_usd": -200.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 300.0,
+        "value_captured_usd": 400,
+        "net_usd": 100.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 300.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1700.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 480.0,
+        "value_captured_usd": 100,
+        "net_usd": -380.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 480.0,
+        "value_captured_usd": 400,
+        "net_usd": -80.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 480.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1520.0,
+        "cost_justified": true
+      }
+    ],
+    "breakeven_triage_minutes_by_assumption": [
+      {
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 50,
+        "breakeven_triage_minutes": 37.5
+      },
+      {
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 200,
+        "breakeven_triage_minutes": 150.0
+      },
+      {
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 1000,
+        "breakeven_triage_minutes": 750.0
+      },
+      {
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 50,
+        "breakeven_triage_minutes": 20.0
+      },
+      {
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 200,
+        "breakeven_triage_minutes": 80.0
+      },
+      {
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 1000,
+        "breakeven_triage_minutes": 400.0
+      },
+      {
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 50,
+        "breakeven_triage_minutes": 12.5
+      },
+      {
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 200,
+        "breakeven_triage_minutes": 50.0
+      },
+      {
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 1000,
+        "breakeven_triage_minutes": 250.0
+      }
+    ]
+  },
+  {
+    "rule_id": "3a9b8c1e-5b2e-4f7a-9d1c-2a7f3b6e1c55",
+    "title": "RunMRU Registry Key Deletion - Registry",
+    "malicious_hits": 2,
+    "benign_hits": 2,
+    "total_hits": 4,
+    "cost_negative_at_any_nonzero_assumption": false,
+    "sweep": [
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 13.33,
+        "value_captured_usd": 100,
+        "net_usd": 86.67,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 13.33,
+        "value_captured_usd": 400,
+        "net_usd": 386.67,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 13.33,
+        "value_captured_usd": 2000,
+        "net_usd": 1986.67,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 25.0,
+        "value_captured_usd": 100,
+        "net_usd": 75.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 25.0,
+        "value_captured_usd": 400,
+        "net_usd": 375.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 25.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1975.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 40.0,
+        "value_captured_usd": 100,
+        "net_usd": 60.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 40.0,
+        "value_captured_usd": 400,
+        "net_usd": 360.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 5,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 40.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1960.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 40.0,
+        "value_captured_usd": 100,
+        "net_usd": 60.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 40.0,
+        "value_captured_usd": 400,
+        "net_usd": 360.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 40.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1960.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 75.0,
+        "value_captured_usd": 100,
+        "net_usd": 25.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 75.0,
+        "value_captured_usd": 400,
+        "net_usd": 325.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 75.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1925.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 120.0,
+        "value_captured_usd": 100,
+        "net_usd": -20.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 120.0,
+        "value_captured_usd": 400,
+        "net_usd": 280.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 15,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 120.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1880.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 80.0,
+        "value_captured_usd": 100,
+        "net_usd": 20.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 80.0,
+        "value_captured_usd": 400,
+        "net_usd": 320.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 80.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1920.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 150.0,
+        "value_captured_usd": 100,
+        "net_usd": -50.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 150.0,
+        "value_captured_usd": 400,
+        "net_usd": 250.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 150.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1850.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 240.0,
+        "value_captured_usd": 100,
+        "net_usd": -140.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 240.0,
+        "value_captured_usd": 400,
+        "net_usd": 160.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 30,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 240.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1760.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 160.0,
+        "value_captured_usd": 100,
+        "net_usd": -60.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 160.0,
+        "value_captured_usd": 400,
+        "net_usd": 240.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 160.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1840.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 300.0,
+        "value_captured_usd": 100,
+        "net_usd": -200.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 300.0,
+        "value_captured_usd": 400,
+        "net_usd": 100.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 300.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1700.0,
+        "cost_justified": true
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 50,
+        "cumulative_triage_cost_usd": 480.0,
+        "value_captured_usd": 100,
+        "net_usd": -380.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 200,
+        "cumulative_triage_cost_usd": 480.0,
+        "value_captured_usd": 400,
+        "net_usd": -80.0,
+        "cost_justified": false
+      },
+      {
+        "triage_minutes": 60,
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 1000,
+        "cumulative_triage_cost_usd": 480.0,
+        "value_captured_usd": 2000,
+        "net_usd": 1520.0,
+        "cost_justified": true
+      }
+    ],
+    "breakeven_triage_minutes_by_assumption": [
+      {
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 50,
+        "breakeven_triage_minutes": 37.5
+      },
+      {
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 200,
+        "breakeven_triage_minutes": 150.0
+      },
+      {
+        "analyst_hourly_cost": 40,
+        "value_per_true_positive": 1000,
+        "breakeven_triage_minutes": 750.0
+      },
+      {
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 50,
+        "breakeven_triage_minutes": 20.0
+      },
+      {
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 200,
+        "breakeven_triage_minutes": 80.0
+      },
+      {
+        "analyst_hourly_cost": 75,
+        "value_per_true_positive": 1000,
+        "breakeven_triage_minutes": 400.0
+      },
+      {
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 50,
+        "breakeven_triage_minutes": 12.5
+      },
+      {
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 200,
+        "breakeven_triage_minutes": 50.0
+      },
+      {
+        "analyst_hourly_cost": 120,
+        "value_per_true_positive": 1000,
+        "breakeven_triage_minutes": 250.0
+      }
+    ]
+  }
+]

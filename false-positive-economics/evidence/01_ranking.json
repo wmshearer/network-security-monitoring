@@ -1,0 +1,46 @@
+[
+  {
+    "rule_id": "d88d0ab2-e696-4d40-a2ed-9790064e66b3",
+    "title": "Modification of IE Registry Settings",
+    "level": "low",
+    "author": "frack113",
+    "malicious_hits": 0,
+    "benign_hits": 56,
+    "precision": 0.0,
+    "noise_to_value_ratio": 56.0,
+    "ratio_is_undefined_infinite": true
+  },
+  {
+    "rule_id": "0eb46774-f1ab-4a74-8238-1155855f2263",
+    "title": "Disable Windows Defender Functionalities Via Registry Keys",
+    "level": "high",
+    "author": "AlertIQ, J\u00e1n Tren\u010dansk\u00fd, frack113, Nasreddine Bencherchali, Swachchhanda Shrawan Poudel",
+    "malicious_hits": 2,
+    "benign_hits": 2,
+    "precision": 0.5,
+    "noise_to_value_ratio": 1.0,
+    "ratio_is_undefined_infinite": false
+  },
+  {
+    "rule_id": "3a9b8c1e-5b2e-4f7a-9d1c-2a7f3b6e1c55",
+    "title": "RunMRU Registry Key Deletion - Registry",
+    "level": "high",
+    "author": "Swachchhanda Shrawan Poudel (Nextron Systems)",
+    "malicious_hits": 2,
+    "benign_hits": 2,
+    "precision": 0.5,
+    "noise_to_value_ratio": 1.0,
+    "ratio_is_undefined_infinite": false
+  },
+  {
+    "rule_id": "3037d961-21e9-4732-b27a-637bcc7bf539",
+    "title": "Suspicious High IntegrityLevel Conhost Legacy Option",
+    "level": "informational",
+    "author": "frack113",
+    "malicious_hits": 10,
+    "benign_hits": 2,
+    "precision": 0.8333333333333334,
+    "noise_to_value_ratio": 0.2,
+    "ratio_is_undefined_infinite": false
+  }
+]

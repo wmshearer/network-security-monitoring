@@ -1,0 +1,43 @@
+{
+  "_purpose": "Every source considered for a numeric input to this project's cost model, with verification status. This file is the methodology-transparency exhibit required by the project brief. Read-only research record; not derived from either source project.",
+  "verification_method": "curl -s -o /dev/null -w '%{http_code}' <url>, run 2026-08-28",
+  "usable_sources": [
+    {
+      "citation": "Alahmadi, B., Axon, L., Martinovic, I. \"99% False Positives: A Qualitative Study of SOC Analysts' Perspectives on Security Alarms.\" USENIX Security Symposium, 2022.",
+      "url": "https://www.usenix.org/system/files/sec22-alahmadi.pdf",
+      "url_verified_http_status": 200,
+      "methodology": "n=20 survey respondents, n=21 semi-structured interviews. IRB-approved. Academic funding (University of Oxford).",
+      "mandatory_caveat": "The '99%' figure in the paper's own title is ONE analyst's verbal estimate given in an interview, not a measured rate across the sample. The paper itself states that analysts use the term 'false positive' inconsistently, which the authors flag as a reason the number is likely unreliable as a general statistic. This project never cites '99%' as a measured false-positive rate; it is cited only as an example of how unreliable self-reported FP-rate language is in this literature.",
+      "usable_as_numeric_input_to_this_project": false,
+      "usable_for": "narrative context on how analysts talk about alert volume; NOT as a cost or rate figure"
+    },
+    {
+      "citation": "Sundaramurthy, S.C., et al. \"A Human Capital Model for Mitigating Security Analyst Burnout.\" USENIX SOUPS (Symposium On Usable Privacy and Security), 2015.",
+      "url": "https://www.usenix.org/system/files/conference/soups2015/soups15-paper-sundaramurthy.pdf",
+      "url_verified_http_status": 200,
+      "methodology": "Six-month embedded fieldwork inside one SOC, approximately 26 analysts.",
+      "mandatory_caveat": "Contains NO minutes-per-alert figure and NO dollar figure anywhere in the paper. It documents the burnout mechanism (analysts leaving the tier-1 role due to alert-volume fatigue) qualitatively.",
+      "usable_as_numeric_input_to_this_project": false,
+      "usable_for": "narrative context on why alert volume matters to a SOC as an organization, not as a numeric input"
+    }
+  ],
+  "rejected_sources": [
+    {
+      "citation": "Ponemon Institute / Devo. \"The 2019 State of SOC Report.\" (n=554, sponsored study.)",
+      "why_rejected": "Full text checked. Methodology is disclosed (n=554, survey), but the report contains NO minutes-per-alert figure anywhere in its text. Any secondary source (blog, vendor whitepaper) citing this report for a minutes-per-alert number is citing a number the source document does not contain.",
+      "used_in_this_project": false
+    },
+    {
+      "citation": "Various AI-SOC vendor blog posts citing '25 minutes per alert' or '30-70 minutes per alert'.",
+      "why_rejected": "No disclosed methodology, no disclosed sample, no traceable primary citation for the number in any post checked. Most of these posts are published by vendors selling a product that replaces the manual triage process whose cost they are quoting, which is a direct incentive to inflate the baseline they are replacing.",
+      "used_in_this_project": false
+    }
+  ],
+  "unverifiable_claims": [
+    {
+      "claim": "Sandia National Laboratories published alert-fatigue research.",
+      "status": "COULD NOT BE VERIFIED. A prior research pass searched for this citation four separate ways and could not locate a real, traceable Sandia publication matching the claim. It is recorded here explicitly as an unverified claim, not cited as a source, and not used anywhere in this project's numbers or narrative.",
+      "used_in_this_project": false
+    }
+  ]
+}
