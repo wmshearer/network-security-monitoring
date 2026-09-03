@@ -1,4 +1,0 @@
-data/pcaps/
-__pycache__/
-*.py[cod]
-.pytest_cache/
