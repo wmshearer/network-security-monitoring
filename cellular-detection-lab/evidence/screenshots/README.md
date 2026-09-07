@@ -27,6 +27,34 @@ were independently verified with `tshark -V` before each screenshot was taken.
   Security Mode, InitialContextSetup, PDU Session Setup, then the rogue
   gNB's NG Setup Request/Failure at the end.
 
+## 4G tier (S1AP / NAS-EPS, `evidence/4g/lte-attach-full.pcap`)
+
+- `lte-s1ap-nas-packet-list.png` — Packet list filtered on
+  `s1ap or nas_eps` (13 of 59 packets), the complete procedure: S1 Setup
+  Request/Response, then the full LTE Attach (InitialUEMessage/Attach
+  request, Authentication request/response, Security mode command/
+  complete, ESM information request/response, InitialContextSetupRequest/
+  Attach accept, InitialContextSetupResponse/Attach complete, EMM
+  information).
+- `lte-attach-request-imsi-detail.png` — Frame 17, the Attach Request
+  (InitialUEMessage) with the embedded NAS-EPS PDU expanded down to EPS
+  mobile identity, showing `Type of identity: IMSI (1)` and
+  `IMSI: 999700000000099` in the clear — the tier's own headline finding:
+  LTE has no identity-concealment mechanism, so the permanent identity is
+  exposed on this ordinary, spec-mandated first attach.
+- `lte-security-mode-command-detail.png` — Frame 24, the Security Mode
+  Command with NAS security algorithms expanded, showing
+  `Type of ciphering algorithm: EPS encryption algorithm EEA0 (null
+  ciphering algorithm)` alongside `Type of integrity protection algorithm:
+  EPS integrity algorithm 1...` (EIA2, real) — confirms integrity is
+  protected but confidentiality is not, traced to Open5GS's own
+  unmodified stock `ciphering_order` default.
+- `lte-s1-setup-request-enb-id-detail.png` — Frame 5, the legitimate
+  eNodeB's S1 Setup Request expanded to Global-ENB-ID, showing
+  `pLMNidentity: 99f907` (MCC 999/MNC 70) and `macroENB-ID: 0019b0` — the
+  fields `detector/lte_detector.py`'s eNodeB identity allowlist check
+  matches against `detector/allowlist_lte.json`.
+
 ## 2G tier (GSM A-I/F DTAP, `evidence/2g/*.pcap`)
 
 - `gsm-location-update-packet-list.png` — `gsm_a.dtap`-filtered packet

@@ -245,6 +245,45 @@ scripts/2g-tier-start.sh a51   # or a50 for the null-cipher demonstration
 scripts/2g-tier-stop.sh
 ```
 
+## The 4G tier: LTE EPC, still zero radio hardware
+
+Added on top of everything above, **independently startable/stoppable**
+from the 5G core (same shared Docker network and MongoDB subscriber
+store, but its own containers - `docker-compose.4g.yml`, combined via
+`-f` with the base compose file). Full 4G/LTE Evolved Packet Core
+(MME/HSS/SGW-C/SGW-U/PGW-C/PGW-U/PCRF) on the SAME `gradiant/open5gs:2.8.0`
+image the 5G tier already uses - zero new Docker images - plus a real
+`srsRAN_4G` eNodeB/UE pair in ZMQ virtual-radio mode (built from source;
+UERANSIM cannot do 4G at all), completing a genuine LTE Attach.
+
+This tier sits between the other two for a reason: LTE is where the 2G
+gap (no mutual authentication) was actually fixed - EPS-AKA gives the
+handset a real cryptographic way to authenticate the network, via AUTN.
+But LTE never got a SUCI-equivalent identity-concealment mechanism, so
+the Attach Request still carries the subscriber's IMSI in the clear
+whenever the UE has no valid GUTI - a normal, spec-mandated occurrence,
+not an attack. This lab's own capture proves it: `evidence/4g/
+lte-attach-full.pcap` frame 17 shows `IMSI: 999700000000099` in plain
+text in the very first message of a completely ordinary Attach, and
+frame 24's Security Mode Command selects EEA0 (null ciphering) - Open5GS's
+own unmodified stock default - while integrity (EIA2) is genuinely
+protected.
+
+Full architecture, the srsRAN_4G build (the one genuine build blocker,
+fixed via a documented `-DENABLE_WERROR=OFF` cmake flag, not a source
+patch), every Open5GS config landmine hit and fixed (each one a Docker
+service name collision with the 5G tier's own same-named service), and
+the plain-language identity-exposure finding: **`docs/4G-TIER.md`**.
+Full build log: **`NOTES.md`**. Detector: **`detector/lte_detector.py`**,
+same conventions as `ngap_detector.py`/`gsm_detector.py`.
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.4g.yml \
+  up -d mme hss sgwc sgwu smf-4g upf-4g pcrf
+scripts/lte-run-enb.sh &
+sudo scripts/lte-run-ue.sh &
+```
+
 ## Stopping the lab
 
 ```bash

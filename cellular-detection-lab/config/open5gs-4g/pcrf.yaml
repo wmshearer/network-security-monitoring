@@ -1,0 +1,21 @@
+db_uri: mongodb://mongo/open5gs
+logger:
+  file:
+    path: /opt/open5gs/var/log/open5gs/pcrf.log
+#  level: info   # fatal|error|warn|info(default)|debug|trace
+
+global:
+# max:
+#   ue: 1024  # The number of UE can be increased depending on memory size.
+#    peer: 64
+
+# PCRF (Policy and Charging Rules Function) - the EPC's Gx peer for
+# PGW-C (smf-4g). See config/open5gs-4g/smf.yaml's own comment for why
+# this tier needs a real PCRF where the 5G tier does not: PGW-C's classic
+# GTPv2-C/S5C session-establishment code path hard-requires a Gx answer
+# before completing a Create Session Response, unlike the 5G tier's
+# PFCP-only SM Context flow. Uses the stock freeDiameter config
+# (pcrf.conf) EXCEPT for its own ConnectTo target - see
+# config/open5gs-4g/freeDiameter/pcrf.conf's own header comment.
+pcrf:
+  freeDiameter: /opt/open5gs/etc/freeDiameter/pcrf.conf

@@ -1,0 +1,42 @@
+{
+  "_comment": [
+    "Cell-identity allowlist for the LTE analogue of Signal #5 (S1 Setup",
+    "Request), same pattern as detector/allowlist.json (5G NG Setup) and",
+    "detector/allowlist_gsm.json (2G LAI/ARFCN).",
+    "",
+    "Every legitimate eNodeB in this lab must appear here with the EXACT",
+    "(PLMN, eNB ID, TAC) tuple it presents in its S1 Setup Request's",
+    "Global eNB ID and Supported TAs IEs. Any S1 Setup Request whose tuple",
+    "is not listed here is flagged as a cell-identity allowlist violation",
+    "(candidate rogue eNodeB).",
+    "",
+    "Values below come straight from config/srsran/enb.conf (enb_id) and",
+    "config/srsran/rr.conf (tac) - this lab's one legitimate eNodeB - NOT",
+    "hardcoded into the detector script, so the same detector works",
+    "unmodified against a different lab or a different set of legitimate",
+    "eNBs: just edit this file.",
+    "",
+    "How to read an eNB's own identity off a real S1 Setup Request using",
+    "tshark:",
+    "  - plmn.mcc / plmn.mnc: from the S1 Setup Request's Global eNB ID,",
+    "    tshark fields e212.mcc / e212.mnc.",
+    "  - enb_id: from tshark field s1ap.macroENB_ID (a hex byte string,",
+    "    20 significant bits of a macro eNB ID per TS 36.413 9.2.1.37),",
+    "    interpreted as an unsigned integer of the raw byte string. For",
+    "    this lab's enb.conf, enb_id = 0x19B produces macroENB-ID",
+    "    0x0019b0 on the wire (0x19B left-shifted 4 bits to fill the",
+    "    20-bit field with 4 pad bits, per the macro eNB ID encoding) -",
+    "    the detector compares the raw on-wire value, not the config",
+    "    file's own enb_id, since that's what's actually observable.",
+    "  - tac: from the Supported TAs List's TAC field, tshark field",
+    "    s1ap.tAC, reported in decimal."
+  ],
+  "cells": [
+    {
+      "name": "srsenb (legitimate lab eNodeB)",
+      "plmn": { "mcc": "999", "mnc": "70" },
+      "enb_id_hex": "0019b0",
+      "tac": 1
+    }
+  ]
+}

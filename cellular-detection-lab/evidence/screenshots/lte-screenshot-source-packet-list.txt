@@ -1,0 +1,13 @@
+    5 0.002134845 S1AP 114 S1SetupRequest
+    7 0.002272760 S1AP 110 S1SetupResponse
+   17 25.891080644 S1AP/NAS-EPS 130 InitialUEMessage, Attach request, PDN connectivity request
+   22 25.896560518 S1AP/NAS-EPS 138 SACK (Ack=1, Arwnd=106496) , DownlinkNASTransport, Authentication request
+   23 25.932857863 S1AP/NAS-EPS 138 SACK (Ack=1, Arwnd=106496) , UplinkNASTransport, Authentication response
+   24 25.933051905 S1AP/NAS-EPS 126 SACK (Ack=2, Arwnd=106496) , DownlinkNASTransport, Security mode command
+   25 25.954167894 S1AP/NAS-EPS 146 SACK (Ack=2, Arwnd=106496) , UplinkNASTransport, Security mode complete
+   26 25.956796691 S1AP/NAS-EPS 114 SACK (Ack=3, Arwnd=106496) , DownlinkNASTransport, ESM information request
+   27 25.997542654 S1AP/NAS-EPS 146 SACK (Ack=3, Arwnd=106496) , UplinkNASTransport, ESM information response
+   32 26.001380854 S1AP/NAS-EPS 258 SACK (Ack=4, Arwnd=106496) , InitialContextSetupRequest, Attach accept, Activate default EPS bearer context request
+   33 26.063515838 S1AP 118 SACK (Ack=4, Arwnd=106496) , UECapabilityInfoIndication, UECapabilityInformation
+   39 26.264551659 S1AP/NAS-EPS 178 InitialContextSetupResponse, UplinkNASTransport, Attach complete, Activate default EPS bearer context accept
+   41 26.264861291 S1AP/NAS-EPS 154 SACK (Ack=7, Arwnd=106496) , DownlinkNASTransport, EMM information

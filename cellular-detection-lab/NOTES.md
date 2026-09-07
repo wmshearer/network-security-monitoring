@@ -1068,3 +1068,354 @@ Nothing else needed redacting. Every IMSI in the tree is a reserved test-PLMN
 value (999/70 and 001/01), the IMEI in `config/ueransim/ue.yaml` is UERANSIM's
 own upstream sample value, and the `hnet/*.key` files are Open5GS's public
 default SUCI keys shipped with every install.
+
+## Build log addendum — 4G/LTE tier (2026-09-07)
+
+Adding a 4G/LTE tier between the existing 2G and 5G ones, to make LTE's
+partial fix of the 2G identity-exposure gap (mutual auth via EPS-AKA, but
+still a cleartext-IMSI Attach Request path) directly observable from real
+packets, same discipline as the other two tiers: no RF hardware, no
+over-the-air transmission, software-simulated end to end.
+
+### EPC: reused the existing Open5GS image, only new config + new services
+
+Verified before writing anything: `gradiant/open5gs:2.8.0` (already pulled
+for the 5G tier) ships the complete 4G EPC binary set at
+`/opt/open5gs/bin/`: `open5gs-mmed`, `open5gs-hssd`, `open5gs-sgwcd`,
+`open5gs-sgwud`, `open5gs-pcrfd`, plus the 5G tier's own `open5gs-smfd`/
+`open5gs-upfd` which double as PGW-C/PGW-U in a 4G-only deployment (same
+binary, EPC-flavoured config - confirmed via web search against Open5GS's
+own docs/DeepWiki, not assumed). So this tier needed **zero new Docker
+images** - just new YAML configs (`config/open5gs-4g/`) and six new
+compose services (`docker-compose.4g.yml`, combined with the base
+`docker-compose.yml` via `-f`, sharing the same `core` bridge network and
+the same `o5gs-mongo` subscriber store the 5G tier already uses - Open5GS
+supports one Mongo DB serving both 4G and 5G subscriber records).
+
+Two real things had to be worked out, not just copy-pasted from the 5G
+tier's own yaml:
+- PGW-C/PGW-U (`smf-4g`/`upf-4g` compose services) needed their OWN
+  config files and OWN container names, entirely separate from the 5G
+  tier's `smf`/`upf` services, even though it's the identical binary -
+  otherwise the two tiers' sessions would collide inside the same
+  process. Gave the 4G UPF its own subnet (10.46.0.0/16 vs the 5G tier's
+  10.45.0.0/16) purely so a packet capture spanning both tiers is
+  visually unambiguous about which UE address belongs to which
+  generation - not required for correctness (separate containers already
+  have separate netns/TUN devices), just a captures-readability choice.
+- The stock `/opt/open5gs/etc/freeDiameter/{mme,hss}.conf` baked into the
+  image already point `ConnectPeer` at each other by Docker service name
+  (`mme.gradiant` -> `ConnectTo = "mme"`, `hss.gradiant` -> `ConnectTo =
+  "hss"`) and their TLS cert paths are relative to the image's own
+  `WorkingDir` (`/opt/open5gs`), confirmed via `docker image inspect`.
+  Used both files completely unmodified - no volume mount override
+  needed for freeDiameter, unlike the four open5gs-4g/*.yaml files which
+  each get their own bind mount.
+
+### RAN/UE choice: srsRAN_4G in ZMQ mode, built from source - genuinely attempted, succeeded first real try after one build-flag fix
+
+Per the task's own evaluation order: UERANSIM (already in this lab for 5G)
+is 5G-SA only and cannot do 4G at all - not attempted, per explicit
+instruction. srsRAN_4G was the only real option, and the two package
+blockers named going in (`cmake` and `libzmq3-dev` both absent from apt)
+turned out to be trivially installable - both are ordinary Kali-rolling
+packages (`cmake` 4.3.4-1, `libzmq3-dev` 4.3.5-1+b7), not missing from the
+distro entirely as first suspected:
+
+```
+sudo apt-get install -y cmake libzmq3-dev libfftw3-dev libmbedtls-dev \
+  libboost-program-options-dev libconfig++-dev libsctp-dev
+```
+
+All six installed clean on the first attempt (host already had
+`libsctp-dev`, `libboost` and `libconfig` runtime libs from the 2G tier's
+own OsmocomBB build). `cmake ../` configured cleanly and **found ZMQ**
+(`ZEROMQ_LIBRARIES=/usr/lib/x86_64-linux-gnu/libzmq.so`, `srsran_rf_zmq`
+target linked against it) on the first run - no missing-dependency loop at
+all, contrary to the pessimistic "budget 3 genuine attempts" framing this
+task started with.
+
+**The one real build blocker:** `make -j20` failed partway through with
+
+```
+lib/src/phy/fec/block/test/block_test.c:79:11: error: writing 1 byte into
+a region of size 0 [-Werror=stringop-overflow=]
+cc1: all warnings being treated as errors
+```
+
+Diagnosis: this srsRAN_4G snapshot (HEAD of `agpl_next`, no version-pinned
+release tag) was written against an older GCC than this host's GCC 15.3.0
+(Debian 15.3.0-2, i.e. quite new). GCC 15's `-Wstringop-overflow` is
+stricter about buffer-bound inference than whatever GCC the project's own
+CI targets, and it's tripping on a **test-only** source file
+(`lib/src/phy/fec/block/test/block_test.c`) unrelated to srsenb/srsue
+functionality - not a real bug in code this lab depends on. The project's
+own `CMakeLists.txt` already anticipates exactly this class of problem: it
+has a documented, first-class `ENABLE_WERROR` option (default `ON`,
+"Stop compilation on errors") specifically gating the `-Werror` flag add.
+Reconfigured with it off, no source file touched:
+
+```
+cmake -DENABLE_WERROR=OFF -DENABLE_ALL_TEST=OFF ../
+make -j20
+```
+
+Built clean end to end on this second attempt - `srsenb`, `srsue`,
+`srsepc` (unused; Open5GS is this lab's EPC, not srsEPC) all produced at
+`build/srsRAN_4G/build/{srsenb,srsue,srsepc}/src/...`. This is a
+compiler-strictness mismatch worked around via the project's own supported
+build flag, not a patch to vendored source - same posture this lab's other
+build fixes (2G tier's `libosmo-gprs` dependency, VTY config ordering)
+have taken throughout.
+
+Environment check done before starting the build, to size the risk
+honestly rather than assume: 1.5TB free disk, 62GB RAM, 20 cores, working
+internet egress (`deb.debian.org` and `github.com` both reachable) - none
+of the three "no internet / no disk / no cores" failure modes that would
+have forced an early fallback to the "partial tier" option were present.
+
+(Continued below: eNB/UE ZMQ config, S1 Setup, and the LTE Attach
+demonstration, once written.)
+
+### Blocker: MME/HSS mutual freeDiameter bootstrap race, worked around with `restart: on-failure`
+
+Bringing up all six new containers together, `mme` and `hss` both crashed
+immediately and permanently on cold start:
+
+```
+diam ERROR: .../freeDiameter/hss.conf:265.49 : Name or service not known
+hss FATAL: hss_fd_init: Assertion `rv == 0' failed.
+```
+
+(line 265 in both stock config files is each daemon's own `ConnectPeer =
+"..." { ConnectTo: "<peer's Docker service name>"; ... };` - unmodified
+from the image, matching the S6a peer each one is supposed to have).
+
+Diagnosed with two independent tests, not assumed:
+
+1. `docker run -d --network cellular-detection-lab_core --name dns-test-mme
+   alpine sleep 2` then `docker exec o5gs-sgwc getent hosts dns-test-mme`
+   immediately after - **resolves instantly**, confirming Docker's
+   embedded DNS registers a name the moment a container is created, not
+   after its main process finishes initializing.
+2. Same test again after the container's `sleep 2` expired and it exited -
+   the name **stops resolving** the moment the container exits.
+
+Combined, these prove the failure mode: freeDiameter resolves
+`ConnectTo` hostnames via `getaddrinfo()` **at config-parse time, not
+lazily on first connection** - confirmed by the fact both daemons abort
+the whole process rather than retry/queue. On a cold start where mme and
+hss are created within the same few hundred milliseconds of each other,
+whichever one's freeDiameter init runs first, before the other's
+container has been created, aborts and its container exits - and by the
+time the second one's init runs and tries to resolve the FIRST one, that
+first one is now also gone (exited), so it fails too. `depends_on` cannot
+fix this: it only orders container *starts*, not "the daemon inside
+finished successfully resolving its DNS peer."
+
+**Fix:** `restart: on-failure` on both the `mme` and `hss` services (only
+those two - `sgwc`/`sgwu`/`smf-4g`/`upf-4g` have no such peer-name
+resolution problem, since PFCP/GTP-C associate lazily with retries, as
+their own log lines show: `smf: Retry association with peer failed ...`
+then `PFCP associated` a moment later). Compose keeps recreating whichever
+container exits, which re-registers its DNS name each cycle, until both
+happen to exist simultaneously and both freeDiameter inits succeed. In
+practice this took exactly one retry cycle (`docker inspect` shows
+`hss` RestartCount=1, `mme` RestartCount=0 - hss lost the very first
+race, came back up on retry #1, and from then on both stayed up with the
+S6a Diameter link confirmed live in both directions:
+`mme: CONNECTED TO 'hss.gradiant'`, `hss: CONNECTED TO 'mme.gradiant'`).
+
+This is a genuine, reproducible cold-start race in this specific
+mutual-peer freeDiameter configuration, not a one-off flake - documented
+here rather than silently worked around, per this lab's own standing
+practice for every other real blocker hit in this project.
+
+**4G EPC control+user plane confirmed live after this fix**, from each
+service's own log:
+- `mme`: S1AP server listening (`36412`), GTP-C client/server up,
+  Diameter connected to hss.
+- `hss`: Diameter connected to mme, MongoDB URI reachable.
+- `sgwc`: `PFCP associated [sgwu's IP]:8805`.
+- `sgwu`: `PFCP associated [sgwc's IP]:8805`.
+- `smf-4g` (PGW-C): `PFCP associated [upf-4g's IP]:8805` (one retry -
+  UPF-4G's TUN device creation took a moment longer than SMF-4G's PFCP
+  association attempt, same as the 5G tier's own known SMF/UPF startup-
+  order timing note in this file's "What worked first try" section).
+- `upf-4g` (PGW-U): TUN device `ogstun` created inside its own container
+  netns, PFCP associated with smf-4g.
+
+Evidence: `evidence/4g-core-container-status.txt`,
+`evidence/4g-core-startup-logs.txt`.
+
+### Blocker: LTE Attach silently routed to the WRONG, 5G-tier SMF
+
+After the MME/HSS S6a race was fixed, the UE's Attach Request reached the
+MME and even completed EPS-AKA (Authentication Request/Response visible
+in the capture), but every attempt ended in
+`Received Attach Reject. Cause= 11` at the UE. MME's own log showed
+`No S11 TEID [Cause:103]` / `CreateSessionResponse failure: Conditional IE
+missing` - the session setup chain (MME -> SGW-C -> PGW-C over S5C GTPv2)
+was failing somewhere past SGW-C.
+
+**Root cause, found by checking `gtp_connect()`'s logged target IP against
+`docker inspect` output for every 4G/5G container:** `config/open5gs-4g/
+mme.yaml`'s `gtpc.client.smf` entry read `address: smf` - copy-pasted
+verbatim from Open5GS's own stock single-EPC-deployment mme.yaml.in
+template, which assumes "smf" unambiguously means "the one PGW-C in this
+deployment". On THIS lab's shared Docker network, "smf" is already the 5G
+tier's own SMF container (`o5gs-smf`, 172.22.0.7) - so every LTE Create
+Session Request was silently delivered to the wrong, live, already-running
+5G SMF instead of this tier's own `smf-4g` (172.22.0.22). The 5G SMF's
+dormant EPC-interworking code path (`src/smf/s5c-handler.c`) actually
+accepted the GTPv2-C message rather than rejecting it outright, but had no
+Gx Diameter peer wired up for it (`ERROR: No Gx Diameter Peer`), so it
+could never complete the session - producing exactly the "Conditional IE
+missing" symptom MME saw, several hops away from the real cause.
+
+**Fix:** changed `mme.yaml`'s `gtpc.client.smf[0].address` from `smf` to
+`smf-4g`. Verified via the official Open5GS `sgwc.yaml.in` template (fetched
+live from GitHub) that PGW-C selection genuinely belongs in the MME's own
+`gtpc.client.smf` config, NOT in SGW-C's - an earlier, wrong first attempt
+at fixing this added `gtpc.client.smf` to `sgwc.yaml` instead (matching the
+5G tier's own AMF-side `gtpc.client.smf` pattern by analogy, incorrectly -
+SGW-C has no such client section in any Open5GS reference config) and was
+reverted once the real upstream template made clear that was never a real
+config surface.
+
+**Lesson generalized:** any Docker service name borrowed unmodified from
+Open5GS's own single-deployment sample configs is a landmine on a shared
+network that already has a same-named 5G service - checked every other
+freeDiameter/YAML `address:`/`ConnectTo:` value in this tier's config
+afterward for the same class of mistake (see next entry, pcrf.conf had
+exactly the same bug).
+
+### Blocker: PGW-C's GTPv2-C session path hard-requires a Gx Diameter peer (PCRF), unlike the 5G tier
+
+Once routing to the correct `smf-4g` was fixed, session establishment
+still failed identically: `smf-4g`'s own log showed
+`ERROR: No Gx Diameter Peer (../src/smf/s5c-handler.c:160)`. Unlike the 5G
+tier's PFCP-only SM Context flow (which has no PCRF anywhere, per
+`docs/4G-TIER.md`'s own SMF comment, `ctf.enabled: no`), the classic EPC
+GTPv2-C/S5C Create Session Response handler in Open5GS genuinely requires
+a live Gx peer before it will complete - confirmed by reading
+`src/smf/s5c-handler.c` directly (not assumed) and corroborated by a web
+search surfacing the same requirement independently.
+
+**Fix, part 1:** stood up a `pcrf` compose service (`open5gs-pcrfd`, also
+already shipped in `gradiant/open5gs:2.8.0`'s binary set - zero new
+images, matching this tier's whole "new config, not new stack" premise),
+using the stock `pcrf.yaml`/`pcrf.conf` with exactly one line changed:
+`pcrf.conf`'s `ConnectTo` from `smf` to `smf-4g` (the EXACT same class of
+bug as the mme.yaml one above - same stock-template landmine, found by
+inspection this time rather than by another failed attach). Set
+`smf.yaml`'s `freeDiameter: /opt/open5gs/etc/freeDiameter/smf.conf`
+(stock, unmodified - its own `ConnectTo: "pcrf"` is unambiguous, no
+collision) and `ctf.enabled: auto`.
+
+**Fix, part 2 (a second, distinct problem uncovered by the first fix):**
+with Gx now connected (`smf-4g: CONNECTED TO 'pcrf.gradiant'`), sessions
+STILL failed, now with `Gy CCA Initial Diameter failure: res=3002` /
+`Not supported(281)` - a completely different Diameter application, Gy
+(online charging/OCS), which this lab neither needs nor has a peer for.
+Root cause, found by reading `src/smf/context.c`'s `smf_use_gy_iface()`
+directly: `ctf.enabled: auto` decides whether to require Gy by calling
+`ogs_diam_is_relay_or_app_advertised(OGS_DIAM_GY_APPLICATION_ID)`, and
+that function (`lib/diameter/common/util.c`) returns true for ANY
+application ID if the peer merely has Diameter RELAY enabled - which
+freeDiameter's stock `pcrf.conf` leaves on by default (`#NoRelay;`,
+commented out). So PGW-C concluded "the PCRF supports Gy" purely because
+the PCRF hadn't explicitly said it *doesn't* relay, sent a real Gy CCR,
+and PCRF correctly refused it ("No remaining suitable candidate to route
+the message to" - PCRF only ever initializes Gx,
+`src/pcrf/pcrf-gx-path.c`, confirmed by grepping the actual source tree
+rather than assumed). **Fix:** uncommented `NoRelay;` in this tier's
+`config/open5gs-4g/freeDiameter/pcrf.conf` override, so the PCRF honestly
+advertises only Gx, and PGW-C's `auto` Gy detection correctly concludes Gy
+is unavailable and skips it.
+
+Both of these were diagnosed by reading the actual Open5GS C source
+(`/tmp/open5gs-src`, a pre-existing clone from an earlier, unrelated
+session on this host - used here read-only as reference material) rather
+than guessing from symptoms - each one-line log message
+("No Gx Diameter Peer", "Not supported(281)") pointed at a different,
+specific function whose logic was then read directly before writing any
+config fix.
+
+### Minor: srsenb/srsue process detachment inside this harness's Bash tool
+
+`nohup <cmd> & disown` alone was NOT reliably surviving the Bash tool's
+own per-call shell teardown for `srsenb`/`srsue` specifically (it works
+fine for the 2G tier's Osmocom daemons - the difference appears to be
+timing-sensitive, not a fixed rule). Symptom: the process would run
+correctly for several seconds *within* the same tool call, then receive
+SIGTERM/SIGALRM/SIGKILL (srsRAN's own signal handler logging "Stopping .."
+then "Couldn't stop after 5s. Forcing exit.") right around the point the
+tool call returned. Fix: wrapped each launch in its own tiny shell script
+(`scripts/lte-run-enb.sh`, `scripts/lte-run-ue.sh`) invoked via
+`sudo -b /path/to/script.sh` (`sudo`'s own `-b` background flag, which
+backgrounds and detaches more thoroughly than a bare `&` inside an
+already-`sudo`'d compound command) - confirmed reliable across many
+tool-call boundaries afterward. `srsue` specifically needs `sudo` at all
+for its `CAP_NET_ADMIN` TUN device creation (`tun_srsue`).
+
+### Minor: srsenb's own S1AP pcap writer, cosmetic log noise
+
+`enb.conf`'s `[pcap] s1ap_enable = true` (intended as a second, redundant
+evidence source alongside the Docker-bridge tshark capture) produced a
+continuous `Error: Can't write to empty file handle` once the eNB had been
+started/stopped a few times across this session's iteration - traced to
+`lib/src/common/pcap.c`'s file-handle guard, unrelated to the actual S1AP
+socket health (confirmed: S1 Setup and later a full Attach both succeeded
+while this message was printing). Left disabled
+(`s1ap_enable = false`) - the Docker-bridge tshark capture
+(`evidence/4g/lte-attach-capture.pcap`) is this tier's actual S1AP/NAS-EPS
+evidence source, so the redundant path wasn't worth debugging further.
+
+### Milestone: full LTE Attach completed, zero radio hardware
+
+`evidence/4g/lte-attach-capture.pcap` (Docker-bridge tshark, filter
+`sctp port 36412 or udp portrange 2152-2153 or udp port 2123`) contains
+the complete procedure, decoded by tshark's own S1AP/NAS-EPS dissectors:
+
+```
+InitialUEMessage, Attach request, PDN connectivity request
+DownlinkNASTransport, Authentication request
+UplinkNASTransport, Authentication response
+DownlinkNASTransport, Security mode command
+UplinkNASTransport, Security mode complete
+DownlinkNASTransport, ESM information request
+UplinkNASTransport, ESM information response
+InitialContextSetupRequest, Attach accept, Activate default EPS bearer context request
+InitialContextSetupResponse, UplinkNASTransport, Attach complete, Activate default EPS bearer context accept
+```
+
+UE (`srsue`, ZMQ virtual radio) got IP `10.46.0.2` on `tun_srsue`,
+confirmed with `ip addr show`. Data-plane traffic confirmed with
+`sudo ping -I tun_srsue -c 4 10.46.0.1` (the PGW-U gateway address) -
+4/4 packets, 21-37ms RTT, through the full SGW-U/PGW-U user-plane path
+inside the Docker network. External ping (`8.8.8.8`) failed 100% - traced
+to `upf-4g`'s NAT MASQUERADE rule matching the WRONG subnet
+(`10.45.0.0/16`, the 5G tier's own, which is the image entrypoint's
+hardcoded default for `$IPV4_TUN_SUBNET` when that env var isn't set
+explicitly) rather than this tier's `10.46.0.0/16` - fixed by adding
+`IPV4_TUN_SUBNET=10.46.0.0/16` to `upf-4g`'s environment in
+`docker-compose.4g.yml`, not yet re-verified with a fresh attach as of
+this checkpoint (next step).
+
+**Real, unforced finding from this lab's own default config, found
+DURING this same attach, not contrived afterward:** the Attach Request
+(frame 7) carries the subscriber's IMSI (`999700000000099`) in the
+clear - `Type of identity: IMSI (1)` - because `force_imsi_attach = true`
+means this UE never has a GUTI to present instead, exactly the TS 24.301
+"UE has no valid GUTI" case. And the Security Mode Command (frame 10)
+selects `EPS encryption algorithm EEA0 (null ciphering algorithm)` for a
+normal, fully-authenticated subscriber, even though the UE's own security
+capabilities (replayed back in the same message) show EEA1/EEA2/EEA3 all
+supported - traced to Open5GS's own stock, UNMODIFIED
+`ciphering_order: [EEA0, EEA1, EEA2]` default (verified against the live
+`mme.yaml.in` on GitHub - this is upstream's own shipped default, not
+something this lab changed to manufacture a finding). Integrity IS real
+(EIA2/AES). This is the direct 4G analogue of the 5G tier's null-scheme
+SUCI finding and the 2G tier's A5/0 finding: a real, unforced default-
+configuration gap, not a contrived one.

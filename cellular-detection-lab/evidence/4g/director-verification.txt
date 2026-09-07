@@ -1,0 +1,13 @@
+=== Director independent verification, 4G tier, 2026-09-07T15:06:14-07:00 ===
+
+--- Frame 17: IMSI IN THE CLEAR in the Attach Request ---
+  IMSI=999700000000099  type_of_id=1
+  (type_of_id 1 = IMSI, not GUTI)
+
+--- Frame 22: AUTN present = MUTUAL authentication, the 2G fix ---
+  Authentication Parameter AUTN (UMTS and EPS authentication challenge) - EPS challenge
+  Length: 16
+
+--- Frame 24: ciphering algorithm selected ---
+  ciphering=0  integrity=2
+  (ciphering 0 = EEA0 NULL; integrity 2 = EIA2, real)

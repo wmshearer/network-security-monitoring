@@ -1,0 +1,34 @@
+logger:
+  file:
+    path: /opt/open5gs/var/log/open5gs/upf.log
+#  level: info   # fatal|error|warn|info(default)|debug|trace
+
+global:
+# max:
+#   ue: 1024  # The number of UE can be increased depending on memory size.
+#    peer: 64
+
+# NOTE: this is the UPF binary (open5gs-upfd) acting as the EPC's PGW-U -
+# same process handles both roles in Open5GS (see docs/4G-TIER.md). The
+# device is left as the entrypoint script's default "ogstun" (see
+# /entrypoint.sh's tun_create()) - this is a SEPARATE container from the
+# 5G tier's UPF, so it has its own network namespace and its own "ogstun"
+# device; there is no collision even though both containers can run at
+# once. Only the subnet differs from the 5G tier's UPF (10.45.0.0/16), to
+# keep the two tiers' UE address ranges visibly distinct in captures:
+# 10.46.0.0/16 here.
+upf:
+  pfcp:
+    server:
+    - dev: eth0
+  gtpu:
+    server:
+    - dev: eth0
+  session:
+    - subnet: 10.46.0.0/16
+      gateway: 10.46.0.1
+      dnn: internet
+  metrics:
+    server:
+    - dev: eth0
+      port: 9090

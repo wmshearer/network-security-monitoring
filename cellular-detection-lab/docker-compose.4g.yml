@@ -1,0 +1,167 @@
+name: cellular-detection-lab
+
+# ---------------------------------------------------------------------------
+# 4G/LTE EPC tier - NEW CONFIG AND SERVICES ONLY, same open5gs image already
+# used for the 5G tier (gradiant/open5gs:2.8.0 ships the full 4G EPC binary
+# set: open5gs-mmed, open5gs-hssd, open5gs-sgwcd, open5gs-sgwud, plus the
+# 5G-tier's own open5gs-smfd/open5gs-upfd doing double duty as PGW-C/PGW-U -
+# see docs/4G-TIER.md). No new image, no new stack.
+#
+# Independently startable/stoppable from the 5G tier (docker-compose.yml):
+#   docker compose -f docker-compose.yml -f docker-compose.4g.yml \
+#     up -d mme hss sgwc sgwu smf-4g upf-4g pcrf
+#   docker compose -f docker-compose.yml -f docker-compose.4g.yml \
+#     stop mme hss sgwc sgwu smf-4g upf-4g pcrf
+# This file is ALWAYS combined with docker-compose.yml (for the shared
+# `core` network and `mongo` subscriber DB - Open5GS shares one MongoDB
+# subscriber store between 4G and 5G, per this lab's verified facts) but
+# never starts or restarts any 5G-tier service; `docker compose up -d`
+# with only docker-compose.yml continues to bring up the 5G tier exactly
+# as before, untouched.
+#
+# NO RF hardware, NOTHING transmitted over the air here either: the
+# eNodeB/UE are srsRAN_4G's srsenb/srsue in ZMQ virtual-radio mode (see
+# docs/4G-TIER.md), built from source into build/srsRAN_4G/build (git-
+# ignored) and run as plain host processes, exactly the same "these are
+# just sockets" property as the 5G tier's UERANSIM and the 2G tier's
+# Virtual Um.
+# ---------------------------------------------------------------------------
+
+x-open5gs-image: &open5gs-image gradiant/open5gs:2.8.0
+
+services:
+  # mme and hss have a genuine MUTUAL freeDiameter bootstrap dependency:
+  # each one's own etc/freeDiameter/{mme,hss}.conf (stock, unmodified -
+  # see docs/4G-TIER.md) has a `ConnectPeer = "..." { ConnectTo: "<the
+  # other's Docker service name>"; ... }` directive that freeDiameter
+  # resolves via getaddrinfo() AT CONFIG-PARSE TIME (not lazily on first
+  # connection attempt), and Open5GS aborts the whole daemon
+  # (`{mme,hss}_fd_init: Assertion ... failed`) if that resolution fails.
+  # Docker's embedded DNS only resolves a service name once that
+  # container exists (confirmed empirically: a container's name is
+  # resolvable the instant it is created, and stops resolving the
+  # instant it exits) - so on a cold start, whichever of mme/hss's
+  # container is created (even briefly) before the OTHER one exists will
+  # abort and exit, and by the time the other one starts and looks for
+  # IT, it's gone. `depends_on` alone cannot fix this (it only orders
+  # container starts, not "wait until the daemon inside successfully
+  # resolved its peer"). `restart: on-failure` is the fix that actually
+  # closes the loop: Compose keeps recreating whichever one exits,
+  # briefly re-registering its DNS name each time, until both containers
+  # happen to exist in the same instant and both freeDiameter inits
+  # succeed - confirmed working, both stay up after at most a few
+  # restart cycles. See NOTES.md for the empirical diagnosis.
+  mme:
+    image: *open5gs-image
+    container_name: o5gs-mme
+    command: ["open5gs-mmed", "-c", "/opt/open5gs/etc/open5gs/mme.yaml"]
+    volumes:
+      - ./config/open5gs-4g/mme.yaml:/opt/open5gs/etc/open5gs/mme.yaml:ro
+    depends_on: [hss]
+    restart: on-failure
+    networks: [core]
+
+  hss:
+    image: *open5gs-image
+    container_name: o5gs-hss
+    command: ["open5gs-hssd", "-c", "/opt/open5gs/etc/open5gs/hss.yaml"]
+    volumes:
+      - ./config/open5gs-4g/hss.yaml:/opt/open5gs/etc/open5gs/hss.yaml:ro
+    depends_on:
+      mongo:
+        condition: service_healthy
+    restart: on-failure
+    networks: [core]
+
+  sgwc:
+    image: *open5gs-image
+    container_name: o5gs-sgwc
+    command: ["open5gs-sgwcd", "-c", "/opt/open5gs/etc/open5gs/sgwc.yaml"]
+    volumes:
+      - ./config/open5gs-4g/sgwc.yaml:/opt/open5gs/etc/open5gs/sgwc.yaml:ro
+    depends_on: [sgwu]
+    networks: [core]
+
+  sgwu:
+    image: *open5gs-image
+    container_name: o5gs-sgwu
+    command: ["open5gs-sgwud", "-c", "/opt/open5gs/etc/open5gs/sgwu.yaml"]
+    volumes:
+      - ./config/open5gs-4g/sgwu.yaml:/opt/open5gs/etc/open5gs/sgwu.yaml:ro
+    networks: [core]
+
+  # PGW-C: same open5gs-smfd binary the 5G tier uses for SMF, run as a
+  # SECOND, independent container/process with 4G-only config (no SBI/
+  # NRF - see config/open5gs-4g/smf.yaml). Separate container name and
+  # config from the 5G tier's `smf` service - the two never share state,
+  # even though they are literally the same binary.
+  #
+  # smf-4g and pcrf have the SAME mutual freeDiameter Gx bootstrap
+  # dependency mme/hss have on S6a (see that pair's own comment above) -
+  # `restart: on-failure` applied here too, proactively, rather than
+  # waiting to rediscover the identical race a second time.
+  smf-4g:
+    image: *open5gs-image
+    container_name: o5gs-smf-4g
+    command: ["open5gs-smfd", "-c", "/opt/open5gs/etc/open5gs/smf.yaml"]
+    volumes:
+      - ./config/open5gs-4g/smf.yaml:/opt/open5gs/etc/open5gs/smf.yaml:ro
+    depends_on: [upf-4g, pcrf]
+    restart: on-failure
+    networks: [core]
+
+  # PCRF (Policy and Charging Rules Function) - PGW-C's (smf-4g's) Gx
+  # peer. Required here because the classic EPC S5C/GTPv2-C session-
+  # establishment path in Open5GS hard-requires a Gx answer before
+  # completing (unlike the 5G tier's PFCP-only flow, which has no PCRF
+  # at all) - see config/open5gs-4g/smf.yaml's own comment and NOTES.md.
+  # Also ships in gradiant/open5gs:2.8.0's binary set (open5gs-pcrfd),
+  # so still zero new images.
+  pcrf:
+    image: *open5gs-image
+    container_name: o5gs-pcrf
+    command: ["open5gs-pcrfd", "-c", "/opt/open5gs/etc/open5gs/pcrf.yaml"]
+    volumes:
+      - ./config/open5gs-4g/pcrf.yaml:/opt/open5gs/etc/open5gs/pcrf.yaml:ro
+      - ./config/open5gs-4g/freeDiameter/pcrf.conf:/opt/open5gs/etc/freeDiameter/pcrf.conf:ro
+    depends_on:
+      mongo:
+        condition: service_healthy
+    restart: on-failure
+    networks: [core]
+
+  # PGW-U: same open5gs-upfd binary the 5G tier uses for UPF, run as a
+  # second, independent container. Own TUN device inside its own
+  # container network namespace (see config/open5gs-4g/upf.yaml) and its
+  # own subnet (10.46.0.0/16), so UE addresses from this tier are visibly
+  # distinct from the 5G tier's (10.45.0.0/16) in any capture.
+  upf-4g:
+    image: *open5gs-image
+    container_name: o5gs-upf-4g
+    user: root
+    privileged: true   # same reasoning as the 5G tier's upf service:
+                        # TUN device creation needs the initial container
+                        # user namespace - see docker-compose.yml's own
+                        # upf service comment. Still fully software, no
+                        # host RF/radio access implied.
+    command: ["open5gs-upfd", "-c", "/opt/open5gs/etc/open5gs/upf.yaml"]
+    volumes:
+      - ./config/open5gs-4g/upf.yaml:/opt/open5gs/etc/open5gs/upf.yaml:ro
+    environment:
+      - ENABLE_NAT=true
+      - IPV4_TUN_ADDR=10.46.0.1/16
+      - IPV6_TUN_ADDR=2001:db8:cafd::1/48
+      # /entrypoint.sh's MASQUERADE rule uses $IPV4_TUN_SUBNET, which
+      # defaults (inside the image) to the 5G tier's own 10.45.0.0/16 -
+      # without this override, this UE's traffic (source 10.46.0.0/16)
+      # never matched the NAT rule at all and external ping silently
+      # failed 100% while internal (UE -> PGW-U gateway) traffic worked
+      # fine - observed empirically, see NOTES.md.
+      - IPV4_TUN_SUBNET=10.46.0.0/16
+    networks: [core]
+
+# No `networks:` block here - this file is only ever used combined with
+# docker-compose.yml (`-f docker-compose.yml -f docker-compose.4g.yml`),
+# whose own `core` bridge network definition applies. Compose merges
+# service/network definitions by name across -f files; redefining `core`
+# here would conflict rather than extend it.

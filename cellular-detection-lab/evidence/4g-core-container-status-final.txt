@@ -1,0 +1,20 @@
+o5gs-amf	Up 19 hours
+o5gs-ausf	Up 19 hours
+o5gs-bsf	Up 19 hours
+o5gs-hss	Up 33 minutes
+o5gs-mme	Up 21 minutes
+o5gs-mongo	Up 19 hours (healthy)
+o5gs-nrf	Up 19 hours
+o5gs-nssf	Up 19 hours
+o5gs-pcf	Up 19 hours
+o5gs-pcrf	Up 6 minutes
+o5gs-scp	Up 19 hours
+o5gs-sgwc	Up 21 minutes
+o5gs-sgwu	Up 35 minutes
+o5gs-smf-4g	Up About a minute
+o5gs-smf	Up 19 hours
+o5gs-udm	Up 19 hours
+o5gs-udr	Up 19 hours
+o5gs-upf-4g	Up About a minute
+o5gs-upf	Up 19 hours
+o5gs-webui	Up 19 hours

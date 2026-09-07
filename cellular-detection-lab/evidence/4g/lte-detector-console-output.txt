@@ -1,0 +1,18 @@
+==============================================================================
+LTE S1AP/NAS-EPS IDENTITY-EXPOSURE / SECURITY-POSTURE DETECTOR - SUMMARY
+==============================================================================
+
+[HIGH] lte-imsi-clear - Attach Request used EPS Mobile Identity type IMSI (not GUTI) - the subscriber's permanent identity was sent in the clear, unencrypted, in this NAS-EPS message. This is the direct LTE analogue of the 2G tier's cleartext-IMSI finding and the 5G tier's null-scheme SUCI finding: LTE has no identity-concealment mechanism at all for this IE (SUCI's ECIES concealment was introduced later, in 5G, specifically to close this gap).
+    Observed: {'frame': '17', 'src_ip': '172.22.0.1', 'type_of_identity': 1, 'imsi_cleartext': '999700000000099'}
+    Expected: EPS Mobile Identity type GUTI, used whenever the UE holds a valid one from a prior registration - IMSI is the spec-mandated fallback (TS 24.301 5.5.1.2.2) only when no valid GUTI exists, which is itself a normal, unavoidable occurrence (first-ever attach, GUTI invalidated by the network, etc.), not solely an attack indicator.
+    Spec:     3GPP TS 24.301 clause 5.5.1.2.2 and clause 9.9.3.4 (EPS mobile identity IE); docs/4G-TIER.md
+    Frame:    17
+
+[HIGH] lte-null-ciphering - Security Mode Command selected EEA0 (null ciphering algorithm) - NAS signalling and, once bearers are established, user-plane traffic travel WITHOUT confidentiality protection. EEA0 is meant only for unauthenticated emergency calls; selecting it for a normal authenticated subscriber defeats the confidentiality purpose of running EPS-AKA at all, even though integrity may still be intact (checked separately above).
+    Observed: {'frame': '24', 'type_of_ciphering_algorithm': 0, 'type_of_integrity_algorithm': 2}
+    Expected: A non-null ciphering algorithm (EEA1, EEA2, or EEA3) for any normal, authenticated subscriber.
+    Spec:     3GPP TS 33.401 clause 5.1.4.5 and clause 6.3.1.1 (EEA0 restricted to unauthenticated emergency calls); docs/4G-TIER.md
+    Frame:    24
+
+Total checks evaluated: 5  |  Actionable findings: 2
+==============================================================================

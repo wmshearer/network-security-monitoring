@@ -1,0 +1,116 @@
+Frame 5: Packet, 114 bytes on wire (912 bits), 114 bytes captured (912 bits) on interface br-89d61b12981f, id 0
+    Section number: 1
+    Interface id: 0 (br-89d61b12981f)
+        Interface name: br-89d61b12981f
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Sep  7, 2026 14:28:06.000882471 PDT
+    UTC Arrival Time: Sep  7, 2026 21:28:06.000882471 UTC
+    Epoch Arrival Time: 1788816486.000882471
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 2.066552 milliseconds]
+    [Time since reference or first frame: 2.134845 milliseconds]
+    Frame Number: 5
+    Frame Length: 114 bytes (912 bits)
+    Capture Length: 114 bytes (912 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:sctp:s1ap]
+    Character encoding: ASCII (0)
+Ethernet II, Src: 36:19:64:ae:57:11 (36:19:64:ae:57:11), Dst: 9e:a8:65:19:e6:5f (9e:a8:65:19:e6:5f)
+    Destination: 9e:a8:65:19:e6:5f (9e:a8:65:19:e6:5f)
+        .... ..1. .... .... .... .... = LG bit: Locally administered address (this is NOT the factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 36:19:64:ae:57:11 (36:19:64:ae:57:11)
+        .... ..1. .... .... .... .... = LG bit: Locally administered address (this is NOT the factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 0]
+Internet Protocol Version 4, Src: 172.22.0.1, Dst: 172.22.0.24
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x02 (DSCP: CS0, ECN: ECT(0))
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..10 = Explicit Congestion Notification: ECN-Capable Transport codepoint '10' (2)
+    Total Length: 100
+    Identification: 0x0002 (2)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: SCTP (132)
+    Header Checksum: 0xe1cc [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 172.22.0.1
+    Destination Address: 172.22.0.24
+    [Stream index: 0]
+Stream Control Transmission Protocol, Src Port: 49413 (49413), Dst Port: 36412 (36412)
+    Source port: 49413
+    Destination port: 36412
+    Verification tag: 0xe41d987f
+    [Association index: disabled (enable in preferences)]
+    Checksum: 0x73f138f1 [unverified]
+    [Checksum Status: Unverified]
+    DATA chunk (ordered, complete segment, TSN: 0, SID: 0, SSN: 0, PPID: 18, payload length: 49 bytes)
+        Chunk type: DATA (0)
+            0... .... = Bit: Stop processing of the packet
+            .0.. .... = Bit: Do not report
+        Chunk flags: 0x03
+            .... 0... = I-Bit: Possibly delay SACK
+            .... .0.. = U-Bit: Ordered delivery
+            .... ..1. = B-Bit: First segment
+            .... ...1 = E-Bit: Last segment
+        Chunk length: 65
+        Transmission sequence number (relative): 0
+        Transmission sequence number (absolute): 269241516
+        Stream identifier: 0x0000
+        Stream sequence number: 0
+        Payload protocol identifier: S1 Application Protocol (S1AP) (18)
+        Chunk padding: 000000
+S1 Application Protocol
+    S1AP-PDU: initiatingMessage (0)
+        initiatingMessage
+            procedureCode: id-S1Setup (17)
+            criticality: reject (0)
+            value
+                S1SetupRequest
+                    protocolIEs: 4 items
+                        Item 0: id-Global-ENB-ID
+                            ProtocolIE-Field
+                                id: id-Global-ENB-ID (59)
+                                criticality: reject (0)
+                                value
+                                    Global-ENB-ID
+                                        pLMNidentity: 99f907
+                                        Mobile Country Code (MCC): Private network (999)
+                                        Mobile Network Code (MNC): Unknown (70)
+                                        eNB-ID: macroENB-ID (0)
+                                            macroENB-ID: 0019b0 [bit length 20, 4 LSB pad bits, 0000 0000  0001 1001  1011 .... decimal value 411]
+                        Item 1: id-eNBname
+                            ProtocolIE-Field
+                                id: id-eNBname (60)
+                                criticality: ignore (1)
+                                value
+                                    ENBname: srsenb01
+                        Item 2: id-SupportedTAs
+                            ProtocolIE-Field
+                                id: id-SupportedTAs (64)
+                                criticality: reject (0)
+                                value
+                                    SupportedTAs: 1 item
+                                        Item 0
+                                            SupportedTAs-Item
+                                                tAC: 1 (0x0001)
+                                                broadcastPLMNs: 1 item
+                                                    Item 0
+                                                        PLMNidentity: 99f907
+                                                        Mobile Country Code (MCC): Private network (999)
+                                                        Mobile Network Code (MNC): Unknown (70)
+                        Item 3: id-DefaultPagingDRX
+                            ProtocolIE-Field
+                                id: id-DefaultPagingDRX (137)
+                                criticality: ignore (1)
+                                value
+                                    PagingDRX: v128 (2)
+

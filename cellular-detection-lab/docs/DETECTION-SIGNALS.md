@@ -50,6 +50,10 @@ detector never gets that.
 | 10 | Paging request/success divergence | `fivegs_amffunction_mm_paging5greq/succ` | Excessive paging for one subscriber |
 | 11 | **2G: Cipher Mode Command selecting A5/0** | Um via GSMTAP (pre-cipher by design), OsmoMSC log | The textbook IMSI-catcher signature. 2G has no network authentication. |
 | 12 | **2G: Identity Request before ciphering** | Um GSMTAP capture | Asking IMSI in clear from a UE that already has a valid TMSI |
+| 13 | **4G: Cleartext IMSI in Attach Request** | S1AP InitialUEMessage, NAS-EPS EPS mobile identity IE, `type_of_id == 1` | TS 24.301 5.5.1.2.2 mandates IMSI (unconcealed) whenever the UE has no valid GUTI - LTE never got a SUCI-equivalent concealment mechanism. Direct 4G analogue of signal #12/#3. |
+| 14 | **4G: Identity Request soliciting IMSI** | NAS-EPS Identity Request, plain/unprotected NAS | Same pre-security-context "ask for identity" mechanism as 2G/5G; inherited unchanged into LTE. |
+| 15 | **4G: Null-integrity or null-ciphering selected** | NAS-EPS Security Mode Command, `type_of_ciph_alg`/`type_of_int_alg == 0` (EEA0/EIA0) | TS 33.401 5.1.4.5/6.3.1.1 restrict EEA0/EIA0 to unauthenticated emergency calls. Selecting either for a normal subscriber defeats EPS-AKA's confidentiality/integrity purpose. |
+| 16 | **4G: eNodeB identity allowlist violation** | S1AP S1 Setup Request, PLMN+eNB ID+TAC | Same "no cryptographic proof of cell identity" gap as signal #5, one generation earlier. Not on the operator allowlist = candidate rogue eNodeB. |
 
 ## Verified Open5GS telemetry (read from source, HEAD 2026-09-03)
 

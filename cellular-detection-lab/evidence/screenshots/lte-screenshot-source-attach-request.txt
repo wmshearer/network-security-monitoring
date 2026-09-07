@@ -1,0 +1,164 @@
+Frame 17: Packet, 130 bytes on wire (1040 bits), 130 bytes captured (1040 bits) on interface br-89d61b12981f, id 0
+    Section number: 1
+    Interface id: 0 (br-89d61b12981f)
+        Interface name: br-89d61b12981f
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Sep  7, 2026 14:28:31.889828270 PDT
+    UTC Arrival Time: Sep  7, 2026 21:28:31.889828270 UTC
+    Epoch Arrival Time: 1788816511.889828270
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 338.533936 milliseconds]
+    [Time since reference or first frame: 25.891080644 seconds]
+    Frame Number: 17
+    Frame Length: 130 bytes (1040 bits)
+    Capture Length: 130 bytes (1040 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:sctp:s1ap:nas-eps]
+    Character encoding: ASCII (0)
+Ethernet II, Src: 36:19:64:ae:57:11 (36:19:64:ae:57:11), Dst: 9e:a8:65:19:e6:5f (9e:a8:65:19:e6:5f)
+    Destination: 9e:a8:65:19:e6:5f (9e:a8:65:19:e6:5f)
+        .... ..1. .... .... .... .... = LG bit: Locally administered address (this is NOT the factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 36:19:64:ae:57:11 (36:19:64:ae:57:11)
+        .... ..1. .... .... .... .... = LG bit: Locally administered address (this is NOT the factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 0]
+Internet Protocol Version 4, Src: 172.22.0.1, Dst: 172.22.0.24
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x02 (DSCP: CS0, ECN: ECT(0))
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..10 = Explicit Congestion Notification: ECN-Capable Transport codepoint '10' (2)
+    Total Length: 116
+    Identification: 0x0008 (8)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: SCTP (132)
+    Header Checksum: 0xe1b6 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 172.22.0.1
+    Destination Address: 172.22.0.24
+    [Stream index: 0]
+Stream Control Transmission Protocol, Src Port: 49413 (49413), Dst Port: 36412 (36412)
+    Source port: 49413
+    Destination port: 36412
+    Verification tag: 0xe41d987f
+    [Association index: disabled (enable in preferences)]
+    Checksum: 0xe4d20227 [unverified]
+    [Checksum Status: Unverified]
+    DATA chunk (ordered, complete segment, TSN: 1, SID: 1, SSN: 0, PPID: 18, payload length: 67 bytes)
+        Chunk type: DATA (0)
+            0... .... = Bit: Stop processing of the packet
+            .0.. .... = Bit: Do not report
+        Chunk flags: 0x03
+            .... 0... = I-Bit: Possibly delay SACK
+            .... .0.. = U-Bit: Ordered delivery
+            .... ..1. = B-Bit: First segment
+            .... ...1 = E-Bit: Last segment
+        Chunk length: 83
+        Transmission sequence number (relative): 1
+        Transmission sequence number (absolute): 269241517
+        Stream identifier: 0x0001
+        Stream sequence number: 0
+        Payload protocol identifier: S1 Application Protocol (S1AP) (18)
+        Chunk padding: 00
+S1 Application Protocol
+    S1AP-PDU: initiatingMessage (0)
+        initiatingMessage
+            procedureCode: id-initialUEMessage (12)
+            criticality: ignore (1)
+            value
+                InitialUEMessage
+                    protocolIEs: 5 items
+                        Item 0: id-eNB-UE-S1AP-ID
+                            ProtocolIE-Field
+                                id: id-eNB-UE-S1AP-ID (8)
+                                criticality: reject (0)
+                                value
+                                    ENB-UE-S1AP-ID: 1
+                        Item 1: id-NAS-PDU
+                            ProtocolIE-Field
+                                id: id-NAS-PDU (26)
+                                criticality: reject (0)
+                                value
+                                    NAS-PDU: 07417108999907000000009902f07000050201d011d1
+                                    Non-Access-Stratum (NAS)PDU
+                                        0000 .... = Security header type: Plain NAS message, not security protected (0)
+                                        .... 0111 = Protocol discriminator: EPS mobility management messages (0x7)
+                                        NAS EPS Mobility Management Message Type: Attach request (0x41)
+                                        0... .... = Type of security context flag (TSC): Native security context (for KSIasme or KSIamf)
+                                        .111 .... = NAS key set identifier: No key is available (7)
+                                        .... 0... = Spare bit(s): 0x00
+                                        .... .001 = EPS attach type: EPS attach (1)
+                                        EPS mobile identity
+                                            Length: 8
+                                            .... 1... = Odd/even indication: Odd number of identity digits
+                                            .... .001 = Type of identity: IMSI (1)
+                                            IMSI: 999700000000099
+                                            [Association IMSI: 999700000000099]
+                                                Mobile Country Code (MCC): Private network (999)
+                                                Mobile Network Code (MNC): Unknown (700)
+                                        UE network capability
+                                            Length: 2
+                                            1... .... = EEA0: Supported
+                                            .1.. .... = 128-EEA1: Supported
+                                            ..1. .... = 128-EEA2: Supported
+                                            ...1 .... = 128-EEA3: Supported
+                                            .... 0... = EEA4: Not supported
+                                            .... .0.. = EEA5: Not supported
+                                            .... ..0. = EEA6: Not supported
+                                            .... ...0 = EEA7: Not supported
+                                            0... .... = EIA0: Not supported
+                                            .1.. .... = 128-EIA1: Supported
+                                            ..1. .... = 128-EIA2: Supported
+                                            ...1 .... = 128-EIA3: Supported
+                                            .... 0... = EIA4: Not supported
+                                            .... .0.. = EIA5: Not supported
+                                            .... ..0. = EIA6: Not supported
+                                            .... ...0 = EPS-UPIP: Not supported
+                                        ESM message container
+                                            Length: 5
+                                            ESM message container contents: 0201d011d1
+                                                0000 .... = EPS bearer identity: No EPS bearer identity assigned (0)
+                                                .... 0010 = Protocol discriminator: EPS session management messages (0x2)
+                                                Procedure transaction identity: 1
+                                                NAS EPS session management messages: PDN connectivity request (0xd0)
+                                                0001 .... = PDN type: IPv4 (1)
+                                                .... 0001 = Request type: Initial request (1)
+                                                ESM information transfer flag
+                                                    1101 .... = Element ID: 0xd-
+                                                    .... 000. = Spare bit(s): 0x00
+                                                    .... ...1 = EIT (ESM information transfer): Security protected ESM information transfer required
+                        Item 2: id-TAI
+                            ProtocolIE-Field
+                                id: id-TAI (67)
+                                criticality: reject (0)
+                                value
+                                    TAI
+                                        pLMNidentity: 99f907
+                                        Mobile Country Code (MCC): Private network (999)
+                                        Mobile Network Code (MNC): Unknown (70)
+                                        tAC: 1 (0x0001)
+                        Item 3: id-EUTRAN-CGI
+                            ProtocolIE-Field
+                                id: id-EUTRAN-CGI (100)
+                                criticality: ignore (1)
+                                value
+                                    EUTRAN-CGI
+                                        pLMNidentity: 99f907
+                                        Mobile Country Code (MCC): Private network (999)
+                                        Mobile Network Code (MNC): Unknown (70)
+                                        0000 0000 0001 1001 1011 0000 0001 .... = cell-ID: 0x0019b01
+                        Item 4: id-RRC-Establishment-Cause
+                            ProtocolIE-Field
+                                id: id-RRC-Establishment-Cause (134)
+                                criticality: ignore (1)
+                                value
+                                    RRC-Establishment-Cause: mo-Data (4)
+

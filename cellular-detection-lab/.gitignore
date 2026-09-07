@@ -21,6 +21,13 @@ mongodb/
 !evidence/2g/*.pcap
 !evidence/2g/*.pcapng
 
+# Exception: 4G/LTE tier evidence captures - all lab-generated synthetic
+# traffic (test PLMN 999/70, synthetic IMSI, ZMQ virtual radio, no RF) and
+# load-bearing proof artefacts for detector/lte_detector.py and
+# docs/4G-TIER.md.
+!evidence/4g/*.pcap
+!evidence/4g/*.pcapng
+
 # Python
 __pycache__/
 *.pyc

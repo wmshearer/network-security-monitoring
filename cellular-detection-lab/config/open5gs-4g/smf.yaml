@@ -1,0 +1,63 @@
+logger:
+  file:
+    path: /opt/open5gs/var/log/open5gs/smf.log
+#  level: info   # fatal|error|warn|info(default)|debug|trace
+
+global:
+# max:
+#   ue: 1024 # The number of UE can be increased depending on memory size.
+#    peer: 64
+
+# NOTE: this is the SMF binary (open5gs-smfd) acting as the EPC's PGW-C -
+# same process handles both roles in Open5GS (see docs/4G-TIER.md). No
+# SBI/NRF/SCP config here at all - unlike the 5G tier's smf.yaml, PGW-C in
+# a 4G-only deployment talks GTPv2-C to the MME and PFCP to the SGW-U/
+# PGW-U, never SBI - there is no 5G core in this tier's path.
+#
+# UNLIKE the 5G tier: PGW-C's GTPv2-C Create Session Response handler
+# (src/smf/s5c-handler.c) hard-requires a live Gx Diameter peer before it
+# will complete session establishment at all ("No Gx Diameter Peer" ->
+# session torn down, "No PDN Address Allocation" back to the UE, observed
+# empirically - see NOTES.md). This is a genuine difference from the 5G
+# tier's PFCP-only SM Context flow, not a copy-paste mistake carried over
+# from it: the classic EPC S5C code path was written assuming a PCRF is
+# always present, so this tier deploys the PCRF (open5gs-pcrfd, also
+# already shipped in gradiant/open5gs:2.8.0's own binary set - see
+# docker-compose.4g.yml's `pcrf` service) and enables ctf/Gx here.
+smf:
+  freeDiameter: /opt/open5gs/etc/freeDiameter/smf.conf
+  gtpc:
+    server:
+    - dev: eth0
+  pfcp:
+    server:
+    - dev: eth0
+    client:
+      upf:
+      - address: upf-4g
+        tac: 1
+  gtpu:
+    server:
+    - dev: eth0
+  metrics:
+    server:
+    - dev: eth0
+      port: 9090
+  session:
+    - subnet: 10.46.0.0/16
+      gateway: 10.46.0.1
+      dnn: internet
+  dns:
+  - 8.8.8.8
+  - 8.8.4.4
+  mtu: 1400
+  ctf:
+    enabled: auto # auto = use Gx with the PCRF (required here - see the
+                  # block comment above `smf:`) but do NOT require Gy
+                  # (online charging/OCS) - this lab's pcrf.yaml only
+                  # implements Gx, no Ro/Gy application, and setting this
+                  # to "yes" makes Gy mandatory, which produced Diameter
+                  # Result Code 3002/"Not supported(281)" on every
+                  # session (observed empirically - see NOTES.md). "auto"
+                  # detects the PCRF doesn't advertise the Gy application
+                  # and skips it, using only the working Gx exchange.

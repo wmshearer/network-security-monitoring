@@ -1,0 +1,88 @@
+logger:
+  file:
+    path: /opt/open5gs/var/log/open5gs/mme.log
+#  level: info   # fatal|error|warn|info(default)|debug|trace
+
+global:
+# max:
+#   ue: 1024  # The number of UE can be increased depending on memory size.
+#    peer: 64
+
+mme:
+  freeDiameter: /opt/open5gs/etc/freeDiameter/mme.conf
+  s1ap:
+    server:
+    - dev: eth0
+  gtpc:
+    server:
+    - dev: eth0
+    client:
+      sgwc:
+      - address: sgwc
+        tac: 1
+      # PGW-C selection: MUST be this tier's own smf-4g compose service,
+      # NOT "smf" - that name belongs to the 5G tier's own SMF container,
+      # which is also reachable on this shared Docker network/mongo (see
+      # docker-compose.4g.yml's own header comment). Pointing this at
+      # "smf" by mistake (copy-pasted from Open5GS's own stock 4G MME
+      # template, which assumes a single, 4G-only deployment where "smf"
+      # unambiguously means PGW-C) sent every LTE Create Session Request
+      # to the 5G tier's SMF instead, which accepted the S5C message
+      # (dormant EPC-interworking code path) but had no Gx Diameter peer
+      # configured for it and no PGW-C session state - the UE saw an
+      # Attach Reject cause 11 (PLMN not allowed... symptom, not the
+      # actual GTPv2-C "No PDN Address Allocation" cause underneath).
+      # See NOTES.md, "Blocker: LTE Attach silently routed to the WRONG,
+      # 5G-tier SMF" for the full diagnosis.
+      smf:
+      - address: smf-4g
+        tac: 1
+  metrics:
+    server:
+    - dev: eth0
+      port: 9090
+  gummei:
+  - plmn_id:
+      mcc: 999
+      mnc: 70
+    mme_gid: 2
+    mme_code: 1
+  tai:
+  - plmn_id:
+      mcc: 999
+      mnc: 70
+    tac: 1
+  security:
+    # UNMODIFIED from Open5GS's own stock mme.yaml.in default. Left
+    # exactly as shipped, deliberately not "fixed" - this IS the finding:
+    # ciphering_order puts EEA0 (NULL ciphering) FIRST/most-preferred,
+    # ahead of any real cipher. Open5GS selects the first mutually
+    # supported algorithm in each list, so any UE that advertises EEA0
+    # support at all (nearly all of them do, since EEA0 support is
+    # mandatory per TS 33.401 - it must always be available for emergency
+    # calls) gets NULL ciphering selected for ordinary, non-emergency,
+    # fully-authenticated traffic. Confirmed on this lab's own capture:
+    # evidence/4g/lte-attach-capture.pcap frame 10's Security Mode
+    # Command selects "EPS encryption algorithm EEA0 (null ciphering
+    # algorithm)" for integrity_order's EIA2 (a REAL algorithm, AES-based)
+    # - so integrity is protected but confidentiality is not, for this
+    # lab's own default-configured EPC. TS 33.401 6.3.1.1: EEA0 exists
+    # for emergency/unauthenticated-UE calls; selecting it here, for a
+    # normal authenticated subscriber, is exactly the gap
+    # detector/lte_detector.py's null-ciphering signal is built to catch.
+    # See docs/4G-TIER.md for the plain-language writeup and NOTES.md for
+    # exactly when this was found (during the very first successful
+    # Attach, not contrived afterward).
+    integrity_order: [EIA2, EIA1, EIA0]
+    ciphering_order: [EEA0, EEA1, EEA2]
+  network_name:
+    full: Open5GS
+    short: Next
+  mme_name: open5gs-mme0
+  time:
+#    t3402:
+#      value: 720   # 12 minutes * 60 = 720 seconds
+#    t3412:
+#      value: 3240  # 54 minutes * 60 = 3240 seconds
+#    t3423:
+#      value: 720   # 12 minutes * 60 = 720 seconds

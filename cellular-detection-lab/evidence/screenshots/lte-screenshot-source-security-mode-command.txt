@@ -1,0 +1,150 @@
+Frame 24: Packet, 126 bytes on wire (1008 bits), 126 bytes captured (1008 bits) on interface br-89d61b12981f, id 0
+    Section number: 1
+    Interface id: 0 (br-89d61b12981f)
+        Interface name: br-89d61b12981f
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Sep  7, 2026 14:28:31.931799531 PDT
+    UTC Arrival Time: Sep  7, 2026 21:28:31.931799531 UTC
+    Epoch Arrival Time: 1788816511.931799531
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 194.042 microseconds]
+    [Time since reference or first frame: 25.933051905 seconds]
+    Frame Number: 24
+    Frame Length: 126 bytes (1008 bits)
+    Capture Length: 126 bytes (1008 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:sctp:s1ap:nas-eps]
+    Character encoding: ASCII (0)
+Ethernet II, Src: 9e:a8:65:19:e6:5f (9e:a8:65:19:e6:5f), Dst: 36:19:64:ae:57:11 (36:19:64:ae:57:11)
+    Destination: 36:19:64:ae:57:11 (36:19:64:ae:57:11)
+        .... ..1. .... .... .... .... = LG bit: Locally administered address (this is NOT the factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 9e:a8:65:19:e6:5f (9e:a8:65:19:e6:5f)
+        .... ..1. .... .... .... .... = LG bit: Locally administered address (this is NOT the factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 0]
+Internet Protocol Version 4, Src: 172.22.0.24, Dst: 172.22.0.1
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x02 (DSCP: CS0, ECN: ECT(0))
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..10 = Explicit Congestion Notification: ECN-Capable Transport codepoint '10' (2)
+    Total Length: 112
+    Identification: 0x7571 (30065)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: SCTP (132)
+    Header Checksum: 0x6c51 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 172.22.0.24
+    Destination Address: 172.22.0.1
+    [Stream index: 0]
+Stream Control Transmission Protocol, Src Port: 36412 (36412), Dst Port: 49413 (49413)
+    Source port: 36412
+    Destination port: 49413
+    Verification tag: 0xdb054757
+    [Association index: disabled (enable in preferences)]
+    Checksum: 0x00000000 [unverified]
+    [Checksum Status: Unverified]
+    SACK chunk (Cumulative TSN: 269241518, a_rwnd: 106496, gaps: 0, duplicate TSNs: 0)
+        Chunk type: SACK (3)
+            0... .... = Bit: Stop processing of the packet
+            .0.. .... = Bit: Do not report
+        Chunk flags: 0x00
+            .... ...0 = Nonce sum: 0
+        Chunk length: 16
+        Cumulative TSN ACK (relative): 2
+        Cumulative TSN ACK (absolute): 269241518
+        Advertised receiver window credit (a_rwnd): 106496
+        Number of gap acknowledgement blocks: 0
+        Number of duplicated TSNs: 0
+    DATA chunk (ordered, complete segment, TSN: 2, SID: 1, SSN: 1, PPID: 18, payload length: 48 bytes)
+        Chunk type: DATA (0)
+            0... .... = Bit: Stop processing of the packet
+            .0.. .... = Bit: Do not report
+        Chunk flags: 0x03
+            .... 0... = I-Bit: Possibly delay SACK
+            .... .0.. = U-Bit: Ordered delivery
+            .... ..1. = B-Bit: First segment
+            .... ...1 = E-Bit: Last segment
+        Chunk length: 64
+        Transmission sequence number (relative): 2
+        Transmission sequence number (absolute): 2398983238
+        Stream identifier: 0x0001
+        Stream sequence number: 1
+        Payload protocol identifier: S1 Application Protocol (S1AP) (18)
+S1 Application Protocol
+    S1AP-PDU: initiatingMessage (0)
+        initiatingMessage
+            procedureCode: id-downlinkNASTransport (11)
+            criticality: ignore (1)
+            value
+                DownlinkNASTransport
+                    protocolIEs: 3 items
+                        Item 0: id-MME-UE-S1AP-ID
+                            ProtocolIE-Field
+                                id: id-MME-UE-S1AP-ID (0)
+                                criticality: reject (0)
+                                value
+                                    MME-UE-S1AP-ID: 18
+                        Item 1: id-eNB-UE-S1AP-ID
+                            ProtocolIE-Field
+                                id: id-eNB-UE-S1AP-ID (8)
+                                criticality: reject (0)
+                                value
+                                    ENB-UE-S1AP-ID: 1
+                        Item 2: id-NAS-PDU
+                            ProtocolIE-Field
+                                id: id-NAS-PDU (26)
+                                criticality: reject (0)
+                                value
+                                    NAS-PDU: 37cf0d472900075d020202f070c14f08b9cd533d6dcc33a8
+                                    Non-Access-Stratum (NAS)PDU
+                                        0011 .... = Security header type: Integrity protected with new EPS security context (3)
+                                        .... 0111 = Protocol discriminator: EPS mobility management messages (0x7)
+                                        Message authentication code: 0xcf0d4729
+                                        Sequence number: 0
+                                        0000 .... = Security header type: Plain NAS message, not security protected (0)
+                                        .... 0111 = Protocol discriminator: EPS mobility management messages (0x7)
+                                        NAS EPS Mobility Management Message Type: Security mode command (0x5d)
+                                        NAS security algorithms - Selected NAS security algorithms
+                                            0... .... = Spare bit(s): 0x00
+                                            .000 .... = Type of ciphering algorithm: EPS encryption algorithm EEA0 (null ciphering algorithm) (0)
+                                            .... 0... = Spare bit(s): 0x00
+                                            .... .010 = Type of integrity protection algorithm: EPS integrity algorithm 128-EIA2 (2)
+                                        0000 .... = Spare half octet: 0
+                                        .... 0... = Type of security context flag (TSC): Native security context (for KSIasme or KSIamf)
+                                        .... .010 = NAS key set identifier:  (2) ASME
+                                        UE security capability - Replayed UE security capabilities
+                                            Length: 2
+                                            1... .... = EEA0: Supported
+                                            .1.. .... = 128-EEA1: Supported
+                                            ..1. .... = 128-EEA2: Supported
+                                            ...1 .... = 128-EEA3: Supported
+                                            .... 0... = EEA4: Not supported
+                                            .... .0.. = EEA5: Not supported
+                                            .... ..0. = EEA6: Not supported
+                                            .... ...0 = EEA7: Not supported
+                                            0... .... = EIA0: Not supported
+                                            .1.. .... = 128-EIA1: Supported
+                                            ..1. .... = 128-EIA2: Supported
+                                            ...1 .... = 128-EIA3: Supported
+                                            .... 0... = EIA4: Not supported
+                                            .... .0.. = EIA5: Not supported
+                                            .... ..0. = EIA6: Not supported
+                                            .... ...0 = EPS-UPIP: Not supported
+                                        IMEISV request
+                                            1100 .... = Element ID: 0xc-
+                                            .... 0... = Spare bit(s): 0x00
+                                            .... .001 = IMEISV request: IMEISV requested (1)
+                                        HashMME
+                                            Element ID: 0x4f
+                                            Length: 8
+                                            HashMME: b9cd533d6dcc33a8
+
