@@ -1,0 +1,134 @@
+{
+  "title": "Cellular Threat Detection",
+  "uid": "cdl-threat-detection",
+  "tags": ["5g", "open5gs", "cellular-detection-lab", "security"],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "10s",
+  "time": { "from": "now-30m", "to": "now" },
+  "panels": [
+    {
+      "id": 200,
+      "type": "text",
+      "title": "How to read this dashboard",
+      "gridPos": { "h": 5, "w": 24, "x": 0, "y": 0 },
+      "options": {
+        "mode": "markdown",
+        "content": "**Cellular Threat Detection** — signals drawn from `docs/DETECTION-SIGNALS.md`, priority-ordered against 3GPP TR 33.809 (rogue-base-station study, all 7 key issues closed \"not concluded\" - no normative fake-base-station detection exists in 5G). This lab observes from the **core** side (AMF/SMF/UPF/PCF Prometheus metrics), which is a different and more operationally realistic vantage point than the UE-side detectors most published research assumes.\n\n**Centrepiece: Authentication Failures by 5GMM Cause.** `fivegs_amffunction_amf_authfail` carries the literal NAS 5GMM cause number as a label - confirmed live on this lab. **Cause 20 = MAC failure** (the UE rejected the network's challenge - a forged/replayed authentication vector, the signature of a false base station or replay attack). **Cause 21 = Synch failure** (SQN out of range - consistent with a replayed AUTN, i.e. a captured challenge being replayed later). These two causes are shown as **separate series** below so an analyst can tell which failure mode is occurring, not just that failures are occurring.\n\nAn analyst should watch for: (1) any non-zero cause-20 rate from a single subscriber/cell, (2) repeated cause-21 (sync failure) bursts, (3) registration or auth request rate spikes without matching success growth, (4) `ran_ue` and `amf_session` diverging (a MITM/relay can hold a RAN-side context open without a matching AMF session, or vice versa), (5) paging requests with no matching paging success."
+      }
+    },
+    {
+      "id": 201,
+      "type": "timeseries",
+      "title": "Authentication Failures by Cause (centrepiece)",
+      "description": "fivegs_amffunction_amf_authfail{cause=...}. cause=20 => MAC failure (forged/replayed challenge). cause=21 => Synch failure (SQN desync, consistent with AUTN replay). Any sustained cause=20 from one subscriber is the strongest single signal this lab can raise for a false base station or an authentication-vector replay attack.",
+      "gridPos": { "h": 9, "w": 24, "x": 0, "y": 5 },
+      "targets": [
+        { "expr": "fivegs_amffunction_amf_authfail{cause=\"20\"}", "legendFormat": "cause 20 - MAC failure (forged challenge)" },
+        { "expr": "fivegs_amffunction_amf_authfail{cause=\"21\"}", "legendFormat": "cause 21 - Synch failure (replay/SQN desync)" },
+        { "expr": "sum(fivegs_amffunction_amf_authfail) - (fivegs_amffunction_amf_authfail{cause=\"20\"} or vector(0)) - (fivegs_amffunction_amf_authfail{cause=\"21\"} or vector(0))", "legendFormat": "other causes" }
+      ],
+      "fieldConfig": {
+        "defaults": { "custom": { "drawStyle": "line", "lineWidth": 2, "fillOpacity": 15, "pointSize": 5, "showPoints": "always" } },
+        "overrides": [
+          { "matcher": { "id": "byName", "options": "cause 20 - MAC failure (forged challenge)" }, "properties": [ { "id": "color", "value": { "mode": "fixed", "fixedColor": "red" } } ] },
+          { "matcher": { "id": "byName", "options": "cause 21 - Synch failure (replay/SQN desync)" }, "properties": [ { "id": "color", "value": { "mode": "fixed", "fixedColor": "orange" } } ] }
+        ]
+      },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull", "max"] }, "tooltip": { "mode": "multi" } }
+    },
+    {
+      "id": 202,
+      "type": "timeseries",
+      "title": "Registration Failures by Cause",
+      "description": "fivegs_amffunction_rm_reginitfail{cause=...}. cause=7 observed on this lab = Illegal UE (e.g. UE attempted registration before its subscriber record existed in UDM/UDR). Non-zero, unexplained cause values here indicate rejected registration attempts and are worth correlating with the auth-failure panel above.",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 14 },
+      "targets": [
+        { "expr": "fivegs_amffunction_rm_reginitfail", "legendFormat": "cause {{cause}}" }
+      ],
+      "fieldConfig": { "defaults": { "custom": { "drawStyle": "line", "lineWidth": 2, "fillOpacity": 10 } }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull", "max"] }, "tooltip": { "mode": "multi" } }
+    },
+    {
+      "id": 203,
+      "type": "timeseries",
+      "title": "Authentication Rejects",
+      "description": "fivegs_amffunction_amf_authreject - NAS Authentication Reject sent by the network (e.g. ngKSI already in use, cause 22). Track per-subscriber thresholds; a burst suggests repeated failed authentication attempts against one identity.",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 14 },
+      "targets": [
+        { "expr": "fivegs_amffunction_amf_authreject", "legendFormat": "authreject" },
+        { "expr": "fivegs_amffunction_amf_authreq", "legendFormat": "authreq (context)" }
+      ],
+      "fieldConfig": { "defaults": { "custom": { "drawStyle": "line", "lineWidth": 2, "fillOpacity": 10 } }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull", "max"] }, "tooltip": { "mode": "multi" } }
+    },
+    {
+      "id": 204,
+      "type": "timeseries",
+      "title": "Registration Request Rate (Flood Detection)",
+      "description": "rate(fivegs_amffunction_rm_reginitreq[1m]) over a sliding window. A sustained rate increase with no matching increase in legitimate subscribers is consistent with a registration flood (DoS against the AMF, or a rogue UE/gNB hammering the core).",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 22 },
+      "targets": [
+        { "expr": "rate(fivegs_amffunction_rm_reginitreq[1m])", "legendFormat": "reginitreq rate (1m)" },
+        { "expr": "rate(fivegs_amffunction_amf_authreq[1m])", "legendFormat": "authreq rate (1m)" }
+      ],
+      "fieldConfig": { "defaults": { "custom": { "drawStyle": "line", "lineWidth": 2, "fillOpacity": 10 } }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull", "max"] }, "tooltip": { "mode": "multi" } }
+    },
+    {
+      "id": 205,
+      "type": "timeseries",
+      "title": "Registration Success Ratio (Collapse Detection)",
+      "description": "fivegs_amffunction_rm_reginitsucc / fivegs_amffunction_rm_reginitreq. Should sit near 1.0 on a healthy network. A ratio collapsing toward 0 while request volume stays flat or rises indicates something is actively preventing successful registration - a rogue cell intercepting/jamming signalling, a config fault, or an attack.",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 22 },
+      "targets": [
+        { "expr": "fivegs_amffunction_rm_reginitsucc / fivegs_amffunction_rm_reginitreq", "legendFormat": "success ratio" }
+      ],
+      "fieldConfig": { "defaults": { "custom": { "drawStyle": "line", "lineWidth": 2, "fillOpacity": 10 }, "max": 1.2, "min": 0, "unit": "percentunit" }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull", "min"] }, "tooltip": { "mode": "multi" } }
+    },
+    {
+      "id": 206,
+      "type": "timeseries",
+      "title": "RAN UE vs AMF Session Divergence (MITM / Relay)",
+      "description": "ran_ue vs amf_session. These two gauges should track together 1:1 on a healthy network. Sustained divergence (RAN-side context without a matching AMF session, or vice versa) is consistent with a relay/MITM proxy sitting between the RAN and the core, or a NAS/NGAP desync attack.",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 30 },
+      "targets": [
+        { "expr": "ran_ue", "legendFormat": "ran_ue" },
+        { "expr": "amf_session", "legendFormat": "amf_session" },
+        { "expr": "ran_ue - amf_session", "legendFormat": "divergence (ran_ue - amf_session)" }
+      ],
+      "fieldConfig": {
+        "defaults": { "custom": { "drawStyle": "line", "lineWidth": 2, "fillOpacity": 10 } },
+        "overrides": [
+          { "matcher": { "id": "byName", "options": "divergence (ran_ue - amf_session)" }, "properties": [ { "id": "color", "value": { "mode": "fixed", "fixedColor": "red" } }, { "id": "custom.drawStyle", "value": "bars" } ] }
+        ]
+      },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull", "max"] }, "tooltip": { "mode": "multi" } }
+    },
+    {
+      "id": 207,
+      "type": "timeseries",
+      "title": "Paging Request vs Success Divergence",
+      "description": "fivegs_amffunction_mm_paging5greq vs mm_paging5gsucc. Excessive paging requests for one subscriber with no corresponding success (UE never answers) can indicate the UE is out of coverage of the legitimate network - or is camped on a rogue cell that is not forwarding paging, isolating it from the real network.",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 30 },
+      "targets": [
+        { "expr": "fivegs_amffunction_mm_paging5greq", "legendFormat": "paging req" },
+        { "expr": "fivegs_amffunction_mm_paging5gsucc", "legendFormat": "paging succ" }
+      ],
+      "fieldConfig": { "defaults": { "custom": { "drawStyle": "line", "lineWidth": 2, "fillOpacity": 10 } }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull", "max"] }, "tooltip": { "mode": "multi" } }
+    },
+    {
+      "id": 208,
+      "type": "text",
+      "title": "Signals not yet instrumentable from this lab",
+      "gridPos": { "h": 5, "w": 24, "x": 0, "y": 38 },
+      "options": {
+        "mode": "markdown",
+        "content": "Per `docs/DETECTION-SIGNALS.md`, signals #3 (null-scheme SUCI), #5 (cell-identity allowlist violation), #11 (2G cipher-mode A5/0), and #12 (2G identity request pre-ciphering) require decoding NGAP/NAS IEs or GSMTAP capture directly - they are not exposed as Prometheus counters by Open5GS and are out of scope for this Prometheus/Grafana pass. They remain the natural next step (a packet-capture-driven detector) rather than a dashboard panel."
+      }
+    }
+  ]
+}

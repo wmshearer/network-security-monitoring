@@ -1,0 +1,28 @@
+N2_BIND_IP: 172.22.0.12
+N3_BIND_IP: 172.22.0.12
+N3_ADVERTISE_IP: 172.22.0.12
+RADIO_BIND_IP: 172.22.0.12
+AMF_IP: 172.22.0.10
+Launching gnb: nr-gnb -c gnb.yaml
+UERANSIM v3.3.0
+[2026-09-07 02:06:48.517] [sctp] [info] Trying to establish SCTP connection... (172.22.0.10:38412)
+[2026-09-07 02:06:48.519] [sctp] [info] SCTP connection established (172.22.0.10:38412)
+[2026-09-07 02:06:48.519] [sctp] [debug] SCTP association setup ascId[5]
+[2026-09-07 02:06:48.519] [ngap] [debug] Sending NG Setup Request
+[2026-09-07 02:06:48.522] [ngap] [debug] NG Setup Response received
+[2026-09-07 02:06:48.522] [ngap] [info] NG Setup procedure is successful
+[2026-09-07 02:06:48.627] [rrc] [debug] UE[1] new signal detected
+[2026-09-07 02:06:51.127] [rrc] [info] RRC Setup for UE[1]
+[2026-09-07 02:06:51.128] [ngap] [debug] Initial NAS message received from UE[1]
+[2026-09-07 02:07:06.930] [rrc] [debug] UE[2] new signal detected
+[2026-09-07 02:07:07.932] [rls] [debug] UE[1] signal lost
+[2026-09-07 02:07:16.654] [rrc] [info] RRC Setup for UE[2]
+[2026-09-07 02:07:16.655] [ngap] [debug] Initial NAS message received from UE[2]
+[2026-09-07 02:07:16.658] [ngap] [debug] UE Context Release Command received
+[2026-09-07 02:07:16.658] [rrc] [info] Releasing RRC connection for UE[2]
+[2026-09-07 02:07:47.069] [rrc] [debug] UE[3] new signal detected
+[2026-09-07 02:07:48.872] [rls] [debug] UE[2] signal lost
+[2026-09-07 02:07:49.570] [rrc] [info] RRC Setup for UE[3]
+[2026-09-07 02:07:49.571] [ngap] [debug] Initial NAS message received from UE[3]
+[2026-09-07 02:07:49.582] [ngap] [debug] Initial Context Setup Request received
+[2026-09-07 02:07:49.792] [ngap] [info] PDU session resource(s) setup for UE[3] count[1]

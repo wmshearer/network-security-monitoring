@@ -1,0 +1,233 @@
+Frame 95: Packet, 81 bytes on wire (648 bits), 81 bytes captured (648 bits) on interface lo, id 0
+    Section number: 1
+    Interface id: 0 (lo)
+        Interface name: lo
+        Interface description: Loopback
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Sep  7, 2026 10:18:17.839062414 PDT
+    UTC Arrival Time: Sep  7, 2026 17:18:17.839062414 UTC
+    Epoch Arrival Time: 1788801497.839062414
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 201.473 microseconds]
+    [Time since reference or first frame: 5.367394401 seconds]
+    Frame Number: 95
+    Frame Length: 81 bytes (648 bits)
+    Capture Length: 81 bytes (648 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:udp:gsmtap:lapdm:gsm_a.dtap]
+    Character encoding: ASCII (0)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+    Destination: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 0]
+Internet Protocol Version 4, Src: 192.0.2.93, Dst: 239.193.23.2
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 67
+    Identification: 0x457b (17787)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 1
+    Protocol: UDP (17)
+    Header Checksum: 0x6b66 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 192.0.2.93
+    Destination Address: 239.193.23.2
+    [Stream index: 1]
+User Datagram Protocol, Src Port: 60109, Dst Port: 4729
+    Source Port: 60109
+    Destination Port: 4729
+    Length: 47
+    Checksum: 0xc909 [unverified]
+    [Checksum Status: Unverified]
+    [Stream index: 1]
+    [Stream Packet Number: 3]
+    [Timestamps]
+        [Time since first frame: 234.534327 milliseconds]
+        [Time since previous frame: 142.156668 milliseconds]
+    UDP payload (39 bytes)
+GSM TAP Header, ARFCN: 871 (Uplink), TS: 0, Channel: SDCCH/4 (0)
+    Version: 2
+    Header Length: 16 bytes
+    Payload Type: GSM Um (MS<->BTS) (1)
+    Time Slot: 0
+    ..00 0011 0110 0111 = ARFCN: 871
+    .1.. .... .... .... = Uplink: 1
+    0... .... .... .... = PCS band indicator: 0
+    Signal Level: -47 dBm
+    Signal/Noise Ratio: 63 dB
+    GSM Frame Number: 7432
+    Channel Type: SDCCH/4 (7)
+    Antenna Number: 0
+    Sub-Slot: 0
+    Reserved: 0
+Link Access Procedure, Channel Dm (LAPDm)
+    Address Field: 0x01
+        .00. .... = LPD: Normal GSM (0)
+        ...0 00.. = SAPI: RR/MM/CC (0)
+        .... ..0. = C/R: 0
+        .... ...1 = EA: Final octet (1)
+    Control field: U P, func=SABM (0x3F)
+        ...1 .... = Poll: True
+        001. 11.. = Command: Set Asynchronous Balanced Mode (0x0b)
+        .... ..11 = Frame type: Unnumbered frame (0x3)
+    Length Field: 0x49
+        0100 10.. = Length: 18
+        .... ..0. = M: Last segment (0)
+        .... ...1 = EL: Final octet (1)
+GSM A-I/F DTAP - Location Updating Request
+    Protocol Discriminator: Mobility Management messages (5)
+        .... 0101 = Protocol discriminator: Mobility Management messages (0x5)
+        0000 .... = Skip Indicator: No indication of selected PLMN (0)
+    00.. .... = Sequence number: 0
+    ..00 1000 = DTAP Mobility Management Message Type: Location Updating Request (0x08)
+    Ciphering Key Sequence Number
+        0... .... = Spare bit(s): 0
+        .111 .... = Ciphering Key Sequence Number: No key is available
+    Location Updating Type - Normal
+        .... 0... = Follow-On Request (FOR): No follow-on request pending
+        .... .0.. = Spare bit(s): 0
+        .... ..00 = Updating Type: Normal (0)
+    Location Area Identification (LAI)
+        Location Area Identification (LAI) - MCC 1 Test network, MNC 01 Test network, LAC 65534
+            Mobile Country Code (MCC): Test network (001)
+            Mobile Network Code (MNC): Test network (01)
+            Location Area Code (LAC): 0xfffe (65534)
+    Mobile Station Classmark 1
+        Mobile Station Classmark 1
+            0... .... = Spare: 0
+            .01. .... = Revision Level: Used by GSM phase 2 mobile stations (1)
+            ...1 .... = ES IND: Controlled Early Classmark Sending option is implemented in the MS
+            .... 0... = A5/1 algorithm supported: encryption algorithm A5/1 available
+            .... .000 = RF Power Capability: class 1 (0)
+    Mobile Identity - IMSI (001010000000001)
+        Length: 8
+        0000 .... = Identity Digit 1: 0
+        .... 1... = Odd/even indication: Odd number of identity digits
+        .... .001 = Mobile Identity Type: IMSI (1)
+        IMSI: 001010000000001
+        [Association IMSI: 001010000000001]
+            Mobile Country Code (MCC): Test network (001)
+            Mobile Network Code (MNC): Test network (01)
+
+Frame 105: Packet, 81 bytes on wire (648 bits), 81 bytes captured (648 bits) on interface lo, id 0
+    Section number: 1
+    Interface id: 0 (lo)
+        Interface name: lo
+        Interface description: Loopback
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Sep  7, 2026 10:18:18.166609031 PDT
+    UTC Arrival Time: Sep  7, 2026 17:18:18.166609031 UTC
+    Epoch Arrival Time: 1788801498.166609031
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 27.102767 milliseconds]
+    [Time delta from previous displayed frame: 327.546617 milliseconds]
+    [Time since reference or first frame: 5.694941018 seconds]
+    Frame Number: 105
+    Frame Length: 81 bytes (648 bits)
+    Capture Length: 81 bytes (648 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:udp:gsmtap:lapdm:gsm_a.dtap]
+    Character encoding: ASCII (0)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+    Destination: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 0]
+Internet Protocol Version 4, Src: 192.0.2.93, Dst: 239.193.23.1
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 67
+    Identification: 0x95a9 (38313)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 1
+    Protocol: UDP (17)
+    Header Checksum: 0x1b39 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 192.0.2.93
+    Destination Address: 239.193.23.1
+    [Stream index: 0]
+User Datagram Protocol, Src Port: 53429, Dst Port: 4729
+    Source Port: 53429
+    Destination Port: 4729
+    Length: 47
+    Checksum: 0xc908 [unverified]
+    [Checksum Status: Unverified]
+    [Stream index: 0]
+    [Stream Packet Number: 102]
+    [Timestamps]
+        [Time since first frame: 5.694941018 seconds]
+        [Time since previous frame: 27.102767 milliseconds]
+    UDP payload (39 bytes)
+GSM TAP Header, ARFCN: 871 (Downlink), TS: 0, Channel: SDCCH/4 (0)
+    Version: 2
+    Header Length: 16 bytes
+    Payload Type: GSM Um (MS<->BTS) (1)
+    Time Slot: 0
+    ..00 0011 0110 0111 = ARFCN: 871
+    .0.. .... .... .... = Uplink: 0
+    0... .... .... .... = PCS band indicator: 0
+    Signal Level: 63 dBm
+    Signal/Noise Ratio: 63 dB
+    GSM Frame Number: 7519
+    Channel Type: SDCCH/4 (7)
+    Antenna Number: 0
+    Sub-Slot: 0
+    Reserved: 0
+Link Access Procedure, Channel Dm (LAPDm)
+    Address Field: 0x03
+        .00. .... = LPD: Normal GSM (0)
+        ...0 00.. = SAPI: RR/MM/CC (0)
+        .... ..1. = C/R: 1
+        .... ...1 = EA: Final octet (1)
+    Control field: I, N(R)=0, N(S)=0 (0x00)
+        000. .... = N(R): 0
+        .... 000. = N(S): 0
+        .... ...0 = Frame type: Information frame (0x0)
+    Length Field: 0x39
+        0011 10.. = Length: 14
+        .... ..0. = M: Last segment (0)
+        .... ...1 = EL: Final octet (1)
+GSM A-I/F DTAP - Location Updating Accept
+    Protocol Discriminator: Mobility Management messages (5)
+        .... 0101 = Protocol discriminator: Mobility Management messages (0x5)
+        0000 .... = Skip Indicator: No indication of selected PLMN (0)
+    00.. .... = Sequence number: 0
+    ..00 0010 = DTAP Mobility Management Message Type: Location Updating Accept (0x02)
+    Location Area Identification (LAI)
+        Location Area Identification (LAI) - MCC 1 Test network, MNC 01 Test network, LAC 1
+            Mobile Country Code (MCC): Test network (001)
+            Mobile Network Code (MNC): Test network (01)
+            Location Area Code (LAC): 0x0001 (1)
+    Mobile Identity - TMSI/P-TMSI (0xb7e78448)
+        Element ID: 0x17
+        Length: 5
+        1111 .... = Unused: 0xf
+        .... 0... = Odd/even indication: Even number of identity digits
+        .... .100 = Mobile Identity Type: TMSI/P-TMSI/M-TMSI (4)
+        TMSI/P-TMSI/M-TMSI/5G-TMSI: 3085403208 (0xb7e78448)
+

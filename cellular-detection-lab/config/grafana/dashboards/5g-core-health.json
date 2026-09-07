@@ -1,0 +1,134 @@
+{
+  "title": "5G Core Health",
+  "uid": "cdl-core-health",
+  "tags": ["5g", "open5gs", "cellular-detection-lab"],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "10s",
+  "time": { "from": "now-30m", "to": "now" },
+  "panels": [
+    {
+      "id": 100,
+      "type": "text",
+      "title": "About this dashboard",
+      "gridPos": { "h": 3, "w": 24, "x": 0, "y": 0 },
+      "options": {
+        "mode": "markdown",
+        "content": "**5G Core Health** — is the network doing its job. Registered subscribers, RAN/AMF session state, registration success/failure counts, and session establishment counters from AMF/SMF/UPF/PCF. For security signals (auth failures by cause, flood/divergence detection) see the **Cellular Threat Detection** dashboard."
+      }
+    },
+    {
+      "id": 1,
+      "type": "stat",
+      "title": "Registered Subscribers",
+      "description": "fivegs_amffunction_rm_registeredsubnbr - subscribers currently registered with the AMF, by PLMN/slice.",
+      "gridPos": { "h": 4, "w": 6, "x": 0, "y": 3 },
+      "targets": [
+        { "expr": "sum(fivegs_amffunction_rm_registeredsubnbr)", "legendFormat": "registered" }
+      ],
+      "fieldConfig": { "defaults": { "color": { "mode": "thresholds" }, "thresholds": { "steps": [ { "color": "red", "value": null }, { "color": "green", "value": 1 } ] } }, "overrides": [] },
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "colorMode": "value", "graphMode": "area", "textMode": "auto" }
+    },
+    {
+      "id": 2,
+      "type": "stat",
+      "title": "gNBs Connected (NG Setup)",
+      "description": "gnb gauge from AMF - number of gNBs with a successful NG Setup association.",
+      "gridPos": { "h": 4, "w": 6, "x": 6, "y": 3 },
+      "targets": [ { "expr": "gnb", "legendFormat": "gnb" } ],
+      "fieldConfig": { "defaults": { "color": { "mode": "thresholds" }, "thresholds": { "steps": [ { "color": "red", "value": null }, { "color": "green", "value": 1 } ] } }, "overrides": [] },
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "colorMode": "value", "graphMode": "area", "textMode": "auto" }
+    },
+    {
+      "id": 3,
+      "type": "stat",
+      "title": "RAN UE Contexts",
+      "description": "ran_ue gauge from AMF - active UE contexts as seen from the RAN side (NGAP).",
+      "gridPos": { "h": 4, "w": 6, "x": 12, "y": 3 },
+      "targets": [ { "expr": "ran_ue", "legendFormat": "ran_ue" } ],
+      "fieldConfig": { "defaults": { "color": { "mode": "thresholds" }, "thresholds": { "steps": [ { "color": "red", "value": null }, { "color": "green", "value": 1 } ] } }, "overrides": [] },
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "colorMode": "value", "graphMode": "area", "textMode": "auto" }
+    },
+    {
+      "id": 4,
+      "type": "stat",
+      "title": "AMF Sessions",
+      "description": "amf_session gauge from AMF - active NAS/5GMM session count.",
+      "gridPos": { "h": 4, "w": 6, "x": 18, "y": 3 },
+      "targets": [ { "expr": "amf_session", "legendFormat": "amf_session" } ],
+      "fieldConfig": { "defaults": { "color": { "mode": "thresholds" }, "thresholds": { "steps": [ { "color": "red", "value": null }, { "color": "green", "value": 1 } ] } }, "overrides": [] },
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"] }, "colorMode": "value", "graphMode": "area", "textMode": "auto" }
+    },
+    {
+      "id": 5,
+      "type": "timeseries",
+      "title": "Registration Attempts vs Successes vs Failures",
+      "description": "fivegs_amffunction_rm_reginitreq / rm_reginitsucc / sum(rm_reginitfail). A healthy network tracks req≈succ with failures near zero.",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 7 },
+      "targets": [
+        { "expr": "fivegs_amffunction_rm_reginitreq", "legendFormat": "requests" },
+        { "expr": "fivegs_amffunction_rm_reginitsucc", "legendFormat": "successes" },
+        { "expr": "sum(fivegs_amffunction_rm_reginitfail)", "legendFormat": "failures (all causes)" }
+      ],
+      "fieldConfig": { "defaults": { "custom": { "drawStyle": "line", "lineWidth": 2, "fillOpacity": 10 } }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } }
+    },
+    {
+      "id": 6,
+      "type": "histogram",
+      "title": "Registration Procedure Time (rm_regtime)",
+      "description": "fivegs_amffunction_rm_regtime histogram - time to complete registration. May show 'No data' if no sample has landed in a bucket yet since this metric only emits after Open5GS records a completed timing sample; this is not a broken query.",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 7 },
+      "targets": [
+        { "expr": "fivegs_amffunction_rm_regtime_bucket", "legendFormat": "{{le}}", "format": "heatmap" }
+      ],
+      "fieldConfig": { "defaults": {} , "overrides": [] },
+      "options": {}
+    },
+    {
+      "id": 7,
+      "type": "timeseries",
+      "title": "PDU Session Creation (SMF)",
+      "description": "fivegs_smffunction_sm_pdusessioncreationreq vs sm_pdusessioncreationsucc by slice.",
+      "gridPos": { "h": 8, "w": 8, "x": 0, "y": 15 },
+      "targets": [
+        { "expr": "fivegs_smffunction_sm_pdusessioncreationreq", "legendFormat": "req {{plmnid}}/{{snssai}}" },
+        { "expr": "fivegs_smffunction_sm_pdusessioncreationsucc", "legendFormat": "succ {{plmnid}}/{{snssai}}" }
+      ],
+      "fieldConfig": { "defaults": { "custom": { "drawStyle": "line", "lineWidth": 2, "fillOpacity": 10 } }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } }
+    },
+    {
+      "id": 8,
+      "type": "timeseries",
+      "title": "N4 / PFCP Sessions (SMF + UPF)",
+      "description": "pfcp_sessions_active (SMF), pfcp_peers_active (SMF/UPF), fivegs_smffunction_sm_n4sessionestabreq, fivegs_upffunction_sm_n4sessionestabreq - PFCP association health between SMF and UPF.",
+      "gridPos": { "h": 8, "w": 8, "x": 8, "y": 15 },
+      "targets": [
+        { "expr": "pfcp_sessions_active", "legendFormat": "smf pfcp_sessions_active" },
+        { "expr": "pfcp_peers_active", "legendFormat": "pfcp_peers_active" },
+        { "expr": "fivegs_smffunction_sm_n4sessionestabreq", "legendFormat": "smf n4 estab req" },
+        { "expr": "fivegs_upffunction_sm_n4sessionestabreq", "legendFormat": "upf n4 estab req" }
+      ],
+      "fieldConfig": { "defaults": { "custom": { "drawStyle": "line", "lineWidth": 2, "fillOpacity": 10 } }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } }
+    },
+    {
+      "id": 9,
+      "type": "timeseries",
+      "title": "UPF Sessions & QoS Flows / PCF Policy Associations",
+      "description": "fivegs_upffunction_upf_sessionnbr, fivegs_upffunction_upf_qosflows (UPF); fivegs_pcffunction_pa_sessionnbr, pa_policyamassoreq/succ, pa_policysmassoreq/succ (PCF).",
+      "gridPos": { "h": 8, "w": 8, "x": 16, "y": 15 },
+      "targets": [
+        { "expr": "fivegs_upffunction_upf_sessionnbr", "legendFormat": "upf sessions" },
+        { "expr": "fivegs_upffunction_upf_qosflows", "legendFormat": "upf qos flows {{dnn}}" },
+        { "expr": "fivegs_pcffunction_pa_sessionnbr", "legendFormat": "pcf sessions" },
+        { "expr": "fivegs_pcffunction_pa_policyamassosucc", "legendFormat": "pcf AM policy assoc succ" },
+        { "expr": "fivegs_pcffunction_pa_policysmassosucc", "legendFormat": "pcf SM policy assoc succ" }
+      ],
+      "fieldConfig": { "defaults": { "custom": { "drawStyle": "line", "lineWidth": 2, "fillOpacity": 10 } }, "overrides": [] },
+      "options": { "legend": { "displayMode": "table", "placement": "bottom", "calcs": ["lastNotNull"] }, "tooltip": { "mode": "multi" } }
+    }
+  ]
+}

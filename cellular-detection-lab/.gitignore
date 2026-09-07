@@ -1,0 +1,45 @@
+# Runtime state
+*.pcap
+*.pcapng
+*.log
+logs/
+data/
+mongodb/
+.env
+
+# Exception: the rogue-gNB detection evidence capture is lab-generated
+# synthetic traffic (test PLMN 999/70, no real subscriber, no RF, no
+# real network involved) and is the load-bearing proof artefact for
+# detector/ngap_detector.py - keep it tracked rather than silently
+# dropped by the blanket *.pcap rule above.
+!evidence/rogue-gnb-detection.pcap
+
+# Exception: 2G tier (GSM/Virtual Um) evidence captures - all lab-
+# generated synthetic traffic (test PLMN 001/01, synthetic IMSI/Ki, no
+# RF, loopback-only GSMTAP) and load-bearing proof artefacts for
+# detector/gsm_detector.py and docs/2G-TIER.md.
+!evidence/2g/*.pcap
+!evidence/2g/*.pcapng
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Build artefacts
+build/
+*.o
+*.so
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# 2G tier (Osmocom host processes) runtime state
+logs/osmocom/
+*.db
+*.db-shm
+*.db-wal
+*.ba

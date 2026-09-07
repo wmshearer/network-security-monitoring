@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+X-Powered-By: Next.js 3.2.3
+ETag: "2273-/0VNIH0TUOkkp9sLtmeb5xOofAA"
+Content-Type: text/html
+Content-Length: 8819
+Set-Cookie: connect.sid=s%3AYmnJorxbvlx0lCmy68f1mRyvaJhr9Zjt.PNiWhb3T3a70uDHtTWyNQzCXuVWuntphIfV%2FVNglcjU; Path=/; Expires=Mon, 21 Sep 2026 02:08:35 GMT; HttpOnly
+Date: Mon, 07 Sep 2026 02:08:35 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+<title class="next-head">Open5gs - Login</title>
+<title>Open5GS</title>

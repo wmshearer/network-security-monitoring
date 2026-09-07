@@ -1,0 +1,42 @@
+{
+  "_comment": [
+    "Cell-identity allowlist for the GSM detector's LAC/ARFCN check (the",
+    "2G analogue of signal #5's NGAP NG Setup Request allowlist - see",
+    "docs/DETECTION-SIGNALS.md signal #5 and gsm_detector.py's own",
+    "docstring for why this same idea applies to 2G).",
+    "",
+    "GSM has no NGAP-style 'setup request' carrying a self-declared cell",
+    "identity checked against a database before the network trusts it -",
+    "instead the MS learns the serving cell's PLMN/LAC/ARFCN from System",
+    "Information broadcasts (BCCH) and presents that same LAI back to the",
+    "network in every Location Updating Request. This allowlist lets the",
+    "detector flag any LAI (PLMN+LAC) or ARFCN seen on the Um interface",
+    "that isn't one of this lab's own known-good cells - useful the same",
+    "way signal #5 is: this lab owns ground truth about which cells are",
+    "legitimate, so any other LAI/ARFCN appearing is a candidate rogue or",
+    "misconfigured cell.",
+    "",
+    "Values below come straight from config/osmocom/osmo-bsc-a5*.cfg (this",
+    "lab's one legitimate BTS) - not hardcoded into the detector script,",
+    "so the same script works unmodified against a different lab: just",
+    "edit this file.",
+    "",
+    "How to read a cell's own identity to add it here:",
+    "  - plmn.mcc / plmn.mnc: from osmo-bsc-a5*.cfg's 'network country",
+    "    code' / 'mobile network code', or read directly off a capture",
+    "    with tshark fields e212.lai.mcc / e212.lai.mnc.",
+    "  - lac: from osmo-bsc-a5*.cfg's 'bts 0 location_area_code', or read",
+    "    off a capture with tshark field gsm_a.lac (reported in decimal",
+    "    here even though the config file writes it in hex, 0x0001 = 1).",
+    "  - arfcn: from osmo-bsc-a5*.cfg's 'trx 0 arfcn', or tshark field",
+    "    gsmtap.arfcn."
+  ],
+  "cells": [
+    {
+      "name": "osmo-bts-virtual (legitimate lab BTS, Virtual Um)",
+      "plmn": { "mcc": "001", "mnc": "01" },
+      "lac": 1,
+      "arfcn": 871
+    }
+  ]
+}

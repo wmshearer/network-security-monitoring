@@ -1,0 +1,18 @@
+=== Live verification by director, 2026-09-06T19:10:18-07:00 ===
+
+--- authfail cause label IS the literal 5GMM cause number ---
+Research open question: does cause= carry literal 5GMM cause (20/21) or a bucket?
+ANSWER: literal. Observed cause=21 = Synch failure, matching NAS spec.
+
+# HELP fivegs_amffunction_rm_registeredsubnbr Number of registered state subscribers per AMF
+# TYPE fivegs_amffunction_rm_registeredsubnbr gauge
+fivegs_amffunction_rm_registeredsubnbr{plmnid="99970",snssai="1"} 1
+# HELP fivegs_amffunction_rm_reginitfail Number of failed initial registrations at the AMF
+# TYPE fivegs_amffunction_rm_reginitfail counter
+fivegs_amffunction_rm_reginitfail{cause="7"} 1
+# HELP fivegs_amffunction_amf_authfail Number of authentication failure messages received by the AMF
+# TYPE fivegs_amffunction_amf_authfail counter
+fivegs_amffunction_amf_authfail{cause="21"} 1
+
+--- corroborating AMF log line ---
+09/07 02:07:49.574: [gmm] WARNING: [suci-0-999-70-0000-0-0-0000000001] Authentication failure(Synch failure[count=0]) (../src/amf/gmm-sm.c:2182)

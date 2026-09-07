@@ -1,0 +1,14 @@
+# Provisioned dashboard provider - loads every *.json in this mounted
+# directory automatically on container start, no manual import required.
+apiVersion: 1
+
+providers:
+  - name: "cellular-detection-lab"
+    orgId: 1
+    folder: "5G Detection Lab"
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 30
+    allowUiUpdates: true
+    options:
+      path: /var/lib/grafana/dashboards

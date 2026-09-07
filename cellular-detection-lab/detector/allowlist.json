@@ -1,0 +1,35 @@
+{
+  "_comment": [
+    "Cell-identity allowlist for Signal #5 (NGAP NG Setup Request).",
+    "",
+    "Every legitimate gNB in this lab must appear here with the EXACT",
+    "(PLMN, gNB ID, TAC) tuple it presents in its Global RAN Node ID and",
+    "Supported TA List IEs. Any NG Setup Request whose tuple is not listed",
+    "here is flagged as a cell-identity allowlist violation (candidate rogue",
+    "base station).",
+    "",
+    "Values below come straight from config/ueransim/gnb.yaml (the lab's one",
+    "legitimate gNB) - they are NOT hardcoded into the detector script, so",
+    "the same detector works unmodified against a different lab or a",
+    "different set of legitimate cells: just edit this file.",
+    "",
+    "How to read a gNB's own identity to add it here:",
+    "  - plmn.mcc / plmn.mnc: from the NG Setup Request's Global RAN Node",
+    "    ID, tshark fields e212.mcc / e212.mnc.",
+    "  - gnb_id: from tshark field ngap.gNB_ID (a hex octet string),",
+    "    interpreted as an unsigned integer of id_length_bits bits. For",
+    "    this lab's gnb.yaml, nci: '0x0000000100' with idLength: 32 means",
+    "    gNB-ID = 0x10 (16) - the top 32 of the 36 NCI bits.",
+    "  - tac: from the Supported TA List's TAC field, tshark field",
+    "    ngap.tAC, reported in decimal."
+  ],
+  "cells": [
+    {
+      "name": "ueransim-gnb (legitimate lab gNB)",
+      "plmn": { "mcc": "999", "mnc": "70" },
+      "gnb_id": 16,
+      "id_length_bits": 32,
+      "tac": 1
+    }
+  ]
+}

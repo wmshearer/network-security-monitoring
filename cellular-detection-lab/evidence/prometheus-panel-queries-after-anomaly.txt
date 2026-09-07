@@ -1,0 +1,24 @@
+### fivegs_amffunction_rm_reginitreq
+{'__name__': 'fivegs_amffunction_rm_reginitreq', 'instance': 'amf:9090', 'job': 'amf', 'nf': 'amf'} [1788797369.732, '4']
+
+### fivegs_amffunction_rm_reginitsucc
+{'__name__': 'fivegs_amffunction_rm_reginitsucc', 'instance': 'amf:9090', 'job': 'amf', 'nf': 'amf'} [1788797369.748, '3']
+
+### fivegs_amffunction_amf_authreq
+{'__name__': 'fivegs_amffunction_amf_authreq', 'instance': 'amf:9090', 'job': 'amf', 'nf': 'amf'} [1788797369.764, '4']
+
+### rate(fivegs_amffunction_rm_reginitreq[5m])
+{'instance': 'amf:9090', 'job': 'amf', 'nf': 'amf'} [1788797369.783, '0.007205939393939394']
+
+### fivegs_amffunction_rm_reginitsucc / fivegs_amffunction_rm_reginitreq
+{'instance': 'amf:9090', 'job': 'amf', 'nf': 'amf'} [1788797369.798, '0.75']
+
+### fivegs_amffunction_amf_authfail
+{'__name__': 'fivegs_amffunction_amf_authfail', 'cause': '21', 'instance': 'amf:9090', 'job': 'amf', 'nf': 'amf'} [1788797369.814, '1']
+
+### fivegs_amffunction_rm_reginitfail
+{'__name__': 'fivegs_amffunction_rm_reginitfail', 'cause': '7', 'instance': 'amf:9090', 'job': 'amf', 'nf': 'amf'} [1788797369.833, '1']
+
+### ran_ue - amf_session
+{'instance': 'amf:9090', 'job': 'amf', 'nf': 'amf'} [1788797369.848, '0']
+

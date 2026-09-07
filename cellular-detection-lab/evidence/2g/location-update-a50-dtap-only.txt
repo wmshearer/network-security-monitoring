@@ -1,0 +1,12 @@
+  159 9.036280878 192.0.2.93 → 239.193.23.2 LAPDm 81 U, func=UI(DTAP) (RR) Measurement Report 
+  161 9.179529622 192.0.2.93 → 239.193.23.2 LAPDm 81 U P, func=SABM(DTAP) (MM) Location Updating Request 
+  165 9.271522147 192.0.2.93 → 239.193.23.1 LAPDm 81 U F, func=UA(DTAP) (MM) Location Updating Request 
+  171 9.507303002 192.0.2.93 → 239.193.23.1 LAPDm 81 I, N(R)=0, N(S)=0(DTAP) (MM) Authentication Request 
+  174 9.649822127 192.0.2.93 → 239.193.23.2 LAPDm 81 I, N(R)=1, N(S)=0(DTAP) (MM) Authentication Response 
+  184 9.977732027 192.0.2.93 → 239.193.23.1 LAPDm 81 I, N(R)=1, N(S)=1(DTAP) (RR) Ciphering Mode Command 
+  186 10.120788699 192.0.2.93 → 239.193.23.2 LAPDm 81 U, func=UI(DTAP) (RR) Measurement Report 
+  188 10.120814105 192.0.2.93 → 239.193.23.2 LAPDm 81 I, N(R)=2, N(S)=1(DTAP) (RR) Ciphering Mode Complete 
+  198 10.448633962 192.0.2.93 → 239.193.23.1 LAPDm 81 I, N(R)=2, N(S)=2(DTAP) (MM) Location Updating Accept 
+  201 10.591722648 192.0.2.93 → 239.193.23.2 LAPDm 81 I, N(R)=3, N(S)=2(DTAP) (MM) TMSI Reallocation Complete 
+  210 10.919407568 192.0.2.93 → 239.193.23.1 LAPDm 81 I, N(R)=3, N(S)=3(DTAP) (RR) Channel Release 
+  212 11.062265737 192.0.2.93 → 239.193.23.2 LAPDm 81 U, func=UI(DTAP) (RR) Measurement Report 

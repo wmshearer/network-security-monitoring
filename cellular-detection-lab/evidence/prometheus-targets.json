@@ -1,0 +1,114 @@
+{
+    "status": "success",
+    "data": {
+        "activeTargets": [
+            {
+                "discoveredLabels": {
+                    "__address__": "amf:9090",
+                    "__metrics_path__": "/metrics",
+                    "__scheme__": "http",
+                    "__scrape_interval__": "10s",
+                    "__scrape_timeout__": "10s",
+                    "job": "amf",
+                    "nf": "amf"
+                },
+                "labels": {
+                    "instance": "amf:9090",
+                    "job": "amf",
+                    "nf": "amf"
+                },
+                "scrapePool": "amf",
+                "scrapeUrl": "http://amf:9090/metrics",
+                "globalUrl": "http://amf:9090/metrics",
+                "lastError": "",
+                "lastScrape": "2026-09-07T16:07:55.885414292Z",
+                "lastScrapeDuration": 0.001204276,
+                "health": "up",
+                "scrapeInterval": "10s",
+                "scrapeTimeout": "10s"
+            },
+            {
+                "discoveredLabels": {
+                    "__address__": "pcf:9090",
+                    "__metrics_path__": "/metrics",
+                    "__scheme__": "http",
+                    "__scrape_interval__": "10s",
+                    "__scrape_timeout__": "10s",
+                    "job": "pcf",
+                    "nf": "pcf"
+                },
+                "labels": {
+                    "instance": "pcf:9090",
+                    "job": "pcf",
+                    "nf": "pcf"
+                },
+                "scrapePool": "pcf",
+                "scrapeUrl": "http://pcf:9090/metrics",
+                "globalUrl": "http://pcf:9090/metrics",
+                "lastError": "",
+                "lastScrape": "2026-09-07T16:07:54.871829034Z",
+                "lastScrapeDuration": 0.001761726,
+                "health": "up",
+                "scrapeInterval": "10s",
+                "scrapeTimeout": "10s"
+            },
+            {
+                "discoveredLabels": {
+                    "__address__": "smf:9090",
+                    "__metrics_path__": "/metrics",
+                    "__scheme__": "http",
+                    "__scrape_interval__": "10s",
+                    "__scrape_timeout__": "10s",
+                    "job": "smf",
+                    "nf": "smf"
+                },
+                "labels": {
+                    "instance": "smf:9090",
+                    "job": "smf",
+                    "nf": "smf"
+                },
+                "scrapePool": "smf",
+                "scrapeUrl": "http://smf:9090/metrics",
+                "globalUrl": "http://smf:9090/metrics",
+                "lastError": "",
+                "lastScrape": "2026-09-07T16:07:55.424551283Z",
+                "lastScrapeDuration": 0.001235637,
+                "health": "up",
+                "scrapeInterval": "10s",
+                "scrapeTimeout": "10s"
+            },
+            {
+                "discoveredLabels": {
+                    "__address__": "upf:9090",
+                    "__metrics_path__": "/metrics",
+                    "__scheme__": "http",
+                    "__scrape_interval__": "10s",
+                    "__scrape_timeout__": "10s",
+                    "job": "upf",
+                    "nf": "upf"
+                },
+                "labels": {
+                    "instance": "upf:9090",
+                    "job": "upf",
+                    "nf": "upf"
+                },
+                "scrapePool": "upf",
+                "scrapeUrl": "http://upf:9090/metrics",
+                "globalUrl": "http://upf:9090/metrics",
+                "lastError": "",
+                "lastScrape": "2026-09-07T16:07:55.481035104Z",
+                "lastScrapeDuration": 0.00092473,
+                "health": "up",
+                "scrapeInterval": "10s",
+                "scrapeTimeout": "10s"
+            }
+        ],
+        "droppedTargets": [],
+        "droppedTargetCounts": {
+            "amf": 0,
+            "pcf": 0,
+            "smf": 0,
+            "upf": 0
+        }
+    }
+}

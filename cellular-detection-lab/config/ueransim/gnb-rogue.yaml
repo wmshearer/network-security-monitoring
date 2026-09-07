@@ -1,0 +1,34 @@
+mcc: ${MCC}        # Mobile Country Code value
+mnc: ${MNC}           # Mobile Network Code value (2 or 3 digits)
+
+# --- DETECTION TARGET: this identity is intentionally NOT on the lab's
+# allowlist (detector/allowlist.yml). Everything else about this container
+# is a bog-standard UERANSIM gNB pointed at the same AMF - it is a
+# misconfigured/unauthorised base station joining a core we own, not an
+# attack tool. It does not intercept, decrypt, downgrade, or jam anything.
+#
+# gNB-ID = 0xBADDAD (an obviously-synthetic, unmistakably-not-legitimate
+# value chosen so nobody could mistake it for a real deployment) with the
+# same 32-bit idLength as the legitimate gNB, so it is directly comparable
+# in the NG Setup Request's Global gNB ID IE.
+nci: '0x0baddad0'   # NR Cell Identity (36-bit) -> gNB-ID 0xBADDAD @ idLength 32
+idLength: 32        # NR gNB ID length in bits [22...32]
+tac: ${TAC}             # Tracking Area Code - also not on the allowlist (see .env / compose)
+
+linkIp: ${RADIO_BIND_IP}   # gNB's local IP address for Radio Link Simulation (Usually same with local IP)
+ngapIp: ${N2_BIND_IP}  # gNB's local IP address for N2 Interface (Usually same with local IP)
+gtpIp: ${N3_BIND_IP}    # gNB's local IP address for N3 Interface (Usually same with local IP)
+gtpAdvertiseIp: ${N3_ADVERTISE_IP}  # gNB's IP for external access (Ususarlly the same as gtpIp)
+
+# List of AMF address information
+amfConfigs:
+  - address: ${AMF_IP}
+    port: 38412
+
+# List of supported S-NSSAIs by this gNB
+slices:
+  - sst: ${SST}
+    sd: ${SD}
+
+# Indicates whether or not SCTP stream number errors should be ignored.
+ignoreStreamIds: true

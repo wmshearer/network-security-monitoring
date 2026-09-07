@@ -1,0 +1,280 @@
+name: cellular-detection-lab
+
+# ---------------------------------------------------------------------------
+# Fully virtual 5G Standalone (SA) core + RAN/UE simulator.
+# NO RF hardware. NO over-the-air transmission. Everything below talks over
+# a private Docker bridge network (172.22.0.0/24) using plain UDP/SCTP/HTTP
+# sockets. UERANSIM simulates the NG-RAN (gNB) and the UE entirely in
+# software; there is no radio layer anywhere in this stack.
+# ---------------------------------------------------------------------------
+
+x-open5gs-image: &open5gs-image gradiant/open5gs:2.8.0
+
+services:
+
+  # -------------------------- Database -----------------------------------
+  mongo:
+    image: mongo:6.0
+    container_name: o5gs-mongo
+    networks: [core]
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  webui:
+    image: gradiant/open5gs-webui:2.7.7
+    container_name: o5gs-webui
+    depends_on:
+      mongo:
+        condition: service_healthy
+    environment:
+      - DB_URI=mongodb://mongo/open5gs
+    ports:
+      - "3000:9999"
+    networks: [core]
+
+  # ------------------------ Core network functions ------------------------
+  nrf:
+    image: *open5gs-image
+    container_name: o5gs-nrf
+    command: ["open5gs-nrfd", "-c", "/opt/open5gs/etc/open5gs/nrf.yaml"]
+    volumes:
+      - ./config/open5gs/nrf.yaml:/opt/open5gs/etc/open5gs/nrf.yaml:ro
+    networks: [core]
+
+  scp:
+    image: *open5gs-image
+    container_name: o5gs-scp
+    command: ["open5gs-scpd", "-c", "/opt/open5gs/etc/open5gs/scp.yaml"]
+    volumes:
+      - ./config/open5gs/scp.yaml:/opt/open5gs/etc/open5gs/scp.yaml:ro
+    depends_on: [nrf]
+    networks: [core]
+
+  ausf:
+    image: *open5gs-image
+    container_name: o5gs-ausf
+    command: ["open5gs-ausfd", "-c", "/opt/open5gs/etc/open5gs/ausf.yaml"]
+    volumes:
+      - ./config/open5gs/ausf.yaml:/opt/open5gs/etc/open5gs/ausf.yaml:ro
+    depends_on: [scp]
+    networks: [core]
+
+  udm:
+    image: *open5gs-image
+    container_name: o5gs-udm
+    command: ["open5gs-udmd", "-c", "/opt/open5gs/etc/open5gs/udm.yaml"]
+    volumes:
+      - ./config/open5gs/udm.yaml:/opt/open5gs/etc/open5gs/udm.yaml:ro
+      - ./config/open5gs/hnet:/opt/open5gs/etc/open5gs/hnet:ro
+    depends_on: [scp]
+    networks: [core]
+
+  udr:
+    image: *open5gs-image
+    container_name: o5gs-udr
+    command: ["open5gs-udrd", "-c", "/opt/open5gs/etc/open5gs/udr.yaml"]
+    volumes:
+      - ./config/open5gs/udr.yaml:/opt/open5gs/etc/open5gs/udr.yaml:ro
+    depends_on:
+      mongo:
+        condition: service_healthy
+      scp:
+        condition: service_started
+    networks: [core]
+
+  pcf:
+    image: *open5gs-image
+    container_name: o5gs-pcf
+    command: ["open5gs-pcfd", "-c", "/opt/open5gs/etc/open5gs/pcf.yaml"]
+    volumes:
+      - ./config/open5gs/pcf.yaml:/opt/open5gs/etc/open5gs/pcf.yaml:ro
+    depends_on:
+      mongo:
+        condition: service_healthy
+      scp:
+        condition: service_started
+    networks: [core]
+
+  nssf:
+    image: *open5gs-image
+    container_name: o5gs-nssf
+    command: ["open5gs-nssfd", "-c", "/opt/open5gs/etc/open5gs/nssf.yaml"]
+    volumes:
+      - ./config/open5gs/nssf.yaml:/opt/open5gs/etc/open5gs/nssf.yaml:ro
+    depends_on: [scp, nrf]
+    networks: [core]
+
+  bsf:
+    image: *open5gs-image
+    container_name: o5gs-bsf
+    command: ["open5gs-bsfd", "-c", "/opt/open5gs/etc/open5gs/bsf.yaml"]
+    volumes:
+      - ./config/open5gs/bsf.yaml:/opt/open5gs/etc/open5gs/bsf.yaml:ro
+    depends_on: [scp]
+    networks: [core]
+
+  amf:
+    image: *open5gs-image
+    container_name: o5gs-amf
+    command: ["open5gs-amfd", "-c", "/opt/open5gs/etc/open5gs/amf.yaml"]
+    volumes:
+      - ./config/open5gs/amf.yaml:/opt/open5gs/etc/open5gs/amf.yaml:ro
+    depends_on: [scp]
+    ports:
+      - "9090:9090"   # AMF Prometheus metrics
+    networks:
+      core:
+        ipv4_address: 172.22.0.10
+
+  smf:
+    image: *open5gs-image
+    container_name: o5gs-smf
+    command: ["open5gs-smfd", "-c", "/opt/open5gs/etc/open5gs/smf.yaml"]
+    volumes:
+      - ./config/open5gs/smf.yaml:/opt/open5gs/etc/open5gs/smf.yaml:ro
+    depends_on: [scp, upf]
+    networks: [core]
+
+  upf:
+    image: *open5gs-image
+    container_name: o5gs-upf
+    user: root
+    privileged: true   # required: UPF's entrypoint creates the ogstun TUN
+                        # device and writes net.ipv6.conf.all.disable_ipv6,
+                        # which the kernel only permits from the initial
+                        # (privileged) container context. Still fully
+                        # software: no host RF/radio access is implied.
+    command: ["open5gs-upfd", "-c", "/opt/open5gs/etc/open5gs/upf.yaml"]
+    volumes:
+      - ./config/open5gs/upf.yaml:/opt/open5gs/etc/open5gs/upf.yaml:ro
+    environment:
+      - ENABLE_NAT=true
+      - IPV4_TUN_ADDR=10.45.0.1/16
+      - IPV6_TUN_ADDR=2001:db8:cafe::1/48
+    networks: [core]
+
+  # --------------------------- RAN / UE simulator --------------------------
+  # UERANSIM: 5G NR radio interface simulated entirely in software over UDP.
+  # No SDR, no RF frontend, no over-the-air transmission anywhere.
+  gnb:
+    image: gradiant/ueransim:3.3.0
+    container_name: ueransim-gnb
+    command: ["gnb"]
+    environment:
+      - MCC=999
+      - MNC=70
+      - TAC=1
+      - SST=1
+      - SD=0xffffff
+      - AMF_HOSTNAME=amf
+      - N2_IFACE=eth0
+      - N3_IFACE=eth0
+      - RADIO_IFACE=eth0
+    depends_on: [amf]
+    networks: [core]
+
+  ue:
+    image: gradiant/ueransim:3.3.0
+    container_name: ueransim-ue
+    command: ["ue"]
+    environment:
+      - MCC=999
+      - MNC=70
+      - MSISDN=0000000001
+      - KEY=465B5CE8B199B49FAA5F0A2EE238A6BC
+      - OP=E8ED289DEBA952E4283B54E88E6183CA
+      - OP_TYPE=OPC
+      - APN=internet
+      - SST=1
+      - SD=0xffffff
+      - GNB_HOSTNAME=gnb
+    depends_on: [gnb]
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
+    networks: [core]
+
+  # --------------------------- Rogue gNB (detection target) ----------------
+  # NOT started by `docker compose up -d` - opt-in only, via
+  # `docker compose --profile rogue up -d ueransim-gnb-rogue`.
+  #
+  # This is a DETECTION TARGET, not an attack tool: a bog-standard UERANSIM
+  # gNB pointed at the same AMF, but presenting a Global gNB ID (0xBADDAD)
+  # and TAC (666) that are deliberately NOT on detector/allowlist.yml. It
+  # models a misconfigured/unauthorised base station joining a core we own,
+  # in a lab with no radio. It never intercepts, decrypts, downgrades, or
+  # denies service to anything - its only job is to present an unauthorised
+  # identity in its NG Setup Request so the detector can catch it.
+  gnb-rogue:
+    image: gradiant/ueransim:3.3.0
+    container_name: ueransim-gnb-rogue
+    profiles: ["rogue"]
+    command: ["gnb"]
+    volumes:
+      - ./config/ueransim/gnb-rogue.yaml:/etc/ueransim/gnb.yaml:ro
+    environment:
+      - MCC=999
+      - MNC=70
+      - TAC=666
+      - SST=1
+      - SD=0xffffff
+      - AMF_HOSTNAME=amf
+      - N2_IFACE=eth0
+      - N3_IFACE=eth0
+      - RADIO_IFACE=eth0
+    depends_on: [amf]
+    networks: [core]
+
+  # --------------------- Monitoring / detection stack ----------------------
+  # Scrapes the four instrumented NFs (amf/smf/upf/pcf) above by Docker
+  # service name and renders detection dashboards. Does not touch or depend
+  # on any core NF config - purely a read-only observer on the same network.
+  prometheus:
+    image: prom/prometheus:v2.55.1
+    container_name: cdl-prometheus
+    volumes:
+      - ./config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    ports:
+      - "9091:9090"   # host 9091 (9090 already used by AMF's own publish)
+    depends_on: [amf, smf, upf, pcf]
+    networks: [core]
+
+  grafana:
+    image: grafana/grafana-oss:11.3.1
+    container_name: cdl-grafana
+    environment:
+      # Anonymous viewing enabled so the dashboards open directly with no
+      # setup wizard / login prompt. Admin/admin still works if sign-in is
+      # ever needed (e.g. to edit provisioned dashboards in the UI).
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
+      - GF_AUTH_DISABLE_LOGIN_FORM=false
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - ./config/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./config/grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafana_data:/var/lib/grafana
+    ports:
+      - "3001:3000"
+    depends_on: [prometheus]
+    networks: [core]
+
+networks:
+  core:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.22.0.0/24
+
+volumes:
+  mongo_data:
+  prometheus_data:
+  grafana_data:

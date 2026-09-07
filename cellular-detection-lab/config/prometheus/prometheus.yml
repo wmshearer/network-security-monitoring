@@ -1,0 +1,36 @@
+# Prometheus scrape config for the cellular-detection-lab 5G core.
+#
+# Scrapes all four instrumented Open5GS network functions by DOCKER SERVICE
+# NAME (not container IP - IPs are not guaranteed stable across restarts).
+# All four already expose Prometheus metrics on container port 9090 via
+# their `metrics: server:` stanza in config/open5gs/*.yaml - no core config
+# changes were needed for this.
+
+global:
+  scrape_interval: 10s
+  evaluation_interval: 10s
+
+scrape_configs:
+  - job_name: "amf"
+    static_configs:
+      - targets: ["amf:9090"]
+        labels:
+          nf: "amf"
+
+  - job_name: "smf"
+    static_configs:
+      - targets: ["smf:9090"]
+        labels:
+          nf: "smf"
+
+  - job_name: "upf"
+    static_configs:
+      - targets: ["upf:9090"]
+        labels:
+          nf: "upf"
+
+  - job_name: "pcf"
+    static_configs:
+      - targets: ["pcf:9090"]
+        labels:
+          nf: "pcf"

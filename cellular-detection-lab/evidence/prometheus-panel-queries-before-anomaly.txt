@@ -1,0 +1,80 @@
+### sum(fivegs_amffunction_rm_registeredsubnbr)
+{} [1788797286.772, '1']
+
+### gnb
+{'__name__': 'gnb', 'instance': 'amf:9090', 'job': 'amf', 'nf': 'amf'} [1788797286.799, '1']
+
+### ran_ue
+{'__name__': 'ran_ue', 'instance': 'amf:9090', 'job': 'amf', 'nf': 'amf'} [1788797286.824, '1']
+
+### amf_session
+{'__name__': 'amf_session', 'instance': 'amf:9090', 'job': 'amf', 'nf': 'amf'} [1788797286.844, '1']
+
+### fivegs_amffunction_rm_reginitreq
+{'__name__': 'fivegs_amffunction_rm_reginitreq', 'instance': 'amf:9090', 'job': 'amf', 'nf': 'amf'} [1788797286.862, '2']
+
+### fivegs_amffunction_rm_reginitsucc
+{'__name__': 'fivegs_amffunction_rm_reginitsucc', 'instance': 'amf:9090', 'job': 'amf', 'nf': 'amf'} [1788797286.88, '1']
+
+### sum(fivegs_amffunction_rm_reginitfail)
+{} [1788797286.905, '1']
+
+### fivegs_amffunction_rm_regtime_bucket
+EMPTY
+
+### fivegs_smffunction_sm_pdusessioncreationreq
+{'__name__': 'fivegs_smffunction_sm_pdusessioncreationreq', 'instance': 'smf:9090', 'job': 'smf', 'nf': 'smf'} [1788797286.949, '1']
+{'__name__': 'fivegs_smffunction_sm_pdusessioncreationreq', 'instance': 'smf:9090', 'job': 'smf', 'nf': 'smf', 'plmnid': '99970', 'snssai': '1'} [1788797286.949, '1']
+
+### fivegs_smffunction_sm_pdusessioncreationsucc
+{'__name__': 'fivegs_smffunction_sm_pdusessioncreationsucc', 'instance': 'smf:9090', 'job': 'smf', 'nf': 'smf', 'plmnid': '99970', 'snssai': '1'} [1788797286.972, '2']
+
+### pfcp_sessions_active
+{'__name__': 'pfcp_sessions_active', 'instance': 'smf:9090', 'job': 'smf', 'nf': 'smf'} [1788797286.996, '1']
+
+### pfcp_peers_active
+{'__name__': 'pfcp_peers_active', 'instance': 'smf:9090', 'job': 'smf', 'nf': 'smf'} [1788797287.015, '1']
+{'__name__': 'pfcp_peers_active', 'instance': 'upf:9090', 'job': 'upf', 'nf': 'upf'} [1788797287.015, '1']
+
+### fivegs_smffunction_sm_n4sessionestabreq
+{'__name__': 'fivegs_smffunction_sm_n4sessionestabreq', 'instance': 'smf:9090', 'job': 'smf', 'nf': 'smf'} [1788797287.034, '0']
+
+### fivegs_upffunction_sm_n4sessionestabreq
+{'__name__': 'fivegs_upffunction_sm_n4sessionestabreq', 'instance': 'upf:9090', 'job': 'upf', 'nf': 'upf'} [1788797287.056, '1']
+
+### fivegs_upffunction_upf_sessionnbr
+{'__name__': 'fivegs_upffunction_upf_sessionnbr', 'instance': 'upf:9090', 'job': 'upf', 'nf': 'upf'} [1788797287.076, '1']
+
+### fivegs_upffunction_upf_qosflows
+{'__name__': 'fivegs_upffunction_upf_qosflows', 'dnn': 'internet', 'instance': 'upf:9090', 'job': 'upf', 'nf': 'upf'} [1788797287.096, '1']
+
+### fivegs_pcffunction_pa_sessionnbr
+{'__name__': 'fivegs_pcffunction_pa_sessionnbr', 'instance': 'pcf:9090', 'job': 'pcf', 'nf': 'pcf', 'plmnid': '99970', 'snssai': '1'} [1788797287.121, '1']
+
+### fivegs_pcffunction_pa_policyamassosucc
+{'__name__': 'fivegs_pcffunction_pa_policyamassosucc', 'instance': 'pcf:9090', 'job': 'pcf', 'nf': 'pcf', 'plmnid': '99970', 'snssai': '1'} [1788797287.142, '1']
+
+### fivegs_pcffunction_pa_policysmassosucc
+{'__name__': 'fivegs_pcffunction_pa_policysmassosucc', 'instance': 'pcf:9090', 'job': 'pcf', 'nf': 'pcf', 'plmnid': '99970', 'snssai': '1'} [1788797287.16, '1']
+
+### fivegs_amffunction_amf_authfail
+{'__name__': 'fivegs_amffunction_amf_authfail', 'cause': '21', 'instance': 'amf:9090', 'job': 'amf', 'nf': 'amf'} [1788797287.181, '1']
+
+### fivegs_amffunction_rm_reginitfail
+{'__name__': 'fivegs_amffunction_rm_reginitfail', 'cause': '7', 'instance': 'amf:9090', 'job': 'amf', 'nf': 'amf'} [1788797287.201, '1']
+
+### fivegs_amffunction_amf_authreject
+{'__name__': 'fivegs_amffunction_amf_authreject', 'instance': 'amf:9090', 'job': 'amf', 'nf': 'amf'} [1788797287.22, '0']
+
+### fivegs_amffunction_amf_authreq
+{'__name__': 'fivegs_amffunction_amf_authreq', 'instance': 'amf:9090', 'job': 'amf', 'nf': 'amf'} [1788797287.24, '2']
+
+### rate(fivegs_amffunction_rm_reginitreq[1m])
+{'instance': 'amf:9090', 'job': 'amf', 'nf': 'amf'} [1788797287.26, '0']
+
+### fivegs_amffunction_mm_paging5greq
+{'__name__': 'fivegs_amffunction_mm_paging5greq', 'instance': 'amf:9090', 'job': 'amf', 'nf': 'amf'} [1788797287.28, '0']
+
+### fivegs_amffunction_mm_paging5gsucc
+{'__name__': 'fivegs_amffunction_mm_paging5gsucc', 'instance': 'amf:9090', 'job': 'amf', 'nf': 'amf'} [1788797287.3, '0']
+

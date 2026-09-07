@@ -1,0 +1,14 @@
+ 5222 306.989289243 239.193.23.2 LAPDm 81 U, func=UI(DTAP) (RR) Measurement Report 
+ 5224 307.132386970 239.193.23.2 LAPDm 81 U P, func=SABM(DTAP) (MM) Location Updating Request 
+ 5228 307.224366806 239.193.23.1 LAPDm 81 U F, func=UA(DTAP) (MM) Location Updating Request 
+ 5234 307.460015482 239.193.23.1 LAPDm 81 I, N(R)=0, N(S)=0(DTAP) (MM) Identity Request 
+ 5237 307.602948294 239.193.23.2 LAPDm 81 I, N(R)=1, N(S)=0(DTAP) (MM) Identity Response 
+ 5247 307.930685086 239.193.23.1 LAPDm 81 I, N(R)=1, N(S)=1(DTAP) (MM) Authentication Request 
+ 5249 308.073638423 239.193.23.2 LAPDm 81 U, func=UI(DTAP) (RR) Measurement Report 
+ 5251 308.073661736 239.193.23.2 LAPDm 81 I, N(R)=2, N(S)=1(DTAP) (MM) Authentication Response 
+ 5261 308.401539091 239.193.23.1 LAPDm 81 I, N(R)=2, N(S)=2(DTAP) (RR) Ciphering Mode Command 
+ 5264 308.544455292 239.193.23.2 LAPDm 81 I, N(R)=3, N(S)=2(DTAP) (RR) Ciphering Mode Complete 
+ 5274 308.872068726 239.193.23.1 LAPDm 81 I, N(R)=3, N(S)=3(DTAP) (MM) Location Updating Accept 
+ 5276 309.015055795 239.193.23.2 LAPDm 81 U, func=UI(DTAP) (RR) Measurement Report 
+ 5278 309.015077296 239.193.23.2 LAPDm 81 I, N(R)=4, N(S)=3(DTAP) (MM) TMSI Reallocation Complete 
+ 5287 309.342673525 239.193.23.1 LAPDm 81 I, N(R)=4, N(S)=4(DTAP) (RR) Channel Release 

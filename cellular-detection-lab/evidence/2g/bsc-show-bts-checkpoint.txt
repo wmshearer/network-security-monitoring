@@ -1,0 +1,89 @@
+show bts
+BTS 0 is of osmo-bts type in band DCS1800, has CI 1 LAC 1, BSIC 63 (NCC=7, BCC=7) and 1 TRX
+  Description: (null)
+  ARFCNs: 871
+  BCCH carrier power reduction (maximum): 0 dB
+  MS Max power: 15 dBm
+  Minimum Rx Level for Access: -110 dBm
+  Cell Reselection Hysteresis: 4 dBm
+  Access Control Class rotation allow mask: 0x3ff
+  Access Control Class ramping: not enabled
+  RACH TX-Integer: 9
+  RACH Max transmissions: 7
+  RACH Max Delay (Max Access Delay IE in CHANnel ReQuireD): 63
+  Uplink DTX: not enabled
+  Downlink DTX: not enabled
+  Channel Description Attachment: yes
+  Channel Description BS-PA-MFRMS: 5
+  Channel Description BS-AG_BLKS-RES: 1
+  System Information present: 0x0000007e, static: 0x00000000
+  Early Classmark Sending: 2G forbidden, 3G allowed (forbidden by 2G bit)
+  Unit ID: 6969/0/0, OML Stream ID 0xff
+  NM State: Oper 'Enabled', Admin 'Unlocked', Avail 'OK'
+  Site Mgr NM State: Oper 'Enabled', Admin 'Locked', Avail 'OK'
+  GPRS: not configured
+  Paging: 0 pending requests, 8 free slots
+  OML Link: (r=127.0.0.1:42139<->l=127.0.0.1:3002)
+  OML Link state: connected 0 days 0 hours 0 min. 43 sec.
+  Neighbor Cells: Automatic, ARFCNs: (none)
+  Current Channel Load:
+             CCCH+SDCCH4:   0% (0/4)
+                   TCH/F:   0% (0/7)
+  CBCH BASIC: 0 messages, 0 pages, 0-entry sched_arr, 0% load
+  CBCH EXTENDED: 0 messages, 0 pages, 0-entry sched_arr, 0% load
+  Channel Requests        : 0 total, 0 no channel
+  Channel Activations     :
+    TCH   0
+    SDCCH 0
+  Channel Failures        : 0 rf_failures, 0 rll failures
+  BTS failures            : 0 OML, 0 RSL
+  base transceiver station:
+   Seconds of uptime:       40 s
+   Channel load average:        0 %
+   Number of CCCH+SDCCH4 channels used:        0 
+   Number of CCCH+SDCCH4 channels total:        4 
+   Number of TCH/F channels used:        0 
+   Number of TCH/F channels total:        7 
+   Number of TCH/H channels used:        0 
+   Number of TCH/H channels total:        0 
+   Number of SDCCH8 channels used:        0 
+   Number of SDCCH8 channels total:        0 
+   Number of DYNAMIC/IPACCESS channels used:        0 
+   Number of DYNAMIC/IPACCESS channels total:        0 
+   Number of CCCH+SDCCH4+CBCH channels used:        0 
+   Number of CCCH+SDCCH4+CBCH channels total:        0 
+   Number of SDCCH8+CBCH channels used:        0 
+   Number of SDCCH8+CBCH channels total:        0 
+   Number of DYNAMIC/OSMOCOM channels used:        0 
+   Number of DYNAMIC/OSMOCOM channels total:        0 
+   T3122 IMMEDIATE ASSIGNMENT REJECT wait indicator:       10 s
+   RACH slots with signal above threshold:        0 %
+   RACH slots with access bursts in them:        0 %
+   Number of OML links connected:        1 
+   Number of RSL links connected (same as num_trx:rsl_connected):        1 
+   Number of lchans in the BORKEN state:        0 
+   Number of timeslots in the BORKEN state:        0 
+   Number of TRX in this BTS where RSL is up:        1 
+   Number of configured TRX in this BTS:        1 
+   Paging Request queue length:        0 
+   Available paging slots in this BTS:        8 
+   T3113 paging timer:        0 s
+  Features:
+    001 GPRS                                    
+    002 EGPRS                                   
+    006 OML Alerts                              
+    008 CBCH                                    
+    009 Fullrate speech V1                      
+    010 Halfrate speech V1                      
+    011 Fullrate speech EFR                     
+    012 Fullrate speech AMR                     
+    013 Halfrate speech AMR                     
+    014 ETWS Primary Notification via PCH       
+    015 BSS Paging Coordination                 
+    016 NSVC IPv6                               
+    018 Cell Change Notification (CCN)          
+    020 OsmoPCU over OML link IPA multiplex     
+    022 Dynamic Timeslot configuration as SDCCH8
+    027 TW-TS-001 RTP format                    
+OsmoBSC# 
+OsmoBSC# 

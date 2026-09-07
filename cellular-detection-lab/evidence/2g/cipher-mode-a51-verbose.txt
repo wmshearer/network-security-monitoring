@@ -1,0 +1,100 @@
+Frame 177: Packet, 81 bytes on wire (648 bits), 81 bytes captured (648 bits) on interface lo, id 0
+    Section number: 1
+    Interface id: 0 (lo)
+        Interface name: lo
+        Interface description: Loopback
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Sep  7, 2026 10:30:15.980620171 PDT
+    UTC Arrival Time: Sep  7, 2026 17:30:15.980620171 UTC
+    Epoch Arrival Time: 1788802215.980620171
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 27.972483 milliseconds]
+    [Time since reference or first frame: 9.677210586 seconds]
+    Frame Number: 177
+    Frame Length: 81 bytes (648 bits)
+    Capture Length: 81 bytes (648 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:udp:gsmtap:lapdm:gsm_a.dtap]
+    Character encoding: ASCII (0)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+    Destination: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 0]
+Internet Protocol Version 4, Src: 192.0.2.93, Dst: 239.193.23.1
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 67
+    Identification: 0x1ed6 (7894)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 1
+    Protocol: UDP (17)
+    Header Checksum: 0x920c [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 192.0.2.93
+    Destination Address: 239.193.23.1
+    [Stream index: 0]
+User Datagram Protocol, Src Port: 43521, Dst Port: 4729
+    Source Port: 43521
+    Destination Port: 4729
+    Length: 47
+    Checksum: 0xc908 [unverified]
+    [Checksum Status: Unverified]
+    [Stream index: 0]
+    [Stream Packet Number: 172]
+    [Timestamps]
+        [Time since first frame: 9.677210586 seconds]
+        [Time since previous frame: 27.972483 milliseconds]
+    UDP payload (39 bytes)
+GSM TAP Header, ARFCN: 871 (Downlink), TS: 0, Channel: SDCCH/4 (0)
+    Version: 2
+    Header Length: 16 bytes
+    Payload Type: GSM Um (MS<->BTS) (1)
+    Time Slot: 0
+    ..00 0011 0110 0111 = ARFCN: 871
+    .0.. .... .... .... = Uplink: 0
+    0... .... .... .... = PCS band indicator: 0
+    Signal Level: 63 dBm
+    Signal/Noise Ratio: 63 dB
+    GSM Frame Number: 69229
+    Channel Type: SDCCH/4 (7)
+    Antenna Number: 0
+    Sub-Slot: 0
+    Reserved: 0
+Link Access Procedure, Channel Dm (LAPDm)
+    Address Field: 0x03
+        .00. .... = LPD: Normal GSM (0)
+        ...0 00.. = SAPI: RR/MM/CC (0)
+        .... ..1. = C/R: 1
+        .... ...1 = EA: Final octet (1)
+    Control field: I, N(R)=1, N(S)=1 (0x22)
+        001. .... = N(R): 1
+        .... 001. = N(S): 1
+        .... ...0 = Frame type: Information frame (0x0)
+    Length Field: 0x0d
+        0000 11.. = Length: 3
+        .... ..0. = M: Last segment (0)
+        .... ...1 = EL: Final octet (1)
+GSM A-I/F DTAP - Ciphering Mode Command
+    Protocol Discriminator: Radio Resources Management messages (6)
+        .... 0110 = Protocol discriminator: Radio Resources Management messages (0x6)
+        0000 .... = Skip Indicator: No indication of selected PLMN (0)
+    DTAP Radio Resources Management Message Type: Ciphering Mode Command (0x35)
+    Cipher Mode Setting
+        .... ...1 = SC: Start ciphering (1)
+        .... 000. = Algorithm identifier: Cipher with algorithm A5/1 (0)
+    Cipher Mode Response
+        ...1 .... = CR: IMEISV shall be included (1)
+

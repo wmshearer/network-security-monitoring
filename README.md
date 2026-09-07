@@ -1,8 +1,8 @@
 # SIEM and detection engineering
 
-Eight projects built on one Splunk instance, in the order they were built. Each
-one has its own README, its own tests, and its own evidence directory holding the
-real command output behind every number quoted here.
+Nine projects, the first eight built on one Splunk instance, in the order they
+were built. Each one has its own README, its own tests, and its own evidence
+directory holding the real command output behind every number quoted here.
 
 They are in one repository because they check each other. Three of them produce
 results about the other five, and that argument only holds together in one place.
@@ -19,6 +19,7 @@ results about the other five, and that argument only holds together in one place
 | 6 | [detection-as-code](detection-as-code/) | Validating and behaviourally testing the detection content in projects 3 and 4 | 15 |
 | 7 | [soar-playbooks](soar-playbooks/) | Automated response playbooks triggered by the alerts project 3 produces | 20 |
 | 8 | [stix-feed-overlap](stix-feed-overlap/) | Do public threat feeds contain the indicators from project 5's intrusion? | 34 |
+| 9 | [cellular-detection-lab](cellular-detection-lab/) | Rogue-gNB and GSM cipher-downgrade detection on a real Open5GS/UERANSIM/Osmocom lab core, off the Splunk stack | - |
 
 ## The three results that check the others
 

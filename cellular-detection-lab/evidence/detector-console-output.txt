@@ -1,0 +1,20 @@
+
+JSON findings written to evidence/detector-findings.jsonl
+==============================================================================
+NGAP/NAS-5GS ROGUE BASE STATION DETECTOR - SUMMARY
+==============================================================================
+
+[CRITICAL] signal #5 - NG Setup Request presented a (PLMN, gNB ID, TAC) identity that is not on the allowlist - candidate rogue base station.
+    Observed: {'frame': '42', 'src_ip': '172.22.0.19', 'ran_node_name': 'UERANSIM-gnb-999-70-12246445', 'plmn': '999/70', 'gnb_id': 12246445, 'gnb_id_hex': '00baddad', 'tac': 666}
+    Expected: One of the allowlisted cells: ueransim-gnb (legitimate lab gNB): PLMN 999/70, gNB-ID 16 (0x10), TAC 1
+    Spec:     3GPP TS 38.413 9.2.6.1 (NG Setup Request, Global RAN Node ID + Supported TA List IEs); docs/DETECTION-SIGNALS.md signal #5
+    Frame:    42
+
+[HIGH] signal #3 - Registration Request used null-scheme SUCI - the subscriber's permanent identity (SUPI/IMSI) was sent without any concealment, visible in the MSIN field of this very message.
+    Observed: {'frame': '22', 'src_ip': '172.22.0.12', 'suci_scheme_id': 0, 'suci_routing_indicator': '0000', 'suci_msin_cleartext': '0000000001'}
+    Expected: Non-null protection scheme (Profile A = 1 or Profile B = 2), UNLESS this UE is on a home network that has deliberately configured null-scheme, is performing an emergency registration with no valid 5G-GUTI, or has no home-network public key provisioned - the only three cases TS 33.501 6.12.2 permits this in.
+    Spec:     3GPP TS 33.501 clause 6.12.2 (SUCI protection scheme, null-scheme exceptions); docs/DETECTION-SIGNALS.md signal #3
+    Frame:    22
+
+Total checks evaluated: 4  |  Actionable findings: 2
+==============================================================================

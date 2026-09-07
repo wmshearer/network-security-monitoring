@@ -1,0 +1,47 @@
+Anomaly/change-generation event log
+====================================
+Method: restarted ueransim-ue container twice in succession to force
+fresh NAS Initial Registration + Authentication cycles against the live
+AMF, producing genuine Prometheus counter movement (no attack tooling,
+no flooding, no external network touched).
+
+BEFORE (first restart), read from http://localhost:9090/metrics (AMF):
+  fivegs_amffunction_rm_reginitreq   2
+  fivegs_amffunction_rm_reginitsucc  1
+  fivegs_amffunction_amf_authreq     2
+  fivegs_amffunction_rm_reginitfail{cause="7"}  1   (historical: pre-provisioning Illegal UE reject)
+  fivegs_amffunction_amf_authfail{cause="21"}   1   (historical: Synch failure, see NOTES.md/docs/DETECTION-SIGNALS.md)
+  ran_ue 1 / amf_session 1 / gnb 1
+
+AFTER 1st restart:
+  fivegs_amffunction_rm_reginitreq   3   (+1, real)
+  fivegs_amffunction_rm_reginitsucc  2   (+1, real)
+  fivegs_amffunction_amf_authreq     3   (+1, real)
+  UE re-registered cleanly, no forced auth failure this cycle (SQN stayed
+  in sync - Open5GS tracks SQN state per-subscriber, so a second clean
+  restart does not automatically desync it). New PDU session tunnel IP
+  10.45.0.3 (uesimtun0) assigned - old IP 10.45.0.2 released.
+
+AFTER 2nd restart:
+  fivegs_amffunction_rm_reginitreq   4   (+1, real)
+  fivegs_amffunction_rm_reginitsucc  3   (+1, real)
+  fivegs_amffunction_amf_authreq     4   (+1, real)
+  Again a clean re-registration (no cause-20/21 event this cycle). New
+  tunnel IP 10.45.0.4.
+
+Honest note: this exercise proves the counters move in response to a real
+event on the live core (registration/auth request rate visibly increases),
+which is exactly what the "Registration Request Rate" and "Registration
+Attempts vs Successes" panels are built to show. It did NOT reproduce a
+fresh cause-20/21 authentication failure - Open5GS's per-subscriber SQN
+state stayed synchronized across a clean container restart, which is
+correct behaviour, not a bug. The cause=20/21 breakout panel is proven
+correct against the ORIGINAL historical event (cause=21, Synch failure,
+captured 2026-09-06 and still present as of this run - Prometheus counters
+are cumulative and do not reset), documented in
+evidence/metrics-authfail-cause-label.txt and docs/DETECTION-SIGNALS.md.
+Forcing a fresh cause-20 (MAC failure) event deliberately would require
+tampering with the UE's stored key material or SQN state to simulate a
+replay/forged-challenge condition, which is out of scope for this task
+(no attack tooling, per the task constraints) - noted here plainly rather
+than fabricated.

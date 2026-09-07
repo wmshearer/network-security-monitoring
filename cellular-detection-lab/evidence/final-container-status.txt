@@ -1,0 +1,16 @@
+NAME           IMAGE                          COMMAND                  SERVICE   CREATED              STATUS                        PORTS
+o5gs-amf       gradiant/open5gs:2.8.0         "/entrypoint.sh open…"   amf       About a minute ago   Up About a minute             0.0.0.0:9090->9090/tcp, [::]:9090->9090/tcp
+o5gs-ausf      gradiant/open5gs:2.8.0         "/entrypoint.sh open…"   ausf      About a minute ago   Up About a minute             
+o5gs-bsf       gradiant/open5gs:2.8.0         "/entrypoint.sh open…"   bsf       About a minute ago   Up About a minute             
+o5gs-mongo     mongo:6.0                      "docker-entrypoint.s…"   mongo     About a minute ago   Up About a minute (healthy)   27017/tcp
+o5gs-nrf       gradiant/open5gs:2.8.0         "/entrypoint.sh open…"   nrf       About a minute ago   Up About a minute             
+o5gs-nssf      gradiant/open5gs:2.8.0         "/entrypoint.sh open…"   nssf      About a minute ago   Up About a minute             
+o5gs-pcf       gradiant/open5gs:2.8.0         "/entrypoint.sh open…"   pcf       About a minute ago   Up About a minute             
+o5gs-scp       gradiant/open5gs:2.8.0         "/entrypoint.sh open…"   scp       About a minute ago   Up About a minute             
+o5gs-smf       gradiant/open5gs:2.8.0         "/entrypoint.sh open…"   smf       About a minute ago   Up About a minute             
+o5gs-udm       gradiant/open5gs:2.8.0         "/entrypoint.sh open…"   udm       About a minute ago   Up About a minute             
+o5gs-udr       gradiant/open5gs:2.8.0         "/entrypoint.sh open…"   udr       About a minute ago   Up About a minute             
+o5gs-upf       gradiant/open5gs:2.8.0         "/entrypoint.sh open…"   upf       About a minute ago   Up About a minute             
+o5gs-webui     gradiant/open5gs-webui:2.7.7   "node server/index.js"   webui     About a minute ago   Up About a minute             0.0.0.0:3000->9999/tcp, [::]:3000->9999/tcp
+ueransim-gnb   gradiant/ueransim:3.3.0        "/entrypoint.sh gnb"     gnb       About a minute ago   Up About a minute             
+ueransim-ue    gradiant/ueransim:3.3.0        "/entrypoint.sh ue"      ue        About a minute ago   Up 41 seconds                 
