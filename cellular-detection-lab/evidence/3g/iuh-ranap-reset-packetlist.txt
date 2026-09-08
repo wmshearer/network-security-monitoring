@@ -1,0 +1,3 @@
+    1 0.000000000 RANAP 94 (RUA) Reset 
+    2 0.000070419 RANAP 102 SACK (Ack=0, Arwnd=106496) (RUA) ResetAcknowledge 
+    3 0.202012948 SCTP 62 SACK (Ack=0, Arwnd=106496) 

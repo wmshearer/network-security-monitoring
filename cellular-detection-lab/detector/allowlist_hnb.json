@@ -1,0 +1,43 @@
+{
+  "_comment": [
+    "HNB-identity allowlist for the 3G/Iuh analogue of Signal #5 (5G NG",
+    "Setup), Signal #16 (4G S1 Setup), and the 2G Um-side LAI checks -",
+    "same pattern, one generation earlier in this lab's history and one",
+    "layer more primitive: unlike NGAP/S1AP's numeric gNB-ID/eNB-ID,",
+    "HNBAP's id-HNB-Identity IE (TS 25.469 9.2.19) is an OPERATOR-DEFINED",
+    "free-text/binary string with NO mandated structure at all - so the",
+    "allowlist here matches on the exact identity string plus PLMN, not a",
+    "numeric ID space the spec defines.",
+    "",
+    "Every legitimate HNB in this lab must appear here with the EXACT",
+    "(PLMN, hnb_identity) it presents in its HNBAP HNB REGISTER REQUEST.",
+    "Any HNB REGISTER REQUEST whose tuple is not listed here is flagged as",
+    "an HNB-identity allowlist violation (candidate rogue/unauthorised",
+    "femtocell) - the direct 3G analogue of a rogue gNB/eNB presenting an",
+    "unauthorised identity in this lab's other tiers.",
+    "",
+    "Values below come straight from config/osmocom/osmo-hnodeb.cfg (this",
+    "lab's one legitimate HNB) - they are NOT hardcoded into the detector",
+    "script, so the same detector works unmodified against a different lab",
+    "or a different set of legitimate HNBs: just edit this file.",
+    "",
+    "How to read an HNB's own identity off a real HNB REGISTER REQUEST",
+    "using tshark:",
+    "  - plmn.mcc / plmn.mnc: from the HNB REGISTER REQUEST's id-",
+    "    PLMNidentity IE, tshark fields e212.mcc / e212.mnc.",
+    "  - hnb_identity: from tshark field hnbap.hNB_Identity_Info, a hex",
+    "    octet string that decodes as an ASCII string (this lab's",
+    "    osmo-hnodeb configures it via the 'identity' VTY/config command,",
+    "    TS 25.469 9.2.19 imposes no format - it's whatever the vendor/",
+    "    operator chooses to encode). The detector decodes the hex to text",
+    "    itself and compares the decoded string, not the raw hex, so this",
+    "    file stays human-readable."
+  ],
+  "hnbs": [
+    {
+      "name": "osmo-hnodeb (legitimate lab HNB)",
+      "plmn": { "mcc": "001", "mnc": "01" },
+      "hnb_identity": "CellDetectLab-hNodeB-01"
+    }
+  ]
+}

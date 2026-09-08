@@ -245,6 +245,55 @@ scripts/2g-tier-start.sh a51   # or a50 for the null-cipher demonstration
 scripts/2g-tier-stop.sh
 ```
 
+## The 3G tier: UMTS core network and Iu/Iuh signalling (no radio, and no full 3G network either)
+
+Added on top of the 2G tier above (reuses its already-running
+`osmo-msc`/`osmo-hlr`/`osmo-stp` directly, both are natively 2G AND 3G
+capable), **narrower in scope than the other three tiers, deliberately**:
+there is no open-source, RF-free WCDMA Uu air-interface simulator
+anywhere (confirmed via two independent research passes before this
+build started - neither srsRAN nor OpenAirInterface ever built a 3G
+equivalent of srsRAN_4G's ZMQ mode or Osmocom's Virtual Um). So this
+tier is exactly what its name says: **the 3G core network plus the
+Iuh/Iu signalling stack** - `osmo-hnbgw` (Home NodeB Gateway) and
+`osmo-hnodeb` (a software Home NodeB), both built from source, talking
+real HNBAP/RUA/RANAP over SCTP/IP on loopback. **Not** "a 3G network" -
+no Uu air interface, no real handset, ever attaches.
+
+What this tier demonstrates: a real HNB registering over Iuh (**HNBAP
+HNB REGISTER REQUEST/ACCEPT**, captured end to end) and a real **RANAP
+Reset/ResetAcknowledge** exchange over RUA. What it does NOT demonstrate,
+stated plainly: no UE ever registered over Iuh in this build (osmo-hnodeb
+ships no Uu/PHY/RRC client - its own README calls itself "not expected
+to be a full/usable hNodeB anytime soon"), so there is no RANAP Initial
+UE Message and no UMTS AKA/AUTN exchange captured, even though a real
+Milenage-provisioned test subscriber was set up for exactly that purpose.
+
+The analytical point, even without that capture: **3G is where mutual
+authentication was actually introduced** - UMTS AKA's AUTN token closes
+the 2G tier's "network can't be authenticated" gap years before LTE's
+EPS-AKA (which is UMTS AKA's direct descendant). What survived
+unfixed through 3G, exactly as it did through 4G: no identity-concealment
+mechanism, so a UMTS attach with no valid temporary identity still
+exposes the subscriber's permanent identity in the clear.
+
+Full architecture, the explicit RF-boundary statement, the osmo-hnbgw/
+osmo-hnodeb source builds (one genuine version-skew blocker, fixed by
+pinning to a commit matching Kali's packaged libraries rather than
+cascading a second source build), and exactly what was investigated but
+not built (a hand-encoded RANAP client against osmo-hnodeb's
+undocumented lower-layer socket) are all in **`docs/3G-TIER.md`**. Full
+build log: **`NOTES.md`**. Detector: **`detector/iuh_detector.py`** -
+one signal (HNB-identity allowlist), matching what this lab actually
+captured; the cleartext-IMSI-in-UE-Register signal was deliberately left
+unimplemented rather than written as a hollow, unverifiable check.
+
+```bash
+scripts/2g-tier-start.sh a51   # 3G tier depends on the 2G tier's core
+./build/osmo-hnbgw/src/osmo-hnbgw/osmo-hnbgw -c config/osmocom/osmo-hnbgw.cfg &
+./build/osmo-hnodeb/src/osmo-hnodeb/osmo-hnodeb -c config/osmocom/osmo-hnodeb.cfg &
+```
+
 ## The 4G tier: LTE EPC, still zero radio hardware
 
 Added on top of everything above, **independently startable/stoppable**

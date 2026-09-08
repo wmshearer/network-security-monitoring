@@ -1,0 +1,13 @@
+=== Director independent verification, 3G tier, 2026-09-07T17:25:24-07:00 ===
+
+--- HNBAP registration over Iuh (iuh-hnb-register.pcap) ---
+  frame 5	HNB_REGISTER_REQUEST 
+  frame 7	HNB_REGISTER_ACCEPT 
+
+--- RANAP Reset carried over RUA (iuh-ranap-reset.pcap) ---
+  frame 1	(RUA) Reset 
+  frame 2	SACK (Ack=0, Arwnd=106496) (RUA) ResetAcknowledge 
+
+--- NOT captured, confirmed absent: no UE registration, no UMTS AKA ---
+  hnbap.UE_Register frames: 0
+  (0 confirms the tier's own stated limit)

@@ -1,0 +1,18 @@
+==============================================================================
+IUH/HNBAP HNB-IDENTITY ALLOWLIST DETECTOR - SUMMARY
+==============================================================================
+No findings. All observed HNB REGISTER REQUEST procedures
+matched allowlisted, expected HNB identities.
+(A clean run is a valid, good outcome, not an absence of checking -
+ 1 check(s) were evaluated; see --json-out for detail.)
+
+Total checks evaluated: 1  |  Actionable findings: 0
+==============================================================================
+
+NOTE: only one signal is implemented in this detector (HNB-identity
+allowlist). Cleartext IMSI in HNBAP UE REGISTER REQUEST was NOT
+implemented - this lab never captured a UE registering over Iuh at
+all (no RF-free path to a real Uu/PHY/RRC client - see
+docs/3G-TIER.md and NOTES.md). See this file's own module
+docstring for the full explanation.
+==============================================================================

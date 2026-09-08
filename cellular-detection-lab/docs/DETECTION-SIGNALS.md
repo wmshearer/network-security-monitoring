@@ -54,6 +54,8 @@ detector never gets that.
 | 14 | **4G: Identity Request soliciting IMSI** | NAS-EPS Identity Request, plain/unprotected NAS | Same pre-security-context "ask for identity" mechanism as 2G/5G; inherited unchanged into LTE. |
 | 15 | **4G: Null-integrity or null-ciphering selected** | NAS-EPS Security Mode Command, `type_of_ciph_alg`/`type_of_int_alg == 0` (EEA0/EIA0) | TS 33.401 5.1.4.5/6.3.1.1 restrict EEA0/EIA0 to unauthenticated emergency calls. Selecting either for a normal subscriber defeats EPS-AKA's confidentiality/integrity purpose. |
 | 16 | **4G: eNodeB identity allowlist violation** | S1AP S1 Setup Request, PLMN+eNB ID+TAC | Same "no cryptographic proof of cell identity" gap as signal #5, one generation earlier. Not on the operator allowlist = candidate rogue eNodeB. |
+| 17 | **3G: HNB-identity allowlist violation** | HNBAP HNB REGISTER REQUEST, PLMN+HNB-Identity string | TS 25.469 9.2.1/9.2.19 - id-HNB-Identity is an operator-defined string with no mandated format or authentication of its own, sent before any mutual auth at this layer. Same "no cryptographic proof of identity" gap as signals #5/#16, two generations earlier. Implemented and proven in `detector/iuh_detector.py`. |
+| — | **3G: cleartext IMSI in HNBAP UE REGISTER REQUEST** | HNBAP UE REGISTER REQUEST, id-UE-Identity IE (TS 25.469 9.2.13) | NOT implemented - this lab never captured a real HNBAP UE REGISTER REQUEST (no RF-free path to a Uu/PHY/RRC client reachable within the 3G tier's effort budget; see `docs/3G-TIER.md`). Listed here as the candidate signal, deliberately left unimplemented rather than written as a hollow/unverified check. |
 
 ## Verified Open5GS telemetry (read from source, HEAD 2026-09-03)
 

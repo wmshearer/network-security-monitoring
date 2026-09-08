@@ -1,0 +1,212 @@
+Frame 5: Packet, 138 bytes on wire (1104 bits), 138 bytes captured (1104 bits) on interface lo, id 0
+    Section number: 1
+    Interface id: 0 (lo)
+        Interface name: lo
+        Interface description: Loopback
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Sep  7, 2026 16:55:01.743395259 PDT
+    UTC Arrival Time: Sep  7, 2026 23:55:01.743395259 UTC
+    Epoch Arrival Time: 1788825301.743395259
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 136.081 microseconds]
+    [Time since reference or first frame: 228.833 microseconds]
+    Frame Number: 5
+    Frame Length: 138 bytes (1104 bits)
+    Capture Length: 138 bytes (1104 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:sctp:hnbap]
+    Character encoding: ASCII (0)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+    Destination: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 0]
+Internet Protocol Version 4, Src: 127.0.0.1, Dst: 127.0.0.1
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x02 (DSCP: CS0, ECN: ECT(0))
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..10 = Explicit Congestion Notification: ECN-Capable Transport codepoint '10' (2)
+    Total Length: 124
+    Identification: 0x0002 (2)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: SCTP (132)
+    Header Checksum: 0x3bf8 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 127.0.0.1
+    Destination Address: 127.0.0.1
+    [Stream index: 0]
+Stream Control Transmission Protocol, Src Port: 59193 (59193), Dst Port: 29169 (29169)
+    Source port: 59193
+    Destination port: 29169
+    Verification tag: 0xd3da19e4
+    [Association index: disabled (enable in preferences)]
+    Checksum: 0x00000000 [unverified]
+    [Checksum Status: Unverified]
+    DATA chunk (ordered, complete segment, TSN: 0, SID: 0, SSN: 0, PPID: 20, payload length: 73 bytes)
+        Chunk type: DATA (0)
+            0... .... = Bit: Stop processing of the packet
+            .0.. .... = Bit: Do not report
+        Chunk flags: 0x03
+            .... 0... = I-Bit: Possibly delay SACK
+            .... .0.. = U-Bit: Ordered delivery
+            .... ..1. = B-Bit: First segment
+            .... ...1 = E-Bit: Last segment
+        Chunk length: 89
+        Transmission sequence number (relative): 0
+        Transmission sequence number (absolute): 3589859956
+        Stream identifier: 0x0000
+        Stream sequence number: 0
+        Payload protocol identifier: HNBAP (20)
+        Chunk padding: 000000
+UTRAN Iuh interface HNBAP signalling
+    HNBAP-PDU: initiatingMessage (0)
+        initiatingMessage
+            procedureCode: id-HNBRegister (1)
+            criticality: reject (0)
+            value
+                HNBRegisterRequest
+                    protocolIEs: 7 items
+                        Item 0: id-HNB-Identity
+                            ProtocolIE-Field
+                                id: id-HNB-Identity (3)
+                                criticality: reject (0)
+                                value
+                                    HNB-Identity
+                                        hNB-Identity-Info: 43656c6c4465746563744c61622d684e6f6465422d3031
+                        Item 1: id-HNB-Location-Information
+                            ProtocolIE-Field
+                                id: id-HNB-Location-Information (8)
+                                criticality: reject (0)
+                                value
+                                    HNB-Location-Information
+                        Item 2: id-PLMNidentity
+                            ProtocolIE-Field
+                                id: id-PLMNidentity (9)
+                                criticality: reject (0)
+                                value
+                                    PLMNidentity: 00f110
+                                    Mobile Country Code (MCC): Test network (001)
+                                    Mobile Network Code (MNC): Test network (01)
+                        Item 3: id-CellIdentity
+                            ProtocolIE-Field
+                                id: id-CellIdentity (11)
+                                criticality: reject (0)
+                                value
+                                    CellIdentity: 00000010 [bit length 28, 4 LSB pad bits, 0000 0000  0000 0000  0000 0000  0001 .... decimal value 1]
+                        Item 4: id-LAC
+                            ProtocolIE-Field
+                                id: id-LAC (6)
+                                criticality: reject (0)
+                                value
+                                    LAC: 1 (0x0001)
+                        Item 5: id-RAC
+                            ProtocolIE-Field
+                                id: id-RAC (7)
+                                criticality: reject (0)
+                                value
+                                    RAC: 1 (0x01)
+                        Item 6: id-SAC
+                            ProtocolIE-Field
+                                id: id-SAC (10)
+                                criticality: reject (0)
+                                value
+                                    SAC: 1 (0x0001)
+
+Frame 7: Packet, 78 bytes on wire (624 bits), 78 bytes captured (624 bits) on interface lo, id 0
+    Section number: 1
+    Interface id: 0 (lo)
+        Interface name: lo
+        Interface description: Loopback
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Sep  7, 2026 16:55:01.743537495 PDT
+    UTC Arrival Time: Sep  7, 2026 23:55:01.743537495 UTC
+    Epoch Arrival Time: 1788825301.743537495
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 129.493 microseconds]
+    [Time delta from previous displayed frame: 142.236 microseconds]
+    [Time since reference or first frame: 371.069 microseconds]
+    Frame Number: 7
+    Frame Length: 78 bytes (624 bits)
+    Capture Length: 78 bytes (624 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:sctp:hnbap]
+    Character encoding: ASCII (0)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+    Destination: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 0]
+Internet Protocol Version 4, Src: 127.0.0.1, Dst: 127.0.0.1
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x02 (DSCP: CS0, ECN: ECT(0))
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..10 = Explicit Congestion Notification: ECN-Capable Transport codepoint '10' (2)
+    Total Length: 64
+    Identification: 0xcb68 (52072)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: SCTP (132)
+    Header Checksum: 0x70cd [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 127.0.0.1
+    Destination Address: 127.0.0.1
+    [Stream index: 0]
+Stream Control Transmission Protocol, Src Port: 29169 (29169), Dst Port: 59193 (59193)
+    Source port: 29169
+    Destination port: 59193
+    Verification tag: 0xaa862fd1
+    [Association index: disabled (enable in preferences)]
+    Checksum: 0x00000000 [unverified]
+    [Checksum Status: Unverified]
+    DATA chunk (ordered, complete segment, TSN: 0, SID: 0, SSN: 0, PPID: 20, payload length: 13 bytes)
+        Chunk type: DATA (0)
+            0... .... = Bit: Stop processing of the packet
+            .0.. .... = Bit: Do not report
+        Chunk flags: 0x03
+            .... 0... = I-Bit: Possibly delay SACK
+            .... .0.. = U-Bit: Ordered delivery
+            .... ..1. = B-Bit: First segment
+            .... ...1 = E-Bit: Last segment
+        Chunk length: 29
+        Transmission sequence number (relative): 0
+        Transmission sequence number (absolute): 1636983514
+        Stream identifier: 0x0000
+        Stream sequence number: 0
+        Payload protocol identifier: HNBAP (20)
+        Chunk padding: 000000
+UTRAN Iuh interface HNBAP signalling
+    HNBAP-PDU: successfulOutcome (1)
+        successfulOutcome
+            procedureCode: id-HNBRegister (1)
+            criticality: reject (0)
+            value
+                HNBRegisterAccept
+                    protocolIEs: 1 item
+                        Item 0: id-RNC-ID
+                            ProtocolIE-Field
+                                id: id-RNC-ID (14)
+                                criticality: reject (0)
+                                value
+                                    RNC-ID: 23
+

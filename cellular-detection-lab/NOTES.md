@@ -1419,3 +1419,301 @@ something this lab changed to manufacture a finding). Integrity IS real
 (EIA2/AES). This is the direct 4G analogue of the 5G tier's null-scheme
 SUCI finding and the 2G tier's A5/0 finding: a real, unforced default-
 configuration gap, not a contrived one.
+
+## Build log addendum — 3G/UMTS tier (2026-09-07/08)
+
+Adding a 3G tier per the hard constraint established by prior research:
+there is NO RF-free path for the WCDMA Uu air interface (no open-source
+UMTS PHY simulator exists anywhere, confirmed by two independent search
+angles before this build started). What IS reachable RF-free is the 3G
+core network plus the Iuh/Iu signalling stack — Iuh runs over SCTP/IP,
+not radio, so everything from the femtocell's ethernet jack inward is
+buildable in software. This tier is therefore scoped as "3G core network
+and Iu/Iuh signalling", not "a 3G network" — no Uu air interface, no real
+handset, ever.
+
+### Starting position: a large head start from the 2G tier
+
+`osmo-msc` 1.13.0, `osmo-hlr` 1.9.4, and `osmo-stp` 2.1.0 were already
+installed and running for the 2G tier — both osmo-msc and osmo-sgsn are
+2G AND 3G capable, so the CS core needed zero new packages.
+
+### Packages installed cleanly (apt, first attempt)
+
+```
+sudo apt install -y osmo-sgsn osmo-ggsn libosmo-abis-dev \
+  libosmo-ranap-dev libosmo-rua-dev libosmo-hnbap-dev \
+  libosmo-sigtran-dev libosmo-sccp-dev libosmo-netif-dev
+```
+
+All ten packages/dev-headers installed with no dependency resolution
+problems. `osmo-sgsn` and `osmo-ggsn` both ship a systemd unit but were
+`inactive`/`disabled` by default post-install (matches this lab's own
+convention of running every Osmocom daemon as a manually-started,
+foregrounded host process — see `scripts/2g-tier-start.sh` — not a
+system service); left disabled, never enabled.
+
+`libosmo-ranap-dev`, `libosmo-rua-dev`, and `libosmo-hnbap-dev` (the
+three Iuh-specific libraries osmo-hnbgw needs) were ALL already packaged
+in Kali — this is a materially easier build than the 2G tier's
+OsmocomBB, which needed a from-source `libosmo-gprs` dependency with no
+Debian package at all.
+
+### osmo-hnbgw build: one dependency + one version-skew blocker, both fixed
+
+Cloned `https://gitea.osmocom.org/cellular-infrastructure/osmo-hnbgw.git`
+into `build/osmo-hnbgw` (gitignored, same convention as every other
+source build in this lab).
+
+**Blocker 1 (trivial):** `configure` failed on `libasn1c >= 0.9.30` not
+found via pkg-config, even though the runtime lib
+(`osmo-libasn1c1t64`) was already installed (pulled in earlier as an
+osmo-bsc dependency). Fixed: `sudo apt install osmo-libasn1c-dev`
+(packaged, not a source build).
+
+**Blocker 2 (real, required a checkout, not a patch):** with that fixed,
+`configure` then failed on `libosmo-sigtran >= 2.3.0` — Kali's packaged
+`libosmo-sigtran` is 2.1.0. osmo-hnbgw's HEAD (`2dd4f6e`, 1.9.0, dated
+2026-08-20) tracks a considerably newer libosmo-sigtran/libosmo-rua/
+libosmo-ranap ABI than Kali currently packages. Rather than also
+source-building libosmo-sccp/libosmo-sigtran (a cascading dependency
+build this task's effort budget does not call for, and which risks an
+ABI mismatch against the ALREADY-INSTALLED, ALREADY-RUNNING osmo-msc/
+osmo-hlr/osmo-stp from the 2G tier if a from-source libosmo-sigtran
+shadowed the packaged one), searched osmo-hnbgw's own git history for
+the commit immediately before the `>= 2.2.0 -> >= 2.3.0` version bump:
+
+```
+2dd4f6e (1.9.0, 2026-08-20) requires libosmo-sigtran >= 2.3.0  <- HEAD, too new
+694c8ba (1.8.0, 2025-12-03) requires libosmo-sigtran >= 2.2.0  <- still too new
+5ebcace (2025-05-06)        requires libosmo-sigtran >= 2.1.0  <- matches Kali exactly
+```
+
+Checked out `5ebcace` (`git checkout 5ebcace`, detached HEAD — a real,
+dated upstream commit, not an arbitrary/invented pin) — every version
+floor it declares (libosmocore 1.11.0, libosmovty 1.11.0, libosmoctrl
+1.11.0, libosmogsm 1.11.0, libosmo-netif 1.6.0, libosmo-sigtran 2.1.0,
+libosmo-rua 1.7.0, libosmo-ranap 1.7.0, libosmo-hnbap 1.7.0) is met by
+what Kali packages (checked each with `pkg-config --modversion`).
+`configure` then failed once more on `libosmo-mgcp-client >= 1.14.0`
+not found (same class of missing -dev package as blocker 1) — fixed
+with `sudo apt install libosmo-mgcp-client-dev` (pulled in 1.15.0,
+already sufficient).
+
+`autoreconf -fi && ./configure && make -j$(nproc)` then built clean end
+to end — only deprecation warnings (`codecs_len`/`MGCP_MAX_CODECS` from
+an older libosmo-mgcp-client API surface still used by this hnbgw
+revision), zero errors. Binary: `build/osmo-hnbgw/src/osmo-hnbgw/osmo-hnbgw`.
+
+**Consequence of pinning to a mid-2025 commit rather than HEAD:** this
+build is ~4 months behind osmo-hnbgw's latest, not the newest possible
+build. It is still a real, complete, functioning HNBGW implementation
+with Iuh/HNBAP/RUA/RANAP support — the exact feature surface this tier
+needs — and pinning to a commit that matches the host's already-
+installed library versions is the same "don't cascade a source-build
+chain when a compatible package boundary exists" judgment call the 4G
+tier's `-DENABLE_WERROR=OFF` flag represents (fix via a supported
+configuration point, not by rebuilding the world).
+
+### osmo-hnodeb build: clean on the first attempt, no version blockers
+
+Cloned `https://gitea.osmocom.org/cellular-infrastructure/osmo-hnodeb.git`
+into `build/osmo-hnodeb`. HEAD (`526d07d`) is exactly tag `0.2.2`
+(2026-08, the latest release per the task's own note) and its
+`configure.ac` version floors (libosmocore/vty/ctrl/gsm >= 1.10.0,
+libosmotrau >= 1.6.0, libosmo-netif >= 1.5.0, libosmo-sigtran >= 1.9.0,
+libosmo-rua/ranap/hnbap >= 1.6.0) are ALL comfortably met by Kali's
+packaged versions (checked each) — no version pin needed here, unlike
+osmo-hnbgw. `autoreconf -fi && ./configure && make -j$(nproc)` built
+clean end to end, first genuine attempt, zero errors, zero blockers.
+Binary: `build/osmo-hnodeb/src/osmo-hnodeb/osmo-hnodeb`.
+
+Its own README states plainly: "this is a first step towards
+implementing a minimal hNodeB upper layer part, mainly handling
+HNBAP/RUA/RANAP messages on the Iuh interface... not expected to be a
+full/usable hNodeB anytime soon [if ever]." Confirmed directly from its
+own example config (`doc/examples/osmo-hnodeb/osmo-hnodeb.cfg`): it has
+an `ll-socket` (lower-layer socket, `/tmp/hnb_prim_sock`) which is the
+stub where a real Uu/PHY/RRC stack would attach — no such client ships
+anywhere in this build. This build therefore gives Iuh/HNBAP/RUA/RANAP
+signalling only, never a usable virtual handset — exactly as scoped.
+
+### 3G subscriber provisioned in the already-running osmo-hlr
+
+IMSI `001010000000002` (test PLMN 001/01, same convention as the 2G
+tier's `001010000000001`, `...002` chosen so 2G and 3G subscribers are
+visibly distinct in any shared capture — same distinct-IMSI-per-tier
+pattern the 4G tier's own `999700000000099` already established relative
+to the 5G tier's `999700000000001`):
+
+```
+subscriber imsi 001010000000002 create
+subscriber imsi 001010000000002 update aud3g milenage \
+  k 465B5CE8B199B49FAA5F0A2EE238A6BC opc E8ED289DEBA952E4283B54E88E6183CA
+```
+
+K/OPc reused from the SAME published Open5GS/UERANSIM test values the
+5G and 4G tiers already use — not a real key, just kept consistent
+across tiers. Deliberately provisioned with `aud3g milenage` (real
+UMTS AKA / Milenage authentication data), NOT `aud2g` — this is what
+makes a genuine AUTN-bearing Authentication Request possible later if
+RANAP security procedures are reached (see "the money shot" in
+docs/3G-TIER.md).
+
+### cs7/SCCP wiring for Iu-CS: shared instance 0, zero osmo-stp.cfg changes
+
+Confirmed via live VTY before writing any config (not assumed):
+osmo-msc's own point code is `0.23.1`, osmo-bsc's is `0.23.3` (both
+package defaults, neither cfg file declares one explicitly). osmo-stp's
+existing `cs7 instance 0` already has `xua rkm
+routing-key-allocation dynamic-permitted` and `accept-asp-connections
+dynamic-permitted` — a NEW ASP (osmo-hnbgw) can register against the
+SAME `listen m3ua 2905` with NO osmo-stp.cfg edit and NO osmo-stp
+restart, so the running 2G tier's live SCCP associations are never
+touched. `config/osmocom/osmo-hnbgw.cfg` picks point code `0.42.0`
+(confirmed free) and an `sccp-address my-msc { point-code 0.23.1 }` +
+`msc 0 { remote-addr my-msc }` to reach the existing osmo-msc directly —
+this is the exact same "share one cs7 instance across the A-interface
+and Iu-interface" pattern osmo-msc's own upstream example
+(`osmo-msc_custom-sccp.cfg`: `cs7-instance-a 0` / `cs7-instance-iu 0`)
+documents, just approached from the STP/hnbgw side rather than needing
+any osmo-msc.cfg edit at all (osmo-msc listens for Iu-CS on the same
+default cs7 instance it already uses for the A-interface, so nothing
+there needed changing either).
+
+### Milestone: HNB registers over Iuh (real HNBAP exchange captured)
+
+Both daemons started as plain background host processes (same convention
+as the 2G tier), on a HOST ALREADY RUNNING the full 2G tier + 5G/4G
+Docker stacks, verified not to disturb any of it:
+
+```
+./build/osmo-hnbgw/src/osmo-hnbgw/osmo-hnbgw -c config/osmocom/osmo-hnbgw.cfg
+./build/osmo-hnodeb/src/osmo-hnodeb/osmo-hnodeb -c config/osmocom/osmo-hnodeb.cfg
+```
+
+osmo-hnbgw's log: `msc-0: Using SS7 instance 0, pc:0.42.0`, ASP went
+Active, `(sgsn-0) using: cs7-0 0.42.0 <-> 0.23.4 sgsn-0 (default remote
+point-code)` (harmless auto-created default — no sgsn is configured or
+running yet). osmo-hnodeb's log: `Iuh connected to HNBGW`. osmo-hnbgw
+then logged `Accepting HNB-REGISTER-REQ` for
+`CellDetectLab-hNodeB-01`, and `show hnb all` confirmed:
+
+```
+HNB (r=127.0.0.1:56445<->l=127.0.0.1:29169) "CellDetectLab-hNodeB-01"
+    MCC 001 MNC 01 LAC 1 RAC 1 SAC 1 CID 1 SCTP-stream:HNBAP=0,RUA=0
+1 HNB connected
+```
+
+Captured on `lo`, filter `sctp port 29169` (`sudo tshark`, written to
+/tmp then chown'd back to the invoking user — sudo tshark writing
+directly into a user-owned evidence dir under `sudo -n` hit a real
+Permission Denied first, fixed by the intermediate-file pattern):
+`evidence/3g/iuh-hnb-register.pcap`. Contents (`tshark -r`):
+
+```
+1  SCTP INIT
+2  SCTP INIT_ACK
+3  SCTP COOKIE_ECHO
+4  SCTP COOKIE_ACK
+5  HNBAP HNB_REGISTER_REQUEST
+6  SCTP SACK
+7  HNBAP HNB_REGISTER_ACCEPT
+8  SCTP SACK
+```
+
+`tshark -Y hnbap -V` fully decodes frame 5's `HNBRegisterRequest`:
+`id-HNB-Identity` (hex `43656c6c...`, decodes to
+"CellDetectLab-hNodeB-01"), `id-PLMNidentity` (`00f110` = MCC 001/MNC
+01, correctly shown as "Test network"), `id-CellIdentity` (1),
+`id-LAC`/`id-RAC`/`id-SAC` (1/1/1) — every field this tier's own HNBAP
+allowlist detector signal will need. Confirms the "hard constraint"
+framing is correct in practice, not just in theory: this is real
+HNBAP/Iuh signalling, entirely SCTP/IP, zero RF, zero Uu.
+
+2G tier verified untouched throughout (`ps aux | grep osmo` before and
+after: all six 2G daemons plus virtphy/mobile still running with their
+original PIDs, `show cs7 instance 0 asp` on osmo-stp shows the two
+original 2G ASPs (`asp-dyn-0`/`asp-dyn-1`) still ASP_ACTIVE alongside
+the new `asp-dyn-3` for osmo-hnbgw).
+
+### GUI screenshots for the 3G tier (Xvfb + Wireshark + scrot)
+
+Same proven capture path as the 2G/4G tiers. Hit the exact same
+documented GTK/Xvfb layout limitation again (no window manager under
+bare Xvfb -> panes will not resize, confirmed once more by trying a much
+taller 1920x3000 Xvfb screen - Wireshark's window still opened at its
+original fixed size, proving this is a GTK layout issue, not a screen-
+size constraint). HNBAP's own message tree for HNB_REGISTER_REQUEST is
+one level deeper than the 2G/4G/5G tiers' equivalent messages
+(HNBAP-PDU > initiatingMessage > value > HNBRegisterRequest >
+protocolIEs > Item N > ProtocolIE-Field > id/criticality/value), so
+after collapsing every other IE (HNB-Identity, HNB-Location-Information)
+down to a single line each, the tree pane was still exactly one row
+short of showing PLMNidentity's own decoded value on screen at once.
+Rather than crop/fabricate a misleading screenshot, used the same
+message's earlier IE (id-HNB-Identity, which DOES fit) for one
+screenshot, and switched to the much shallower HNB_REGISTER_ACCEPT
+message (only 3 levels deep: successfulOutcome > HNBRegisterAccept >
+id-RNC-ID) for a second, fully-expanded, uncropped detail screenshot.
+The PLMNidentity decode itself IS confirmed, just via
+`evidence/3g/iuh-hnb-register-hnbap-detail.txt` (`tshark -V` text) rather
+than a screenshot - documented explicitly in
+`evidence/screenshots/README.md` rather than silently omitted.
+
+Three screenshots captured, all 1920x1080 PNG, prefixed `umts-`:
+`umts-iuh-packet-list.png`, `umts-hnb-register-identity-detail.png`,
+`umts-hnb-register-accept-detail.png`.
+
+### Pushing further: RANAP Reset works, but UE registration needs a hand-encoded ASN.1 client that wasn't built
+
+Investigated `osmo-hnodeb`'s VTY for anything that could trigger UE-level
+signalling. Found `ranap reset (cs|ps)` (`src/osmo-hnodeb/vty.c`,
+`ranap_reset_cmd`) — a real, working command that builds a genuine RANAP
+Reset PDU and sends it over RUA/Iuh. Ran it live:
+
+```
+echo -e "enable\nranap reset cs" | nc 127.0.0.1 4273
+```
+
+Captured (`evidence/3g/iuh-ranap-reset.pcap`): `RUA ConnectionlessTransfer`
+carrying a real `RANAP-PDU: initiatingMessage`, `procedureCode: id-Reset
+(9)`, `Cause: transmissionNetwork (signalling-transport-resource-failure)`,
+`CN-DomainIndicator: cs-domain`, answered directly by osmo-hnbgw with
+`RANAP ResetAcknowledge` on the SAME Iuh association (RANAP Reset is a
+connectionless/global procedure terminated at the SCCP-routing entity
+itself per TS 25.413 — this did NOT cross onward to osmo-msc over the
+separate Iu-CS SCCP/M3UA link, and osmo-hnbgw's own log shows no
+corresponding entry, consistent with it being auto-acknowledged rather
+than relayed). This is genuine additional RANAP content beyond HNBAP,
+just not proof of an Iu-CS hop reaching the MSC.
+
+**Investigated (did not build) the deeper path: a real RANAP Initial UE
+Message.** `osmo-hnodeb`'s HNBAP layer has a complete, unused function
+for this — `hnb_ue_register_tx(struct hnb *hnb, const char *imsi_str)`
+in `src/osmo-hnodeb/hnbap.c` — but it is never called from anywhere in
+the source (confirmed via `grep -rn` across the whole tree) and no VTY
+command is wired to it. The only path to drive it is osmo-hnodeb's own
+lower-layer socket ("HNBLLIF", `include/osmocom/hnodeb/hnb_prim.h`,
+Unix socket `/tmp/hnb_prim_sock`) — a primitive-based protocol
+(`osmo_prim_srv`) where a `HNB_IUH_PRIM_CONN_ESTABLISH.req` carries a
+**raw, caller-encoded RANAP message** (`data`/`data_len` in
+`struct hnb_iuh_conn_establish_req_param`). This is exactly the "ll-socket
+... stub where a real Uu/PHY/RRC stack would attach" the task's own brief
+warned about — no client for it ships anywhere upstream. Building one
+from scratch would require BOTH (a) reverse-engineering
+`osmo_prim_srv`'s wire framing (not just the in-memory `osmo_prim_hdr` -
+`libosmocore`'s `osmo_prim_srv.c` has its own serialization the client
+must match exactly, including the SAPI-version-negotiation handshake
+`llsk_rx_sapi_version_cb` requires before CONFIGURE/CONN_ESTABLISH are
+even accepted) AND (b) hand-encoding a real, spec-conformant RANAP
+Initial UE Message ASN.1 PER payload (embedding a NAS-PS/NAS-CS message
+inside it) with no existing tool in this lab to generate one RF-free.
+Assessed as a genuinely substantial, uncertain side-build - not a
+config tweak - and NOT attempted, per the task's own "budget your time"
+instruction and the explicit preference for an honestly-bounded partial
+result over an overclaimed one. This is the actual, precise boundary of
+what this tier reaches: Iuh/HNBAP (HNB registration) plus RUA/RANAP
+(Reset only) — no UE registration, no RANAP Initial UE Message, no
+UMTS AKA exchange, because there is no RF-free path to originate one in
+this build without writing new ASN.1-encoding client code from scratch.

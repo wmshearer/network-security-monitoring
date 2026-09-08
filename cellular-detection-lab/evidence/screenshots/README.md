@@ -73,6 +73,43 @@ were independently verified with `tshark -V` before each screenshot was taken.
   (VLR restart scenario), expanded to show `Mobile Identity - IMSI
   (001010000000001)` decoded in the clear — signal #12.
 
+## 3G tier (Iuh HNBAP, `evidence/3g/iuh-hnb-register.pcap`)
+
+This tier is core-network-plus-Iuh-signalling only (no Uu air interface,
+no real handset — see `docs/3G-TIER.md`'s explicit RF-boundary
+statement), so these screenshots show HNBAP (HNB-to-HNBGW registration
+signalling), not a UE/RRC exchange.
+
+- `umts-iuh-packet-list.png` — Full packet list of the Iuh SCTP
+  association: SCTP INIT/INIT_ACK/COOKIE_ECHO/COOKIE_ACK handshake,
+  then `HNBAP HNB_REGISTER_REQUEST` (frame 5) and
+  `HNBAP HNB_REGISTER_ACCEPT` (frame 7) with their SACKs — the complete,
+  real HNB-to-HNBGW registration exchange, zero radio.
+- `umts-hnb-register-identity-detail.png` — Frame 5 (HNB_REGISTER_REQUEST)
+  with `Item 0: id-HNB-Identity` expanded down to `HNB-Identity-Info`;
+  the corresponding hex bytes are highlighted in the byte pane and decode
+  to the ASCII string `CellDetectLab-hNodeB-01`, this lab's own
+  configured HNB identity (`config/osmocom/osmo-hnodeb.cfg`) — the exact
+  field this tier's HNB-identity allowlist check (see `docs/3G-TIER.md`)
+  would evaluate.
+- `umts-hnb-register-accept-detail.png` — Frame 7 (HNB_REGISTER_ACCEPT)
+  fully expanded: `successfulOutcome`, `procedureCode: id-HNBRegister
+  (1)`, `HNBRegisterAccept`, `id-RNC-ID`, `RNC-ID: 23` — osmo-hnbgw's own
+  RNC-ID assignment back to the HNB, confirming the registration
+  completed successfully.
+
+Note on these three: the packet tree for the HNB_REGISTER_REQUEST message
+(frame 5) is deep enough (HNBAP-PDU > initiatingMessage > value >
+HNBRegisterRequest > protocolIEs > Item N > ProtocolIE-Field > id/
+criticality/value) that Wireshark's fixed-size window under bare Xvfb
+(same GTK layout limitation documented in `NOTES.md` for the 2G tier —
+no window manager under Xvfb, so the panes will not resize) could not
+show the PLMNidentity item's own decoded value (MCC 001/MNC 01) on
+screen at once alongside the necessary parent-node context; that decode
+is confirmed instead in `evidence/3g/iuh-hnb-register-hnbap-detail.txt`
+(`tshark -V` text output, not a screenshot) rather than fabricating or
+cropping a misleading image.
+
 ## Detection dashboards (Grafana, live data from the running 5G lab)
 
 - `5g-core-health.png` — "5G Core Health" dashboard: AMF/SMF/UPF/PCF

@@ -28,6 +28,13 @@ mongodb/
 !evidence/4g/*.pcap
 !evidence/4g/*.pcapng
 
+# Exception: 3G/UMTS tier evidence captures - all lab-generated synthetic
+# Iuh/HNBAP/RUA/RANAP signalling (test PLMN 001/01, synthetic IMSI/K/OPc,
+# no RF, no Uu air interface - see docs/3G-TIER.md's explicit RF-boundary
+# statement) and load-bearing proof artefacts for docs/3G-TIER.md.
+!evidence/3g/*.pcap
+!evidence/3g/*.pcapng
+
 # Python
 __pycache__/
 *.pyc
